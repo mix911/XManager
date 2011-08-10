@@ -74,34 +74,36 @@
     [iconColumn setDataCell:[[NSImageCell alloc] init]];
     [iconColumn setWidth:20.0f];
     [iconColumn setResizingMask:NSTableColumnNoResizing];
-    [table addTableColumn:iconColumn];
     
     // Имя
     NSTableColumn* nameColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Name%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
     [[nameColumn headerCell] setStringValue:@"Name"];
     [nameColumn setEditable:NO];
     [nameColumn setResizingMask:NSTableColumnAutoresizingMask | NSTableColumnUserResizingMask];
-    [table addTableColumn:nameColumn];
     
     // Размер
     NSTableColumn* sizeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Size%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
     [[sizeColumn headerCell] setStringValue:@"Size"];
     [sizeColumn setEditable:NO];
     [sizeColumn setResizingMask:NSTableColumnUserResizingMask];
-    [table addTableColumn:sizeColumn];
     
     // Дата
     NSTableColumn* dateColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Date%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
     [[dateColumn headerCell] setStringValue:@"Date"];
     [dateColumn setEditable:NO];
     [dateColumn setResizingMask:NSTableColumnUserResizingMask];
-    [table addTableColumn:dateColumn];
     
     // Тип
     NSTableColumn* typeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Type%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
     [[typeColumn headerCell] setStringValue:@"Type"];
     [typeColumn setEditable:NO];
     [typeColumn setResizingMask:NSTableColumnUserResizingMask];
+    
+    // Добавим колонки
+    [table addTableColumn:iconColumn];
+    [table addTableColumn:nameColumn];
+    [table addTableColumn:sizeColumn];
+    [table addTableColumn:dateColumn];
     [table addTableColumn:typeColumn];
     
     // Добавим вкладку

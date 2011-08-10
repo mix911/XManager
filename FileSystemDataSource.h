@@ -11,6 +11,8 @@
 @interface FileSystemDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
     NSFileManager*      fileManager;
     NSDateFormatter*    dateFormatter;
+    
+    NSMutableArray*     data;
 }
 
 -(id)           initWithPath:(NSString*)path;
@@ -18,5 +20,7 @@
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 
 -(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+
+-(void) openFolder:(NSString*)path;
 
 @end
