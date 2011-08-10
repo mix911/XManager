@@ -18,6 +18,9 @@
 		B4074EAE13ECD09900438E01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4074EAC13ECD09900438E01 /* InfoPlist.strings */; };
 		B4074EB013ECD09900438E01 /* XManagerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = B4074EAF13ECD09900438E01 /* XManagerTests.h */; };
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
+		B4074EBD13ECD0F000438E01 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* FileManager.m */; };
+		B40F8A7D13F1176A003D14C0 /* FileSystemDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* FileSystemDataSource.m */; };
+		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,20 +39,26 @@
 		B4074E8913ECD09900438E01 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B4074E8A13ECD09900438E01 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B4074E8B13ECD09900438E01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B4074E8E13ECD09900438E01 /* XManager-Info.plist */ = {isa = PBXFileReference; path = "XManager-Info.plist"; sourceTree = "<group>"; };
+		B4074E8E13ECD09900438E01 /* XManager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XManager-Info.plist"; sourceTree = "<group>"; };
 		B4074E9013ECD09900438E01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4074E9213ECD09900438E01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B4074E9413ECD09900438E01 /* XManager-Prefix.pch */ = {isa = PBXFileReference; path = "XManager-Prefix.pch"; sourceTree = "<group>"; };
+		B4074E9413ECD09900438E01 /* XManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XManager-Prefix.pch"; sourceTree = "<group>"; };
 		B4074E9613ECD09900438E01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */ = {isa = PBXFileReference; path = XManagerAppDelegate.h; sourceTree = "<group>"; };
+		B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XManagerAppDelegate.h; sourceTree = "<group>"; };
 		B4074E9913ECD09900438E01 /* XManagerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XManagerAppDelegate.m; sourceTree = "<group>"; };
 		B4074E9C13ECD09900438E01 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B4074EA313ECD09900438E01 /* XManagerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XManagerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4074EA413ECD09900438E01 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		B4074EAB13ECD09900438E01 /* XManagerTests-Info.plist */ = {isa = PBXFileReference; path = "XManagerTests-Info.plist"; sourceTree = "<group>"; };
+		B4074EAB13ECD09900438E01 /* XManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XManagerTests-Info.plist"; sourceTree = "<group>"; };
 		B4074EAD13ECD09900438E01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4074EAF13ECD09900438E01 /* XManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XManagerTests.h; sourceTree = "<group>"; };
 		B4074EB113ECD09900438E01 /* XManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XManagerTests.m; sourceTree = "<group>"; };
+		B4074EBB13ECD0F000438E01 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		B4074EBC13ECD0F000438E01 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		B40F8A7B13F1176A003D14C0 /* FileSystemDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemDataSource.h; path = ../FileSystemDataSource.h; sourceTree = "<group>"; };
+		B40F8A7C13F1176A003D14C0 /* FileSystemDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileSystemDataSource.m; path = ../FileSystemDataSource.m; sourceTree = "<group>"; };
+		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
+		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +124,12 @@
 		B4074E8C13ECD09900438E01 /* XManager */ = {
 			isa = PBXGroup;
 			children = (
+				B4074EBB13ECD0F000438E01 /* FileManager.h */,
+				B4074EBC13ECD0F000438E01 /* FileManager.m */,
+				B40F8A7B13F1176A003D14C0 /* FileSystemDataSource.h */,
+				B40F8A7C13F1176A003D14C0 /* FileSystemDataSource.m */,
+				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
+				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
 				B4074E9913ECD09900438E01 /* XManagerAppDelegate.m */,
 				B4074E9B13ECD09900438E01 /* MainMenu.xib */,
@@ -261,6 +276,9 @@
 			files = (
 				B4074E9313ECD09900438E01 /* main.m in Sources */,
 				B4074E9A13ECD09900438E01 /* XManagerAppDelegate.m in Sources */,
+				B4074EBD13ECD0F000438E01 /* FileManager.m in Sources */,
+				B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */,
+				B40F8A7D13F1176A003D14C0 /* FileSystemDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +450,7 @@
 				B4074EB713ECD09900438E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4074EB813ECD09900438E01 /* Build configuration list for PBXNativeTarget "XManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +459,7 @@
 				B4074EBA13ECD09900438E01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
