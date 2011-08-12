@@ -3393,10 +3393,10 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.29964501</real>
-		<string>{393, 1229}</string>
-		<string>{481, 0}</string>
-		<string>-initWithPath:</string>
+		<real>334847404.81047499</real>
+		<string>{1594, 833}</string>
+		<string>{1896, 0}</string>
+		<string>-tableView:objectValueForTableColumn:row:</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4507,9 +4507,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.29885298</real>
-		<string>{5708, 1172}</string>
-		<string>{5410, 0}</string>
+		<real>334847404.80959201</real>
+		<string>{5246, 1124}</string>
+		<string>{4111, 0}</string>
 		<string>-openFolder:</string>
 		<dict>
 			<key>$class</key>
@@ -5972,7 +5972,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.29803002</real>
+		<real>334847404.80885702</real>
 		<string>{34, 1239}</string>
 		<string>{1205, 0}</string>
 		<string>-awakeFromNib</string>
@@ -7684,7 +7684,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.30043602</real>
+		<real>334847404.81122601</real>
 		<string>{0, 619}</string>
 		<string>{536, 0}</string>
 		<string>-keyDown:</string>
@@ -10769,9 +10769,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.29416603</real>
-		<string>{393, 1229}</string>
-		<string>{481, 0}</string>
+		<real>334847404.805251</real>
+		<string>{1594, 833}</string>
+		<string>{1896, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -11151,7 +11151,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.29398602</real>
+		<real>334847404.80506301</real>
 		<string>{0, 619}</string>
 		<string>{536, 0}</string>
 		<dict>
@@ -11533,7 +11533,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334846938.293791</real>
+		<real>334847404.804887</real>
 		<string>{34, 1239}</string>
 		<string>{1205, 0}</string>
 		<dict>
@@ -12674,7 +12674,7 @@
 				<integer>889</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>334846933.79772598</real>
+			<real>334847304.13148201</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -12685,7 +12685,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 17:02</string>
+		<string>Today at 17:08</string>
 		<integer>234</integer>
 		<dict>
 			<key>$class</key>

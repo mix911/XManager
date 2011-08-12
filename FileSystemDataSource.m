@@ -73,58 +73,31 @@
         return nil;
     }
     
-    NSString* column_name = [[tableColumn headerCell] stringValue];
-    
-    // Получим идентификатор колонки TODO: переделать на идентификатор колонки
-    NSString* col_id = [tableColumn identifier];
-    
     // Получим очередной item
     FileSystemItem* item = [data objectAtIndex:row];
     
-    // Получим имя очередного item
-    NSString* item_name = [item name];
+    switch ([self whatColumn:tableColumn]) {
+        
+        case FS_ICON:
+            return nil;
+        
+        case FS_NAME:
+            return item.name;
+        
+        case FS_SIZE:
+            return item.size;
+            
+        case FS_DATE:
+            return item.date;
+            
+        case FS_TYPE:
+            return item.type;
+            
+        default:
+            break;
+    }
     
-    // Получим атрибуты очередного item
-    NSDictionary* attrs = [fileManager attributesOfItemAtPath:item_name error:nil];
-    
-    if([column_name isEqualToString:@""]){
-        return nil;
-    }
-    else if ([column_name isEqualToString:@"Name"]) {
-        return [item name];
-    }
-    else if([column_name isEqualToString:@"Size"]){
-         // Если это директория не будем считать её размер TODO: просмотреть другие типы item
-        if ([item isDir]) {
-            return @"--";
-        }
-        return [item size];
-//        // Получим тип item
-//        NSString* item_type = [attrs objectForKey:NSFileType];
-//        if ([item_type isEqualToString:NSFileTypeDirectory]) {
-//            return @"--";
-//        }
-//        return (NSString*)[attrs objectForKey:NSFileSize];
-    }
-    else if([column_name isEqualToString:@"Date"]){
-        return [item date];
-        // Получим дату модификации
-//        NSDate* date = [attrs objectForKey:NSFileModificationDate];
-//        return  [dateFormatter stringFromDate:date];
-    }
-    else if([column_name isEqualToString:@"Type"]){
-        return [item type];
-//        
-//        // Получим тип item
-//        NSString* item_type = [attrs objectForKey:NSFileType];
-//        
-//        // Если это директория
-//        if ([item_type isEqualToString:NSFileTypeDirectory]) {
-//            return @"<Dir>";
-//        }
-//        return [item_name pathExtension];
-    }
-    return @"Error";
+    return @"error";
 }
 
 -(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)column row:(NSInteger)row {
