@@ -22,12 +22,18 @@
 -(void) keyDown:(NSEvent*)event {
     [super keyDown:event];
     
+//    unsigned short key = [event keyCode];
+    
     switch ([event keyCode]) {
         case 0x24:
         {
             NSInteger row = [super selectedRow];
             [[super dataSource] enterToRow:row];
         }
+            break;
+            
+        case 0x40A:
+            [[super dataSource] enterToRow:0];
             break;
             
         default:

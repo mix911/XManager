@@ -117,9 +117,6 @@
         // Получим очередной item
         FileSystemItem* item = [data objectAtIndex:row];
         
-        // Получим shared workspace
-        NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
-        
         // Получим иконку для данного item
         NSImage* icon = [workspace iconForFile:[item fullPath]];
                 

@@ -19,4 +19,10 @@
 -(void) awakeFromNib;
 -(bool) loadLastSesstion;
 
+-(IBAction) pushRename  :(id)sender;
+-(IBAction) pushCopy    :(id)sender;
+-(IBAction) pushMove    :(id)sender;
+-(IBAction) pushMkDir   :(id)sender;
+-(IBAction) pushDelete  :(id)sender;
+
 @end
