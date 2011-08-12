@@ -69,6 +69,7 @@
 
 -(id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
 
+    // Проверки
     if ([data count] <= row) {
         return nil;
     }
@@ -102,29 +103,20 @@
 
 -(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)column row:(NSInteger)row {
     
-    // Получим идентификатор колонки TODO: переделать на идентификатор колонки
-    NSString* col_id = [column identifier];
-    
     // Если рисуем статус
-    if ([[[column headerCell ] stringValue] isEqualToString:@""]) {
+    if ([self whatColumn:column] == FS_ICON) {
         // Downcast-им  ячейку
         NSImageCell*    icell   = (NSImageCell*)cell;
         
         // Получим очередной item
         FileSystemItem* item = [data objectAtIndex:row];
         
-//        // Получим имя очередного item
-//        NSString* item_name = [[fileManager contentsOfDirectoryAtPath:[fileManager currentDirectoryPath] error:nil] objectAtIndex:row];
-        
         // Получим shared workspace
         NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
         
         // Получим иконку для данного item
         NSImage* icon = [workspace iconForFile:[item fullPath]];
-        
-//        // Получим иконку для данного item
-//        NSImage* icon = [workspace iconForFile:[NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item_name]];
-        
+                
         [icell setImage:icon];
     }
 }
