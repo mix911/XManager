@@ -9,6 +9,7 @@
 #import "SidePanel.h"
 
 #import "FileSystemDataSource.h"
+#import "TableView.h"
 
 @implementation SidePanel
 
@@ -62,7 +63,7 @@
     [item setView:scroll_view];
     
     // Создадим таблицу и настроим таблицу
-    NSTableView* table = [[NSTableView alloc] initWithFrame:[[scroll_view contentView] bounds]];
+    TableView* table = [[TableView alloc] initWithFrame:[[scroll_view contentView] bounds]];
             
     // Добавим таблицу в scroll view
     [scroll_view setDocumentView:table];
@@ -114,6 +115,8 @@
     [table setDataSource:ds_delegate];
     // Зададим делегат
     [table setDelegate:ds_delegate];
+    // Установим таблицу
+    [ds_delegate setTable:table];
 }
 
 -(int) nextTabId {

@@ -24,4 +24,9 @@
 @property(retain)   NSString*   type;
 @property           bool        isDir;
 
+-(NSComparisonResult) compareByName :(FileSystemItem*)rgh;
+-(NSComparisonResult) compareBySize :(FileSystemItem*)rgh;
+-(NSComparisonResult) compareByDate :(FileSystemItem*)rgh;
+-(NSComparisonResult) compareByType :(FileSystemItem*)rgh;
+
 @end

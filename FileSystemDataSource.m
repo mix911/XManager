@@ -10,6 +10,21 @@
 
 #import "FileSystemItem.h"
 
+enum EFileSystemColumnId {
+    FS_ICON = 0,
+    FS_NAME,
+    FS_SIZE,
+    FS_DATE,
+    FS_TYPE,
+    FS_UNDEFINED,
+};
+
+@interface FileSystemDataSource(Private)
+
+-(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
+
+@end
+
 @implementation FileSystemDataSource
 
 -(id) initWithPath:(NSString *)path {
@@ -24,6 +39,33 @@
         [self openFolder :path];
     }
     return self;
+}
+
+-(void) enterToRow:(NSInteger)row {
+    if (row >= [data count]) {
+        return;
+    }
+    
+    FileSystemItem* item = [data objectAtIndex:row];
+    
+    if (item.isDir) {
+        NSString* new_path = nil;
+        if ([item.name isEqualToString:@".."]) {
+            new_path = @"";
+            NSArray* components = [[fileManager currentDirectoryPath] pathComponents];
+            
+            for (NSUInteger i = 0; i < [components count] - 1; ++i) {
+                new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
+            }
+        }
+        else {
+            new_path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
+        }
+        
+        [self openFolder:new_path];
+        
+        [table reloadData];
+    }
 }
 
 -(NSInteger) numberOfRowsInTableView:(NSTableView *)tableView {
@@ -134,6 +176,7 @@
     [item setSize       :@"--"];
     [item setDate       :@"Date"];
     [item setType       :@"<Dir>"];
+    [item setIsDir      :YES];
     
     [data addObject:item];
     
@@ -169,6 +212,61 @@
         
         [data addObject:item];
     }
+}
+
+-(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
+    switch ([self whatColumn:tableColumn]) {
+        case FS_ICON:
+            break;
+            
+        case FS_NAME:
+            [data sortUsingSelector:@selector(compareByName:)];
+            break;
+            
+        case FS_SIZE:
+            [data sortUsingSelector:@selector(compareBySize:)];
+            break;
+            
+        case FS_DATE:
+            [data sortUsingSelector:@selector(compareByDate:)];
+            break;
+            
+        case FS_TYPE:
+            [data sortUsingSelector:@selector(compareByType:)];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [table reloadData];
+}
+
+-(void) setTable:(NSTableView *)t {
+    table = t;
+}
+
+@end
+
+@implementation FileSystemDataSource(Private)
+
+-(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
+    NSString* column_name = [[column headerCell] stringValue];
+    
+    // Получим идентификатор колонки TODO: переделать на идентификатор колонки
+    NSString* col_id = [column identifier];
+    
+    if([column_name isEqualToString:@""])
+        return FS_ICON;
+    else if([column_name isEqualToString:@"Name"])
+        return FS_NAME;
+    else if([column_name isEqualToString:@"Size"])
+        return FS_SIZE;
+    else if([column_name isEqualToString:@"Date"])
+        return FS_DATE;
+    else if([column_name isEqualToString:@"Type"])
+        return FS_TYPE;
+    return FS_UNDEFINED;
 }
 
 @end
