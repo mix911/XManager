@@ -10,18 +10,10 @@
 
 #import "FileSystemItem.h"
 
-enum EFileSystemColumnId {
-    FS_ICON = 0,
-    FS_NAME,
-    FS_SIZE,
-    FS_DATE,
-    FS_TYPE,
-    FS_UNDEFINED,
-};
-
 @interface FileSystemDataSource(Private)
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
+-(void)                     sortData;
 
 @end
 
@@ -30,6 +22,9 @@ enum EFileSystemColumnId {
 -(id) initWithPath:(NSString *)path {
     self = [super init];
     if (self) {
+
+        order = FS_NAME;
+        
         fileManager = [[NSFileManager alloc] init];
         [fileManager changeCurrentDirectoryPath:path];
         
@@ -212,34 +207,13 @@ enum EFileSystemColumnId {
         
         [data addObject:item];
     }
+    
+    [self sortData];
 }
 
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
-    switch ([self whatColumn:tableColumn]) {
-        case FS_ICON:
-            break;
-            
-        case FS_NAME:
-            [data sortUsingSelector:@selector(compareByName:)];
-            break;
-            
-        case FS_SIZE:
-            [data sortUsingSelector:@selector(compareBySize:)];
-            break;
-            
-        case FS_DATE:
-            [data sortUsingSelector:@selector(compareByDate:)];
-            break;
-            
-        case FS_TYPE:
-            [data sortUsingSelector:@selector(compareByType:)];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [table reloadData];
+    order = [self whatColumn:tableColumn];
+    [self sortData];
 }
 
 -(void) setTable:(NSTableView *)t {
@@ -267,6 +241,35 @@ enum EFileSystemColumnId {
     else if([column_name isEqualToString:@"Type"])
         return FS_TYPE;
     return FS_UNDEFINED;
+}
+
+-(void) sortData {
+    switch (order) {
+        case FS_ICON:
+            break;
+            
+        case FS_NAME:
+            [data sortUsingSelector:@selector(compareByName:)];
+            break;
+            
+        case FS_SIZE:
+            [data sortUsingSelector:@selector(compareBySize:)];
+            break;
+            
+        case FS_DATE:
+            [data sortUsingSelector:@selector(compareByDate:)];
+            break;
+            
+        case FS_TYPE:
+            [data sortUsingSelector:@selector(compareByType:)];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [table reloadData];
+
 }
 
 @end

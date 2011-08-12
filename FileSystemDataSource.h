@@ -8,13 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+enum EFileSystemColumnId {
+    FS_ICON = 0,
+    FS_NAME,
+    FS_SIZE,
+    FS_DATE,
+    FS_TYPE,
+    FS_UNDEFINED,
+};
+
 @interface FileSystemDataSource : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
-    NSFileManager*      fileManager;
-    NSDateFormatter*    dateFormatter;
-    
-    NSMutableArray*     data;
-    
-    NSTableView*        table;
+    NSFileManager*              fileManager;
+    NSDateFormatter*            dateFormatter;
+    NSMutableArray*             data;
+    NSTableView*                table;
+    enum EFileSystemColumnId    order;
 }
 
 // Data source
