@@ -47,6 +47,12 @@
     
     NSString* new_path = nil;
     if ([item.name isEqualToString:@".."]) {
+        
+        NSString* current_path = [fileManager currentDirectoryPath];
+        if ([current_path isEqualToString:@"/"]) {
+            return;
+        }
+        
         new_path = @"";
         NSArray* components = [[fileManager currentDirectoryPath] pathComponents];
         
@@ -66,6 +72,13 @@
     }
     else {
         [workspace openFile:new_path];
+    }
+}
+
+-(void) goUp {
+    FileSystemItem* item = [data objectAtIndex:0];
+    if ([item.name isEqualToString:@".."]) {
+        [self enterToRow:0];
     }
 }
 
@@ -126,22 +139,36 @@
 
 -(void) openFolder:(NSString *)path {
     
-    [fileManager changeCurrentDirectoryPath:path];
+    NSString* old_path = [fileManager currentDirectoryPath];
     
-    data = [[NSMutableArray alloc] init];
+    if ([fileManager changeCurrentDirectoryPath:path]==NO) {
+        [fileManager changeCurrentDirectoryPath:old_path];
+        return;
+    }
     
     NSArray* strings = [fileManager contentsOfDirectoryAtPath:path error:nil];
     
-    FileSystemItem* item = [[FileSystemItem alloc] init];
+    if (strings == nil) {
+        [fileManager changeCurrentDirectoryPath:old_path];
+        return;
+    }
     
-    [item setFullPath   :path];
-    [item setName       :@".."];
-    [item setSize       :@"--"];
-    [item setDate       :@"Date"];
-    [item setType       :@"<Dir>"];
-    [item setIsDir      :YES];
+    data = [[NSMutableArray alloc] init];
     
-    [data addObject:item];
+    FileSystemItem* item = nil;
+    
+    if (![path isEqualToString:@"//"]) {
+        item = [[FileSystemItem alloc] init];
+        
+        [item setFullPath   :path];
+        [item setName       :@".."];
+        [item setSize       :@"--"];
+        [item setDate       :@"Date"];
+        [item setType       :@"<Dir>"];
+        [item setIsDir      :YES];
+        
+        [data addObject:item];
+    }
     
     for(NSString* string in strings) {
         item = [[FileSystemItem alloc] init];
@@ -177,6 +204,8 @@
     }
     
     [self sortData];
+    
+    [sidePanel changeFolder:[path lastPathComponent]];
 }
 
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
@@ -186,6 +215,10 @@
 
 -(void) setTable:(NSTableView *)t {
     table = t;
+}
+
+-(void) setSidePanelProtocol:(id<SidePanelProtocol> *)sp {
+    sidePanel = sp;
 }
 
 @end

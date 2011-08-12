@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SidePanelProtocol.h"
+
 enum EFileSystemColumnId {
     FS_ICON = 0,
     FS_NAME,
@@ -24,6 +26,7 @@ enum EFileSystemColumnId {
     NSTableView*                table;
     NSWorkspace*                workspace;
     enum EFileSystemColumnId    order;
+    id<SidePanelProtocol>*      sidePanel;
 }
 
 // Data source
@@ -31,6 +34,7 @@ enum EFileSystemColumnId {
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(void)         enterToRow:(NSInteger)row;
+-(void)         goUp;
 
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
@@ -39,5 +43,6 @@ enum EFileSystemColumnId {
 // FileSystemDataSource
 -(void) openFolder:(NSString*)path;
 -(void) setTable:(NSTableView*)table;
+-(void) setSidePanelProtocol:(id<SidePanelProtocol>*)sidePanel;
 
 @end

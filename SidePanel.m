@@ -117,6 +117,12 @@
     [table setDelegate:ds_delegate];
     // Установим таблицу
     [ds_delegate setTable:table];
+    // Установим SidePanelProtocol
+    [ds_delegate setSidePanelProtocol:self];
+}
+
+-(void) changeFolder:(NSString *)folder {
+    [[tabView selectedTabViewItem] setLabel:folder];
 }
 
 -(int) nextTabId {

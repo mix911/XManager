@@ -8,7 +8,9 @@
 
 #import <AppKit/AppKit.h>
 
-@interface SidePanel : NSView {
+#import "SidePanelProtocol.h"
+
+@interface SidePanel : NSView <SidePanelProtocol> {
     NSTabView*  tabView;    // Вкладки
     int         nextTabId;  // Следующая вкладка
 }
@@ -17,5 +19,8 @@
 -(void)     dealloc;
 -(void)     addTab :(NSString*)path :(NSString*)side;
 -(int)      nextTabId;
+
+// SidePanelProtocol
+-(void)     changeFolder:(NSString *)folder;
 
 @end

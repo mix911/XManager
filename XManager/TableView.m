@@ -22,8 +22,6 @@
 -(void) keyDown:(NSEvent*)event {
     [super keyDown:event];
     
-//    unsigned short key = [event keyCode];
-    
     switch ([event keyCode]) {
         case 0x24:
         {
@@ -32,8 +30,11 @@
         }
             break;
             
-        case 0x40A:
-            [[super dataSource] enterToRow:0];
+        case 0x7E:
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                [[super dataSource] goUp];
+            }
+            
             break;
             
         default:
