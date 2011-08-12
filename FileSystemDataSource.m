@@ -25,6 +25,8 @@
 
         order = FS_NAME;
         
+        workspace = [NSWorkspace sharedWorkspace];
+        
         fileManager = [[NSFileManager alloc] init];
         [fileManager changeCurrentDirectoryPath:path];
         
@@ -43,23 +45,27 @@
     
     FileSystemItem* item = [data objectAtIndex:row];
     
+    NSString* new_path = nil;
+    if ([item.name isEqualToString:@".."]) {
+        new_path = @"";
+        NSArray* components = [[fileManager currentDirectoryPath] pathComponents];
+        
+        for (NSUInteger i = 0; i < [components count] - 1; ++i) {
+            new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
+        }
+    }
+    else {
+        new_path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
+    }
+    
     if (item.isDir) {
-        NSString* new_path = nil;
-        if ([item.name isEqualToString:@".."]) {
-            new_path = @"";
-            NSArray* components = [[fileManager currentDirectoryPath] pathComponents];
-            
-            for (NSUInteger i = 0; i < [components count] - 1; ++i) {
-                new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
-            }
-        }
-        else {
-            new_path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
-        }
         
         [self openFolder:new_path];
         
         [table reloadData];
+    }
+    else {
+        [workspace openFile:new_path];
     }
 }
 

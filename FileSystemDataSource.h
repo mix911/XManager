@@ -22,6 +22,7 @@ enum EFileSystemColumnId {
     NSDateFormatter*            dateFormatter;
     NSMutableArray*             data;
     NSTableView*                table;
+    NSWorkspace*                workspace;
     enum EFileSystemColumnId    order;
 }
 
