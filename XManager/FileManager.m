@@ -35,8 +35,8 @@
         cur_dir = @"/Users/demo/QtSDK";
         
         // Установим директории по умолчанию
-        [leftPanel  addTab:cur_dir :@"Left"];
-        [rightPanel addTab:cur_dir :@"Right"];
+        [leftPanel  addTab:cur_dir :@"Left" :rightPanel];
+        [rightPanel addTab:cur_dir :@"Right":leftPanel];
     }
     
 }

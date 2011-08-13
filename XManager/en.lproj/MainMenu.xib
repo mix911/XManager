@@ -1409,7 +1409,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="722754891">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134217728</int>
+								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F5 - Copy</string>
 								<object class="NSFont" key="NSSupport" id="83088561">
 									<string key="NSName">LucidaGrande</string>
@@ -1437,7 +1437,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="376424640">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134217728</int>
+								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F2 - Rename</string>
 								<reference key="NSSupport" ref="83088561"/>
 								<string key="NSCellIdentifier">_NS:1534</string>
@@ -1461,7 +1461,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="240111749">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134217728</int>
+								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F6 - Move</string>
 								<reference key="NSSupport" ref="83088561"/>
 								<string key="NSCellIdentifier">_NS:1534</string>
@@ -1485,7 +1485,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="199473025">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134217728</int>
+								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F7 - MkDir</string>
 								<reference key="NSSupport" ref="83088561"/>
 								<string key="NSCellIdentifier">_NS:1534</string>
@@ -1504,11 +1504,12 @@
 							<string key="NSFrame">{{584, 3}, {100, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1534</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="218510196">
 								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">134217728</int>
+								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F8 - Delete</string>
 								<reference key="NSSupport" ref="83088561"/>
 								<string key="NSCellIdentifier">_NS:1534</string>
@@ -2514,22 +2515,6 @@
 						<reference key="destination" ref="679212754"/>
 					</object>
 					<int key="connectionID">646</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">nextKeyView</string>
-						<reference key="source" ref="612656674"/>
-						<reference key="destination" ref="679212754"/>
-					</object>
-					<int key="connectionID">647</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">nextKeyView</string>
-						<reference key="source" ref="679212754"/>
-						<reference key="destination" ref="612656674"/>
-					</object>
-					<int key="connectionID">648</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -4257,7 +4242,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">656</int>
+			<int key="maxID">658</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

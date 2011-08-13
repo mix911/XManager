@@ -17,7 +17,7 @@
 
 -(id)       init;
 -(void)     dealloc;
--(void)     addTab :(NSString*)path :(NSString*)side;
+-(void)     addTab :(NSString*)path :(NSString*)side :(SidePanel*)other;
 -(int)      nextTabId;
 
 // SidePanelProtocol

@@ -34,7 +34,6 @@
             if ([event modifierFlags] & NSCommandKeyMask) {
                 [[super dataSource] goUp];
             }
-            
             break;
             
         default:

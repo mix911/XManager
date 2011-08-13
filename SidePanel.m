@@ -26,7 +26,7 @@
     [tabView release];
 }
 
--(void) addTab:(NSString *)path :(NSString*)side{
+-(void) addTab:(NSString *)path :(NSString*)side :(SidePanel*)other{
     
     // Если tabView ещё не создан, создадим его
     if (tabView==nil) {
@@ -107,6 +107,8 @@
     [table addTableColumn:dateColumn];
     [table addTableColumn:typeColumn];
     
+    [tabView setFocusRingType:NSFocusRingTypeNone];
+    
     // Добавим вкладку
     [tabView addTabViewItem:item];
     
@@ -119,6 +121,8 @@
     [ds_delegate setTable:table];
     // Установим SidePanelProtocol
     [ds_delegate setSidePanelProtocol:self];
+    
+    [table setNextKeyView:other];
 }
 
 -(void) changeFolder:(NSString *)folder {
