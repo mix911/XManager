@@ -45,10 +45,12 @@
     
     FileSystemItem* item = [data objectAtIndex:row];
     
-    NSString* new_path = nil;
+    NSString* new_path          = nil;
+    NSString* current_path      = [fileManager currentDirectoryPath];
+    NSString* application_dir   = @"/Applications";
+    
     if ([item.name isEqualToString:@".."]) {
         
-        NSString* current_path = [fileManager currentDirectoryPath];
         if ([current_path isEqualToString:@"/"]) {
             return;
         }
@@ -64,7 +66,7 @@
         new_path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
     }
     
-    if (item.isDir) {
+    if (item.isDir && (![current_path isEqualToString:application_dir] || [item.name isEqualToString:@".."])) {
         
         [self openFolder:new_path];
         
