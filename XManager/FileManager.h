@@ -29,6 +29,10 @@
 -(IBAction) pushDelete  :(id)sender;
 
 // Top command buttons
--(IBAction)pushFtp      :(id)sender;
+-(IBAction) pushFtp     :(id)sender;
+
+// Network connection dialog
+-(IBAction) networkConnectionCancel :(id)sender;
+-(IBAction) networkConnectionOk     :(id)sender;
 
 @end

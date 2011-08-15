@@ -86,4 +86,12 @@
     [networkConnectionPanel makeKeyAndOrderFront:self];
 }
 
+-(IBAction) networkConnectionCancel:(id)sender {
+    [networkConnectionPanel close];
+}
+
+-(IBAction) networkConnectionOk:(id)sender {
+    [self networkConnectionCancel:sender];
+}
+
 @end
