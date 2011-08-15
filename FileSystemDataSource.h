@@ -26,7 +26,7 @@ enum EFileSystemColumnId {
     NSTableView*                table;
     NSWorkspace*                workspace;
     enum EFileSystemColumnId    order;
-    id<SidePanelProtocol>*      sidePanel;
+    id<SidePanelProtocol>       sidePanel;
 }
 
 // Data source
@@ -41,8 +41,9 @@ enum EFileSystemColumnId {
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 
 // FileSystemDataSource
--(void) openFolder:(NSString*)path;
--(void) setTable:(NSTableView*)table;
--(void) setSidePanelProtocol:(id<SidePanelProtocol>*)sidePanel;
+-(void)     openFolder:(NSString*)path;
+-(void)     setTable:(NSTableView*)table;
+-(void)     setSidePanelProtocol:(id<SidePanelProtocol>)sidePanel;
+-(NSString*)currentPath;
 
 @end

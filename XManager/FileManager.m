@@ -27,6 +27,9 @@
     
     [super awakeFromNib];
     
+    [leftPanel  setSide:@"Left"];
+    [rightPanel setSide:@"Right"];
+    
     // Если это первый запуск
     if(![self loadLastSesstion]) {
         // Получим текущую дерикторию
@@ -35,8 +38,8 @@
         cur_dir = @"/Users/demo/QtSDK";
         
         // Установим директории по умолчанию
-        [leftPanel  addTab:cur_dir :@"Left" :rightPanel];
-        [rightPanel addTab:cur_dir :@"Right":leftPanel];
+        [leftPanel  addTab:cur_dir];
+        [rightPanel addTab:cur_dir];
     }
     
 }
@@ -75,6 +78,12 @@
 //+-----------------------------------------------------------------+
 -(IBAction) pushDelete:(id)sender {
     
+}
+//+-----------------------------------------------------------------+
+//| Нажание на соединение с ftp                                     |
+//+-----------------------------------------------------------------+
+-(IBAction) pushFtp:(id)sender {
+    [networkConnectionPanel makeKeyAndOrderFront:self];
 }
 
 @end

@@ -19,6 +19,10 @@
     return self;
 }
 
+-(void) setSidePanel:(id<SidePanelProtocol>)sp {
+    sidePanel = sp;
+}
+
 -(void) keyDown:(NSEvent*)event {
     [super keyDown:event];
     
@@ -34,6 +38,10 @@
             if ([event modifierFlags] & NSCommandKeyMask) {
                 [[super dataSource] goUp];
             }
+            break;
+            
+        case 0x11:
+            [sidePanel addTabFromCurrent];
             break;
             
         default:

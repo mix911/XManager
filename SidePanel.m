@@ -26,7 +26,7 @@
     [tabView release];
 }
 
--(void) addTab:(NSString *)path :(NSString*)side :(SidePanel*)other{
+-(void) addTab:(NSString *)path {
     
     // Если tabView ещё не создан, создадим его
     if (tabView==nil) {
@@ -64,6 +64,7 @@
     
     // Создадим таблицу и настроим таблицу
     TableView* table = [[TableView alloc] initWithFrame:[[scroll_view contentView] bounds]];
+    [table setSidePanel:self];
             
     // Добавим таблицу в scroll view
     [scroll_view setDocumentView:table];
@@ -121,8 +122,6 @@
     [ds_delegate setTable:table];
     // Установим SidePanelProtocol
     [ds_delegate setSidePanelProtocol:self];
-    
-    [table setNextKeyView:other];
 }
 
 -(void) changeFolder:(NSString *)folder {
@@ -131,6 +130,20 @@
 
 -(int) nextTabId {
     return ++nextTabId;
+}
+
+-(void) setSide:(NSString *)s {
+    side = s;
+}
+
+-(void) addTabFromCurrent {
+    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSScrollView* scroll    = [tab_item view];
+    TableView* table        = [scroll documentView];
+    
+    FileSystemDataSource* ds = (FileSystemDataSource*)[table dataSource];
+    NSString* path = [ds currentPath];
+    [self addTab:path];
 }
 
 @end

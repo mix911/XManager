@@ -12,15 +12,19 @@
 
 @interface SidePanel : NSView <SidePanelProtocol> {
     NSTabView*  tabView;    // Вкладки
+    NSString*   side;       // Сторона, может быть Left или Right
     int         nextTabId;  // Следующая вкладка
 }
 
 -(id)       init;
 -(void)     dealloc;
--(void)     addTab :(NSString*)path :(NSString*)side :(SidePanel*)other;
+-(void)     addTab :(NSString*)path;
+-(void)     addTabFromCurrent;
 -(int)      nextTabId;
+-(void)     setSide :(NSString*)side;
 
 // SidePanelProtocol
 -(void)     changeFolder:(NSString *)folder;
+-(void)     addTabFromCurrent;
 
 @end

@@ -11,5 +11,6 @@
 @protocol SidePanelProtocol <NSObject>
 
 -(void) changeFolder:(NSString*)folder;
+-(void) addTabFromCurrent;
 
 @end

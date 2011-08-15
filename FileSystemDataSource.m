@@ -219,8 +219,12 @@
     table = t;
 }
 
--(void) setSidePanelProtocol:(id<SidePanelProtocol> *)sp {
+-(void) setSidePanelProtocol:(id<SidePanelProtocol>)sp {
     sidePanel = sp;
+}
+
+-(NSString*) currentPath {
+    return [fileManager currentDirectoryPath];
 }
 
 @end
@@ -228,20 +232,19 @@
 @implementation FileSystemDataSource(Private)
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
-    NSString* column_name = [[column headerCell] stringValue];
     
     // Получим идентификатор колонки TODO: переделать на идентификатор колонки
     NSString* col_id = [column identifier];
     
-    if([column_name isEqualToString:@""])
+    if ([col_id hasPrefix:@"Icon"])
         return FS_ICON;
-    else if([column_name isEqualToString:@"Name"])
+    if ([col_id hasPrefix:@"Name"])
         return FS_NAME;
-    else if([column_name isEqualToString:@"Size"])
+    if ([col_id hasPrefix:@"Size"])
         return FS_SIZE;
-    else if([column_name isEqualToString:@"Date"])
+    if ([col_id hasPrefix:@"Date"])
         return FS_DATE;
-    else if([column_name isEqualToString:@"Type"])
+    if ([col_id hasPrefix:@"Type"])
         return FS_TYPE;
     return FS_UNDEFINED;
 }

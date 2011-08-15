@@ -8,8 +8,13 @@
 
 #import <AppKit/AppKit.h>
 
-@interface TableView : NSTableView
+#import "SidePanelProtocol.h"
 
+@interface TableView : NSTableView {
+    id<SidePanelProtocol>   sidePanel;
+}
+
+-(void) setSidePanel:(id<SidePanelProtocol>)sidePanel;
 -(void) keyDown :(NSEvent*)event;
 
 @end
