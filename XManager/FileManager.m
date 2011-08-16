@@ -91,7 +91,18 @@
 }
 
 -(IBAction) networkConnectionOk:(id)sender {
+
+    // Закроем окно
     [self networkConnectionCancel:sender];
+    
+    // Получим активную панель
+    SidePanel* panel = [self activePanel];
+    
+    // Установим FtpDataSource
+    [panel setFtpDataSource:[networkConnectionPanel ftpParams]];
 }
 
+-(SidePanel*) activePanel {
+    return leftPanel;
+}
 @end

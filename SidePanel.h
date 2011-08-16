@@ -9,6 +9,7 @@
 #import <AppKit/AppKit.h>
 
 #import "SidePanelProtocol.h"
+#import "FtpParams.h"
 
 @interface SidePanel : NSView <SidePanelProtocol> {
     NSTabView*  tabView;    // Вкладки
@@ -22,9 +23,11 @@
 -(void)     addTabFromCurrent;
 -(int)      nextTabId;
 -(void)     setSide :(NSString*)side;
+-(void)     setFtpDataSource :(FtpParams*)params;
 
 // SidePanelProtocol
 -(void)     changeFolder:(NSString *)folder;
 -(void)     addTabFromCurrent;
+
 
 @end

@@ -29,8 +29,9 @@ enum EFileSystemColumnId {
     id<SidePanelProtocol>       sidePanel;
 }
 
-// Data source
 -(id)           initWithPath:(NSString*)path;
+
+// Data source
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(void)         enterToRow:(NSInteger)row;

@@ -13,6 +13,7 @@
 #import "NetworkConnectionPanel.h"
 
 @interface FileManager : NSObject <NSTableViewDataSource> {    
+    IBOutlet NSWindow*                  mainWindow;
     IBOutlet SidePanel*                 leftPanel;
     IBOutlet SidePanel*                 rightPanel;
     IBOutlet NetworkConnectionPanel*    networkConnectionPanel;
@@ -20,6 +21,8 @@
 
 -(void) awakeFromNib;
 -(bool) loadLastSesstion;
+
+-(SidePanel*) activePanel;
 
 // Bottom command buttons
 -(IBAction) pushRename  :(id)sender;

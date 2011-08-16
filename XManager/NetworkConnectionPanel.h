@@ -8,6 +8,12 @@
 
 #import <AppKit/AppKit.h>
 
-@interface NetworkConnectionPanel : NSPanel
+#import "FtpParams.h"
+
+@interface NetworkConnectionPanel : NSPanel {
+    
+}
+
+-(FtpParams*)   ftpParams;
 
 @end

@@ -1022,7 +1022,6 @@
 							<string key="NSFrame">{{584, 3}, {100, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1534</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="218510196">
@@ -2126,6 +2125,14 @@
 						<reference key="destination" ref="360431054"/>
 					</object>
 					<int key="connectionID">693</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">mainWindow</string>
+						<reference key="source" ref="233474058"/>
+						<reference key="destination" ref="972006081"/>
+					</object>
+					<int key="connectionID">696</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3466,7 +3473,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">693</int>
+			<int key="maxID">696</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3553,12 +3560,16 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>leftPanel</string>
+							<string>mainPanel</string>
+							<string>mainWindow</string>
 							<string>networkConnectionPanel</string>
 							<string>rightPanel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>SidePanel</string>
+							<string>NSSplitView</string>
+							<string>NSWindow</string>
 							<string>NetworkConnectionPanel</string>
 							<string>SidePanel</string>
 						</object>
@@ -3568,6 +3579,8 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>leftPanel</string>
+							<string>mainPanel</string>
+							<string>mainWindow</string>
 							<string>networkConnectionPanel</string>
 							<string>rightPanel</string>
 						</object>
@@ -3576,6 +3589,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">leftPanel</string>
 								<string key="candidateClassName">SidePanel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">mainPanel</string>
+								<string key="candidateClassName">NSSplitView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">mainWindow</string>
+								<string key="candidateClassName">NSWindow</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">networkConnectionPanel</string>

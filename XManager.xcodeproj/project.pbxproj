@@ -20,9 +20,11 @@
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
 		B4074EBD13ECD0F000438E01 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* FileManager.m */; };
 		B40F8A7D13F1176A003D14C0 /* FileSystemDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* FileSystemDataSource.m */; };
+		B47B332113F9A32800884E4E /* FtpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B47B332013F9A32800884E4E /* FtpParams.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C60FF713F851B500D490B8 /* NetworkConnectionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */; };
+		B4DAF08A13FA8B270000BA35 /* FtpDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08913FA8B270000BA35 /* FtpDataSource.m */; };
 		B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */; };
 /* End PBXBuildFile section */
 
@@ -61,12 +63,16 @@
 		B40F8A7B13F1176A003D14C0 /* FileSystemDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemDataSource.h; path = ../FileSystemDataSource.h; sourceTree = "<group>"; };
 		B40F8A7C13F1176A003D14C0 /* FileSystemDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileSystemDataSource.m; path = ../FileSystemDataSource.m; sourceTree = "<group>"; };
 		B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanelProtocol.h; path = ../SidePanelProtocol.h; sourceTree = "<group>"; };
+		B47B331F13F9A32800884E4E /* FtpParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FtpParams.h; sourceTree = "<group>"; };
+		B47B332013F9A32800884E4E /* FtpParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FtpParams.m; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
 		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
 		B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionPanel.h; sourceTree = "<group>"; };
 		B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionPanel.m; sourceTree = "<group>"; };
+		B4DAF08813FA8B270000BA35 /* FtpDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FtpDataSource.h; sourceTree = SOURCE_ROOT; };
+		B4DAF08913FA8B270000BA35 /* FtpDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FtpDataSource.m; sourceTree = SOURCE_ROOT; };
 		B4FE0F8A13F8EE84003B45E3 /* FileSystemItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemItem.h; sourceTree = SOURCE_ROOT; };
 		B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemItem.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -137,10 +143,14 @@
 				B4FE0F8A13F8EE84003B45E3 /* FileSystemItem.h */,
 				B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */,
 				B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */,
+				B4DAF08813FA8B270000BA35 /* FtpDataSource.h */,
+				B4DAF08913FA8B270000BA35 /* FtpDataSource.m */,
 				B4074EBB13ECD0F000438E01 /* FileManager.h */,
 				B4074EBC13ECD0F000438E01 /* FileManager.m */,
 				B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */,
 				B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */,
+				B47B331F13F9A32800884E4E /* FtpParams.h */,
+				B47B332013F9A32800884E4E /* FtpParams.m */,
 				B480195C13F538FF00E33745 /* TableView.h */,
 				B480195D13F538FF00E33745 /* TableView.m */,
 				B40F8A7B13F1176A003D14C0 /* FileSystemDataSource.h */,
@@ -299,6 +309,8 @@
 				B480195E13F538FF00E33745 /* TableView.m in Sources */,
 				B4C60FF713F851B500D490B8 /* NetworkConnectionPanel.m in Sources */,
 				B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */,
+				B47B332113F9A32800884E4E /* FtpParams.m in Sources */,
+				B4DAF08A13FA8B270000BA35 /* FtpDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

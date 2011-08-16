@@ -1,14 +1,14 @@
 //
-//  NetworkConnectionPanel.m
+//  FtpParams.m
 //  XManager
 //
-//  Created by demo on 14.08.11.
+//  Created by demo on 15.08.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "NetworkConnectionPanel.h"
+#import "FtpParams.h"
 
-@implementation NetworkConnectionPanel
+@implementation FtpParams
 
 - (id)init {
     self = [super init];
@@ -19,8 +19,9 @@
     return self;
 }
 
--(FtpParams*)   ftpParams {
-    return [[FtpParams alloc] init];
-}
+@synthesize port;
+@synthesize host;
+@synthesize login;
+@synthesize password;
 
 @end

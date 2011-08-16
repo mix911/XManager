@@ -8,8 +8,15 @@
 
 #import "SidePanel.h"
 
-#import "FileSystemDataSource.h"
 #import "TableView.h"
+#import "FileSystemDataSource.h"
+#import "FtpDataSource.h"
+
+@interface SidePanel(Private)
+
+-(TableView*)   table;
+
+@end
 
 @implementation SidePanel
 
@@ -137,13 +144,24 @@
 }
 
 -(void) addTabFromCurrent {
-    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
-    NSScrollView* scroll    = [tab_item view];
-    TableView* table        = [scroll documentView];
+    TableView* table = [self table];
     
     FileSystemDataSource* ds = (FileSystemDataSource*)[table dataSource];
     NSString* path = [ds currentPath];
     [self addTab:path];
+}
+
+-(void) setFtpDataSource:(FtpParams *)params {
+}
+
+@end
+
+@implementation SidePanel(Private)
+
+-(TableView*)   table {
+    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSScrollView*   scroll  = [tab_item view];
+    return [scroll documentView];
 }
 
 @end
