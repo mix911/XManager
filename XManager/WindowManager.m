@@ -6,29 +6,16 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FileManager.h"
+#import "WindowManager.h"
 
-@implementation FileManager
-//+-----------------------------------------------------------------+
-//| Конструктор по умолчанию                                        |
-//+-----------------------------------------------------------------+
-- (id)init {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
+@implementation WindowManager
 //+-----------------------------------------------------------------+
 //| Загрузка nib архива                                             |
 //+-----------------------------------------------------------------+
 -(void) awakeFromNib {
     
+    // Загрузим родителя
     [super awakeFromNib];
-    
-    [leftPanel  setSide:@"Left"];
-    [rightPanel setSide:@"Right"];
     
     // Если это первый запуск
     if(![self loadLastSesstion]) {

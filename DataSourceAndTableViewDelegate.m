@@ -6,18 +6,32 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FileSystemDataSource.h"
+#import "DataSourceAndTableViewDelegate.h"
 
 #import "FileSystemItem.h"
 
-@interface FileSystemDataSource(Private)
+//+-----------------------------------------------------------------+
+//| Идентификатор колонок                                           |
+//+-----------------------------------------------------------------+
+enum EFileSystemColumnId {
+    FS_ICON = 0,
+    FS_NAME,
+    FS_SIZE,
+    FS_DATE,
+    FS_TYPE,
+    FS_UNDEFINED,
+};
+//+-----------------------------------------------------------------+
+//| Идентификатор колонок                                           |
+//+-----------------------------------------------------------------+
+@interface DataSourceAndTableViewDelegate(Private) 
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
 -(void)                     sortData;
 
 @end
 
-@implementation FileSystemDataSource
+@implementation DataSourceAndTableViewDelegate
 
 -(id) initWithPath:(NSString *)path {
     self = [super init];
@@ -229,7 +243,7 @@
 
 @end
 
-@implementation FileSystemDataSource(Private)
+@implementation DataSourceAndTableViewDelegate(Private)
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
     

@@ -13,7 +13,6 @@
 
 @interface SidePanel : NSView <SidePanelProtocol> {
     NSTabView*  tabView;    // Вкладки
-    NSString*   side;       // Сторона, может быть Left или Right
     int         nextTabId;  // Следующая вкладка
 }
 
@@ -22,7 +21,6 @@
 -(void)     addTab :(NSString*)path;
 -(void)     addTabFromCurrent;
 -(int)      nextTabId;
--(void)     setSide :(NSString*)side;
 -(void)     setFtpDataSource :(FtpParams*)params;
 
 // SidePanelProtocol

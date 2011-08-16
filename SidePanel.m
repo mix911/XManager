@@ -9,7 +9,7 @@
 #import "SidePanel.h"
 
 #import "TableView.h"
-#import "FileSystemDataSource.h"
+#import "DataSourceAndTableViewDelegate.h"
 #import "FtpDataSource.h"
 
 @interface SidePanel(Private)
@@ -54,7 +54,7 @@
     [url release];
     
     // Сгенерируем идентификатор для вкладки
-    NSString* tab_id =  [NSString stringWithFormat:@"%S%i", [side cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
+    NSString* tab_id =  [NSString stringWithFormat:@"%S%i", [[self identifier] cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
     
     // Создадим item вкладки
     NSTabViewItem* item = [[NSTabViewItem alloc] initWithIdentifier:tab_id];
@@ -121,7 +121,7 @@
     [tabView addTabViewItem:item];
     
     // Зададим источник данных
-    FileSystemDataSource* ds_delegate = [[FileSystemDataSource alloc] initWithPath:path];
+    DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
     [table setDataSource:ds_delegate];
     // Зададим делегат
     [table setDelegate:ds_delegate];
@@ -139,14 +139,10 @@
     return ++nextTabId;
 }
 
--(void) setSide:(NSString *)s {
-    side = s;
-}
-
 -(void) addTabFromCurrent {
     TableView* table = [self table];
     
-    FileSystemDataSource* ds = (FileSystemDataSource*)[table dataSource];
+    DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
     NSString* path = [ds currentPath];
     [self addTab:path];
 }

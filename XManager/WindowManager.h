@@ -11,12 +11,13 @@
 
 #import "SidePanel.h"
 #import "NetworkConnectionPanel.h"
-
-@interface FileManager : NSObject <NSTableViewDataSource> {    
-    IBOutlet NSWindow*                  mainWindow;
-    IBOutlet SidePanel*                 leftPanel;
-    IBOutlet SidePanel*                 rightPanel;
-    IBOutlet NetworkConnectionPanel*    networkConnectionPanel;
+//+-----------------------------------------------------------------+
+//| Управление главным окном, окном настроек и прочих диалогов      |
+//+-----------------------------------------------------------------+
+@interface WindowManager : NSObject {    
+    IBOutlet SidePanel*                 leftPanel;                  // Левая панель
+    IBOutlet SidePanel*                 rightPanel;                 // Правая панель
+    IBOutlet NetworkConnectionPanel*    networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
 }
 
 -(void) awakeFromNib;
