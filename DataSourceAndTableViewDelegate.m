@@ -108,6 +108,7 @@
 }
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
     [itemManager setOrder:[self whatColumn:tableColumn]];
+    [tableView reloadData];
 }
 
 -(void) setTable:(NSTableView *)t {
