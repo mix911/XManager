@@ -14,7 +14,9 @@
     id<SidePanelProtocol>   sidePanel;
 }
 
+-(id)   init;
 -(void) setSidePanel:(id<SidePanelProtocol>)sidePanel;
--(void) keyDown :(NSEvent*)event;
+-(void) keyDown     :(NSEvent*)event;
+-(void) doubleClick :(id)sender;
 
 @end

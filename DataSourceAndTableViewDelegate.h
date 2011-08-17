@@ -16,11 +16,9 @@
 //+-----------------------------------------------------------------+
 @interface DataSourceAndTableViewDelegate : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
     
-    id<ItemManagerProtocol>     itemManager;
-    
+    id<ItemManagerProtocol>     itemManager;    // Менеджер управления объектами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
-    NSTableView*                table;          // Таблица
     id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
 }
 
@@ -40,6 +38,6 @@
 -(void)     setSidePanelProtocol:(id<SidePanelProtocol>)sidePanel;
 -(NSString*)currentPath;
 
--(void)     setItemManager :(id<ItemManagerProtocol>)itemManager;
+-(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
 
 @end

@@ -111,10 +111,6 @@
     [tableView reloadData];
 }
 
--(void) setTable:(NSTableView *)t {
-    table = t;
-}
-
 -(void) setSidePanelProtocol:(id<SidePanelProtocol>)sp {
     sidePanel = sp;
 }

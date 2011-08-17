@@ -72,7 +72,8 @@
     [item setView:scroll_view];
     
     // Создадим таблицу и настроим таблицу
-    TableView* table = [[TableView alloc] initWithFrame:[[scroll_view contentView] bounds]];
+    TableView* table = [[TableView alloc] init];
+    [table setFrame:[[scroll_view contentView] bounds]];
     [table setSidePanel:self];
             
     // Добавим таблицу в scroll view
@@ -148,7 +149,7 @@
     TableView* table = [self table];
     
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
-    NSString* path = [[ds currentPath] lastPathComponent];
+    NSString* path = [ds currentPath];
     [self addTab:path];
 }
 

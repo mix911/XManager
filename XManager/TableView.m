@@ -13,7 +13,9 @@
 - (id)init {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        [self setTarget:self];
+        [self setDoubleAction:@selector(doubleClick:)];
+        [self setAction:nil];
     }
     
     return self;
@@ -48,6 +50,13 @@
             
         default:
             break;
+    }
+}
+
+-(void) doubleClick:(id)sender {
+    NSInteger row = [self selectedRow];
+    if([[super dataSource] enterToRow:row]) {
+        [self reloadData];
     }
 }
 
