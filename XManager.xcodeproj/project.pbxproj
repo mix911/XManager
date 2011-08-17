@@ -144,24 +144,11 @@
 		B4074E8C13ECD09900438E01 /* XManager */ = {
 			isa = PBXGroup;
 			children = (
+				B483E69113FBEA2700295218 /* Controls */,
+				B483E69013FBE9BC00295218 /* ItemManagers */,
+				B483E68F13FBE99300295218 /* Dialogs */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
-				B4DAF09113FA951E0000BA35 /* ItemManagerProtocol.h */,
-				B4DAF08B13FA92420000BA35 /* FileSystemManager.h */,
-				B4DAF08C13FA92420000BA35 /* FileSystemManager.m */,
-				B4DAF08E13FA925D0000BA35 /* FtpManager.h */,
-				B4DAF08F13FA925D0000BA35 /* FtpManager.m */,
-				B4FE0F8A13F8EE84003B45E3 /* FileSystemItem.h */,
-				B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */,
-				B47B331F13F9A32800884E4E /* FtpParams.h */,
-				B47B332013F9A32800884E4E /* FtpParams.m */,
-				B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */,
-				B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */,
-				B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */,
-				B480195C13F538FF00E33745 /* TableView.h */,
-				B480195D13F538FF00E33745 /* TableView.m */,
-				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
-				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
 				B4074EBB13ECD0F000438E01 /* WindowManager.h */,
 				B4074EBC13ECD0F000438E01 /* WindowManager.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
@@ -201,6 +188,43 @@
 				B4074EAC13ECD09900438E01 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B483E68F13FBE99300295218 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */,
+				B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */,
+			);
+			name = Dialogs;
+			sourceTree = "<group>";
+		};
+		B483E69013FBE9BC00295218 /* ItemManagers */ = {
+			isa = PBXGroup;
+			children = (
+				B4DAF09113FA951E0000BA35 /* ItemManagerProtocol.h */,
+				B47B331F13F9A32800884E4E /* FtpParams.h */,
+				B47B332013F9A32800884E4E /* FtpParams.m */,
+				B4DAF08E13FA925D0000BA35 /* FtpManager.h */,
+				B4DAF08F13FA925D0000BA35 /* FtpManager.m */,
+				B4DAF08B13FA92420000BA35 /* FileSystemManager.h */,
+				B4DAF08C13FA92420000BA35 /* FileSystemManager.m */,
+				B4FE0F8A13F8EE84003B45E3 /* FileSystemItem.h */,
+				B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */,
+			);
+			name = ItemManagers;
+			sourceTree = "<group>";
+		};
+		B483E69113FBEA2700295218 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				B480195C13F538FF00E33745 /* TableView.h */,
+				B480195D13F538FF00E33745 /* TableView.m */,
+				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
+				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
+				B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

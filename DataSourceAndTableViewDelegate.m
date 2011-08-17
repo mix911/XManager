@@ -36,6 +36,8 @@
         
         data = [itemManager data];
         
+        [sidePanel changeFolder:[itemManager currentPath]];
+        
         return true;
     }
     
@@ -76,7 +78,7 @@
             return item.size;
             
         case FS_DATE:
-            return item.date;
+            return  [dateFormatter stringFromDate:item.date];
             
         case FS_TYPE:
             return item.type;

@@ -137,7 +137,7 @@
 }
 
 -(void) changeFolder:(NSString *)folder {
-    [[tabView selectedTabViewItem] setLabel:folder];
+    [[tabView selectedTabViewItem] setLabel:[folder lastPathComponent]];
 }
 
 -(int) nextTabId {

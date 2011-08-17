@@ -156,7 +156,7 @@
         [item setFullPath   :new_path]; // Полный путь
         [item setName       :@".."];    // Имя ..
         [item setSize       :@"--"];    // Размера у этой папки нет
-        [item setDate       :@"Date"];  // Даты у этой папки нет
+        [item setDate       :nil];      // Даты у этой папки нет
         [item setType       :@"<Dir>"]; // Это папка
         [item setIsDir      :YES];      // Это папка
         
@@ -200,11 +200,13 @@
         [item setFullPath   :[NSString stringWithFormat:@"%@/%@", new_path, string]];
         [item setIsDir      :is_dir];
         [item setSize       :size];
-        [item setDateDate   :modification_date];
+        [item setDate       :modification_date];
         [item setType       :type];
         
         [data addObject:item];
     }
+    
+    [self sortData];
     
     return true;
 }
