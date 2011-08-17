@@ -10,7 +10,10 @@
 
 @protocol SidePanelProtocol <NSObject>
 
+@required
 -(void) changeFolder:(NSString*)folder;
+-(bool) enterToRow  :(NSInteger)row;
+-(bool) goUp;
 -(void) addTabFromCurrent;
 
 @end

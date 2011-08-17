@@ -16,16 +16,18 @@
     int         nextTabId;  // Следующая вкладка
 }
 
--(id)       init;
--(void)     dealloc;
--(void)     addTab :(NSString*)path;
--(void)     addTabFromCurrent;
--(int)      nextTabId;
--(void)     setFtpDataSource :(FtpParams*)params;
+-(id)   init;
+-(void) dealloc;
+-(void) addTab :(NSString*)path;
+-(void) addTabFromCurrent;
+-(int)  nextTabId;
+-(void) setFtpDataSource :(FtpParams*)params;
 
 // SidePanelProtocol
--(void)     changeFolder:(NSString *)folder;
--(void)     addTabFromCurrent;
+-(void) changeFolder:(NSString *)folder;
+-(bool) enterToRow  :(NSInteger)row;
+-(bool) goUp;
+-(void) addTabFromCurrent;
 
 
 @end

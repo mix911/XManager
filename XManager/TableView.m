@@ -26,28 +26,44 @@
 }
 
 -(void) keyDown:(NSEvent*)event {
+    
     [super keyDown:event];
     
     switch ([event keyCode]) {
         case 0x24:
         {
             NSInteger row = [super selectedRow];
-            if ([[super dataSource] enterToRow:row])
+            if ([sidePanel enterToRow:row]) {
                 [self reloadData];
+                [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+            }
         }
             break;
             
+        // Up
         case 0x7E:
             if ([event modifierFlags] & NSCommandKeyMask) {
-                if ([[super dataSource] goUp])
+                if ([sidePanel goUp]) {
                     [self reloadData];
+                    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+                }
+            }
+            else if([event modifierFlags] & NSShiftKeyMask) {
+                
+            }
+            break;
+            
+        // Down
+        case 0x7D:
+            if ([event modifierFlags] & NSShiftKeyMask) {
+                
             }
             break;
             
         case 0x11:
             [sidePanel addTabFromCurrent];
             break;
-            
+        
         default:
             break;
     }
@@ -55,8 +71,9 @@
 
 -(void) doubleClick:(id)sender {
     NSInteger row = [self selectedRow];
-    if([[super dataSource] enterToRow:row]) {
+    if ([sidePanel enterToRow:row]) {
         [self reloadData];
+        [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     }
 }
 

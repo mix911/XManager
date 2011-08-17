@@ -153,6 +153,18 @@
     [self addTab:path];
 }
 
+-(bool) enterToRow:(NSInteger)row {
+    TableView* table = [self table];
+    DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
+    return [ds enterToRow:row];
+}
+
+-(bool) goUp {
+    TableView* table = [self table];
+    DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
+    return [ds goUp];
+}
+
 -(void) setFtpDataSource:(FtpParams *)params {
 }
 
