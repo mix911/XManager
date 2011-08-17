@@ -18,12 +18,9 @@
     
     id<ItemManagerProtocol>     itemManager;
     
-    NSFileManager*              fileManager;    // Управление файлами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
     NSTableView*                table;          // Таблица
-    NSWorkspace*                workspace;      // Workspace
-    NSInteger                   order;          // Порядок файлов
     id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
 }
 
@@ -32,17 +29,17 @@
 // Data source
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
--(void)         enterToRow:(NSInteger)row;
--(void)         goUp;
+-(bool)         enterToRow:(NSInteger)row;
+-(bool)         goUp;
 
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 
 // FileSystemDataSource
--(void)     openFolder:(NSString*)path;
--(void)     setTable:(NSTableView*)table;
 -(void)     setSidePanelProtocol:(id<SidePanelProtocol>)sidePanel;
 -(NSString*)currentPath;
+
+-(void)     setItemManager :(id<ItemManagerProtocol>)itemManager;
 
 @end

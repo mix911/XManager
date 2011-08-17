@@ -10,7 +10,9 @@
 
 #import "TableView.h"
 #import "DataSourceAndTableViewDelegate.h"
-#import "FtpDataSource.h"
+
+#import "FileSystemManager.h"
+#import "FtpManager.h"
 
 @interface SidePanel(Private)
 
@@ -122,11 +124,14 @@
     
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
+    
+    // Установим ItemManager
+    [ds_delegate setItemManager:[[FileSystemManager alloc]initWithPath:path]];
+    
     [table setDataSource:ds_delegate];
     // Зададим делегат
     [table setDelegate:ds_delegate];
-    // Установим таблицу
-    [ds_delegate setTable:table];
+
     // Установим SidePanelProtocol
     [ds_delegate setSidePanelProtocol:self];
 }
@@ -143,7 +148,7 @@
     TableView* table = [self table];
     
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
-    NSString* path = [ds currentPath];
+    NSString* path = [[ds currentPath] lastPathComponent];
     [self addTab:path];
 }
 

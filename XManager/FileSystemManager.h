@@ -10,6 +10,21 @@
 
 #import "ItemManagerProtocol.h"
 
-@interface FileSystemManager : NSObject <ItemManagerProtocol>
+@interface FileSystemManager : NSObject <ItemManagerProtocol> {
+    NSFileManager*  fileManager;
+    NSWorkspace*    workspace;
+    NSMutableArray* data;
+    NSInteger       order;
+}
+
+// FileSystemManager's methods
+-(id)   initWithPath : (NSString*)path;
+
+// ItemManagerProtocol
+-(NSMutableArray*)  data;
+-(NSString*)        currentPath;
+-(bool)             enterToRow  :(NSInteger)row;
+-(void)             setOrder    :(enum EFileSystemColumnId)order;
+-(NSImage*)         iconForItem :(FileSystemItem*)item;
 
 @end

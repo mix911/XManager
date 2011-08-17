@@ -25,6 +25,7 @@
 @synthesize date;
 @synthesize type;
 @synthesize isDir;
+@synthesize dateDate;
 
 -(NSComparisonResult) compareByName :(FileSystemItem*)rgh {
 

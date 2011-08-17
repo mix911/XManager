@@ -8,11 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+//+-----------------------------------------------------------------+
+//| Идентификатор колонок                                           |
+//+-----------------------------------------------------------------+
+enum EFileSystemColumnId {
+    FS_ICON = 0,
+    FS_NAME,
+    FS_SIZE,
+    FS_DATE,
+    FS_TYPE,
+    FS_UNDEFINED,
+};
+
 @interface FileSystemItem : NSObject {
-    NSString*   fullPath;
+    NSString*   fullPath;   // А нужно ли оно ????
     NSString*   name;
     NSString*   size;
     NSString*   date;
+    NSDate*     dateDate;
     NSString*   type;
     bool        isDir;
 }
@@ -23,6 +36,7 @@
 @property(retain)   NSString*   date;
 @property(retain)   NSString*   type;
 @property           bool        isDir;
+@property(retain)   NSDate*     dateDate;
 
 -(NSComparisonResult) compareByName :(FileSystemItem*)rgh;
 -(NSComparisonResult) compareBySize :(FileSystemItem*)rgh;

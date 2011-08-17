@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#include "FileSystemItem.h"
+
 @protocol ItemManagerProtocol <NSObject>
+
+@required
+-(bool)             enterToRow  :(NSInteger)row;
+-(void)             setOrder    :(enum EFileSystemColumnId)order;
+-(NSMutableArray*)  data;
+-(NSString*)        currentPath;
+-(NSImage*)         iconForItem :(FileSystemItem*)item;
 
 @end

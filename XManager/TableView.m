@@ -30,13 +30,15 @@
         case 0x24:
         {
             NSInteger row = [super selectedRow];
-            [[super dataSource] enterToRow:row];
+            if ([[super dataSource] enterToRow:row])
+                [self reloadData];
         }
             break;
             
         case 0x7E:
             if ([event modifierFlags] & NSCommandKeyMask) {
-                [[super dataSource] goUp];
+                if ([[super dataSource] goUp])
+                    [self reloadData];
             }
             break;
             

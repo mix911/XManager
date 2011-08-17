@@ -13,21 +13,9 @@
 //+-----------------------------------------------------------------+
 //| Идентификатор колонок                                           |
 //+-----------------------------------------------------------------+
-enum EFileSystemColumnId {
-    FS_ICON = 0,
-    FS_NAME,
-    FS_SIZE,
-    FS_DATE,
-    FS_TYPE,
-    FS_UNDEFINED,
-};
-//+-----------------------------------------------------------------+
-//| Идентификатор колонок                                           |
-//+-----------------------------------------------------------------+
 @interface DataSourceAndTableViewDelegate(Private) 
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
--(void)                     sortData;
 
 @end
 
@@ -36,66 +24,30 @@ enum EFileSystemColumnId {
 -(id) initWithPath:(NSString *)path {
     self = [super init];
     if (self) {
-
-        order = FS_NAME;
-        
-        workspace = [NSWorkspace sharedWorkspace];
-        
-        fileManager = [[NSFileManager alloc] init];
-        [fileManager changeCurrentDirectoryPath:path];
-        
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        
-        [self openFolder :path];
     }
     return self;
 }
 
--(void) enterToRow:(NSInteger)row {
-    if (row >= [data count]) {
-        return;
+-(bool) enterToRow:(NSInteger)row {
+    
+    if ([itemManager enterToRow:row]) {
+        
+        data = [itemManager data];
+        
+        return true;
     }
     
-    FileSystemItem* item = [data objectAtIndex:row];
-    
-    NSString* new_path          = nil;
-    NSString* current_path      = [fileManager currentDirectoryPath];
-    NSString* application_dir   = @"/Applications";
-    
-    if ([item.name isEqualToString:@".."]) {
-        
-        if ([current_path isEqualToString:@"/"]) {
-            return;
-        }
-        
-        new_path = @"";
-        NSArray* components = [[fileManager currentDirectoryPath] pathComponents];
-        
-        for (NSUInteger i = 0; i < [components count] - 1; ++i) {
-            new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
-        }
-    }
-    else {
-        new_path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
-    }
-    
-    if (item.isDir && (![current_path isEqualToString:application_dir] || [item.name isEqualToString:@".."])) {
-        
-        [self openFolder:new_path];
-        
-        [table reloadData];
-    }
-    else {
-        [workspace openFile:new_path];
-    }
+    return false;
 }
 
--(void) goUp {
+-(bool) goUp {
     FileSystemItem* item = [data objectAtIndex:0];
     if ([item.name isEqualToString:@".."]) {
-        [self enterToRow:0];
+        return [self enterToRow:0];
     }
+    return false;
 }
 
 -(NSInteger) numberOfRowsInTableView:(NSTableView *)tableView {
@@ -147,86 +99,13 @@ enum EFileSystemColumnId {
         FileSystemItem* item = [data objectAtIndex:row];
         
         // Получим иконку для данного item
-        NSImage* icon = [workspace iconForFile:[item fullPath]];
+        NSImage* icon = [itemManager iconForItem:item];
                 
         [icell setImage:icon];
     }
 }
-
--(void) openFolder:(NSString *)path {
-    
-    NSString* old_path = [fileManager currentDirectoryPath];
-    
-    if ([fileManager changeCurrentDirectoryPath:path]==NO) {
-        [fileManager changeCurrentDirectoryPath:old_path];
-        return;
-    }
-    
-    NSArray* strings = [fileManager contentsOfDirectoryAtPath:path error:nil];
-    
-    if (strings == nil) {
-        [fileManager changeCurrentDirectoryPath:old_path];
-        return;
-    }
-    
-    data = [[NSMutableArray alloc] init];
-    
-    FileSystemItem* item = nil;
-    
-    if (![path isEqualToString:@"//"]) {
-        item = [[FileSystemItem alloc] init];
-        
-        [item setFullPath   :path];
-        [item setName       :@".."];
-        [item setSize       :@"--"];
-        [item setDate       :@"Date"];
-        [item setType       :@"<Dir>"];
-        [item setIsDir      :YES];
-        
-        [data addObject:item];
-    }
-    
-    for(NSString* string in strings) {
-        item = [[FileSystemItem alloc] init];
-        
-        NSDictionary* attrs = [fileManager attributesOfItemAtPath:string error:nil];
-        
-        NSString* item_type = [attrs objectForKey:NSFileType];
-        
-        bool is_dir = [item_type isEqualToString:NSFileTypeDirectory];
-        
-        NSDate* modification_date = [attrs objectForKey:NSFileModificationDate];
-        
-        NSString* size = nil;
-        NSString* type = nil;
-        
-        if (is_dir) {
-            size = @"--";
-            type = @"<Dir>";
-        }
-        else {
-            size = [attrs objectForKey:NSFileSize];
-            type = [string pathExtension];
-        }
-        
-        [item setName       :string];
-        [item setFullPath   :[NSString stringWithFormat:@"%@/%@", path, string]];
-        [item setIsDir      :is_dir];
-        [item setSize       :size];
-        [item setDate       :[dateFormatter stringFromDate:modification_date]];
-        [item setType       :type];
-        
-        [data addObject:item];
-    }
-    
-    [self sortData];
-    
-    [sidePanel changeFolder:[path lastPathComponent]];
-}
-
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
-    order = [self whatColumn:tableColumn];
-    [self sortData];
+    [itemManager setOrder:[self whatColumn:tableColumn]];
 }
 
 -(void) setTable:(NSTableView *)t {
@@ -238,7 +117,12 @@ enum EFileSystemColumnId {
 }
 
 -(NSString*) currentPath {
-    return [fileManager currentDirectoryPath];
+    return [itemManager currentPath];
+}
+
+-(void) setItemManager:(id<ItemManagerProtocol>)im {
+    [itemManager release];
+    itemManager = im;
 }
 
 @end
@@ -261,35 +145,6 @@ enum EFileSystemColumnId {
     if ([col_id hasPrefix:@"Type"])
         return FS_TYPE;
     return FS_UNDEFINED;
-}
-
--(void) sortData {
-    switch (order) {
-        case FS_ICON:
-            break;
-            
-        case FS_NAME:
-            [data sortUsingSelector:@selector(compareByName:)];
-            break;
-            
-        case FS_SIZE:
-            [data sortUsingSelector:@selector(compareBySize:)];
-            break;
-            
-        case FS_DATE:
-            [data sortUsingSelector:@selector(compareByDate:)];
-            break;
-            
-        case FS_TYPE:
-            [data sortUsingSelector:@selector(compareByType:)];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [table reloadData];
-
 }
 
 @end
