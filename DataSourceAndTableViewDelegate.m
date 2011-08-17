@@ -123,6 +123,7 @@
 -(void) setItemManager:(id<ItemManagerProtocol>)im {
     [itemManager release];
     itemManager = im;
+    data = [itemManager data];
 }
 
 @end

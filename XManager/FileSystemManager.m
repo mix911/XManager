@@ -197,7 +197,7 @@
         }
         
         [item setName       :string];
-        [item setFullPath   :new_path];
+        [item setFullPath   :[NSString stringWithFormat:@"%@/%@", new_path, string]];
         [item setIsDir      :is_dir];
         [item setSize       :size];
         [item setDateDate   :modification_date];
