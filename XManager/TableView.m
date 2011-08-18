@@ -30,7 +30,14 @@
     
     [super keyDown:event];
     
+    unsigned short key = [event keyCode];
+    
     switch ([event keyCode]) {
+        // W
+        case 0xD:
+            [sidePanel closeCurrentTab];
+            break;
+            
         case 0x24:
         {
             NSInteger row = [super selectedRow];

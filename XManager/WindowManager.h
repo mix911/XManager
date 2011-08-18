@@ -39,4 +39,7 @@
 -(IBAction) networkConnectionCancel :(id)sender;
 -(IBAction) networkConnectionOk     :(id)sender;
 
+// MainWindow
+-(IBAction) close :(id)sender;
+
 @end

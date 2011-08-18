@@ -15,5 +15,6 @@
 -(bool) enterToRow  :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
+-(void) closeCurrentTab;
 
 @end

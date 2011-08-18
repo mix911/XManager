@@ -154,6 +154,17 @@
     [self addTab:path];
 }
 
+-(void) closeCurrentTab {
+    
+    // Если осталась только одна вкладка
+    if ([[tabView tabViewItems] count] == 1) {
+        return;
+    }
+    
+    // Закроем текущую вкладку
+    [tabView removeTabViewItem:[tabView selectedTabViewItem]];
+}
+
 -(bool) enterToRow:(NSInteger)row {
     TableView* table = [self table];
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
