@@ -19,6 +19,7 @@
     id<ItemManagerProtocol>     itemManager;    // Менеджер управления объектами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
+    NSIndexSet*                 selectedRows;   // Выбранные ряды
     id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
 }
 
@@ -39,5 +40,7 @@
 -(NSString*)currentPath;
 
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
+
+
 
 @end

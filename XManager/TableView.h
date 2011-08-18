@@ -12,6 +12,7 @@
 
 @interface TableView : NSTableView {
     id<SidePanelProtocol>   sidePanel;
+    NSMutableIndexSet*      selectedRows;
 }
 
 -(id)   init;

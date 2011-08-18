@@ -16,6 +16,7 @@
         [self setTarget:self];
         [self setDoubleAction:@selector(doubleClick:)];
         [self setAction:nil];
+        [self setAllowsMultipleSelection:YES];
     }
     
     return self;
@@ -49,14 +50,27 @@
                 }
             }
             else if([event modifierFlags] & NSShiftKeyMask) {
-                
+//                NSInteger row = [self selectedRow] + 1;
+//                    
+//                [selectedRows addIndex:row];
+//                
+//                [self selectRowIndexes:selectedRows byExtendingSelection:NO];
             }
             break;
             
         // Down
         case 0x7D:
             if ([event modifierFlags] & NSShiftKeyMask) {
-                
+//                
+//                NSInteger row = [self selectedRow] - 1;
+//                
+//                if (row < 0) {
+//                    break;
+//                }
+//                
+//                [selectedRows addIndex:row];
+//                
+//                [self selectRowIndexes:selectedRows byExtendingSelection:NO];
             }
             break;
             

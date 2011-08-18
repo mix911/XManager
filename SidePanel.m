@@ -122,6 +122,7 @@
     
     // Добавим вкладку
     [tabView addTabViewItem:item];
+    [tabView selectTabViewItem:item];
     
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
