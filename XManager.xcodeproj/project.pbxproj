@@ -20,6 +20,7 @@
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
 		B4074EBD13ECD0F000438E01 /* WindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* WindowManager.m */; };
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
+		B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */; };
 		B47B332113F9A32800884E4E /* FtpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B47B332013F9A32800884E4E /* FtpParams.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
@@ -65,6 +66,8 @@
 		B4074EBC13ECD0F000438E01 /* WindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowManager.m; sourceTree = "<group>"; };
 		B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSourceAndTableViewDelegate.h; path = ../DataSourceAndTableViewDelegate.h; sourceTree = "<group>"; };
 		B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSourceAndTableViewDelegate.m; path = ../DataSourceAndTableViewDelegate.m; sourceTree = "<group>"; };
+		B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeleteDialog.h; path = ../DeleteDialog.h; sourceTree = "<group>"; };
+		B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteDialog.m; path = ../DeleteDialog.m; sourceTree = "<group>"; };
 		B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanelProtocol.h; path = ../SidePanelProtocol.h; sourceTree = "<group>"; };
 		B47B331F13F9A32800884E4E /* FtpParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FtpParams.h; sourceTree = "<group>"; };
 		B47B332013F9A32800884E4E /* FtpParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FtpParams.m; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 		B483E68F13FBE99300295218 /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */,
+				B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */,
 				B4C110CA13FEEB6600D84449 /* MessageBox.h */,
 				B4C110CB13FEEB6600D84449 /* MessageBox.m */,
 				B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */,
@@ -357,6 +362,7 @@
 				B4DAF09013FA925D0000BA35 /* FtpManager.m in Sources */,
 				B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */,
 				B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */,
+				B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

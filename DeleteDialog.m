@@ -1,14 +1,14 @@
 //
-//  MessageBox.m
+//  DeleteDialog.m
 //  XManager
 //
-//  Created by demo on 19.08.11.
+//  Created by demo on 20.08.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MessageBox.h"
+#import "DeleteDialog.h"
 
-@implementation MessageBox
+@implementation DeleteDialog
 
 - (id)init {
     self = [super init];
@@ -17,10 +17,6 @@
     }
     
     return self;
-}
-
--(void) setMessage:(NSString *)m {
-    [messageLabel setStringValue:m];
 }
 
 @end

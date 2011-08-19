@@ -9,7 +9,7 @@
 #import <AppKit/AppKit.h>
 
 @interface MessageBox : NSPanel {
-    IBOutlet    NSTextField*    message;
+    IBOutlet    NSTextField*    messageLabel;
 }
 
 -(void) setMessage :(NSString*)message;

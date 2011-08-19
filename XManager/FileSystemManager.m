@@ -11,8 +11,9 @@
 
 @interface FileSystemManager(Private)
 
--(bool) openFolder:(NSString *)folder;
--(void) sortData;
+-(bool)     openFolder  :(NSString*)folder;
+-(void)     sortData;
+-(NSString*)makePath    :(NSString*)name;
 
 @end
 
@@ -118,6 +119,32 @@
     }
     
     return @"Can't create folder";
+}
+
+-(NSString*)    deleteSelected {
+    
+    NSError* error = nil;
+    
+    // Пройдемся по всем объектам файловой системы
+    for (FileSystemItem* item in data) {
+        
+        // Нас интересуют только выделенные
+        if (item.isSelected == NO) {
+            continue;
+        }
+        
+        // Путь к объекту
+        NSString* path = [self makePath:item.name];
+        
+        if ([fileManager removeItemAtPath:path error:&error] == NO) {
+            NSString* reason= [error localizedFailureReason];
+            NSString* desc  = [error localizedDescription];
+            
+            return [NSString stringWithFormat:@"Can't remove %@", item.name];
+        }
+    }
+    
+    return nil;
 }
 
 -(void) updateItemsList {
@@ -258,6 +285,10 @@
         default:
             break;
     }
+}
+                          
+-(NSString*) makePath:(NSString *)name {
+    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
 }
 
 @end

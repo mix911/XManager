@@ -257,6 +257,10 @@
     return [[self currentDataSource] makeDir:name];
 }
 
+-(NSString*) deleteSelected {
+    return [[self currentDataSource] deleteSelected];
+}
+
 @end
 
 @implementation SidePanel(Private)

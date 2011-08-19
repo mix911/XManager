@@ -18,8 +18,8 @@
 @implementation WindowManager(Private)
 
 -(void) messageBox:(NSString *)message {
-    [messageBox setMessage:message];
     [messageBox makeKeyAndOrderFront:self];
+    [messageBox setMessage:message];
 }
 
 -(void) updateContent {
@@ -129,14 +129,14 @@
 }
 
 -(void) deleleItems {
-    
+    [deleteDialog makeKeyAndOrderFront:self];
 }
 
--(void) makeDirCancel:(id)sender {
+-(IBAction) makeDirCancel:(id)sender {
     [makeDirDialog close];
 }
 
--(void) makeDirOk:(id)sender {
+-(IBAction) makeDirOk:(id)sender {
     // Закроем окно
     [self makeDirCancel:sender];
     
@@ -158,12 +158,36 @@
     if (error) {
         [self messageBox:error];
     }
-    else {
-        [self updateContent];
-    }
+    
+    // Обновим содержимое
+    [self updateContent];
 }
 
 -(void) setActiveSide :(id)panel {
     activePanel = panel;
+}
+
+-(IBAction) deleteItemsNo:(id)sender {
+    [deleteDialog close];
+}
+
+-(IBAction) deleteItemsYes:(id)sender {
+    // Закроем диалог
+    [self deleteItemsNo:sender];
+    
+    // Удалим все что выделено в активной панели
+    NSString* error = [activePanel deleteSelected];
+    
+    // Если не получилось
+    if (error) {
+        [self messageBox:error];
+    }
+
+    // Обновим содержимое
+    [self updateContent];
+}
+
+-(IBAction) messageBoxOk:(id)sender {
+    [messageBox close];
 }
 @end

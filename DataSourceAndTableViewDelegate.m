@@ -161,6 +161,10 @@
     return [itemManager makeDir:name];
 }
 
+-(NSString*) deleteSelected {
+    return [itemManager deleteSelected];
+}
+
 -(void) updateItemsList {
     data = nil;
     [itemManager updateItemsList];

@@ -26,7 +26,8 @@
 -(void) updateContent;
 
 // Item operations
--(NSString*)    makeDir :(NSString*)name;
+-(NSString*)    makeDir         :(NSString*)name;
+-(NSString*)    deleteSelected;
 
 // SidePanelProtocol
 -(void) changeFolder    :(NSString *)folder;

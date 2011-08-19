@@ -31,7 +31,8 @@
 -(bool)         goUp;
 
 // Items operations
--(NSString*) makeDir :(NSString*)name;
+-(NSString*) makeDir        :(NSString*)name;
+-(NSString*) deleteSelected;
 
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;

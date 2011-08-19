@@ -13,6 +13,7 @@
 #import "SidePanel.h"
 #import "NetworkConnectionPanel.h"
 #import "MakeDirDialog.h"
+#import "DeleteDialog.h"
 #import "MessageBox.h"
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
@@ -24,7 +25,8 @@
     IBOutlet    NetworkConnectionPanel* networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
     IBOutlet    NSPanel*                renameDialog;               // Диалог переименования
     IBOutlet    MakeDirDialog*          makeDirDialog;              // Диалог создания каталога
-    IBOutlet    MessageBox*             messageBox;
+    IBOutlet    MessageBox*             messageBox;                 // Сообдение
+    IBOutlet    DeleteDialog*           deleteDialog;               // Диалог удаления
 }
 
 -(void) awakeFromNib;
@@ -49,6 +51,13 @@
 // Make dir dialog
 -(IBAction) makeDirCancel   :(id)sender;
 -(IBAction) makeDirOk       :(id)sender;
+
+// Delete dialog
+-(IBAction) deleteItemsNo   :(id)sender;
+-(IBAction) deleteItemsYes  :(id)sender;
+
+// Message box
+-(IBAction) messageBoxOk    :(id)sender;
 
 // WindowManagerProtocol
 -(void) renameItems;
