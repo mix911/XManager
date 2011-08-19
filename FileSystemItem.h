@@ -27,6 +27,7 @@ enum EFileSystemColumnId {
     NSDate*     date;       // Дата модификации
     NSString*   type;       // Тип (расширение) файла
     bool        isDir;      // Это каталог? TODO: нужно обдумать символические ссылки
+    bool        isSelected; // Выделен ли объект: true - выделен; false - не выделен
 }
 
 @property(retain)   NSString*   fullPath;
@@ -35,6 +36,7 @@ enum EFileSystemColumnId {
 @property(retain)   NSDate*     date;
 @property(retain)   NSString*   type;
 @property           bool        isDir;
+@property           bool        isSelected;
 
 
 -(NSComparisonResult) compareByName :(FileSystemItem*)rgh;

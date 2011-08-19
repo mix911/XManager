@@ -19,5 +19,7 @@
 -(void) setSidePanel:(id<SidePanelProtocol>)sidePanel;
 -(void) keyDown     :(NSEvent*)event;
 -(void) doubleClick :(id)sender;
+-(void) drawRect:(NSRect)dirtyRect;
+-(BOOL) becomeFirstResponder;
 
 @end

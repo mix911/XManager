@@ -17,6 +17,7 @@
 @interface SidePanel(Private)
 
 -(TableView*)   table;
+-(DataSourceAndTableViewDelegate*) currentDataSource;
 
 @end
 
@@ -177,12 +178,93 @@
     return [ds goUp];
 }
 
--(void) setFtpDataSource:(FtpParams *)params {
+-(void) invertSelection:(NSInteger)row {
+    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
+    [ds invertSelection:row];
+}
+
+-(void) postKeyDown:(NSEvent *)event {
+    
+    switch ([event keyCode]) {
+            
+        case 0xD:   // W
+            
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                [self closeCurrentTab];
+            }
+            break;
+            
+        case 0x11:  // D
+            
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                [self addTabFromCurrent];
+            }
+            
+        case 120:   // F2
+            [windowManager renameItems];
+            break;
+            
+        case 96:    // F5
+            [windowManager copyItems];
+            break;
+            
+        case 97:    // F6
+            [windowManager moveItems];
+            break;
+            
+        case 98:    // F7
+            [windowManager makeDirItems];
+            break;
+            
+        case 100:   // F8
+            [windowManager deleleItems];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void) setActive {
+    [windowManager setActiveSide:self];
+}
+
+-(void) setWindowManager:(id<WindowManagerProtocol>)manager {
+    windowManager = manager;
+}
+
+-(void) updateContent {
+    for (NSTabViewItem* item in [tabView tabViewItems]) {
+
+        // Получим NSScrollView
+        NSScrollView* scroll_view = [item view];
+        
+        // Получим таблицу
+        TableView* table = [scroll_view documentView];
+        
+        // Получим источник данных
+        DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
+        
+        // Обновим данные
+        [ds updateItemsList];
+        
+        // Обновим таблицу
+        [table reloadData];
+    }
+}
+
+-(NSString*) makeDir:(NSString *)name {
+    return [[self currentDataSource] makeDir:name];
 }
 
 @end
 
 @implementation SidePanel(Private)
+
+-(DataSourceAndTableViewDelegate*) currentDataSource {
+    TableView* table = [self table];
+    return (DataSourceAndTableViewDelegate*)[table dataSource];
+}
 
 -(TableView*)   table {
     NSTabViewItem*  tab_item= [tabView selectedTabViewItem];

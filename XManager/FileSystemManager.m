@@ -106,6 +106,28 @@
     return [workspace iconForFile:item.fullPath];
 }
 
+-(NSString*)    makeDir:(NSString *)name {
+    NSString* path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
+    
+    // Объект ошибки
+    NSError* error = nil;
+    
+    // Попытаемся создать каталог
+    if ([fileManager createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&error]) {
+        return nil;
+    }
+    
+    return @"Can't create folder";
+}
+
+-(void) updateItemsList {
+    // Если не получится открыть текущую папку, например её больше нет
+    if ([self openFolder:[fileManager currentDirectoryPath]] == NO) {
+        // Откроем папку по умолчанию (в данном случае корневок каталог) TODO: нужно протестировать и обдумать, возможно нужна другая папка
+        [self openFolder:@"/"]; 
+    }
+}
+
 @end
 
 @implementation FileSystemManager(Private)

@@ -13,7 +13,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        isSelected = false;
     }
     
     return self;
@@ -25,6 +25,7 @@
 @synthesize date;
 @synthesize type;
 @synthesize isDir;
+@synthesize isSelected;
 
 -(NSComparisonResult) compareByName :(FileSystemItem*)rgh {
 

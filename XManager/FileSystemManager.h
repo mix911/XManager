@@ -26,5 +26,7 @@
 -(bool)             enterToRow  :(NSInteger)row;
 -(void)             setOrder    :(enum EFileSystemColumnId)order;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
+-(NSString*)        makeDir:(NSString *)name;
+-(void)             updateItemsList;
 
 @end

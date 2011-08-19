@@ -16,7 +16,7 @@
         [self setTarget:self];
         [self setDoubleAction:@selector(doubleClick:)];
         [self setAction:nil];
-        [self setAllowsMultipleSelection:YES];
+        //[self setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     }
     
     return self;
@@ -28,15 +28,9 @@
 
 -(void) keyDown:(NSEvent*)event {
     
-    [super keyDown:event];
-    
     unsigned short key = [event keyCode];
     
     switch ([event keyCode]) {
-        // W
-        case 0xD:
-            [sidePanel closeCurrentTab];
-            break;
             
         case 0x24:
         {
@@ -53,41 +47,31 @@
             if ([event modifierFlags] & NSCommandKeyMask) {
                 if ([sidePanel goUp]) {
                     [self reloadData];
-                    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
                 }
             }
             else if([event modifierFlags] & NSShiftKeyMask) {
-//                NSInteger row = [self selectedRow] + 1;
-//                    
-//                [selectedRows addIndex:row];
-//                
-//                [self selectRowIndexes:selectedRows byExtendingSelection:NO];
+                NSInteger row = [self selectedRow];
+                
+                [sidePanel invertSelection:row];
             }
             break;
             
         // Down
         case 0x7D:
             if ([event modifierFlags] & NSShiftKeyMask) {
-//                
-//                NSInteger row = [self selectedRow] - 1;
-//                
-//                if (row < 0) {
-//                    break;
-//                }
-//                
-//                [selectedRows addIndex:row];
-//                
-//                [self selectRowIndexes:selectedRows byExtendingSelection:NO];
+                
+                NSInteger row = [self selectedRow];
+                
+                [sidePanel invertSelection:row];
             }
             break;
-            
-        case 0x11:
-            [sidePanel addTabFromCurrent];
-            break;
-        
+                    
         default:
             break;
     }
+    
+    [super      keyDown     :event];
+    [sidePanel  postKeyDown :event];
 }
 
 -(void) doubleClick:(id)sender {
@@ -96,6 +80,16 @@
         [self reloadData];
         [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     }
+}
+
+-(void) drawRect:(NSRect)dirtyRect {
+    // Нарисуемся
+    [super drawRect:dirtyRect];
+}
+
+-(BOOL) becomeFirstResponder {
+    [sidePanel setActive];
+    return [super becomeFirstResponder];
 }
 
 @end

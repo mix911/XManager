@@ -9,15 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+#import "WindowManagerProtocol.h"
 #import "SidePanel.h"
 #import "NetworkConnectionPanel.h"
+#import "MakeDirDialog.h"
+#import "MessageBox.h"
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
-@interface WindowManager : NSObject {    
-    IBOutlet SidePanel*                 leftPanel;                  // Левая панель
-    IBOutlet SidePanel*                 rightPanel;                 // Правая панель
-    IBOutlet NetworkConnectionPanel*    networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
+@interface WindowManager : NSObject <WindowManagerProtocol>{    
+    IBOutlet    SidePanel*              leftPanel;                  // Левая панель
+    IBOutlet    SidePanel*              rightPanel;                 // Правая панель
+                SidePanel*              activePanel;                // Активная панель
+    IBOutlet    NetworkConnectionPanel* networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
+    IBOutlet    NSPanel*                renameDialog;               // Диалог переименования
+    IBOutlet    MakeDirDialog*          makeDirDialog;              // Диалог создания каталога
+    IBOutlet    MessageBox*             messageBox;
 }
 
 -(void) awakeFromNib;
@@ -39,7 +46,17 @@
 -(IBAction) networkConnectionCancel :(id)sender;
 -(IBAction) networkConnectionOk     :(id)sender;
 
-// MainWindow
--(IBAction) close :(id)sender;
+// Make dir dialog
+-(IBAction) makeDirCancel   :(id)sender;
+-(IBAction) makeDirOk       :(id)sender;
+
+// WindowManagerProtocol
+-(void) renameItems;
+-(void) copyItems;
+-(void) moveItems;
+-(void) makeDirItems;
+-(void) deleleItems;
+
+-(void) setActiveSide:(id)panel;
 
 @end

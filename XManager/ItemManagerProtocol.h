@@ -18,5 +18,7 @@
 -(NSMutableArray*)  data;
 -(NSString*)        currentPath;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
+-(NSString*)        makeDir     :(NSString*)name;
+-(void)             updateItemsList;
 
 @end

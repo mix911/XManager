@@ -9,11 +9,12 @@
 #import <AppKit/AppKit.h>
 
 #import "SidePanelProtocol.h"
-#import "FtpParams.h"
+#import "WindowManagerProtocol.h"
 
 @interface SidePanel : NSView <SidePanelProtocol> {
-    NSTabView*  tabView;    // Вкладки
-    int         nextTabId;  // Следующая вкладка
+    NSTabView*                  tabView;        // Вкладки
+    int                         nextTabId;      // Следующая вкладка
+    id<WindowManagerProtocol>   windowManager;  // Менеджер окон
 }
 
 -(id)   init;
@@ -21,14 +22,21 @@
 -(void) addTab :(NSString*)path;
 -(void) addTabFromCurrent;
 -(int)  nextTabId;
--(void) setFtpDataSource :(FtpParams*)params;
+-(void) setWindowManager:(id<WindowManagerProtocol>)manager;
+-(void) updateContent;
+
+// Item operations
+-(NSString*)    makeDir :(NSString*)name;
 
 // SidePanelProtocol
--(void) changeFolder:(NSString *)folder;
--(bool) enterToRow  :(NSInteger)row;
+-(void) changeFolder    :(NSString *)folder;
+-(bool) enterToRow      :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
 -(void) closeCurrentTab;
+-(void) invertSelection :(NSInteger)row;
+-(void) postKeyDown     :(NSEvent*)event;
+-(void) setActive;
 
 
 @end

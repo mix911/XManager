@@ -92,20 +92,39 @@
 
 -(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)column row:(NSInteger)row {
     
+    // Проверки
+    if (row >= [data count]) {
+        return;
+    }
+    
+    // Получим очередной item
+    FileSystemItem* item = [data objectAtIndex:row];
+    
     // Если рисуем статус
     if ([self whatColumn:column] == FS_ICON) {
         // Downcast-им  ячейку
         NSImageCell*    icell   = (NSImageCell*)cell;
-        
-        // Получим очередной item
-        FileSystemItem* item = [data objectAtIndex:row];
-        
+                
         // Получим иконку для данного item
         NSImage* icon = [itemManager iconForItem:item];
                 
         [icell setImage:icon];
     }
+    else {
+        if ([cell isHighlighted]) {
+            [cell setTextColor:[NSColor blackColor]];
+        }
+        else {
+            if (item.isSelected) {
+                [cell setTextColor:[NSColor redColor]];
+            }
+            else {
+                [cell setTextColor:[NSColor blackColor]];
+            }
+        }
+    }
 }
+
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
     [itemManager setOrder:[self whatColumn:tableColumn]];
     [tableView reloadData];
@@ -122,6 +141,29 @@
 -(void) setItemManager:(id<ItemManagerProtocol>)im {
     [itemManager release];
     itemManager = im;
+    data = [itemManager data];
+}
+
+-(void) invertSelection:(NSInteger)row {
+    
+    // Проверки
+    if (row >= [data count]) {
+        return;
+    }
+    
+    // Получим item
+    FileSystemItem* item = [data objectAtIndex:row];
+    
+    item.isSelected = !item.isSelected;
+}
+
+-(NSString*) makeDir:(NSString *)name {
+    return [itemManager makeDir:name];
+}
+
+-(void) updateItemsList {
+    data = nil;
+    [itemManager updateItemsList];
     data = [itemManager data];
 }
 

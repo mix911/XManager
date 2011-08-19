@@ -19,7 +19,6 @@
     id<ItemManagerProtocol>     itemManager;    // Менеджер управления объектами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
-    NSIndexSet*                 selectedRows;   // Выбранные ряды
     id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
 }
 
@@ -31,6 +30,9 @@
 -(bool)         enterToRow:(NSInteger)row;
 -(bool)         goUp;
 
+// Items operations
+-(NSString*) makeDir :(NSString*)name;
+
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
@@ -40,7 +42,8 @@
 -(NSString*)currentPath;
 
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
-
+-(void)     invertSelection :(NSInteger)row;
+-(void)     updateItemsList;
 
 
 @end

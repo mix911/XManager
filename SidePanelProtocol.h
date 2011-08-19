@@ -11,10 +11,13 @@
 @protocol SidePanelProtocol <NSObject>
 
 @required
--(void) changeFolder:(NSString*)folder;
--(bool) enterToRow  :(NSInteger)row;
+-(void) changeFolder    :(NSString*)folder;
+-(bool) enterToRow      :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
 -(void) closeCurrentTab;
+-(void) invertSelection :(NSInteger)row;
+-(void) postKeyDown     :(NSEvent*)event;
+-(void) setActive;
 
 @end
