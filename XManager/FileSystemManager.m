@@ -136,10 +136,7 @@
         // Путь к объекту
         NSString* path = [self makePath:item.name];
         
-        if ([fileManager removeItemAtPath:path error:&error] == NO) {
-            NSString* reason= [error localizedFailureReason];
-            NSString* desc  = [error localizedDescription];
-            
+        if ([fileManager removeItemAtPath:path error:&error] == NO) {            
             return [NSString stringWithFormat:@"Can't remove %@", item.name];
         }
     }
