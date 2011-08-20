@@ -12,8 +12,11 @@
 #import "WindowManagerProtocol.h"
 #import "SidePanel.h"
 #import "NetworkConnectionDialog.h"
+#import "CopyDialog.h"
+#import "MoveDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
+#import "RenameDialog.h"
 #import "MessageBox.h"
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
@@ -27,6 +30,8 @@
     IBOutlet    MakeDirDialog*          makeDirDialog;              // Диалог создания каталога
     IBOutlet    MessageBox*             messageBox;                 // Сообдение
     IBOutlet    DeleteDialog*           deleteDialog;               // Диалог удаления
+    IBOutlet    CopyDialog*             copyDialog;                 // Диалог копирования
+    IBOutlet    MoveDialog*             moveDialog;                 // Диалог перемещения
 }
 
 -(void) awakeFromNib;

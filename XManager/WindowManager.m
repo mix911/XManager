@@ -113,15 +113,15 @@
 }
 
 -(void) renameItems {
-    
+    [renameDialog makeKeyAndOrderFront:self];
 }
 
 -(void) copyItems {
-    
+    [copyDialog makeKeyAndOrderFront:self];
 }
 
 -(void) moveItems {
-    
+    [moveDialog makeKeyAndOrderFront:self];
 }
 
 -(void) makeDirItems {
