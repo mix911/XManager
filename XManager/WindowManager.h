@@ -22,16 +22,16 @@
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
 @interface WindowManager : NSObject <WindowManagerProtocol>{    
-    IBOutlet    SidePanel*              leftPanel;                  // Левая панель
-    IBOutlet    SidePanel*              rightPanel;                 // Правая панель
-                SidePanel*              activePanel;                // Активная панель
-    IBOutlet    NetworkConnectionDialog* networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
-    IBOutlet    NSPanel*                renameDialog;               // Диалог переименования
-    IBOutlet    MakeDirDialog*          makeDirDialog;              // Диалог создания каталога
-    IBOutlet    MessageBox*             messageBox;                 // Сообдение
-    IBOutlet    DeleteDialog*           deleteDialog;               // Диалог удаления
-    IBOutlet    CopyDialog*             copyDialog;                 // Диалог копирования
-    IBOutlet    MoveDialog*             moveDialog;                 // Диалог перемещения
+    IBOutlet    SidePanel*                  leftPanel;              // Левая панель
+    IBOutlet    SidePanel*                  rightPanel;             // Правая панель
+                SidePanel*                  activePanel;            // Активная панель
+    IBOutlet    NetworkConnectionDialog*    networkConnectionPanel; // Настройки сетевых соединений (ftp, sftp, s3, ...)
+    IBOutlet    RenameDialog*               renameDialog;           // Диалог переименования
+    IBOutlet    MakeDirDialog*              makeDirDialog;          // Диалог создания каталога
+    IBOutlet    MessageBox*                 messageBox;             // Сообдение
+    IBOutlet    DeleteDialog*               deleteDialog;           // Диалог удаления
+    IBOutlet    CopyDialog*                 copyDialog;             // Диалог копирования
+    IBOutlet    MoveDialog*                 moveDialog;             // Диалог перемещения
 }
 
 -(void) awakeFromNib;
@@ -52,6 +52,18 @@
 // Network connection dialog
 -(IBAction) networkConnectionCancel :(id)sender;
 -(IBAction) networkConnectionOk     :(id)sender;
+
+// Rename dialog
+-(IBAction) renameNo    :(id)sender;
+-(IBAction) renameYes   :(id)sender;
+
+// Copy dialog
+-(IBAction) copyNo  :(id)sender;
+-(IBAction) copyYes :(id)sender;
+
+// Move dialog
+-(IBAction) moveNo  :(id)sender;
+-(IBAction) moveYes :(id)sender;
 
 // Make dir dialog
 -(IBAction) makeDirCancel   :(id)sender;

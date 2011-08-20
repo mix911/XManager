@@ -187,6 +187,81 @@
     [self updateContent];
 }
 
+-(IBAction) renameNo:(id)sender {
+    [renameDialog close];
+}
+
+-(IBAction) renameYes:(id)sender {
+    
+    // Закроем диалог
+    [self renameNo:sender];
+    
+    // Переименуем текущий объект
+    NSString* error =  [[self activePanel] renameCurrent:[renameDialog dirName]];
+    
+    // Если не получилось
+    if (error) {
+        [self messageBox:error];
+    }
+    
+    // Обновим содержимое
+    [self updateContent];
+}
+
+-(IBAction) copyNo:(id)sender {
+    [copyDialog close];
+}
+
+-(IBAction) copyYes:(id)sender {
+    
+    // Закроем диалог
+    [self copyNo:sender];
+    
+    // Получим активную панель
+    SidePanel* active = [self activePanel];
+    
+    // Получим вторую панель
+    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
+    
+    // Скопируем выделенные объекты
+    NSString* error = [active copySelected:[second currentPath]];
+    
+    // Если не получилось
+    if (error) {
+        [self messageBox:error];
+    }
+    
+    // Обновим содержимое
+    [self updateContent];
+}
+
+-(IBAction) moveNo:(id)sender {
+    [moveDialog close];
+}
+
+-(IBAction) moveYes:(id)sender {
+    
+    // Закроем диалог
+    [self moveNo:sender];
+    
+    // Получим активную панель
+    SidePanel* active = [self activePanel];
+    
+    // Получим вторую панель
+    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
+    
+    // Переместим выделенные объекты
+    NSString* error = [active moveSelected:[second currentPath]];
+    
+    // Если не получилось
+    if (error) {
+        [self messageBox:error];
+    }
+    
+    // Обновим содержимое
+    [self updateContent];
+}
+
 -(IBAction) messageBoxOk:(id)sender {
     [messageBox close];
 }

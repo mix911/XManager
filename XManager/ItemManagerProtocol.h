@@ -13,14 +13,17 @@
 @protocol ItemManagerProtocol <NSObject>
 
 @required
--(bool)             enterToRow  :(NSInteger)row;
--(void)             setOrder    :(enum EFileSystemColumnId)order;
+-(bool)             enterToRow      :(NSInteger)row;
+-(void)             setOrder        :(enum EFileSystemColumnId)order;
 -(NSMutableArray*)  data;
 -(NSString*)        currentPath;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
 -(void)             updateItemsList;
 
--(NSString*)        makeDir     :(NSString*)name;
+-(NSString*)        makeDir         :(NSString*)name;
 -(NSString*)        deleteSelected;
+-(NSString*)        renameCurrent   :(NSString*)name;
+-(NSString*)        copySelected    :(NSString*)dest;
+-(NSString*)        moveSelected    :(NSString*)dest;
 
 @end

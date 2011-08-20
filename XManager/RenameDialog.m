@@ -19,4 +19,8 @@
     return self;
 }
 
+-(NSString*) dirName {
+    return [folder stringValue];
+}
+
 @end

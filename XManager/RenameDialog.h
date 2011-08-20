@@ -8,6 +8,10 @@
 
 #import <AppKit/AppKit.h>
 
-@interface RenameDialog : NSPanel
+@interface RenameDialog : NSPanel {
+    IBOutlet    NSTextField*    folder;
+}
+
+-(NSString*) dirName;
 
 @end

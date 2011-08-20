@@ -30,5 +30,9 @@
 
 -(NSString*)        makeDir         :(NSString *)name;
 -(NSString*)        deleteSelected;
+-(NSString*)        renameCurrent   :(NSString*)name;
+-(NSString*)        copySelected    :(NSString*)dest;
+-(NSString*)        moveSelected    :(NSString*)dest;
+
 
 @end

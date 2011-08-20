@@ -165,6 +165,18 @@
     return [itemManager deleteSelected];
 }
 
+-(NSString*) renameCurrent:(NSString *)name {
+    return [itemManager renameCurrent:name];
+}
+
+-(NSString*) copySelected:(NSString *)dest {
+    return [itemManager copySelected:dest];
+}
+
+-(NSString*) moveSelected:(NSString *)dest {
+    return [itemManager moveSelected:dest];
+}
+
 -(void) updateItemsList {
     data = nil;
     [itemManager updateItemsList];

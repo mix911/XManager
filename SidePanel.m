@@ -261,6 +261,22 @@
     return [[self currentDataSource] deleteSelected];
 }
 
+-(NSString*) renameCurrent:(NSString*)name {
+    return [[self currentDataSource] renameCurrent:name];
+}
+
+-(NSString*) copySelected:(NSString *)dest {
+    return [[self currentDataSource] copySelected:dest];
+}
+
+-(NSString*) moveSelected:(NSString *)dest {
+    return [[self currentDataSource] moveSelected:dest];
+}
+
+-(NSString*) currentPath {
+    return [[self currentDataSource] currentPath];
+}
+
 @end
 
 @implementation SidePanel(Private)

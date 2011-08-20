@@ -24,10 +24,14 @@
 -(int)  nextTabId;
 -(void) setWindowManager:(id<WindowManagerProtocol>)manager;
 -(void) updateContent;
+-(NSString*)    currentPath;
 
 // Item operations
 -(NSString*)    makeDir         :(NSString*)name;
 -(NSString*)    deleteSelected;
+-(NSString*)    renameCurrent   :(NSString*)name;
+-(NSString*)    copySelected    :(NSString*)dest;
+-(NSString*)    moveSelected    :(NSString*)dest;
 
 // SidePanelProtocol
 -(void) changeFolder    :(NSString *)folder;

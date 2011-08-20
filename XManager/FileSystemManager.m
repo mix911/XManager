@@ -143,6 +143,19 @@
     return nil;
 }
 
+-(NSString*)        renameCurrent   :(NSString*)name {
+    return nil;
+}
+
+-(NSString*)        copySelected    :(NSString*)dest {
+    return nil;
+}
+
+-(NSString*)        moveSelected    :(NSString*)dest {
+    return nil;
+}
+
+
 -(void) updateItemsList {
     // Если не получится открыть текущую папку, например её больше нет
     if ([self openFolder:[fileManager currentDirectoryPath]] == NO) {
