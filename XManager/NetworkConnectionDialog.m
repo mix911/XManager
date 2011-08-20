@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "NetworkConnectionPanel.h"
+#import "NetworkConnectionDialog.h"
 
-@implementation NetworkConnectionPanel
+@implementation NetworkConnectionDialog
 
 - (id)init {
     self = [super init];

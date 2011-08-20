@@ -26,7 +26,7 @@
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C110CB13FEEB6600D84449 /* MessageBox.m */; };
 		B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C5490913FE6F7F0071825D /* MakeDirDialog.m */; };
-		B4C60FF713F851B500D490B8 /* NetworkConnectionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */; };
+		B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
 		B4DAF09013FA925D0000BA35 /* FtpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08F13FA925D0000BA35 /* FtpManager.m */; };
 		B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */; };
@@ -80,8 +80,8 @@
 		B4C110CB13FEEB6600D84449 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		B4C5490813FE6F7F0071825D /* MakeDirDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeDirDialog.h; sourceTree = "<group>"; };
 		B4C5490913FE6F7F0071825D /* MakeDirDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeDirDialog.m; sourceTree = "<group>"; };
-		B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionPanel.h; sourceTree = "<group>"; };
-		B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionPanel.m; sourceTree = "<group>"; };
+		B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NetworkConnectionDialog.h; sourceTree = "<group>"; };
+		B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionDialog.m; sourceTree = "<group>"; };
 		B4DAF08B13FA92420000BA35 /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
 		B4DAF08C13FA92420000BA35 /* FileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemManager.m; sourceTree = "<group>"; };
 		B4DAF08E13FA925D0000BA35 /* FtpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FtpManager.h; sourceTree = "<group>"; };
@@ -208,8 +208,8 @@
 				B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */,
 				B4C110CA13FEEB6600D84449 /* MessageBox.h */,
 				B4C110CB13FEEB6600D84449 /* MessageBox.m */,
-				B4C60FF513F851B500D490B8 /* NetworkConnectionPanel.h */,
-				B4C60FF613F851B500D490B8 /* NetworkConnectionPanel.m */,
+				B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */,
+				B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */,
 				B4C5490813FE6F7F0071825D /* MakeDirDialog.h */,
 				B4C5490913FE6F7F0071825D /* MakeDirDialog.m */,
 			);
@@ -355,7 +355,7 @@
 				B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */,
 				B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */,
 				B480195E13F538FF00E33745 /* TableView.m in Sources */,
-				B4C60FF713F851B500D490B8 /* NetworkConnectionPanel.m in Sources */,
+				B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */,
 				B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */,
 				B47B332113F9A32800884E4E /* FtpParams.m in Sources */,
 				B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */,

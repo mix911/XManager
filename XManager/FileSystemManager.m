@@ -13,7 +13,7 @@
 
 -(bool)     openFolder  :(NSString*)folder;
 -(void)     sortData;
--(NSString*)makePath    :(NSString*)name;
+-(NSString*)makePath    :(FileSystemItem*)name;
 
 @end
 
@@ -123,22 +123,21 @@
 
 -(NSString*)    deleteSelected {
     
-    NSError* error = nil;
+    NSMutableArray* to_delete   = [[NSMutableArray alloc] init];
+    NSInteger       tag         = 0;
     
-    // Пройдемся по всем объектам файловой системы
+    // Пройдемся по всем объектам и составим список объектов на удаление
     for (FileSystemItem* item in data) {
-        
-        // Нас интересуют только выделенные
-        if (item.isSelected == NO) {
-            continue;
+        if (item.isSelected && [item.name isEqualToString:@".."] == NO) {
+            [to_delete addObject:item.name];
         }
-        
-        // Путь к объекту
-        NSString* path = [self makePath:item.name];
-        
-        if ([fileManager removeItemAtPath:path error:&error] == NO) {            
-            return [NSString stringWithFormat:@"Can't remove %@", item.name];
-        }
+    }
+    
+    if ([workspace performFileOperation:NSWorkspaceRecycleOperation 
+                                 source:[fileManager currentDirectoryPath] 
+                            destination:@"" files:to_delete 
+                                    tag:&tag] == NO) {
+        return @"Can't perform moving in trash";
     }
     
     return nil;
@@ -284,8 +283,11 @@
     }
 }
                           
--(NSString*) makePath:(NSString *)name {
-    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
+-(NSString*) makePath:(FileSystemItem *)item {
+//    if (item.isDir) {
+//        return [NSString stringWithFormat:@"%@/%@/", [fileManager currentDirectoryPath], item.name];
+//    }
+    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
 }
 
 @end

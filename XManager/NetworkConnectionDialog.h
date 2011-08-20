@@ -10,7 +10,7 @@
 
 #import "FtpParams.h"
 
-@interface NetworkConnectionPanel : NSPanel {
+@interface NetworkConnectionDialog : NSPanel {
     
 }
 

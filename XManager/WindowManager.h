@@ -11,7 +11,7 @@
 
 #import "WindowManagerProtocol.h"
 #import "SidePanel.h"
-#import "NetworkConnectionPanel.h"
+#import "NetworkConnectionDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
 #import "MessageBox.h"
@@ -22,7 +22,7 @@
     IBOutlet    SidePanel*              leftPanel;                  // Левая панель
     IBOutlet    SidePanel*              rightPanel;                 // Правая панель
                 SidePanel*              activePanel;                // Активная панель
-    IBOutlet    NetworkConnectionPanel* networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
+    IBOutlet    NetworkConnectionDialog* networkConnectionPanel;     // Настройки сетевых соединений (ftp, sftp, s3, ...)
     IBOutlet    NSPanel*                renameDialog;               // Диалог переименования
     IBOutlet    MakeDirDialog*          makeDirDialog;              // Диалог создания каталога
     IBOutlet    MessageBox*             messageBox;                 // Сообдение
