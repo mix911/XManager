@@ -24,6 +24,11 @@
 		B47B332113F9A32800884E4E /* FtpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B47B332013F9A32800884E4E /* FtpParams.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
+		B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */; };
+		B4C10EFE1402B63000AC0416 /* ToolbarAppsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */; };
+		B4C10EFF1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFA1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns */; };
+		B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */; };
+		B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */; };
 		B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C110CB13FEEB6600D84449 /* MessageBox.m */; };
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
 		B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C5490913FE6F7F0071825D /* MakeDirDialog.m */; };
@@ -80,6 +85,11 @@
 		B4A45DBD13FE1E12002C082F /* WindowManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManagerProtocol.h; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
 		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
+		B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GenericNetworkIcon.icns; path = Resources/Icons/GenericNetworkIcon.icns; sourceTree = SOURCE_ROOT; };
+		B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarAppsFolderIcon.icns; path = Resources/Icons/ToolbarAppsFolderIcon.icns; sourceTree = SOURCE_ROOT; };
+		B4C10EFA1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarDesktopFolderIcon.icns; path = Resources/Icons/ToolbarDesktopFolderIcon.icns; sourceTree = SOURCE_ROOT; };
+		B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarDocumentsFolderIcon.icns; path = Resources/Icons/ToolbarDocumentsFolderIcon.icns; sourceTree = SOURCE_ROOT; };
+		B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarUtilitiesFolderIcon.icns; path = Resources/Icons/ToolbarUtilitiesFolderIcon.icns; sourceTree = SOURCE_ROOT; };
 		B4C110CA13FEEB6600D84449 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		B4C110CB13FEEB6600D84449 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		B4C1581F140267B40052D988 /* HomeFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeFolderIcon.icns; sourceTree = "<group>"; };
@@ -273,6 +283,11 @@
 		B4C1581E140267B40052D988 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */,
+				B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */,
+				B4C10EFA1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns */,
+				B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */,
+				B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */,
 				B4C1581F140267B40052D988 /* HomeFolderIcon.icns */,
 			);
 			path = Icons;
@@ -349,6 +364,11 @@
 				B4074E9713ECD09900438E01 /* Credits.rtf in Resources */,
 				B4074E9D13ECD09900438E01 /* MainMenu.xib in Resources */,
 				B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */,
+				B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */,
+				B4C10EFE1402B63000AC0416 /* ToolbarAppsFolderIcon.icns in Resources */,
+				B4C10EFF1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns in Resources */,
+				B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */,
+				B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

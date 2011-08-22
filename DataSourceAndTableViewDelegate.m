@@ -40,7 +40,7 @@
         
         data = [itemManager data];
         
-        [sidePanel changeFolder:[itemManager currentPath]];
+        [sidePanel setTabHeaderTitle:[[itemManager currentPath] lastPathComponent]];
         
         return true;
     }
@@ -185,6 +185,10 @@
     data = nil;
     [itemManager updateItemsList];
     data = [itemManager data];
+}
+
+-(bool) changeFolder:(NSString *)folder {
+    return [itemManager changeFolder:folder];
 }
 
 @end

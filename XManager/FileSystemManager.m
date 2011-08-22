@@ -64,13 +64,13 @@
         }
         
         // Проиницализируем новый путь
-        new_path = @"";
+        new_path = @"/";
         
         // Получим компоненты текущего каталога
         NSArray* components = [current_path pathComponents];
         
         // Сформируем новый путь
-        for (NSUInteger i = 0; i < [components count] - 1; ++i) {
+        for (NSUInteger i = 1; i < [components count] - 1; ++i) {
             new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
         }
     }
@@ -147,7 +147,7 @@
     return nil;
 }
 
--(NSString*)        renameCurrent   :(NSString*)name :(NSInteger)row{
+-(NSString*) renameCurrent :(NSString*)name :(NSInteger)row{
         
     FileSystemItem* item = [data objectAtIndex:row];
     
@@ -166,7 +166,7 @@
     return nil;
 }
 
--(NSString*)        copySelected    :(NSString*)dest {
+-(NSString*) copySelected :(NSString*)dest {
     // Получим директорию источник
     NSString* src = [self currentPath];
     
@@ -314,7 +314,7 @@
     FileSystemItem* item = nil;
     
     // Если новая папка не является корневой
-    if ([new_path isEqualToString:@"//"]==NO) {
+    if ([new_path isEqualToString:@"/"]==NO) {
         
         // Создадим item
         item = [[FileSystemItem alloc] init];
@@ -407,6 +407,10 @@
                           
 -(NSString*) makePath:(NSString* )name {
     return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
+}
+
+-(bool) changeFolder:(NSString *)folder {
+    return [self openFolder:folder];
 }
 
 @end

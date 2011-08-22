@@ -13,6 +13,7 @@
 @protocol ItemManagerProtocol <NSObject>
 
 @required
+-(bool)             changeFolder    :(NSString*)folder;
 -(bool)             enterToRow      :(NSInteger)row;
 -(void)             setOrder        :(enum EFileSystemColumnId)order;
 -(NSMutableArray*)  data;

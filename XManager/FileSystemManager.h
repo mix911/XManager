@@ -28,6 +28,7 @@
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
 -(void)             updateItemsList;
 -(NSString*)        currentPath;
+-(bool)             changeFolder:(NSString *)folder;
 
 
 -(NSString*)        makeDir         :(NSString *)name;

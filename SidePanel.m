@@ -156,8 +156,8 @@
     [fileSystemManager  release];
 }
 
--(void) changeFolder:(NSString *)folder {
-    [[tabView selectedTabViewItem] setLabel:[folder lastPathComponent]];
+-(void) setTabHeaderTitle:(NSString *)title {
+    [[tabView selectedTabViewItem] setLabel:title];
 }
 
 -(int) nextTabId {
@@ -293,6 +293,11 @@
 
 -(NSString*) currentPath {
     return [[self currentDataSource] currentPath];
+}
+
+-(bool) changeFolder:(NSString *)folder {
+    [self setTabHeaderTitle:[folder lastPathComponent]];
+    return [[self currentDataSource] changeFolder:folder];
 }
 
 @end

@@ -268,10 +268,50 @@
     [messageBox close];
 }
 
--(IBAction) pushToHome:(id)sender {
+-(IBAction) pushToHomeFolder:(id)sender {
     SidePanel* active = [self activePanel];
 
     [active changeFolder:NSHomeDirectory()];
     [active updateContent];
 }
+
+-(IBAction) pushToDesktopFolder:(id)sender {
+    SidePanel* active = [self activePanel];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDirectory, YES);
+    
+    [active changeFolder:[paths objectAtIndex:0]];
+    [active updateContent];
+}
+
+-(IBAction) pushToAppsFolder:(id)sender {
+    SidePanel* active = [self activePanel];
+    
+    [active changeFolder:@"/Applications"];
+    [active updateContent];
+}
+
+-(IBAction) pushToDocumentsFolder:(id)sender {
+    SidePanel* active = [self activePanel];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDirectory, YES);
+    
+    [active changeFolder:[paths objectAtIndex:0]];
+    [active updateContent];
+}
+
+-(IBAction) pushToUtilitesFolder:(id)sender {
+    SidePanel* active = [self activePanel];
+    
+    [active changeFolder:@"/Applications/Utilities"];
+    [active updateContent];
+}
+
+-(IBAction) pushToNetworkFolder:(id)sender {
+    SidePanel* active = [self activePanel];
+    
+    [active changeFolder:@"/Network"];
+    [active updateContent];
+}
+
 @end

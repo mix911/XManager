@@ -45,7 +45,7 @@
 // FileSystemDataSource
 -(void)     setSidePanelProtocol:(id<SidePanelProtocol>)sidePanel;
 -(NSString*)currentPath;
-
+-(bool)     changeFolder    :(NSString*)folder;
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
 -(void)     invertSelection :(NSInteger)row;
 -(void)     updateItemsList;

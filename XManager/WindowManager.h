@@ -47,8 +47,13 @@
 -(IBAction) pushDelete  :(id)sender;
 
 // Top command buttons
--(IBAction) pushFtp     :(id)sender;
--(IBAction) pushToHome  :(id)sender;
+-(IBAction) pushFtp                 :(id)sender;
+-(IBAction) pushToHomeFolder        :(id)sender;
+-(IBAction) pushToDesktopFolder     :(id)sender;
+-(IBAction) pushToAppsFolder        :(id)sender;
+-(IBAction) pushToDocumentsFolder   :(id)sender;
+-(IBAction) pushToUtilitesFolder    :(id)sender;
+-(IBAction) pushToNetworkFolder     :(id)sender;
 
 // Network connection dialog
 -(IBAction) networkConnectionCancel :(id)sender;

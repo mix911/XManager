@@ -34,13 +34,14 @@
 -(NSString*)    moveSelected    :(NSString*)dest;
 
 // SidePanelProtocol
--(void) changeFolder    :(NSString *)folder;
--(bool) enterToRow      :(NSInteger)row;
+-(bool) changeFolder        :(NSString *)folder;
+-(void) setTabHeaderTitle   :(NSString*)folder;
+-(bool) enterToRow          :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
 -(void) closeCurrentTab;
--(void) invertSelection :(NSInteger)row;
--(void) postKeyDown     :(NSEvent*)event;
+-(void) invertSelection     :(NSInteger)row;
+-(void) postKeyDown         :(NSEvent*)event;
 -(void) setActive;
 
 
