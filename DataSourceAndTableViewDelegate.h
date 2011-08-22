@@ -33,7 +33,7 @@
 // Items operations
 -(NSString*) makeDir        :(NSString*)name;
 -(NSString*) deleteSelected;
--(NSString*) renameCurrent  :(NSString*)name;
+-(NSString*) renameCurrent  :(NSString*)name :(NSInteger)row;
 -(NSString*) copySelected   :(NSString*)dest;
 -(NSString*) moveSelected   :(NSString*)dest;
 

@@ -194,11 +194,12 @@
             }
             break;
             
-        case 0x11:  // D
+        case 0x11:  // T
             
             if ([event modifierFlags] & NSCommandKeyMask) {
                 [self addTabFromCurrent];
             }
+            break;
             
         case 120:   // F2
             [windowManager renameItems];
@@ -262,7 +263,7 @@
 }
 
 -(NSString*) renameCurrent:(NSString*)name {
-    return [[self currentDataSource] renameCurrent:name];
+    return [[self currentDataSource] renameCurrent:name :[[self table] selectedRow]];
 }
 
 -(NSString*) copySelected:(NSString *)dest {

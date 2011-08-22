@@ -165,8 +165,8 @@
     return [itemManager deleteSelected];
 }
 
--(NSString*) renameCurrent:(NSString *)name {
-    return [itemManager renameCurrent:name];
+-(NSString*) renameCurrent:(NSString *)name :(NSInteger)row{
+    return [itemManager renameCurrent:name :row];
 }
 
 -(NSString*) copySelected:(NSString *)dest {

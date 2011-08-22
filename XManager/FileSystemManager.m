@@ -13,7 +13,7 @@
 
 -(bool)     openFolder  :(NSString*)folder;
 -(void)     sortData;
--(NSString*)makePath    :(FileSystemItem*)name;
+-(NSString*)makePath    :(NSString*)name;
 
 @end
 
@@ -143,7 +143,18 @@
     return nil;
 }
 
--(NSString*)        renameCurrent   :(NSString*)name {
+-(NSString*)        renameCurrent   :(NSString*)name :(NSInteger)row{
+        
+    FileSystemItem* item = [data objectAtIndex:row];
+    
+    NSError* error  = nil;
+    
+    if ([fileManager moveItemAtPath:[self makePath:item.name] 
+                             toPath:[self makePath :name] 
+                              error:&error] == NO) {
+        return [error localizedFailureReason];
+    }
+    
     return nil;
 }
 
@@ -296,11 +307,8 @@
     }
 }
                           
--(NSString*) makePath:(FileSystemItem *)item {
-//    if (item.isDir) {
-//        return [NSString stringWithFormat:@"%@/%@/", [fileManager currentDirectoryPath], item.name];
-//    }
-    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], item.name];
+-(NSString*) makePath:(NSString* )name {
+    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
 }
 
 @end
