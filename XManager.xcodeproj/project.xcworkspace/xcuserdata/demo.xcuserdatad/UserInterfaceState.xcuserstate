@@ -930,9 +930,9 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>335692162.01414698</real>
-		<string>{4574, 1250}</string>
-		<string>{4962, 0}</string>
+		<real>335693143.725748</real>
+		<string>{4632, 1382}</string>
+		<string>{6438, 0}</string>
 		<dict>
 			<key>$classes</key>
 			<array>
@@ -942,7 +942,7 @@
 			<key>$classname</key>
 			<string>NSDictionary</string>
 		</dict>
-		<string>@implementation FileSystemManager</string>
+		<string>-moveSelected:</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -5809,9 +5809,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>335692162.01176602</real>
-		<string>{4574, 1250}</string>
-		<string>{4962, 0}</string>
+		<real>335693143.72320998</real>
+		<string>{4632, 1382}</string>
+		<string>{6438, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6143,7 +6143,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>335692162.01184797</real>
+		<real>335693143.72329801</real>
 		<string>{7281, 984}</string>
 		<string>{7709, 0}</string>
 		<dict>
@@ -9857,7 +9857,7 @@
 				<integer>813</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>335692007.18533802</real>
+			<real>335692751.81055498</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -9868,7 +9868,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 11:46</string>
+		<string>Today at 11:59</string>
 		<integer>234</integer>
 		<dict>
 			<key>$class</key>
@@ -10674,7 +10674,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>335692162.01375502</real>
+		<real>335693143.72534901</real>
 		<string>{7281, 984}</string>
 		<string>{7709, 0}</string>
 		<string>@implementation SidePanel</string>

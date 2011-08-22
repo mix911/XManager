@@ -167,9 +167,47 @@
 }
 
 -(NSString*)        copySelected    :(NSString*)dest {
+    // Получим директорию источник
+    NSString* src = [self currentPath];
+    
+    // Если источник и назначение равны ничего не делаем
+    if ([src isEqualToString:dest]) {
+        return nil;
+    }
+    
+    // Если имеется .. пропустим этот объект
+    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
+    
+    // Выбранные объекты
+    NSMutableArray* selected = [[NSMutableArray alloc] init];
+    
+    for (NSUInteger i = first_index; i < [data count]; ++i) {
+        
+        // Получим очередной объект
+        FileSystemItem* item = [data objectAtIndex:i];
+        
+        // Если объект выбран
+        if (item.isSelected) {
+            [selected addObject:item.name];
+        }
+    }
+    
+    NSInteger tag = 0;
+    
+    if ([workspace performFileOperation:NSWorkspaceCopyOperation source:src
+                            destination:dest 
+                                  files:selected 
+                                    tag:&tag] == NO) {
+        return @"Can't perform coping selected items";
+    }
+    
+    [selected release];
+    
     return nil;
 }
-
+//----------------------------------------------------------------
+// Перемещение
+//----------------------------------------------------------------
 -(NSString*)        moveSelected    :(NSString*)dest {
     
     // Получим директорию источник
