@@ -23,6 +23,7 @@
 }
 
 -(id)           initWithPath:(NSString*)path;
+-(void)         dealloc;
 
 // Data source
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;

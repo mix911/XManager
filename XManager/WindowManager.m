@@ -41,9 +41,9 @@
     // Если это первый запуск
     if(![self loadLastSesstion]) {
         // Получим текущую дерикторию
-        NSString* cur_dir = [[[NSURL alloc] initWithString:[[NSFileManager defaultManager] currentDirectoryPath]] path];
+//        NSString* cur_dir = [[[NSURL alloc] initWithString:[[NSFileManager defaultManager] currentDirectoryPath]] path];
         
-        cur_dir = @"/Users/demo/QtSDK";
+        NSString* cur_dir = @"/Users/demo/QtSDK";
         
         // Установи менеджер окон
         [leftPanel  setWindowManager:self];
@@ -52,6 +52,8 @@
         // Установим директории по умолчанию
         [leftPanel  addTab:cur_dir];
         [rightPanel addTab:cur_dir];
+        
+        [cur_dir release];
     }
     
 }
@@ -249,10 +251,7 @@
     
     // Получим вторую панель
     SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
-    
-    NSString* act_path = [rightPanel    currentPath];
-    NSString* sec_path = [leftPanel     currentPath];
-    
+        
     // Переместим выделенные объекты
     NSString* error = [active moveSelected:[second currentPath]];
     
@@ -267,5 +266,12 @@
 
 -(IBAction) messageBoxOk:(id)sender {
     [messageBox close];
+}
+
+-(IBAction) pushToHome:(id)sender {
+    SidePanel* active = [self activePanel];
+
+    [active changeFolder:NSHomeDirectory()];
+    [active updateContent];
 }
 @end

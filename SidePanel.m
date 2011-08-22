@@ -53,15 +53,13 @@
     // Используя объект url получим текущий для вкладки каталог
     NSString* dir = [url lastPathComponent];
     
-    // Объект url больше не нужен
-    [url release];
-    
     // Сгенерируем идентификатор для вкладки
     NSString* tab_id =  [NSString stringWithFormat:@"%S%i", [[self identifier] cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
     
     // Создадим item вкладки
     NSTabViewItem* item = [[NSTabViewItem alloc] initWithIdentifier:tab_id];
     [item setLabel:dir];
+    
     
     // Создадим и настроим scroll view
     NSScrollView* scroll_view = [[NSScrollView alloc] initWithFrame:[tabView bounds]];
@@ -80,34 +78,37 @@
     // Добавим таблицу в scroll view
     [scroll_view setDocumentView:table];
     
+    // Иконка
+    NSImageCell* icell = [[NSImageCell alloc] init];
+    
     // Колонка с иконкой
-    NSTableColumn* iconColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Icon%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
+    NSTableColumn* iconColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Icon%@", tab_id]];
     [[iconColumn headerCell] setStringValue:@""];
     [iconColumn setEditable:NO];
-    [iconColumn setDataCell:[[NSImageCell alloc] init]];
+    [iconColumn setDataCell:icell];
     [iconColumn setWidth:20.0f];
     [iconColumn setResizingMask:NSTableColumnNoResizing];
     
     // Имя
-    NSTableColumn* nameColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Name%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
+    NSTableColumn* nameColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Name%@", tab_id]];
     [[nameColumn headerCell] setStringValue:@"Name"];
     [nameColumn setEditable:NO];
     [nameColumn setResizingMask:NSTableColumnAutoresizingMask | NSTableColumnUserResizingMask];
     
     // Размер
-    NSTableColumn* sizeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Size%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
+    NSTableColumn* sizeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Size%@", tab_id]];
     [[sizeColumn headerCell] setStringValue:@"Size"];
     [sizeColumn setEditable:NO];
     [sizeColumn setResizingMask:NSTableColumnUserResizingMask];
     
     // Дата
-    NSTableColumn* dateColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Date%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
+    NSTableColumn* dateColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Date%@", tab_id]];
     [[dateColumn headerCell] setStringValue:@"Date"];
     [dateColumn setEditable:NO];
     [dateColumn setResizingMask:NSTableColumnUserResizingMask];
     
     // Тип
-    NSTableColumn* typeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Type%S", [tab_id cStringUsingEncoding:NSUnicodeStringEncoding]]];
+    NSTableColumn* typeColumn = [[NSTableColumn alloc] initWithIdentifier:[NSString stringWithFormat:@"Type%@", tab_id]];
     [[typeColumn headerCell] setStringValue:@"Type"];
     [typeColumn setEditable:NO];
     [typeColumn setResizingMask:NSTableColumnUserResizingMask];
@@ -128,15 +129,31 @@
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
     
+    // Менеджер файловой системы
+    FileSystemManager* fileSystemManager = [[FileSystemManager alloc] initWithPath:path];
+    
     // Установим ItemManager
-    [ds_delegate setItemManager:[[FileSystemManager alloc]initWithPath:path]];
+    [ds_delegate setItemManager:fileSystemManager];
     
     [table setDataSource:ds_delegate];
     // Зададим делегат
-    [table setDelegate:ds_delegate];
+    [table setDelegate:[ds_delegate retain]];
 
     // Установим SidePanelProtocol
     [ds_delegate setSidePanelProtocol:self];
+
+    [url                release];
+    [item               release];
+    [ds_delegate        release];
+    [table              release];
+    [iconColumn         release];
+    [nameColumn         release];
+    [sizeColumn         release];
+    [dateColumn         release];
+    [typeColumn         release];
+    [scroll_view        release];
+    [icell              release];
+    [fileSystemManager  release];
 }
 
 -(void) changeFolder:(NSString *)folder {

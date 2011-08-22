@@ -20,7 +20,7 @@
 }
 
 -(FtpParams*)   ftpParams {
-    return [[FtpParams alloc] init];
+    return [[[FtpParams alloc] init] autorelease];
 }
 
 @end

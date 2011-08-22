@@ -48,6 +48,7 @@
 
 // Top command buttons
 -(IBAction) pushFtp     :(id)sender;
+-(IBAction) pushToHome  :(id)sender;
 
 // Network connection dialog
 -(IBAction) networkConnectionCancel :(id)sender;

@@ -30,6 +30,10 @@
     return self;
 }
 
+-(void) dealloc {
+    [itemManager release];
+}
+
 -(bool) enterToRow:(NSInteger)row {
     
     if ([itemManager enterToRow:row]) {
@@ -140,7 +144,7 @@
 
 -(void) setItemManager:(id<ItemManagerProtocol>)im {
     [itemManager release];
-    itemManager = im;
+    itemManager = [im retain];
     data = [itemManager data];
 }
 

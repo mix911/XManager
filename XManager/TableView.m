@@ -28,7 +28,7 @@
 
 -(void) keyDown:(NSEvent*)event {
     
-    unsigned short key = [event keyCode];
+//    unsigned short key = [event keyCode];
     
     switch ([event keyCode]) {
             

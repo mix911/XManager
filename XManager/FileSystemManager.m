@@ -198,7 +198,8 @@
                             destination:dest 
                                   files:selected 
                                     tag:&tag] == NO) {
-        return @"Can't perform coping selected items";
+        [selected release];
+        return [[NSString stringWithString: @"Can't perform coping selected items"] retain];
     }
     
     [selected release];
@@ -242,6 +243,7 @@
                             destination:dest 
                                   files:selected 
                                     tag:&tag] == NO) {
+        [selected release];
         return @"Can't perform moving selected files/direcoties";
     }
     
@@ -294,8 +296,9 @@
     
     // Если ну удалось получить список объектов файловой системы
     if (strings == nil) {
+        
         // Востановим старый путь
-        [fileManager changeCurrentDirectoryPath:old_path];
+        [self setCurrentPath:old_path];
         
         // Не получилось
         return false;
