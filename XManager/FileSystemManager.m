@@ -51,9 +51,9 @@
     // Получим нужный объект файловой системы
     FileSystemItem* item = [data objectAtIndex:row];
     
-    NSString* new_path          = nil;                                  // Новый путь
+    NSString* new_path          = nil;                  // Новый путь
     NSString* current_path      = [self currentPath];   // Текущий путь
-    NSString* application_dir   = @"/Applications";                     // Путь к приложениям
+    NSString* application_dir   = @"/Applications";     // Путь к приложениям
     
     // Если выбранный ряд ведет наверх
     if ([item.name isEqualToString:@".."]) {
@@ -99,7 +99,10 @@
 }
 
 -(NSString*) currentPath {
-    return currentPath;
+    if (currentPath) {
+        return [NSString stringWithString:currentPath];
+    }
+    return nil;
 }
 
 -(NSImage*) iconForItem:(FileSystemItem*)item {
@@ -178,7 +181,7 @@
     }
     
     // Если имеется .. пропустим этот объект
-    NSUInteger first_index = [[data objectAtIndex:0] isEqualToString:@".."] ? 1 : 0;
+    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
     
     // Выбранные объекты
     NSMutableArray* selected = [[NSMutableArray alloc] init];
@@ -198,7 +201,7 @@
     
     if ([workspace performFileOperation:NSWorkspaceMoveOperation 
                                  source:src 
-                            destination:src 
+                            destination:dest 
                                   files:selected 
                                     tag:&tag] == NO) {
         return @"Can't perform moving selected files/direcoties";
@@ -226,12 +229,14 @@
     // Сохраним текущий каталог
     NSString* old_path = [self currentPath];
     
+    // Если пусть удалось установить
     if ([fileManager changeCurrentDirectoryPath:path]) {
-        currentPath = path;
+        currentPath = [NSString stringWithString:path];
         return true;
     }
     
-    [fileManager changeCurrentDirectoryPath:path];
+    // Востановим старый путь
+    [fileManager changeCurrentDirectoryPath:old_path];
     
     return false;
 }
