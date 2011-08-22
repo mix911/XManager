@@ -11,9 +11,10 @@
 
 @interface FileSystemManager(Private)
 
--(bool)     openFolder  :(NSString*)folder;
+-(bool)     openFolder      :(NSString*)folder;
 -(void)     sortData;
--(NSString*)makePath    :(NSString*)name;
+-(NSString*)makePath        :(NSString*)name;
+-(bool)     setCurrentPath  :(NSString*)path;
 
 @end
 
@@ -29,8 +30,6 @@
         
         // Создадим файловый менеджер
         fileManager = [[NSFileManager alloc] init];
-        // Настроим рабочую директорию
-        [fileManager changeCurrentDirectoryPath:path];
         
         // Откроем каталог
         [self openFolder:path];
@@ -53,7 +52,7 @@
     FileSystemItem* item = [data objectAtIndex:row];
     
     NSString* new_path          = nil;                                  // Новый путь
-    NSString* current_path      = [fileManager currentDirectoryPath];   // Текущий путь
+    NSString* current_path      = [self currentPath];   // Текущий путь
     NSString* application_dir   = @"/Applications";                     // Путь к приложениям
     
     // Если выбранный ряд ведет наверх
@@ -100,7 +99,7 @@
 }
 
 -(NSString*) currentPath {
-    return [fileManager currentDirectoryPath];
+    return currentPath;
 }
 
 -(NSImage*) iconForItem:(FileSystemItem*)item {
@@ -108,7 +107,7 @@
 }
 
 -(NSString*)    makeDir:(NSString *)name {
-    NSString* path = [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
     
     // Объект ошибки
     NSError* error = nil;
@@ -134,18 +133,24 @@
     }
     
     if ([workspace performFileOperation:NSWorkspaceRecycleOperation 
-                                 source:[fileManager currentDirectoryPath] 
+                                 source:[self currentPath] 
                             destination:@"" files:to_delete 
                                     tag:&tag] == NO) {
+        [to_delete release];
         return @"Can't perform moving in trash";
     }
     
+    [to_delete release];
     return nil;
 }
 
 -(NSString*)        renameCurrent   :(NSString*)name :(NSInteger)row{
         
     FileSystemItem* item = [data objectAtIndex:row];
+    
+    if ([item.name isEqualToString:@".."]) {
+        return nil;
+    }
     
     NSError* error  = nil;
     
@@ -163,13 +168,50 @@
 }
 
 -(NSString*)        moveSelected    :(NSString*)dest {
+    
+    // Получим директорию источник
+    NSString* src = [self currentPath];
+    
+    // Если источник и назначение равны ничего не делаем
+    if ([src isEqualToString:dest]) {
+        return nil;
+    }
+    
+    // Если имеется .. пропустим этот объект
+    NSUInteger first_index = [[data objectAtIndex:0] isEqualToString:@".."] ? 1 : 0;
+    
+    // Выбранные объекты
+    NSMutableArray* selected = [[NSMutableArray alloc] init];
+    
+    // Пройдемся по всем объектам файловой системы и составим список выбранных
+    for (NSUInteger i = first_index; i < [data count]; ++i) {
+
+        // Получим очередной объект файловой системы
+        FileSystemItem* item = [data objectAtIndex:i];
+        
+        if (item.isSelected) {
+            [selected addObject:item.name];
+        }
+    }
+    
+    NSInteger tag = 0;
+    
+    if ([workspace performFileOperation:NSWorkspaceMoveOperation 
+                                 source:src 
+                            destination:src 
+                                  files:selected 
+                                    tag:&tag] == NO) {
+        return @"Can't perform moving selected files/direcoties";
+    }
+    
+    [selected release];
     return nil;
 }
 
 
 -(void) updateItemsList {
     // Если не получится открыть текущую папку, например её больше нет
-    if ([self openFolder:[fileManager currentDirectoryPath]] == NO) {
+    if ([self openFolder:[self currentPath]] == NO) {
         // Откроем папку по умолчанию (в данном случае корневок каталог) TODO: нужно протестировать и обдумать, возможно нужна другая папка
         [self openFolder:@"/"]; 
     }
@@ -179,18 +221,28 @@
 
 @implementation FileSystemManager(Private)
 
+-(bool) setCurrentPath:(NSString *)path {
+
+    // Сохраним текущий каталог
+    NSString* old_path = [self currentPath];
+    
+    if ([fileManager changeCurrentDirectoryPath:path]) {
+        currentPath = path;
+        return true;
+    }
+    
+    [fileManager changeCurrentDirectoryPath:path];
+    
+    return false;
+}
+
 -(bool) openFolder:(NSString *)new_path {
     
     // Сохраним старый путь
-    NSString* old_path = [fileManager currentDirectoryPath];
+    NSString* old_path = [self currentPath];
     
     // Попытаемся сменить директорию
-    if ([fileManager changeCurrentDirectoryPath:new_path]==NO) {
-        
-        // Если не получилось, востановим старый путь
-        [fileManager changeCurrentDirectoryPath:old_path];
-        
-        // Не получилось
+    if ([self setCurrentPath:new_path] == false) {
         return false;
     }
     
@@ -308,7 +360,7 @@
 }
                           
 -(NSString*) makePath:(NSString* )name {
-    return [NSString stringWithFormat:@"%@/%@", [fileManager currentDirectoryPath], name];
+    return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
 }
 
 @end

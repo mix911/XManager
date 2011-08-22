@@ -250,6 +250,9 @@
     // Получим вторую панель
     SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
     
+    NSString* act_path = [rightPanel    currentPath];
+    NSString* sec_path = [leftPanel     currentPath];
+    
     // Переместим выделенные объекты
     NSString* error = [active moveSelected:[second currentPath]];
     
