@@ -43,6 +43,6 @@
 -(void) invertSelection     :(NSInteger)row;
 -(void) postKeyDown         :(NSEvent*)event;
 -(void) setActive;
-
+-(NSView*)   table;
 
 @end

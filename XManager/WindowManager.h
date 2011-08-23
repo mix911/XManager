@@ -32,6 +32,7 @@
     IBOutlet    DeleteDialog*               deleteDialog;           // Диалог удаления
     IBOutlet    CopyDialog*                 copyDialog;             // Диалог копирования
     IBOutlet    MoveDialog*                 moveDialog;             // Диалог перемещения
+    IBOutlet    NSWindow*                   mainWindow;             // Главное окно
 }
 
 -(void) awakeFromNib;
@@ -89,6 +90,7 @@
 -(void) makeDirItems;
 -(void) deleleItems;
 
+-(void) insertTab;
 -(void) setActiveSide:(id)panel;
 
 @end

@@ -65,6 +65,16 @@
                 [sidePanel invertSelection:row];
             }
             break;
+            
+        // Tab
+        case 48:
+            // Если был зажат Control то все как обычно
+            if ([event modifierFlags] & NSControlKeyMask) {
+                break;
+            }
+            // Обрабатываем сами
+            [sidePanel postKeyDown:event];
+            return;
                     
         default:
             break;
@@ -88,6 +98,7 @@
 }
 
 -(BOOL) becomeFirstResponder {
+    [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     [sidePanel setActive];
     return [super becomeFirstResponder];
 }

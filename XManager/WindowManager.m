@@ -169,6 +169,17 @@
     activePanel = panel;
 }
 
+-(void) insertTab {
+    if ([self activePanel] == leftPanel) {
+        [self setActiveSide:rightPanel];
+        [mainWindow makeFirstResponder:[rightPanel table]];
+    }
+    else {
+        [self setActiveSide:leftPanel];
+        [mainWindow makeFirstResponder:[leftPanel table]];
+    }
+}
+
 -(IBAction) deleteItemsNo:(id)sender {
     [deleteDialog close];
 }

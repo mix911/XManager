@@ -16,6 +16,7 @@
 -(void) moveItems;
 -(void) makeDirItems;
 -(void) deleleItems;
+-(void) insertTab;
 
 -(void) setActiveSide:(id)panel;
 

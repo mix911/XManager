@@ -16,7 +16,7 @@
 
 @interface SidePanel(Private)
 
--(TableView*)   table;
+//-(TableView*)   table;
 -(DataSourceAndTableViewDelegate*) currentDataSource;
 
 @end
@@ -238,6 +238,10 @@
             [windowManager deleleItems];
             break;
             
+        case 48:    // Tab - мы сдесь только когда не зажат контрол TODO: добавить вывод в лог
+            [windowManager insertTab];
+            break;
+            
         default:
             break;
     }
@@ -300,6 +304,12 @@
     return [[self currentDataSource] changeFolder:folder];
 }
 
+-(TableView*)   table {
+    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSScrollView*   scroll  = [tab_item view];
+    return [scroll documentView];
+}
+
 @end
 
 @implementation SidePanel(Private)
@@ -309,10 +319,10 @@
     return (DataSourceAndTableViewDelegate*)[table dataSource];
 }
 
--(TableView*)   table {
-    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
-    NSScrollView*   scroll  = [tab_item view];
-    return [scroll documentView];
-}
+//-(TableView*)   table {
+//    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+//    NSScrollView*   scroll  = [tab_item view];
+//    return [scroll documentView];
+//}
 
 @end
