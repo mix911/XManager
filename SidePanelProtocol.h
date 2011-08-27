@@ -19,6 +19,6 @@
 -(void) closeCurrentTab;
 -(void) invertSelection     :(NSInteger)row;
 -(void) postKeyDown         :(NSEvent*)event;
--(void) setActive;
+-(void) setActive           :(NSWindow*)window;
 
 @end

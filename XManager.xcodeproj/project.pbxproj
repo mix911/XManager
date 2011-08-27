@@ -23,6 +23,7 @@
 		B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */; };
 		B47B332113F9A32800884E4E /* FtpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B47B332013F9A32800884E4E /* FtpParams.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
+		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */; };
 		B4C10EFE1402B63000AC0416 /* ToolbarAppsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */; };
@@ -83,6 +84,8 @@
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4A45DBD13FE1E12002C082F /* WindowManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManagerProtocol.h; sourceTree = "<group>"; };
+		B4B3182414043A350004A407 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
 		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
 		B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GenericNetworkIcon.icns; path = Resources/Icons/GenericNetworkIcon.icns; sourceTree = SOURCE_ROOT; };
@@ -226,6 +229,8 @@
 		B483E68F13FBE99300295218 /* Dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				B4B3182414043A350004A407 /* MainWindow.h */,
+				B4B3182514043A350004A407 /* MainWindow.m */,
 				B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */,
 				B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */,
 				B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */,
@@ -421,6 +426,7 @@
 				B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */,
 				B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */,
 				B4C7E5A213FFAECA00E7C92E /* RenameDialog.m in Sources */,
+				B4B3182614043A350004A407 /* MainWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

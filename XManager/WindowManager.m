@@ -172,12 +172,20 @@
 -(void) insertTab {
     if ([self activePanel] == leftPanel) {
         [self setActiveSide:rightPanel];
-        [mainWindow makeFirstResponder:[rightPanel table]];
+        [rightPanel setActive:mainWindow];
     }
     else {
         [self setActiveSide:leftPanel];
-        [mainWindow makeFirstResponder:[leftPanel table]];
+        [leftPanel setActive:mainWindow];
     }
+}
+
+-(void) switchToNextTab {
+    [[self activePanel] switchToNextTab];
+}
+
+-(void) switchToPrevTab {
+    [[self activePanel] switchToPrevTab];
 }
 
 -(IBAction) deleteItemsNo:(id)sender {

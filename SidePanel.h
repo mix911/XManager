@@ -42,7 +42,9 @@
 -(void) closeCurrentTab;
 -(void) invertSelection     :(NSInteger)row;
 -(void) postKeyDown         :(NSEvent*)event;
--(void) setActive;
+-(void) setActive           :(NSWindow*)window;
 -(NSView*)   table;
+-(void) switchToNextTab;
+-(void) switchToPrevTab;
 
 @end

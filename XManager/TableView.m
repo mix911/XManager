@@ -70,7 +70,8 @@
         case 48:
             // Если был зажат Control то все как обычно
             if ([event modifierFlags] & NSControlKeyMask) {
-                break;
+                [super      keyDown     :event];
+                return;
             }
             // Обрабатываем сами
             [sidePanel postKeyDown:event];
@@ -92,14 +93,9 @@
     }
 }
 
--(void) drawRect:(NSRect)dirtyRect {
-    // Нарисуемся
-    [super drawRect:dirtyRect];
-}
-
 -(BOOL) becomeFirstResponder {
     [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-    [sidePanel setActive];
+    [sidePanel setActive:nil];
     return [super becomeFirstResponder];
 }
 

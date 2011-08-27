@@ -92,5 +92,7 @@
 
 -(void) insertTab;
 -(void) setActiveSide:(id)panel;
+-(void) switchToNextTab;
+-(void) switchToPrevTab;
 
 @end

@@ -16,7 +16,7 @@
 
 @interface SidePanel(Private)
 
-//-(TableView*)   table;
+-(TableView*)   table;
 -(DataSourceAndTableViewDelegate*) currentDataSource;
 
 @end
@@ -247,8 +247,11 @@
     }
 }
 
--(void) setActive {
-    [windowManager setActiveSide:self];
+-(void) setActive :(NSWindow*)window{
+    [windowManager  setActiveSide       :self];
+    if (window) {
+        [window         makeFirstResponder  :[self table]];
+    }
 }
 
 -(void) setWindowManager:(id<WindowManagerProtocol>)manager {
@@ -304,10 +307,26 @@
     return [[self currentDataSource] changeFolder:folder];
 }
 
--(TableView*)   table {
-    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
-    NSScrollView*   scroll  = [tab_item view];
-    return [scroll documentView];
+-(NSView*)  table {
+    return [self table];
+}
+
+-(void) switchToNextTab {
+    if ([tabView indexOfTabViewItem:[tabView selectedTabViewItem]] == [tabView numberOfTabViewItems] - 1) {
+        [tabView selectFirstTabViewItem:self];
+    }
+    else {
+        [tabView selectNextTabViewItem:self];
+    }
+}
+
+-(void) switchToPrevTab {
+    if ([tabView indexOfTabViewItem:[tabView selectedTabViewItem]] == 0) {
+        [tabView selectLastTabViewItem:self];
+    }
+    else {
+        [tabView selectPreviousTabViewItem:self];
+    }
 }
 
 @end
@@ -319,10 +338,10 @@
     return (DataSourceAndTableViewDelegate*)[table dataSource];
 }
 
-//-(TableView*)   table {
-//    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
-//    NSScrollView*   scroll  = [tab_item view];
-//    return [scroll documentView];
-//}
+-(TableView*)   table {
+    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSScrollView*   scroll  = [tab_item view];
+    return [scroll documentView];
+}
 
 @end
