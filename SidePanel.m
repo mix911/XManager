@@ -305,7 +305,7 @@
     return [[self currentDataSource] renameCurrent:name :[[self table] selectedRow]];
 }
 
--(NSString*) copySelected:(NSString *)dest {
+-(NSString*) copySelected:(NSArray*)selected :(NSString*)dest {
     return [[self currentDataSource] copySelected:dest];
 }
 
@@ -344,7 +344,7 @@
     }
 }
 
--(void) selectedItems:(NSMutableArray *)selected {
+-(bool) selectedItems:(NSMutableArray *)selected {
 
     // Отчистим входящий массив
     [selected removeAllObjects];
@@ -369,6 +369,24 @@
             [selected addObject:[NSNumber numberWithLong:current_row]];
         }
     }
+    
+    return [selected count] != 0;
+}
+
+-(void) determineDirectorySize  :(NSInteger)row {
+    // Проверим ряд, нулевой это ..
+    if (row == 0) {
+        return;
+    }
+    
+    // Получим источник данных
+    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
+    
+    // Запустим подсчет размера папки
+    [ds determineDirectorySize:row];
+    
+    // Обновим контент
+    [[self table] reloadData];
 }
 
 @end

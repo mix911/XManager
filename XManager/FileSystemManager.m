@@ -11,10 +11,224 @@
 
 @interface FileSystemManager(Private)
 
--(bool)     openFolder      :(NSString*)folder;
--(void)     sortData;
--(NSString*)makePath        :(NSString*)name;
--(bool)     setCurrentPath  :(NSString*)path;
+-(bool)         openFolder      :(NSString*)folder;
+-(void)         sortData;
+-(NSString*)    makePath        :(NSString*)name;
+-(bool)         setCurrentPath  :(NSString*)path;
+
+// Определение размера
+-(void)         expandNode      :(NSString*)node :(NSMutableArray*)stack;
+-(bool)         isLeaf          :(NSString*)node;
+-(NSUInteger)   nodeSize        :(NSString*)node;
+
+@end
+
+@implementation FileSystemManager(Private)
+
+-(bool) setCurrentPath:(NSString *)path {
+    
+    // Сохраним текущий каталог
+    NSString* old_path = [self currentPath];
+    
+    // Если пусть удалось установить
+    if ([fileManager changeCurrentDirectoryPath:path]) {
+        currentPath = [NSString stringWithString:path];
+        return true;
+    }
+    
+    // Востановим старый путь
+    [fileManager changeCurrentDirectoryPath:old_path];
+    
+    return false;
+}
+
+-(bool) openFolder:(NSString *)new_path {
+    
+    // Сохраним старый путь
+    NSString* old_path = [self currentPath];
+    
+    // Попытаемся сменить директорию
+    if ([self setCurrentPath:new_path] == false) {
+        return false;
+    }
+    
+    // Получим список всех папок, файлов и прочих объектов файловой системы
+    NSArray* strings = [fileManager contentsOfDirectoryAtPath:new_path error:nil];
+    
+    // Если ну удалось получить список объектов файловой системы
+    if (strings == nil) {
+        
+        // Востановим старый путь
+        [self setCurrentPath:old_path];
+        
+        // Не получилось
+        return false;
+    }
+    
+    // Удалим старые данные
+    [data release];
+    
+    // Создадим контейнер для новых данных
+    data = [[NSMutableArray alloc] init];
+    
+    // Пустой item
+    FileSystemItem* item = nil;
+    
+    // Если новая папка не является корневой
+    if ([new_path isEqualToString:@"/"]==NO) {
+        
+        // Создадим item
+        item = [[FileSystemItem alloc] init];
+        
+        // Создадим папку ".."
+        [item setFullPath   :new_path]; // Полный путь
+        [item setName       :@".."];    // Имя ..
+        [item setSize       :-1];       // Размера у этой папки нет
+        [item setDate       :nil];      // Даты у этой папки нет
+        [item setType       :@"<Dir>"]; // Это папка
+        [item setIsDir      :YES];      // Это папка
+        
+        // Добавим item
+        [data addObject:item];
+    }
+    
+    // Для каждой строки
+    for(NSString* string in strings) {
+        
+        // Создадим новый item
+        item = [[FileSystemItem alloc] init];
+        
+        // Получим атрибуты очередного объекта файловой системы
+        NSDictionary* attrs = [fileManager attributesOfItemAtPath:string error:nil];
+        
+        // Определим тип объекта
+        NSString* item_type = [attrs objectForKey:NSFileType];
+        
+        // Это каталог?
+        bool is_dir = [item_type isEqualToString:NSFileTypeDirectory];
+        
+        // Получим дату модификации
+        NSDate* modification_date = [attrs objectForKey:NSFileModificationDate];
+        
+        // Пустые size и type
+        NSString* size = nil;
+        NSString* type = nil;
+        
+        // Если чередной объект - каталог
+        if (is_dir) {
+            size = @"-1";
+            type = @"<Dir>";
+        }
+        else {
+            size = [attrs objectForKey:NSFileSize];
+            type = [string pathExtension];
+        }
+        
+        [item setName       :string];
+        [item setFullPath   :[NSString stringWithFormat:@"%@/%@", new_path, string]];
+        [item setIsDir      :is_dir];
+        [item setSize       :[size integerValue]];
+        [item setDate       :modification_date];
+        [item setType       :type];
+        
+        [data addObject:item];
+    }
+    
+    [self sortData];
+    
+    return true;
+}
+
+-(void) sortData {
+    
+    switch (order) {
+        case FS_ICON:
+            break;
+            
+        case FS_NAME:
+            [data sortUsingSelector:@selector(compareByName:)];
+            break;
+            
+        case FS_SIZE:
+            [data sortUsingSelector:@selector(compareBySize:)];
+            break;
+            
+        case FS_DATE:
+            [data sortUsingSelector:@selector(compareByDate:)];
+            break;
+            
+        case FS_TYPE:
+            [data sortUsingSelector:@selector(compareByType:)];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(NSString*) makePath:(NSString* )name {
+    return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
+}
+
+-(bool) changeFolder:(NSString *)folder {
+    return [self openFolder:folder];
+}
+
+// TODO: в будущем учесть символические ссылки
+-(void) expandNode:(NSString *)node :(NSMutableArray *)stack {
+    // Ошибка
+    NSError* error = nil;
+    
+    // Получим детей
+    NSArray* children = [fileManager contentsOfDirectoryAtPath:node error:&error];
+    
+    // Если произошла ошибка (такое может быть в случае отсутсвии прав)
+    if (children == nil || error != nil) {
+        return;
+    }
+    
+    // Присоединим полученый массив в конец стека
+    for (NSString* child in children) {
+        [stack addObject:[NSString stringWithFormat:@"%@/%@", node, child]];
+    }
+}
+
+-(bool) isLeaf:(NSString *)node {
+    // Ошибка
+    NSError* error = nil;
+    
+    // Получим атрибуты
+    NSDictionary* attrs = [fileManager attributesOfItemAtPath:node error:&error];
+    
+    // Если произошла ошибка
+    if (attrs == nil || error != nil) {
+        // Возвращая true мы сообщаем, что узел - лист. Тогда при определении размера нужно исходить из того,
+        // что узлы для которых нельзя посчитать размер имеют размер 0
+        return true;
+    }
+    
+    // Все что не директория - лист
+    return ![[attrs objectForKey:NSFileType] isEqualToString:NSFileTypeDirectory];
+}
+
+-(NSUInteger) nodeSize:(NSString *)node {
+    // Ошибка
+    NSError* error = nil;
+    
+    // Получим атрибуты
+    NSDictionary* attrs = [fileManager attributesOfItemAtPath:node error:&error];
+    
+    // Если произошла ошибка
+    if (attrs == nil || error != nil) {
+        return 0;
+    }
+    
+    // Получим строковое представление размера
+    NSString* str_size = [attrs objectForKey:NSFileSize];
+    
+    // Вернем численное представление размера
+    return [str_size integerValue];
+}
 
 @end
 
@@ -255,162 +469,35 @@
 -(void) updateItemsList {
     // Если не получится открыть текущую папку, например её больше нет
     if ([self openFolder:[self currentPath]] == NO) {
-        // Откроем папку по умолчанию (в данном случае корневок каталог) TODO: нужно протестировать и обдумать, возможно нужна другая папка
+        // Откроем папку по умолчанию (в данном случае корневой каталог) TODO: нужно протестировать и обдумать, возможно нужна другая папка
         [self openFolder:@"/"]; 
     }
 }
 
-@end
+-(NSUInteger) determineDirectorySize:(NSString*)path {
+    
+    // Для определения размера воспользуемся обходом дерева в глубину, так как требуемый размер памяти эквивалентен 
+    // высотой дерева
+    NSMutableArray* stack = [[NSMutableArray alloc] init];
 
-@implementation FileSystemManager(Private)
-
--(bool) setCurrentPath:(NSString *)path {
-
-    // Сохраним текущий каталог
-    NSString* old_path = [self currentPath];
+    [self expandNode :path :stack];
     
-    // Если пусть удалось установить
-    if ([fileManager changeCurrentDirectoryPath:path]) {
-        currentPath = [NSString stringWithString:path];
-        return true;
-    }
+    NSInteger size = 0;
     
-    // Востановим старый путь
-    [fileManager changeCurrentDirectoryPath:old_path];
-    
-    return false;
-}
-
--(bool) openFolder:(NSString *)new_path {
-    
-    // Сохраним старый путь
-    NSString* old_path = [self currentPath];
-    
-    // Попытаемся сменить директорию
-    if ([self setCurrentPath:new_path] == false) {
-        return false;
-    }
-    
-    // Получим список всех папок, файлов и прочих объектов файловой системы
-    NSArray* strings = [fileManager contentsOfDirectoryAtPath:new_path error:nil];
-    
-    // Если ну удалось получить список объектов файловой системы
-    if (strings == nil) {
+    while ([stack count] != 0) {
         
-        // Востановим старый путь
-        [self setCurrentPath:old_path];
+        NSString* last = [stack lastObject];
+        [stack removeLastObject];
         
-        // Не получилось
-        return false;
-    }
-    
-    // Удалим старые данные
-    [data release];
-    
-    // Создадим контейнер для новых данных
-    data = [[NSMutableArray alloc] init];
-    
-    // Пустой item
-    FileSystemItem* item = nil;
-    
-    // Если новая папка не является корневой
-    if ([new_path isEqualToString:@"/"]==NO) {
-        
-        // Создадим item
-        item = [[FileSystemItem alloc] init];
-        
-        // Создадим папку ".."
-        [item setFullPath   :new_path]; // Полный путь
-        [item setName       :@".."];    // Имя ..
-        [item setSize       :@"--"];    // Размера у этой папки нет
-        [item setDate       :nil];      // Даты у этой папки нет
-        [item setType       :@"<Dir>"]; // Это папка
-        [item setIsDir      :YES];      // Это папка
-        
-        // Добавим item
-        [data addObject:item];
-    }
-    
-    // Для каждой строки
-    for(NSString* string in strings) {
-
-        // Создадим новый item
-        item = [[FileSystemItem alloc] init];
-        
-        // Получим атрибуты очередного объекта файловой системы
-        NSDictionary* attrs = [fileManager attributesOfItemAtPath:string error:nil];
-        
-        // Определим тип объекта
-        NSString* item_type = [attrs objectForKey:NSFileType];
-        
-        // Это каталог?
-        bool is_dir = [item_type isEqualToString:NSFileTypeDirectory];
-        
-        // Получим дату модификации
-        NSDate* modification_date = [attrs objectForKey:NSFileModificationDate];
-        
-        // Пустые size и type
-        NSString* size = nil;
-        NSString* type = nil;
-        
-        // Если чередной объект - каталог
-        if (is_dir) {
-            size = @"--";
-            type = @"<Dir>";
+        if ([self isLeaf:last]) {
+            size += [self nodeSize:last];
         }
         else {
-            size = [attrs objectForKey:NSFileSize];
-            type = [string pathExtension];
+            [self expandNode :last :stack];
         }
-        
-        [item setName       :string];
-        [item setFullPath   :[NSString stringWithFormat:@"%@/%@", new_path, string]];
-        [item setIsDir      :is_dir];
-        [item setSize       :size];
-        [item setDate       :modification_date];
-        [item setType       :type];
-        
-        [data addObject:item];
     }
     
-    [self sortData];
-    
-    return true;
-}
-
--(void) sortData {
-    
-    switch (order) {
-        case FS_ICON:
-            break;
-            
-        case FS_NAME:
-            [data sortUsingSelector:@selector(compareByName:)];
-            break;
-            
-        case FS_SIZE:
-            [data sortUsingSelector:@selector(compareBySize:)];
-            break;
-            
-        case FS_DATE:
-            [data sortUsingSelector:@selector(compareByDate:)];
-            break;
-            
-        case FS_TYPE:
-            [data sortUsingSelector:@selector(compareByType:)];
-            break;
-            
-        default:
-            break;
-    }
-}
-                          
--(NSString*) makePath:(NSString* )name {
-    return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
-}
-
--(bool) changeFolder:(NSString *)folder {
-    return [self openFolder:folder];
+    return size;
 }
 
 @end

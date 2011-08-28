@@ -30,21 +30,23 @@
 -(NSString*)    makeDir         :(NSString*)name;
 -(NSString*)    deleteSelected;
 -(NSString*)    renameCurrent   :(NSString*)name;
--(NSString*)    copySelected    :(NSString*)dest;
+-(NSString*)    copySelected    :(NSArray*)selected :(NSString*)dest;
 -(NSString*)    moveSelected    :(NSString*)dest;
 
 // SidePanelProtocol
--(bool) changeFolder        :(NSString *)folder;
--(void) setTabHeaderTitle   :(NSString*)folder;
--(bool) enterToRow          :(NSInteger)row;
+-(bool) changeFolder            :(NSString *)folder;
+-(void) setTabHeaderTitle       :(NSString*)folder;
+-(bool) enterToRow              :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
 -(void) closeCurrentTab;
--(void) invertSelection     :(NSInteger)row;
--(void) postKeyDown         :(NSEvent*)event;
--(void) setActive           :(NSWindow*)window;
+-(void) invertSelection         :(NSInteger)row;
+-(void) postKeyDown             :(NSEvent*)event;
+-(void) setActive               :(NSWindow*)window;
 -(NSView*)   table;
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
+-(bool) selectedItems           :(NSMutableArray*)selected;
+-(void) determineDirectorySize  :(NSInteger)row;
 
 @end

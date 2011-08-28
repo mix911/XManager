@@ -26,5 +26,6 @@
 -(NSString*)        renameCurrent   :(NSString*)name :(NSInteger)row;
 -(NSString*)        copySelected    :(NSString*)dest;
 -(NSString*)        moveSelected    :(NSString*)dest;
+-(NSUInteger)       determineDirectorySize:(NSString*)row;
 
 @end

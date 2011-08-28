@@ -101,7 +101,7 @@
             return item.name;
         
         case FS_SIZE:
-            return item.size;
+            return item.size == -1 ? @"--" : [[NSNumber numberWithInteger:item.size] stringValue];
             
         case FS_DATE:
             return  [dateFormatter stringFromDate:item.date];
@@ -201,6 +201,21 @@
 
 -(NSString*) moveSelected:(NSString *)dest {
     return [itemManager moveSelected:dest];
+}
+
+-(void) determineDirectorySize:(NSUInteger)row {
+    // Проверки
+    if (row >= [data count]) {
+        return;
+    }
+    // Получим объект файловой системы
+    FileSystemItem* item = [data objectAtIndex:row];
+    
+    // Получим путь
+    NSString* path = [NSString stringWithFormat:@"%@/%@", [itemManager currentPath], item.name];
+    
+    // Запросим размер директории
+    item.size = [itemManager determineDirectorySize:path];
 }
 
 -(void) updateItemsList {

@@ -23,7 +23,7 @@ enum EFileSystemColumnId {
 @interface FileSystemItem : NSObject {
     NSString*   fullPath;   // Полный путь - используется FileSystemManager для генерации иконок
     NSString*   name;       // Наименование объекта файловой системы
-    NSString*   size;       // Размер, TODO: нужно переделать в байты
+    NSInteger   size;       // Размер, TODO: нужно переделать в байты
     NSDate*     date;       // Дата модификации
     NSString*   type;       // Тип (расширение) файла
     bool        isDir;      // Это каталог? TODO: нужно обдумать символические ссылки
@@ -32,7 +32,7 @@ enum EFileSystemColumnId {
 
 @property(retain)   NSString*   fullPath;
 @property(retain)   NSString*   name;
-@property(retain)   NSString*   size;
+@property           NSInteger   size;
 @property(retain)   NSDate*     date;
 @property(retain)   NSString*   type;
 @property           bool        isDir;

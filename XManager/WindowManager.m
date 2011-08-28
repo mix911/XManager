@@ -244,16 +244,19 @@
     // Получим вторую панель
     SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
     
-    // Скопируем выделенные объекты
-    NSString* error = [active copySelected:[second currentPath]];
+    // Выделенные объекты
+    NSMutableArray* selected = [[NSMutableArray alloc] init];
     
-    // Если не получилось
-    if (error) {
-        [self messageBox:error];
+    // Получим выделенные объекты
+    if ([active selectedItems:selected]) {
+        NSString* error = [active copySelected:selected:[second currentPath]];
+        
+        if (error) {
+            [self messageBox:error];
+        }
+        
+        [self updateContent];
     }
-    
-    // Обновим содержимое
-    [self updateContent];
 }
 
 -(IBAction) moveNo:(id)sender {
