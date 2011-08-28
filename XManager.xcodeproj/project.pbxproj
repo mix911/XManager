@@ -34,7 +34,7 @@
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
 		B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C5490913FE6F7F0071825D /* MakeDirDialog.m */; };
 		B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */; };
-		B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */; };
+		B4C7E59C13FFAE0E00E7C92E /* YesNoDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59B13FFAE0E00E7C92E /* YesNoDialog.m */; };
 		B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */; };
 		B4C7E5A213FFAECA00E7C92E /* RenameDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E5A113FFAECA00E7C92E /* RenameDialog.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
@@ -100,8 +100,8 @@
 		B4C5490913FE6F7F0071825D /* MakeDirDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeDirDialog.m; sourceTree = "<group>"; };
 		B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionDialog.h; sourceTree = "<group>"; };
 		B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionDialog.m; sourceTree = "<group>"; };
-		B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyDialog.h; sourceTree = "<group>"; };
-		B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyDialog.m; sourceTree = "<group>"; };
+		B4C7E59A13FFAE0E00E7C92E /* YesNoDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; path = YesNoDialog.h; sourceTree = "<group>"; };
+		B4C7E59B13FFAE0E00E7C92E /* YesNoDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YesNoDialog.m; sourceTree = "<group>"; };
 		B4C7E59D13FFAE2B00E7C92E /* MoveDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveDialog.h; sourceTree = "<group>"; };
 		B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveDialog.m; sourceTree = "<group>"; };
 		B4C7E5A013FFAECA00E7C92E /* RenameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenameDialog.h; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 			children = (
 				B4B3182414043A350004A407 /* MainWindow.h */,
 				B4B3182514043A350004A407 /* MainWindow.m */,
-				B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */,
-				B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */,
+				B4C7E59A13FFAE0E00E7C92E /* YesNoDialog.h */,
+				B4C7E59B13FFAE0E00E7C92E /* YesNoDialog.m */,
 				B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */,
 				B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */,
 				B4C110CA13FEEB6600D84449 /* MessageBox.h */,
@@ -423,7 +423,7 @@
 				B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */,
 				B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */,
 				B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */,
-				B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */,
+				B4C7E59C13FFAE0E00E7C92E /* YesNoDialog.m in Sources */,
 				B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */,
 				B4C7E5A213FFAECA00E7C92E /* RenameDialog.m in Sources */,
 				B4B3182614043A350004A407 /* MainWindow.m in Sources */,

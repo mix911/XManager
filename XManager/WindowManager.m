@@ -333,4 +333,19 @@
     [active updateContent];
 }
 
+-(void) pressMoveYes {
+    [self moveYes:self];
+}
+-(void) pressCopyYes {
+    [self copyYes:self];
+}
+
+-(void) pressMoveNo {
+    
+}
+
+-(void) pressCopyNo {
+    
+}
+
 @end

@@ -20,4 +20,9 @@
 
 -(void) setActiveSide:(id)panel;
 
+-(void) pressMoveYes;
+-(void) pressCopyYes;
+-(void) pressMoveNo;
+-(void) pressCopyNo;
+
 @end

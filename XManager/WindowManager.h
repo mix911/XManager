@@ -12,7 +12,7 @@
 #import "WindowManagerProtocol.h"
 #import "SidePanel.h"
 #import "NetworkConnectionDialog.h"
-#import "CopyDialog.h"
+#import "YesNoDialog.h"
 #import "MoveDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
@@ -30,7 +30,7 @@
     IBOutlet    MakeDirDialog*              makeDirDialog;          // Диалог создания каталога
     IBOutlet    MessageBox*                 messageBox;             // Сообдение
     IBOutlet    DeleteDialog*               deleteDialog;           // Диалог удаления
-    IBOutlet    CopyDialog*                 copyDialog;             // Диалог копирования
+    IBOutlet    YesNoDialog*                 copyDialog;             // Диалог копирования
     IBOutlet    MoveDialog*                 moveDialog;             // Диалог перемещения
     IBOutlet    NSWindow*                   mainWindow;             // Главное окно
 }
@@ -94,5 +94,10 @@
 -(void) setActiveSide:(id)panel;
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
+
+-(void) pressMoveYes;
+-(void) pressCopyYes;
+-(void) pressMoveNo;
+-(void) pressCopyNo;
 
 @end

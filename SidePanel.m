@@ -21,6 +21,21 @@
 
 @end
 
+@implementation SidePanel(Private)
+
+-(DataSourceAndTableViewDelegate*) currentDataSource {
+    TableView* table = [self table];
+    return (DataSourceAndTableViewDelegate*)[table dataSource];
+}
+
+-(TableView*)   table {
+    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSScrollView*   scroll  = [tab_item view];
+    return [scroll documentView];
+}
+
+@end
+
 @implementation SidePanel
 
 - (id)init {
@@ -329,19 +344,31 @@
     }
 }
 
-@end
+-(void) selectedItems:(NSMutableArray *)selected {
 
-@implementation SidePanel(Private)
+    // Отчистим входящий массив
+    [selected removeAllObjects];
+    
+    // Получим источник данных
+    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
+    
+    // Получим выделенные объекты
+    [ds selectedItems:selected];
+    
+    // Если выделенных объектов нет, выделеным считается тот на котором курсор, кроме '..'
+    if ([selected count] == 0) {
 
--(DataSourceAndTableViewDelegate*) currentDataSource {
-    TableView* table = [self table];
-    return (DataSourceAndTableViewDelegate*)[table dataSource];
-}
-
--(TableView*)   table {
-    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
-    NSScrollView*   scroll  = [tab_item view];
-    return [scroll documentView];
+        // Получим таблицу
+        TableView* table = [self table];
+        
+        // Получим текущий ряд
+        NSInteger current_row = [table selectedRow];
+        
+        // Кроме '..'
+        if (current_row != 0) {
+            [selected addObject:[NSNumber numberWithLong:current_row]];
+        }
+    }
 }
 
 @end

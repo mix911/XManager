@@ -19,6 +19,28 @@
 
 @end
 
+@implementation DataSourceAndTableViewDelegate(Private)
+
+-(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
+    
+    // Получим идентификатор колонки TODO: переделать на идентификатор колонки
+    NSString* col_id = [column identifier];
+    
+    if ([col_id hasPrefix:@"Icon"])
+        return FS_ICON;
+    if ([col_id hasPrefix:@"Name"])
+        return FS_NAME;
+    if ([col_id hasPrefix:@"Size"])
+        return FS_SIZE;
+    if ([col_id hasPrefix:@"Date"])
+        return FS_DATE;
+    if ([col_id hasPrefix:@"Type"])
+        return FS_TYPE;
+    return FS_UNDEFINED;
+}
+
+@end
+
 @implementation DataSourceAndTableViewDelegate
 
 -(id) initWithPath:(NSString *)path {
@@ -191,26 +213,21 @@
     return [itemManager changeFolder:folder];
 }
 
-@end
+-(void) selectedItems:(NSMutableArray *)selected {
 
-@implementation DataSourceAndTableViewDelegate(Private)
-
--(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
+    // Отчистим входящий массив
+    [selected removeAllObjects];
     
-    // Получим идентификатор колонки TODO: переделать на идентификатор колонки
-    NSString* col_id = [column identifier];
-    
-    if ([col_id hasPrefix:@"Icon"])
-        return FS_ICON;
-    if ([col_id hasPrefix:@"Name"])
-        return FS_NAME;
-    if ([col_id hasPrefix:@"Size"])
-        return FS_SIZE;
-    if ([col_id hasPrefix:@"Date"])
-        return FS_DATE;
-    if ([col_id hasPrefix:@"Type"])
-        return FS_TYPE;
-    return FS_UNDEFINED;
+    // Пройдемся по всем объектам файловой системы (кроме '..')
+    for (int i = 1; i < [data count]; ++i) {
+        
+        // Получим очередной объект
+        FileSystemItem* item = [data objectAtIndex:i];
+        
+        if (item.isSelected) {
+            [selected addObject:[NSNumber numberWithInt:i]];
+        }
+    }
 }
 
 @end

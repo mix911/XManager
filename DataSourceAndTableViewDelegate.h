@@ -49,6 +49,6 @@
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
 -(void)     invertSelection :(NSInteger)row;
 -(void)     updateItemsList;
-
+-(void)     selectedItems   :(NSMutableArray*)selected;
 
 @end
