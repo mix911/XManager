@@ -374,18 +374,15 @@
 }
 
 -(void) determineDirectorySize  :(NSInteger)row {
-    // Проверим ряд, нулевой это ..
-    if (row == 0) {
-        return;
-    }
     
     // Получим источник данных
     DataSourceAndTableViewDelegate* ds = [self currentDataSource];
     
     // Запустим подсчет размера папки
-    [ds determineDirectorySize:row];
-    
-    // Обновим контент
+    [ds runDetermineDirectorySize:row];
+}
+
+-(void) updateTable {
     [[self table] reloadData];
 }
 

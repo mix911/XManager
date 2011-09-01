@@ -20,6 +20,8 @@
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
     id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
+    NSLock*                     sync;           // Синхронизация данных
+    NSMutableDictionary*        tasks;          // Задачи
 }
 
 -(id)           initWithPath:(NSString*)path;
@@ -28,16 +30,17 @@
 // Data source
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
--(bool)         enterToRow:(NSInteger)row;
+-(bool)         enterToRow:(NSUInteger)row;
 -(bool)         goUp;
 
 // Items operations
--(NSString*) makeDir        :(NSString*)name;
--(NSString*) deleteSelected;
--(NSString*) renameCurrent  :(NSString*)name :(NSInteger)row;
--(NSString*) copySelected   :(NSString*)dest;
--(NSString*) moveSelected   :(NSString*)dest;
--(void)      determineDirectorySize:(NSUInteger)row;
+-(NSString*)    makeDir        :(NSString*)name;
+-(NSString*)    deleteSelected;
+-(NSString*)    renameCurrent  :(NSString*)name :(NSInteger)row;
+-(NSString*)    copySelected   :(NSString*)dest;
+-(NSString*)    moveSelected   :(NSString*)dest;
+-(void)         runDetermineDirectorySize:(NSUInteger)row;
++(void)         determineDirectorySize:(id)row;
 
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;

@@ -13,8 +13,8 @@
 @protocol ItemManagerProtocol <NSObject>
 
 @required
--(bool)             changeFolder    :(NSString*)folder;
--(bool)             enterToRow      :(NSInteger)row;
+-(NSMutableArray*)  changeFolder    :(NSString*)folder;
+//-(bool)             enterToRow      :(NSInteger)row;
 -(void)             setOrder        :(enum EFileSystemColumnId)order;
 -(NSMutableArray*)  data;
 -(NSString*)        currentPath;
@@ -26,6 +26,6 @@
 -(NSString*)        renameCurrent   :(NSString*)name :(NSInteger)row;
 -(NSString*)        copySelected    :(NSString*)dest;
 -(NSString*)        moveSelected    :(NSString*)dest;
--(NSUInteger)       determineDirectorySize:(NSString*)row;
+-(NSUInteger)       determineDirectorySize:(NSString*)path;
 
 @end

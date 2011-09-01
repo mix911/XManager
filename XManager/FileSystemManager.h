@@ -13,7 +13,6 @@
 @interface FileSystemManager : NSObject <ItemManagerProtocol> {
     NSFileManager*  fileManager;
     NSWorkspace*    workspace;
-    NSMutableArray* data;
     NSInteger       order;
     NSString*       currentPath;
 }
@@ -23,12 +22,12 @@
 
 // ItemManagerProtocol
 -(NSMutableArray*)  data;
--(bool)             enterToRow  :(NSInteger)row;
+//-(bool)             enterToRow  :(NSInteger)row;
 -(void)             setOrder    :(enum EFileSystemColumnId)order;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
 -(void)             updateItemsList;
 -(NSString*)        currentPath;
--(bool)             changeFolder:(NSString *)folder;
+-(NSMutableArray*)  changeFolder    :(NSString*)folder;
 
 
 -(NSString*)        makeDir         :(NSString *)name;

@@ -11,15 +11,15 @@
 
 @interface FileSystemManager(Private)
 
--(bool)         openFolder      :(NSString*)folder;
--(void)         sortData;
--(NSString*)    makePath        :(NSString*)name;
--(bool)         setCurrentPath  :(NSString*)path;
+-(NSMutableArray*)  openFolder      :(NSString*)folder;
+//-(void)             sortData;
+-(NSString*)        makePath        :(NSString*)name;
+-(bool)             setCurrentPath  :(NSString*)path;
 
 // Определение размера
--(void)         expandNode      :(NSString*)node :(NSMutableArray*)stack;
--(bool)         isLeaf          :(NSString*)node;
--(NSUInteger)   nodeSize        :(NSString*)node;
+-(void)             expandNode      :(NSString*)node :(NSMutableArray*)stack :(NSFileManager*)fm;
+-(bool)             isLeaf          :(NSString*)node :(NSFileManager*)fm;
+-(NSUInteger)       nodeSize        :(NSString*)node :(NSFileManager*)fm;
 
 @end
 
@@ -42,14 +42,14 @@
     return false;
 }
 
--(bool) openFolder:(NSString *)new_path {
+-(NSMutableArray*) openFolder:(NSString *)new_path {
     
     // Сохраним старый путь
     NSString* old_path = [self currentPath];
     
     // Попытаемся сменить директорию
     if ([self setCurrentPath:new_path] == false) {
-        return false;
+        return nil;
     }
     
     // Получим список всех папок, файлов и прочих объектов файловой системы
@@ -62,14 +62,11 @@
         [self setCurrentPath:old_path];
         
         // Не получилось
-        return false;
+        return nil;
     }
     
-    // Удалим старые данные
-    [data release];
-    
-    // Создадим контейнер для новых данных
-    data = [[NSMutableArray alloc] init];
+    // Создадим пустые данные
+    NSMutableArray* data = [[NSMutableArray alloc] init];
     
     // Пустой item
     FileSystemItem* item = nil;
@@ -134,53 +131,51 @@
         [data addObject:item];
     }
     
-    [self sortData];
-    
-    return true;
+    return data;
 }
 
--(void) sortData {
-    
-    switch (order) {
-        case FS_ICON:
-            break;
-            
-        case FS_NAME:
-            [data sortUsingSelector:@selector(compareByName:)];
-            break;
-            
-        case FS_SIZE:
-            [data sortUsingSelector:@selector(compareBySize:)];
-            break;
-            
-        case FS_DATE:
-            [data sortUsingSelector:@selector(compareByDate:)];
-            break;
-            
-        case FS_TYPE:
-            [data sortUsingSelector:@selector(compareByType:)];
-            break;
-            
-        default:
-            break;
-    }
-}
+//-(void) sortData {
+//    
+//    switch (order) {
+//        case FS_ICON:
+//            break;
+//            
+//        case FS_NAME:
+//            [data sortUsingSelector:@selector(compareByName:)];
+//            break;
+//            
+//        case FS_SIZE:
+//            [data sortUsingSelector:@selector(compareBySize:)];
+//            break;
+//            
+//        case FS_DATE:
+//            [data sortUsingSelector:@selector(compareByDate:)];
+//            break;
+//            
+//        case FS_TYPE:
+//            [data sortUsingSelector:@selector(compareByType:)];
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 -(NSString*) makePath:(NSString* )name {
     return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
 }
 
--(bool) changeFolder:(NSString *)folder {
+-(NSMutableArray*) changeFolder:(NSString *)folder {
     return [self openFolder:folder];
 }
 
 // TODO: в будущем учесть символические ссылки
--(void) expandNode:(NSString *)node :(NSMutableArray *)stack {
+-(void) expandNode:(NSString *)node :(NSMutableArray *)stack :(NSFileManager*)fm {
     // Ошибка
     NSError* error = nil;
     
     // Получим детей
-    NSArray* children = [fileManager contentsOfDirectoryAtPath:node error:&error];
+    NSArray* children = [fm contentsOfDirectoryAtPath:node error:&error];
     
     // Если произошла ошибка (такое может быть в случае отсутсвии прав)
     if (children == nil || error != nil) {
@@ -193,12 +188,12 @@
     }
 }
 
--(bool) isLeaf:(NSString *)node {
+-(bool) isLeaf:(NSString *)node :(NSFileManager*)fm {
     // Ошибка
     NSError* error = nil;
     
     // Получим атрибуты
-    NSDictionary* attrs = [fileManager attributesOfItemAtPath:node error:&error];
+    NSDictionary* attrs = [fm attributesOfItemAtPath:node error:&error];
     
     // Если произошла ошибка
     if (attrs == nil || error != nil) {
@@ -211,12 +206,12 @@
     return ![[attrs objectForKey:NSFileType] isEqualToString:NSFileTypeDirectory];
 }
 
--(NSUInteger) nodeSize:(NSString *)node {
+-(NSUInteger) nodeSize:(NSString *)node :(NSFileManager*)fm {
     // Ошибка
     NSError* error = nil;
     
     // Получим атрибуты
-    NSDictionary* attrs = [fileManager attributesOfItemAtPath:node error:&error];
+    NSDictionary* attrs = [fm attributesOfItemAtPath:node error:&error];
     
     // Если произошла ошибка
     if (attrs == nil || error != nil) {
@@ -249,68 +244,68 @@
         [self openFolder:path];
         
         // Установим порядок по умолчанию
-        [self setOrder:FS_NAME];
+//        [self setOrder:FS_NAME];
     }
     return self;
 }
-//+-----------------------------------------------------------------+
-//| Раскрыть ряд: true - данные обновились, false - нет             |
-//+-----------------------------------------------------------------+
--(bool) enterToRow:(NSInteger)row {
-    // Проверки
-    if ([data count] <= row) {
-        return false;
-    }
-    
-    // Получим нужный объект файловой системы
-    FileSystemItem* item = [data objectAtIndex:row];
-    
-    NSString* new_path          = nil;                  // Новый путь
-    NSString* current_path      = [self currentPath];   // Текущий путь
-    NSString* application_dir   = @"/Applications";     // Путь к приложениям
-    
-    // Если выбранный ряд ведет наверх
-    if ([item.name isEqualToString:@".."]) {
-        
-        // Если текущий путь это корневой каталог
-        if ([current_path isEqualToString:@"/"]) {
-            return false;
-        }
-        
-        // Проиницализируем новый путь
-        new_path = @"/";
-        
-        // Получим компоненты текущего каталога
-        NSArray* components = [current_path pathComponents];
-        
-        // Сформируем новый путь
-        for (NSUInteger i = 1; i < [components count] - 1; ++i) {
-            new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
-        }
-    }
-    else {
-        // Сформируем новый путь
-        new_path = [NSString stringWithFormat:@"%@/%@", current_path, item.name];
-    }
-    
-    // Если row - каталог, который не является каталогом приложения
-    if (item.isDir && (![current_path isEqualToString:application_dir] || [item.name isEqualToString:@".."])) {
-        return [self openFolder:new_path];
-    }
-    else {
-        [workspace openFile:new_path];
-        return false;
-    }
-}
+////+-----------------------------------------------------------------+
+////| Раскрыть ряд: true - данные обновились, false - нет             |
+////+-----------------------------------------------------------------+
+//-(bool) enterToRow:(NSInteger)row {
+//    // Проверки
+//    if ([data count] <= row) {
+//        return false;
+//    }
+//    
+//    // Получим нужный объект файловой системы
+//    FileSystemItem* item = [data objectAtIndex:row];
+//    
+//    NSString* new_path          = nil;                  // Новый путь
+//    NSString* current_path      = [self currentPath];   // Текущий путь
+//    NSString* application_dir   = @"/Applications";     // Путь к приложениям
+//    
+//    // Если выбранный ряд ведет наверх
+//    if ([item.name isEqualToString:@".."]) {
+//        
+//        // Если текущий путь это корневой каталог
+//        if ([current_path isEqualToString:@"/"]) {
+//            return false;
+//        }
+//        
+//        // Проиницализируем новый путь
+//        new_path = @"/";
+//        
+//        // Получим компоненты текущего каталога
+//        NSArray* components = [current_path pathComponents];
+//        
+//        // Сформируем новый путь
+//        for (NSUInteger i = 1; i < [components count] - 1; ++i) {
+//            new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
+//        }
+//    }
+//    else {
+//        // Сформируем новый путь
+//        new_path = [NSString stringWithFormat:@"%@/%@", current_path, item.name];
+//    }
+//    
+//    // Если row - каталог, который не является каталогом приложения
+//    if (item.isDir && (![current_path isEqualToString:application_dir] || [item.name isEqualToString:@".."])) {
+//        return [self openFolder:new_path];
+//    }
+//    else {
+//        [workspace openFile:new_path];
+//        return false;
+//    }
+//}
+//
+//-(NSMutableArray*) data {
+//    return data;
+//}
 
--(NSMutableArray*) data {
-    return data;
-}
-
--(void) setOrder:(enum EFileSystemColumnId)o {
-    order = o;
-    [self sortData];
-}
+//-(void) setOrder:(enum EFileSystemColumnId)o {
+//    order = o;
+//    [self sortData];
+//}
 
 -(NSString*) currentPath {
     if (currentPath) {
@@ -339,84 +334,84 @@
 
 -(NSString*)    deleteSelected {
     
-    NSMutableArray* to_delete   = [[NSMutableArray alloc] init];
-    NSInteger       tag         = 0;
-    
-    // Пройдемся по всем объектам и составим список объектов на удаление
-    for (FileSystemItem* item in data) {
-        if (item.isSelected && [item.name isEqualToString:@".."] == NO) {
-            [to_delete addObject:item.name];
-        }
-    }
-    
-    if ([workspace performFileOperation:NSWorkspaceRecycleOperation 
-                                 source:[self currentPath] 
-                            destination:@"" files:to_delete 
-                                    tag:&tag] == NO) {
-        [to_delete release];
-        return @"Can't perform moving in trash";
-    }
-    
-    [to_delete release];
+//    NSMutableArray* to_delete   = [[NSMutableArray alloc] init];
+//    NSInteger       tag         = 0;
+//    
+//    // Пройдемся по всем объектам и составим список объектов на удаление
+//    for (FileSystemItem* item in data) {
+//        if (item.isSelected && [item.name isEqualToString:@".."] == NO) {
+//            [to_delete addObject:item.name];
+//        }
+//    }
+//    
+//    if ([workspace performFileOperation:NSWorkspaceRecycleOperation 
+//                                 source:[self currentPath] 
+//                            destination:@"" files:to_delete 
+//                                    tag:&tag] == NO) {
+//        [to_delete release];
+//        return @"Can't perform moving in trash";
+//    }
+//    
+//    [to_delete release];
     return nil;
 }
 
 -(NSString*) renameCurrent :(NSString*)name :(NSInteger)row{
         
-    FileSystemItem* item = [data objectAtIndex:row];
-    
-    if ([item.name isEqualToString:@".."]) {
-        return nil;
-    }
-    
-    NSError* error  = nil;
-    
-    if ([fileManager moveItemAtPath:[self makePath:item.name] 
-                             toPath:[self makePath :name] 
-                              error:&error] == NO) {
-        return [error localizedFailureReason];
-    }
+//    FileSystemItem* item = [data objectAtIndex:row];
+//    
+//    if ([item.name isEqualToString:@".."]) {
+//        return nil;
+//    }
+//    
+//    NSError* error  = nil;
+//    
+//    if ([fileManager moveItemAtPath:[self makePath:item.name] 
+//                             toPath:[self makePath :name] 
+//                              error:&error] == NO) {
+//        return [error localizedFailureReason];
+//    }
     
     return nil;
 }
 
 -(NSString*) copySelected :(NSString*)dest {
-    // Получим директорию источник
-    NSString* src = [self currentPath];
-    
-    // Если источник и назначение равны ничего не делаем
-    if ([src isEqualToString:dest]) {
-        return nil;
-    }
-    
-    // Если имеется .. пропустим этот объект
-    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
-    
-    // Выбранные объекты
-    NSMutableArray* selected = [[NSMutableArray alloc] init];
-    
-    for (NSUInteger i = first_index; i < [data count]; ++i) {
-        
-        // Получим очередной объект
-        FileSystemItem* item = [data objectAtIndex:i];
-        
-        // Если объект выбран
-        if (item.isSelected) {
-            [selected addObject:item.name];
-        }
-    }
-    
-    NSInteger tag = 0;
-    
-    if ([workspace performFileOperation:NSWorkspaceCopyOperation source:src
-                            destination:dest 
-                                  files:selected 
-                                    tag:&tag] == NO) {
-        [selected release];
-        return [[NSString stringWithString: @"Can't perform coping selected items"] retain];
-    }
-    
-    [selected release];
+//    // Получим директорию источник
+//    NSString* src = [self currentPath];
+//    
+//    // Если источник и назначение равны ничего не делаем
+//    if ([src isEqualToString:dest]) {
+//        return nil;
+//    }
+//    
+//    // Если имеется .. пропустим этот объект
+//    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
+//    
+//    // Выбранные объекты
+//    NSMutableArray* selected = [[NSMutableArray alloc] init];
+//    
+//    for (NSUInteger i = first_index; i < [data count]; ++i) {
+//        
+//        // Получим очередной объект
+//        FileSystemItem* item = [data objectAtIndex:i];
+//        
+//        // Если объект выбран
+//        if (item.isSelected) {
+//            [selected addObject:item.name];
+//        }
+//    }
+//    
+//    NSInteger tag = 0;
+//    
+//    if ([workspace performFileOperation:NSWorkspaceCopyOperation source:src
+//                            destination:dest 
+//                                  files:selected 
+//                                    tag:&tag] == NO) {
+//        [selected release];
+//        return [[NSString stringWithString: @"Can't perform coping selected items"] retain];
+//    }
+//    
+//    [selected release];
     
     return nil;
 }
@@ -425,43 +420,43 @@
 //----------------------------------------------------------------
 -(NSString*)        moveSelected    :(NSString*)dest {
     
-    // Получим директорию источник
-    NSString* src = [self currentPath];
-    
-    // Если источник и назначение равны ничего не делаем
-    if ([src isEqualToString:dest]) {
-        return nil;
-    }
-    
-    // Если имеется .. пропустим этот объект
-    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
-    
-    // Выбранные объекты
-    NSMutableArray* selected = [[NSMutableArray alloc] init];
-    
-    // Пройдемся по всем объектам файловой системы и составим список выбранных
-    for (NSUInteger i = first_index; i < [data count]; ++i) {
-
-        // Получим очередной объект файловой системы
-        FileSystemItem* item = [data objectAtIndex:i];
-        
-        if (item.isSelected) {
-            [selected addObject:item.name];
-        }
-    }
-    
-    NSInteger tag = 0;
-    
-    if ([workspace performFileOperation:NSWorkspaceMoveOperation 
-                                 source:src 
-                            destination:dest 
-                                  files:selected 
-                                    tag:&tag] == NO) {
-        [selected release];
-        return @"Can't perform moving selected files/direcoties";
-    }
-    
-    [selected release];
+//    // Получим директорию источник
+//    NSString* src = [self currentPath];
+//    
+//    // Если источник и назначение равны ничего не делаем
+//    if ([src isEqualToString:dest]) {
+//        return nil;
+//    }
+//    
+//    // Если имеется .. пропустим этот объект
+//    NSUInteger first_index = [((FileSystemItem*)[data objectAtIndex:0]).name isEqualToString:@".."] ? 1 : 0;
+//    
+//    // Выбранные объекты
+//    NSMutableArray* selected = [[NSMutableArray alloc] init];
+//    
+//    // Пройдемся по всем объектам файловой системы и составим список выбранных
+//    for (NSUInteger i = first_index; i < [data count]; ++i) {
+//
+//        // Получим очередной объект файловой системы
+//        FileSystemItem* item = [data objectAtIndex:i];
+//        
+//        if (item.isSelected) {
+//            [selected addObject:item.name];
+//        }
+//    }
+//    
+//    NSInteger tag = 0;
+//    
+//    if ([workspace performFileOperation:NSWorkspaceMoveOperation 
+//                                 source:src 
+//                            destination:dest 
+//                                  files:selected 
+//                                    tag:&tag] == NO) {
+//        [selected release];
+//        return @"Can't perform moving selected files/direcoties";
+//    }
+//    
+//    [selected release];
     return nil;
 }
 
@@ -476,11 +471,13 @@
 
 -(NSUInteger) determineDirectorySize:(NSString*)path {
     
+    NSFileManager* fm = [[NSFileManager alloc] init];
+    
     // Для определения размера воспользуемся обходом дерева в глубину, так как требуемый размер памяти эквивалентен 
     // высотой дерева
     NSMutableArray* stack = [[NSMutableArray alloc] init];
 
-    [self expandNode :path :stack];
+    [self expandNode :path :stack :fm];
     
     NSInteger size = 0;
     
@@ -489,13 +486,16 @@
         NSString* last = [stack lastObject];
         [stack removeLastObject];
         
-        if ([self isLeaf:last]) {
-            size += [self nodeSize:last];
+        if ([self isLeaf:last :fm]) {
+            size += [self nodeSize:last :fm];
         }
         else {
-            [self expandNode :last :stack];
+            [self expandNode :last :stack :fm];
         }
     }
+    
+    [stack  release];
+    [fm     release];
     
     return size;
 }

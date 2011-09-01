@@ -11,15 +11,16 @@
 @protocol SidePanelProtocol <NSObject>
 
 @required
--(void) setTabHeaderTitle       :(NSString*)title;
--(bool) changeFolder            :(NSString*)folder;
--(bool) enterToRow              :(NSInteger)row;
+-(void) setTabHeaderTitle           :(NSString*)title;
+-(bool) changeFolder                :(NSString*)folder;
+-(bool) enterToRow                  :(NSInteger)row;
 -(bool) goUp;
 -(void) addTabFromCurrent;
 -(void) closeCurrentTab;
--(void) invertSelection         :(NSInteger)row;
--(void) postKeyDown             :(NSEvent*)event;
--(void) setActive               :(NSWindow*)window;
--(void) determineDirectorySize  :(NSInteger)row;
+-(void) invertSelection             :(NSInteger)row;
+-(void) postKeyDown                 :(NSEvent*)event;
+-(void) setActive                   :(NSWindow*)window;
+-(void) determineDirectorySize      :(NSInteger)row;
+-(void) updateTable;
 
 @end
