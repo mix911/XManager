@@ -15,7 +15,7 @@ enum EYesNoDialogType {
     COPY_YES_NO_DIALOG_TYPE,
 };
 
-@interface YesNoDialog : NSPanel {
+@interface CopyDialog : NSPanel {
     IBOutlet    NSTextField*                message;
                 id<WindowManagerProtocol>   windowManager;
     enum        EYesNoDialogType            type;

@@ -56,6 +56,13 @@
         [cur_dir release];
     }
     
+    sync = [[NSLock alloc] init];
+    
+}
+-(void) dealloc {
+    [sync release];
+    [timer invalidate];
+    [super dealloc];
 }
 //+-----------------------------------------------------------------+
 //| Загрузка последней сессии                                       |
@@ -235,28 +242,81 @@
 
 -(IBAction) copyYes:(id)sender {
     
+    // Посчитаем размер задачи
+    
     // Закроем диалог
     [self copyNo:sender];
     
-    // Получим активную панель
-    SidePanel* active = [self activePanel];
+    [self runCopyProcess];
     
-    // Получим вторую панель
-    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
+    [progressDialog show:self];
     
-    // Выделенные объекты
-    NSMutableArray* selected = [[NSMutableArray alloc] init];
+//    // Получим активную панель
+//    SidePanel* active = [self activePanel];
+//    
+//    // Получим вторую панель
+//    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
+//    
+//    // Выделенные объекты
+//    NSMutableArray* selected = [[NSMutableArray alloc] init];
+//    
+//    // Получим выделенные объекты
+//    if ([active selectedItems:selected]) {
+//        NSString* error = [active copySelected:selected:[second currentPath]];
+//        
+//        if (error) {
+//            [self messageBox:error];
+//        }
+//        
+//        [self updateContent];
+//    }
+}
+
+-(void) runCopyProcess {
     
-    // Получим выделенные объекты
-    if ([active selectedItems:selected]) {
-        NSString* error = [active copySelected:selected:[second currentPath]];
-        
-        if (error) {
-            [self messageBox:error];
-        }
-        
-        [self updateContent];
+    progress = 0.0f;
+    pause = false;
+    
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(onTaskTimer)
+                                           userInfo:nil
+                                            repeats:YES];
+}
+
+-(float) progress {
+    return progress;
+}
+
+-(bool) isComplete {
+    return progress >= 1.0f;
+}
+
+-(void) onTaskTimer {
+    
+    if ([self isComplete]) {
+        [timer invalidate];
+        return;
     }
+    
+    if (pause == false) {
+        progress += 0.1;
+    }
+}
+
+-(void) stopProcess {
+    [timer invalidate];
+    timer = nil;
+    progress = 0.0f;
+}
+
+-(void) pauseProcess {
+    pause = true;
+}
+
+-(void) continueProcess {
+    pause = false;
 }
 
 -(IBAction) moveNo:(id)sender {

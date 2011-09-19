@@ -481,7 +481,9 @@
     
     NSInteger size = 0;
     
-    while ([stack count] != 0) {
+    NSThread* current_thread = [NSThread currentThread];
+    
+    while ([stack count] != 0 && ![current_thread isCancelled]) {
         
         NSString* last = [stack lastObject];
         [stack removeLastObject];

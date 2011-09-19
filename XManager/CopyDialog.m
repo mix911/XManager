@@ -6,10 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "YesNoDialog.h"
+#import "CopyDialog.h"
 #import "WindowManager.h"
 
-@implementation YesNoDialog
+@implementation CopyDialog
 
 - (id)init {
     self = [super init];

@@ -10,18 +10,21 @@
 #import <Cocoa/Cocoa.h>
 
 #import "WindowManagerProtocol.h"
+#import "Process.h"
+
 #import "SidePanel.h"
 #import "NetworkConnectionDialog.h"
-#import "YesNoDialog.h"
+#import "CopyDialog.h"
 #import "MoveDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
 #import "RenameDialog.h"
 #import "MessageBox.h"
+#import "ProgressDialog.h"
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
-@interface WindowManager : NSObject <WindowManagerProtocol>{    
+@interface WindowManager : NSObject <WindowManagerProtocol, Process>{    
     IBOutlet    SidePanel*                  leftPanel;              // Левая панель
     IBOutlet    SidePanel*                  rightPanel;             // Правая панель
                 SidePanel*                  activePanel;            // Активная панель
@@ -30,12 +33,20 @@
     IBOutlet    MakeDirDialog*              makeDirDialog;          // Диалог создания каталога
     IBOutlet    MessageBox*                 messageBox;             // Сообдение
     IBOutlet    DeleteDialog*               deleteDialog;           // Диалог удаления
-    IBOutlet    YesNoDialog*                 copyDialog;             // Диалог копирования
+    IBOutlet    CopyDialog*                 copyDialog;             // Диалог копирования
     IBOutlet    MoveDialog*                 moveDialog;             // Диалог перемещения
     IBOutlet    NSWindow*                   mainWindow;             // Главное окно
+    IBOutlet    ProgressDialog*             progressDialog;         // Диалог прогресса
+    
+    float   progress;
+    NSLock* sync;
+    NSTimer* timer;
+    bool pause;
 }
 
 -(void) awakeFromNib;
+-(void) dealloc;
+
 -(bool) loadLastSesstion;
 
 -(SidePanel*) activePanel;
@@ -99,5 +110,14 @@
 -(void) pressCopyYes;
 -(void) pressMoveNo;
 -(void) pressCopyNo;
+
+-(float)    progressDialog;
+-(bool)     isComplete;
+-(void)     stopProcess;
+-(void)     pauseProcess;
+-(void)     continueProcess;
+
+-(void)     runCopyProcess;
+-(void)     onTaskTimer;
 
 @end

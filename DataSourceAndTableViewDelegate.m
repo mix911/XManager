@@ -15,13 +15,11 @@
     DataSourceAndTableViewDelegate* this;
     NSUInteger                      row;
     NSString*                       key;
-    id<ItemManagerProtocol>         itemManager;
 }
 
--(id)                               initWithAttrs :(DataSourceAndTableViewDelegate*)this :(id<ItemManagerProtocol>)itemManager :(NSUInteger)row;
+-(id)                               initWithAttrs :(DataSourceAndTableViewDelegate*)this :(NSUInteger)row;
 -(DataSourceAndTableViewDelegate*)  this;
 -(NSUInteger)                       row;
--(id<ItemManagerProtocol>)          itemManager;
 -(NSString*)                        key;
 
 @end
@@ -33,11 +31,12 @@
     bool                            isReady;
 }
 
--(id)   initWithDataSource :(DataSourceAndTableViewDelegate*)ds :(NSString*)key;
+-(id)   initWithDataSource :(DataSourceAndTableViewDelegate*)ds;
 
 -(void) runTask :(DataSourceObj*)obj;
 -(void) runTimer:(NSString*)key;
 -(void) stopTimer;
+-(void) stopTask;
 
 @property   bool    isReady;
 
@@ -80,17 +79,20 @@
     timer = nil;
 }
 
+-(void) stopTask {
+    [thread cancel];
+}
+
 @synthesize isReady;
 
 @end
 
 @implementation DataSourceObj
 
--(id) initWithAttrs :(DataSourceAndTableViewDelegate*)t :(id<ItemManagerProtocol>)i :(NSUInteger)r :(NSString*)k {
+-(id) initWithAttrs :(DataSourceAndTableViewDelegate*)t :(NSUInteger)r :(NSString*)k {
     if (self = [super init]) {
         this        = t;
         row         = r;
-        itemManager = i;
         key         = k;
         
         [key retain];
@@ -104,10 +106,6 @@
 
 -(NSUInteger) row {
     return row;
-}
-
--(id<ItemManagerProtocol>) itemManager {
-    return itemManager;
 }
 
 -(NSString*) key {
@@ -173,7 +171,7 @@
     if (row < [data count]) {
         
         // Получим текущий путь
-        path = [NSString stringWithFormat:@"%@/%@", [itemManager currentPath], item.name];
+        path = [NSString stringWithFormat: @"%@/%@", [itemManager currentPath], item.name];
     }
     
     [sync unlock];
@@ -260,39 +258,6 @@
         
         // Получим нужный объект файловой системы
         FileSystemItem* item = [data objectAtIndex:row];
-                
-        //    // Если выбранный ряд ведет наверх
-        //    if ([item.name isEqualToString:@".."]) {
-        //        
-        //        // Если текущий путь это корневой каталог
-        //        if ([current_path isEqualToString:@"/"]) {
-        //            return false;
-        //        }
-        //        
-        //        // Проиницализируем новый путь
-        //        new_path = @"/";
-        //        
-        //        // Получим компоненты текущего каталога
-        //        NSArray* components = [current_path pathComponents];
-        //        
-        //        // Сформируем новый путь
-        //        for (NSUInteger i = 1; i < [components count] - 1; ++i) {
-        //            new_path = [NSString stringWithFormat:@"%@/%@", new_path, (NSString*)[components objectAtIndex:i]];
-        //        }
-        //    }
-        //    else {
-        //        // Сформируем новый путь
-        //        new_path = [NSString stringWithFormat:@"%@/%@", current_path, item.name];
-        //    }
-        //    
-        //    // Если row - каталог, который не является каталогом приложения
-        //    if (item.isDir && (![current_path isEqualToString:application_dir] || [item.name isEqualToString:@".."])) {
-        //        return [self openFolder:new_path];
-        //    }
-        //    else {
-        //        [workspace openFile:new_path];
-        //        return false;
-        //    }
 
         // Путь
         NSString* new_path      = nil;
@@ -519,7 +484,7 @@
         FileSystemItem* item = [data objectAtIndex:row];
         
         // Найдем такую задачу
-        Task* task = [tasks objectForKey:[NSNumber numberWithUnsignedLong:item.fullPath]];
+        Task* task = [tasks objectForKey:item.fullPath];
         
         // Если такая задача уже есть
         if (task == nil) {
@@ -531,7 +496,7 @@
             [task stopTask];
         }
         
-        DataSourceObj* obj = [[DataSourceObj alloc] initWithAttrs :self :itemManager :row :item.fullPath];
+        DataSourceObj* obj = [[DataSourceObj alloc] initWithAttrs :self :row :item.fullPath];
         
         [task runTask:obj];
         
