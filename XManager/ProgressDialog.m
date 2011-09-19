@@ -79,4 +79,8 @@
     return NO;
 }
 
+-(IBAction) pressCancel :(id)sender {
+    [self performClose:sender];
+}
+
 @end

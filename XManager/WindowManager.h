@@ -38,14 +38,10 @@
     IBOutlet    NSWindow*                   mainWindow;             // Главное окно
     IBOutlet    ProgressDialog*             progressDialog;         // Диалог прогресса
     
-    float   progress;
-    NSLock* sync;
-    NSTimer* timer;
-    bool pause;
+    id<Process> process;
 }
 
 -(void) awakeFromNib;
--(void) dealloc;
 
 -(bool) loadLastSesstion;
 
@@ -111,13 +107,7 @@
 -(void) pressMoveNo;
 -(void) pressCopyNo;
 
--(float)    progressDialog;
--(bool)     isComplete;
--(void)     stopProcess;
--(void)     pauseProcess;
--(void)     continueProcess;
+-(id<Process>) runCopyProcess;
 
--(void)     runCopyProcess;
--(void)     onTaskTimer;
 
 @end

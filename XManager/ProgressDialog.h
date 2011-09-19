@@ -21,4 +21,6 @@
 -(void) show :(id<Process>)process;
 -(BOOL) windowShouldClose:(id)sender;
 
+-(IBAction) pressCancel :(id)sender;
+
 @end

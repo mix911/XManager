@@ -34,6 +34,7 @@
 		B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C110CB13FEEB6600D84449 /* MessageBox.m */; };
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
 		B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C5490913FE6F7F0071825D /* MakeDirDialog.m */; };
+		B4C60E3D142766DF00B2AB4E /* CopyProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60E3C142766DF00B2AB4E /* CopyProcess.m */; };
 		B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */; };
 		B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */; };
 		B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */; };
@@ -103,6 +104,8 @@
 		B4C1581F140267B40052D988 /* HomeFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeFolderIcon.icns; sourceTree = "<group>"; };
 		B4C5490813FE6F7F0071825D /* MakeDirDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeDirDialog.h; sourceTree = "<group>"; };
 		B4C5490913FE6F7F0071825D /* MakeDirDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeDirDialog.m; sourceTree = "<group>"; };
+		B4C60E3B142766DF00B2AB4E /* CopyProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyProcess.h; sourceTree = "<group>"; };
+		B4C60E3C142766DF00B2AB4E /* CopyProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyProcess.m; sourceTree = "<group>"; };
 		B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionDialog.h; sourceTree = "<group>"; };
 		B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionDialog.m; sourceTree = "<group>"; };
 		B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyDialog.h; sourceTree = "<group>"; };
@@ -185,12 +188,12 @@
 		B4074E8C13ECD09900438E01 /* XManager */ = {
 			isa = PBXGroup;
 			children = (
+				B4C60E39142766BA00B2AB4E /* Processes */,
 				B483E69113FBEA2700295218 /* Controls */,
 				B483E68F13FBE99300295218 /* Dialogs */,
 				B483E69013FBE9BC00295218 /* ItemManagers */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
-				B439F43E142700D400239589 /* Process.h */,
 				B4074EBB13ECD0F000438E01 /* WindowManager.h */,
 				B4074EBC13ECD0F000438E01 /* WindowManager.m */,
 				B4A45DBD13FE1E12002C082F /* WindowManagerProtocol.h */,
@@ -308,6 +311,16 @@
 				B4C1581F140267B40052D988 /* HomeFolderIcon.icns */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		B4C60E39142766BA00B2AB4E /* Processes */ = {
+			isa = PBXGroup;
+			children = (
+				B439F43E142700D400239589 /* Process.h */,
+				B4C60E3B142766DF00B2AB4E /* CopyProcess.h */,
+				B4C60E3C142766DF00B2AB4E /* CopyProcess.m */,
+			);
+			name = Processes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +454,7 @@
 				B4B3182614043A350004A407 /* MainWindow.m in Sources */,
 				B4151C461422031E00B72AC3 /* ProgressDialog.m in Sources */,
 				B4D4AD8014273D7D001DC74A /* MessageBoxYesNo.m in Sources */,
+				B4C60E3D142766DF00B2AB4E /* CopyProcess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

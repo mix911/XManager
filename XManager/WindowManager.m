@@ -8,6 +8,8 @@
 
 #import "WindowManager.h"
 
+#import "CopyProcess.h"
+
 @interface WindowManager(Private)
 
 -(void) messageBox:(NSString*)message;
@@ -55,14 +57,6 @@
         
         [cur_dir release];
     }
-    
-    sync = [[NSLock alloc] init];
-    
-}
--(void) dealloc {
-    [sync release];
-    [timer invalidate];
-    [super dealloc];
 }
 //+-----------------------------------------------------------------+
 //| Загрузка последней сессии                                       |
@@ -247,9 +241,7 @@
     // Закроем диалог
     [self copyNo:sender];
     
-    [self runCopyProcess];
-    
-    [progressDialog show:self];
+    [progressDialog show:[self runCopyProcess]];
     
 //    // Получим активную панель
 //    SidePanel* active = [self activePanel];
@@ -272,51 +264,13 @@
 //    }
 }
 
--(void) runCopyProcess {
+-(id<Process>) runCopyProcess {
     
-    progress = 0.0f;
-    pause = false;
+    [process release];
+    process = [[CopyProcess alloc] init];
+    [process runProcess];
     
-    [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                             target:self
-                                           selector:@selector(onTaskTimer)
-                                           userInfo:nil
-                                            repeats:YES];
-}
-
--(float) progress {
-    return progress;
-}
-
--(bool) isComplete {
-    return progress >= 1.0f;
-}
-
--(void) onTaskTimer {
-    
-    if ([self isComplete]) {
-        [timer invalidate];
-        return;
-    }
-    
-    if (pause == false) {
-        progress += 0.1;
-    }
-}
-
--(void) stopProcess {
-    [timer invalidate];
-    timer = nil;
-    progress = 0.0f;
-}
-
--(void) pauseProcess {
-    pause = true;
-}
-
--(void) continueProcess {
-    pause = false;
+    return process;
 }
 
 -(IBAction) moveNo:(id)sender {
