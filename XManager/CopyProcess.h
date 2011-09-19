@@ -14,6 +14,9 @@
     float       progress;
     NSTimer*    timer;
     bool        pause;
+    bool        stop;
+    NSLock*     sync;
+    NSThread*   workerThread;
 }
 
 -(id)       init;
@@ -26,5 +29,7 @@
 -(void)     pauseProcess;
 -(void)     continueProcess;
 -(void)     runProcess;
+
+-(void)     process;
 
 @end

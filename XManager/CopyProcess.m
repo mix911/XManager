@@ -10,21 +10,19 @@
 
 @interface CopyProcess(Private)
 
--(void) onTimer;
+-(bool) isCompleteInner;
++(void) processPlus :(CopyProcess*)this;
 
 @end
 
 @implementation CopyProcess(Private)
 
--(void) onTimer {
-    if ([self isComplete]) {
-        [timer invalidate];
-        return;
-    }
-    
-    if (pause == false) {
-        progress += 0.1;
-    }
+-(bool) isCompleteInner {
+    return progress >= 1.0 || stop;
+}
+
++(void) processPlus :(CopyProcess*)this {
+    [this process];
 }
 
 @end
@@ -37,8 +35,8 @@
     
     if (self) {
         progress= 0.0f;
-        timer   = nil;
         pause   = false;
+        sync    = [[NSLock alloc] init];
     }
     
     return self;
@@ -46,6 +44,7 @@
 
 -(void) dealloc {
     [timer invalidate];
+    [sync release];
     
     [super dealloc];
 }
@@ -54,34 +53,79 @@
     progress = 0.0f;
     pause = false;
     
-    [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                             target:self
-                                           selector:@selector(onTimer)
-                                           userInfo:nil
-                                            repeats:YES];
+    workerThread = [[NSThread alloc] initWithTarget:[CopyProcess class] selector:@selector(processPlus:) object:self];
+    [workerThread start];
+}
+
+-(void) process {
+    bool endProcess = false;
+    
+    while (endProcess == false) {
+        [sync lock];
+        
+        [NSThread sleepForTimeInterval:0.1f];
+        
+        if (pause == false) {
+            progress += 0.02;
+        }
+        
+        endProcess = [self isCompleteInner];
+        
+        [sync unlock];
+    }
 }
 
 -(double) progress {
-    return progress;
+    double res = 0.0;
+    
+    [sync lock];
+    
+    res = progress;
+    
+    [sync unlock];
+    
+    return res;
 }
 
 -(bool) isComplete {
-    return progress >= 1.0;
+    
+    bool res = false;
+    
+    [sync lock];
+    
+    res = [self isCompleteInner];
+    
+    [sync unlock];
+    
+    return res;
 }
 
 -(void) stopProcess {
-    [timer invalidate];
-    timer = nil;
-    progress = 0.0;
+    [sync lock];
+    
+    progress    = 0.0;
+    stop        = true;
+    workerThread= nil;
+    
+    [sync unlock];
 }
 
 -(void) pauseProcess {
+    
+    [sync lock];
+    
     pause = true;
+    
+    [sync unlock];
 }
 
 -(void) continueProcess {
+    
+    [sync lock];
+    
     pause = false;
+    
+    [sync unlock];
 }
 
 

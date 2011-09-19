@@ -12,13 +12,15 @@
 @class MessageBoxYesNo;
 
 @interface ProgressDialog : NSPanel {
-    NSTimer* timer;
+    NSTimer*    timer;
     id<Process> process;
+    NSString*   cancelConfirmText;
+    
     IBOutlet NSProgressIndicator*   indicator;
     IBOutlet MessageBoxYesNo*       messagebox;
 }
 
--(void) show :(id<Process>)process;
+-(void) show :(id<Process>)process :(NSString*)cancelConfirmText;
 -(BOOL) windowShouldClose:(id)sender;
 
 -(IBAction) pressCancel :(id)sender;

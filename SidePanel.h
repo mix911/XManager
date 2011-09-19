@@ -47,6 +47,7 @@
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
 -(bool) selectedItems               :(NSMutableArray*)selected;
+-(void) allSubitems                 :(NSString*)path :(NSMutableArray*)items;
 -(void) determineDirectorySize      :(NSInteger)row;
 -(void) updateTable;
 

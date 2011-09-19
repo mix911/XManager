@@ -9,6 +9,7 @@
 #import "WindowManager.h"
 
 #import "CopyProcess.h"
+#include "FileSystemItem.h"
 
 @interface WindowManager(Private)
 
@@ -240,8 +241,8 @@
     
     // Закроем диалог
     [self copyNo:sender];
-    
-    [progressDialog show:[self runCopyProcess]];
+        
+    [progressDialog show:[self runCopyProcess] :@"Do you really want to stop the copying process?"];
     
 //    // Получим активную панель
 //    SidePanel* active = [self activePanel];
@@ -265,6 +266,20 @@
 }
 
 -(id<Process>) runCopyProcess {
+    
+    // Получим активную панель
+    SidePanel* active = [self activePanel];
+
+    NSMutableArray* selected= [[NSMutableArray alloc] init];
+    
+    if ([active selectedItems:selected] && [selected count] > 0) {
+        
+        for (NSNumber* item in selected) {
+            
+        }
+    }
+    
+    [selected release];
     
     [process release];
     process = [[CopyProcess alloc] init];

@@ -44,9 +44,11 @@
     return self;
 }
 
--(void) show:(id<Process>)p {
+-(void) show :(id<Process>)p :(NSString*)cct{
         
     process = p;
+    
+    cancelConfirmText = cct;
     
     [indicator setMinValue:0.0];    
     [indicator setMaxValue:100.0];
@@ -67,7 +69,7 @@
 
     [process pauseProcess];
     
-    if ([messagebox doModal :@"Hello?" :@"XManager"]) {
+    if ([messagebox doModal :cancelConfirmText :@"XManager"]) {
         [timer invalidate];
         timer = nil;
         [process stopProcess];

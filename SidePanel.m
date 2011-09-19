@@ -352,25 +352,23 @@
     // Получим источник данных
     DataSourceAndTableViewDelegate* ds = [self currentDataSource];
     
-    // Получим выделенные объекты
-    [ds selectedItems:selected];
+    // Получим таблицу
+    TableView* table = [self table];
     
-    // Если выделенных объектов нет, выделеным считается тот на котором курсор, кроме '..'
-    if ([selected count] == 0) {
-
-        // Получим таблицу
-        TableView* table = [self table];
-        
-        // Получим текущий ряд
-        NSInteger current_row = [table selectedRow];
-        
-        // Кроме '..'
-        if (current_row != 0) {
-            [selected addObject:[NSNumber numberWithLong:current_row]];
-        }
-    }
+    // Получим выделенные объекты
+    [ds selectedItems:selected :[table selectedRow]];
     
     return [selected count] != 0;
+}
+
+-(void) allSubitems:(NSString *)path :(NSMutableArray *)items {
+    // Отчистим входящий массив
+    [items removeAllObjects];
+    
+    // Получим источник данных
+    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
+    
+    [ds allSubitems :path :items];
 }
 
 -(void) determineDirectorySize  :(NSInteger)row {

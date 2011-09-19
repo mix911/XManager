@@ -53,6 +53,6 @@
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
 -(void)     invertSelection :(NSInteger)row;
 -(void)     updateItemsList;
--(void)     selectedItems   :(NSMutableArray*)selected;
+-(void)     selectedItems   :(NSMutableArray*)selected :(NSInteger)current;
 
 @end

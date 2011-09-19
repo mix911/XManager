@@ -520,19 +520,34 @@
     return [itemManager changeFolder:folder];
 }
 
--(void) selectedItems:(NSMutableArray *)selected {
+-(void) selectedItems:(NSMutableArray *)selected :(NSInteger)current {
 
     // Отчистим входящий массив
     [selected removeAllObjects];
     
     // Пройдемся по всем объектам файловой системы (кроме '..')
-    for (int i = 1; i < [data count]; ++i) {
+    for (NSInteger i = 1; i < [data count]; ++i) {
         
         // Получим очередной объект
         FileSystemItem* item = [data objectAtIndex:i];
         
         if (item.isSelected) {
-            [selected addObject:[NSNumber numberWithInt:i]];
+            [selected addObject:[NSNumber numberWithLong:i]];
+        }
+    }
+    
+    // Если не выделен не один объект
+    if ([selected count] == 0) {
+        
+        // Если текущий объект находится в диапазоне данных
+        if (current < [data count]) {
+            
+            // Получим текущий объект
+            FileSystemItem* item = [data objectAtIndex:current];
+            
+            if ([item.name isEqualToString:@".."] == NO) {
+                [selected addObject:[NSNumber numberWithLong:current]];
+            }
         }
     }
 }
