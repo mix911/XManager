@@ -20,7 +20,9 @@
 -(void) invertSelection             :(NSInteger)row;
 -(void) postKeyDown                 :(NSEvent*)event;
 -(void) setActive                   :(NSWindow*)window;
+-(void) determineDirectorySizeAsync :(NSInteger)row;
 -(void) determineDirectorySize      :(NSInteger)row;
+-(void) determineDirectorySize;
 -(void) updateTable;
 
 @end

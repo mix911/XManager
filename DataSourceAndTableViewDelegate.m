@@ -60,7 +60,7 @@
     [self runTimer :[obj key]];
     
     thread = [[NSThread alloc] initWithTarget:[DataSourceAndTableViewDelegate class]
-                                     selector:@selector(determineDirectorySize:) 
+                                     selector:@selector(determineDirectorySizeAsync:) 
                                        object:obj];
     [thread start];
 }
@@ -506,7 +506,7 @@
     [sync unlock];
 }
 
-+(void) determineDirectorySize:(DataSourceObj*)obj {
++(void) determineDirectorySizeAsync:(DataSourceObj*)obj {
     [[obj this] determineDirectorySizeWorker:[obj row]];
 }
 
@@ -550,6 +550,10 @@
             }
         }
     }
+}
+
+-(bool) canDetermineDirectorySize {
+    return [itemManager canDetermineDirectorySize];
 }
 
 @end

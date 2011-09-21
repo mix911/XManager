@@ -9,7 +9,7 @@
 #import "WindowManager.h"
 
 #import "CopyProcess.h"
-#include "FileSystemItem.h"
+#import "DetermineDirectorySizeProcess.h"
 
 @interface WindowManager(Private)
 
@@ -93,7 +93,7 @@
 //| Нажатие F8 - Delete                                             |
 //+-----------------------------------------------------------------+
 -(IBAction) pushDelete:(id)sender {
-    [self deleleItems];
+    [self deleteItems];
 }
 //+-----------------------------------------------------------------+
 //| Нажание на соединение с ftp                                     |
@@ -132,8 +132,32 @@
     [makeDirDialog makeKeyAndOrderFront:self];
 }
 
--(void) deleleItems {
+-(void) deleteItems {
     [deleteDialog makeKeyAndOrderFront:self];
+}
+
+-(void) determineDirectorySize:(NSInteger)row {
+    
+    SidePanel* active = [self activePanel];
+    
+    if ([active canDetermineDirectorySize]) {
+        [active determineDirectorySize:row];
+    }
+}
+
+-(void) determineDirectorySize {
+    if ([[self activePanel] canDetermineDirectorySize]) {
+        
+        // Получим выделенные ряды
+        NSMutableArray* selected = [[NSMutableArray alloc] init];
+        [[self activePanel] selectedItems:selected];
+        
+        for (NSNumber* item in selected) {
+            [[self activePanel] determineDirectorySize:[item longValue]];
+        }
+        
+        [selected release];
+    }
 }
 
 -(IBAction) makeDirCancel:(id)sender {
@@ -241,8 +265,20 @@
     
     // Закроем диалог
     [self copyNo:sender];
+    
+    // Получим активную панель
+    SidePanel* active = [self activePanel];
+    
+    // Получим выбранные объекты
+    NSMutableArray* selected= [[NSMutableArray alloc] init];
+    [active selectedItems:selected];
+    
+    if ([selected count] > 0) {
         
-    [progressDialog show:[self runCopyProcess] :@"Do you really want to stop the copying process?"];
+        [self determineDirectorySize];
+        
+        [progressDialog show:[self runCopyProcess :selected] :@"Do you really want to stop the copying process?"];
+    }
     
 //    // Получим активную панель
 //    SidePanel* active = [self activePanel];
@@ -265,27 +301,26 @@
 //    }
 }
 
--(id<Process>) runCopyProcess {
+-(id<Process>) runCopyProcess :(NSArray*)selected {
     
-    // Получим активную панель
-    SidePanel* active = [self activePanel];
-
-    NSMutableArray* selected= [[NSMutableArray alloc] init];
-    
-    if ([active selectedItems:selected] && [selected count] > 0) {
-        
-        for (NSNumber* item in selected) {
-            
-        }
+    if ([selected count] > 0) {
+        [process release];
+        process = [[CopyProcess alloc] init];
+        [process runProcess];
     }
     
     [selected release];
     
-    [process release];
-    process = [[CopyProcess alloc] init];
-    [process runProcess];
-    
     return process;
+}
+
+-(id<Process>) runDetermineDirectorySizeProcess:(NSArray*)selected {
+    if ([selected count] > 0) {
+        DetermineDirectorySizeProcess* process = [[DetermineDirectorySizeProcess alloc] init];
+        [process runProcess];
+        return process;
+    }
+    return nil;
 }
 
 -(IBAction) moveNo:(id)sender {

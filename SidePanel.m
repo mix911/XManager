@@ -250,12 +250,15 @@
             break;
             
         case 100:   // F8
-            [windowManager deleleItems];
+            [windowManager deleteItems];
             break;
             
         case 48:    // Tab - мы сдесь только когда не зажат контрол TODO: добавить вывод в лог
             [windowManager insertTab];
             break;
+            
+        case 49:    // Space
+            [windowManager determineDirectorySize:[[self table] selectedRow]];
             
         default:
             break;
@@ -371,7 +374,7 @@
     [ds allSubitems :path :items];
 }
 
--(void) determineDirectorySize  :(NSInteger)row {
+-(void) determineDirectorySizeAsync  :(NSInteger)row {
     
     // Получим источник данных
     DataSourceAndTableViewDelegate* ds = [self currentDataSource];
@@ -380,8 +383,20 @@
     [ds runDetermineDirectorySize:row];
 }
 
+-(void) determineDirectorySize :(NSInteger)row {
+    // Получим источник данных
+    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
+    
+    // Посчитаем размер папки
+    [ds runDetermineDirectorySize:row];
+}
+
 -(void) updateTable {
     [[self table] reloadData];
+}
+
+-(bool) canDetermineDirectorySize {
+    return [[self currentDataSource] canDetermineDirectorySize];
 }
 
 @end

@@ -48,7 +48,8 @@
 -(void) switchToPrevTab;
 -(bool) selectedItems               :(NSMutableArray*)selected;
 -(void) allSubitems                 :(NSString*)path :(NSMutableArray*)items;
--(void) determineDirectorySize      :(NSInteger)row;
+-(void) determineDirectorySizeAsync :(NSInteger)row;
+-(bool) canDetermineDirectorySize;
 -(void) updateTable;
 
 @end

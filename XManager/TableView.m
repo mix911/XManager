@@ -76,16 +76,7 @@
             // Обрабатываем сами
             [sidePanel postKeyDown:event];
             return;
-            
-        case 49:    // Space
-        {
-            NSInteger row = [self selectedRow];
-            if (row != 0) {
-                [sidePanel determineDirectorySize:row];
-            }
-            break;
-        }
-                    
+                                
         default:
             break;
     }

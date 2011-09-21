@@ -36,5 +36,6 @@
 -(NSString*)        copySelected    :(NSString*)dest;
 -(NSString*)        moveSelected    :(NSString*)dest;
 -(NSUInteger)       determineDirectorySize:(NSString*)path;
+-(bool)             canDetermineDirectorySize;
 
 @end

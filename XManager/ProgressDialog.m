@@ -46,7 +46,7 @@
 
 -(void) show :(id<Process>)p :(NSString*)cct{
         
-    process = p;
+    process = [p retain];
     
     cancelConfirmText = cct;
     

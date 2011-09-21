@@ -39,8 +39,11 @@
 -(NSString*)    renameCurrent  :(NSString*)name :(NSInteger)row;
 -(NSString*)    copySelected   :(NSString*)dest;
 -(NSString*)    moveSelected   :(NSString*)dest;
+
+
 -(void)         runDetermineDirectorySize:(NSUInteger)row;
-+(void)         determineDirectorySize:(id)row;
++(void)         determineDirectorySizeAsync:(id)row;
+-(bool)         canDetermineDirectorySize;
 
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;

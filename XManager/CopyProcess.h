@@ -10,13 +10,25 @@
 
 #import "Process.h"
 
+@protocol InputStream;
+@protocol OutputStream;
+
 @interface CopyProcess : NSObject<Process> {
     float       progress;
-    NSTimer*    timer;
     bool        pause;
     bool        stop;
     NSLock*     sync;
     NSThread*   workerThread;
+    
+    NSUInteger  fullSize;
+    NSUInteger  done;
+    NSArray*    selected;
+    NSFileManager* fileManager;
+    id<InputStream>     inputStream;
+    id<OutputStream>    outputStream;
+    NSString*           srcPath;
+    NSString*           dstPath;
+    bool                isComplete;
 }
 
 -(id)       init;
@@ -28,8 +40,6 @@
 -(void)     stopProcess;
 -(void)     pauseProcess;
 -(void)     continueProcess;
--(void)     runProcess;
-
--(void)     process;
+-(void)     runProcess:(NSArray*)selected;
 
 @end

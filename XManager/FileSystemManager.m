@@ -474,7 +474,7 @@
     NSFileManager* fm = [[NSFileManager alloc] init];
     
     // Для определения размера воспользуемся обходом дерева в глубину, так как требуемый размер памяти эквивалентен 
-    // высотой дерева
+    // высоте дерева
     NSMutableArray* stack = [[NSMutableArray alloc] init];
 
     [self expandNode :path :stack :fm];
@@ -500,6 +500,10 @@
     [fm     release];
     
     return size;
+}
+
+-(bool) canDetermineDirectorySize {
+    return true;
 }
 
 @end

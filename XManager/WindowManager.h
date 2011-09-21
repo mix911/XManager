@@ -95,7 +95,9 @@
 -(void) copyItems;
 -(void) moveItems;
 -(void) makeDirItems;
--(void) deleleItems;
+-(void) deleteItems;
+-(void) determineDirectorySize:(NSInteger)row;
+-(void) determineDirectorySize;
 
 -(void) insertTab;
 -(void) setActiveSide:(id)panel;
@@ -107,7 +109,6 @@
 -(void) pressMoveNo;
 -(void) pressCopyNo;
 
--(id<Process>) runCopyProcess;
-
+-(id<Process>)  runCopyProcess:(NSArray*)selected;
 
 @end
