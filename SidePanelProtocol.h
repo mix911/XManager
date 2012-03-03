@@ -22,7 +22,6 @@
 -(void) setActive                   :(NSWindow*)window;
 -(void) determineDirectorySizeAsync :(NSInteger)row;
 -(void) determineDirectorySize      :(NSInteger)row;
--(void) determineDirectorySize;
 -(void) updateTable;
 
 @end

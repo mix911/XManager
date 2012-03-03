@@ -24,7 +24,7 @@
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
-@interface WindowManager : NSObject <WindowManagerProtocol, Process>{    
+@interface WindowManager : NSObject <WindowManagerProtocol>{    
     IBOutlet    SidePanel*                  leftPanel;              // Левая панель
     IBOutlet    SidePanel*                  rightPanel;             // Правая панель
                 SidePanel*                  activePanel;            // Активная панель
@@ -108,7 +108,5 @@
 -(void) pressCopyYes;
 -(void) pressMoveNo;
 -(void) pressCopyNo;
-
--(id<Process>)  runCopyProcess:(NSArray*)selected;
 
 @end

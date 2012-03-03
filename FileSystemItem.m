@@ -53,8 +53,8 @@
     if(self.isDir || rgh.isDir)
         return [self compareByName:rgh];
     
-    NSInteger ilft = [self.size integerValue];
-    NSInteger irgh = [rgh.size  integerValue];
+    NSInteger ilft = self.size;
+    NSInteger irgh = rgh.size;
     
     if(ilft < irgh)
         return NSOrderedAscending;

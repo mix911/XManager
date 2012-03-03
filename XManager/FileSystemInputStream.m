@@ -10,13 +10,20 @@
 
 @implementation FileSystemInputStream
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
+-(bool) open:(NSString *)name {
+    return true;
+}
+
+-(void) close {
     
-    return self;
+}
+
+-(NSInteger) read:(uint8_t *)buffer maxLength:(NSUInteger)len {
+    return 0;
+}
+
+-(NSInteger) size {
+    return 0;
 }
 
 @end

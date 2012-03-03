@@ -17,7 +17,7 @@
     NSString*                       key;
 }
 
--(id)                               initWithAttrs :(DataSourceAndTableViewDelegate*)this :(NSUInteger)row;
+-(id)                               initWithAttrs :(DataSourceAndTableViewDelegate*)this :(NSUInteger)row :(NSString*)key;
 -(DataSourceAndTableViewDelegate*)  this;
 -(NSUInteger)                       row;
 -(NSString*)                        key;

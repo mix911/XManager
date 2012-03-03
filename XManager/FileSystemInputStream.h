@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FileSystemInputStream : NSInputStream
+#import "InputStream.h"
+
+@interface FileSystemInputStream : NSObject<InputStream>
+
+-(bool)         open:(NSString *)name;
+-(void)         close;
+-(NSInteger)    read:(uint8_t *)buffer maxLength:(NSUInteger)len;
+-(NSInteger)    size;
 
 @end

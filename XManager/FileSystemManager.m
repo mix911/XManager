@@ -134,7 +134,7 @@
     return data;
 }
 
-//-(void) sortData {
+-(void) sortData {
 //    
 //    switch (order) {
 //        case FS_ICON:
@@ -159,14 +159,10 @@
 //        default:
 //            break;
 //    }
-//}
+}
 
 -(NSString*) makePath:(NSString* )name {
     return [NSString stringWithFormat:@"%@/%@", [self currentPath], name];
-}
-
--(NSMutableArray*) changeFolder:(NSString *)folder {
-    return [self openFolder:folder];
 }
 
 // TODO: в будущем учесть символические ссылки
@@ -248,6 +244,9 @@
     }
     return self;
 }
+-(NSMutableArray*) changeFolder:(NSString*)folder {
+    return [self openFolder:folder];
+}
 ////+-----------------------------------------------------------------+
 ////| Раскрыть ряд: true - данные обновились, false - нет             |
 ////+-----------------------------------------------------------------+
@@ -298,14 +297,15 @@
 //    }
 //}
 //
-//-(NSMutableArray*) data {
+-(NSMutableArray*) data {
 //    return data;
-//}
+    return nil;
+}
 
-//-(void) setOrder:(enum EFileSystemColumnId)o {
-//    order = o;
-//    [self sortData];
-//}
+-(void) setOrder:(enum EFileSystemColumnId)o {
+    order = o;
+    [self sortData];
+}
 
 -(NSString*) currentPath {
     if (currentPath) {

@@ -25,4 +25,6 @@
 -(void) pressMoveNo;
 -(void) pressCopyNo;
 
+-(void) determineDirectorySize:(NSInteger)row;
+
 @end

@@ -12,7 +12,6 @@
 #import "DataSourceAndTableViewDelegate.h"
 
 #import "FileSystemManager.h"
-#import "FtpManager.h"
 
 @interface SidePanel(Private)
 
@@ -362,16 +361,6 @@
     [ds selectedItems:selected :[table selectedRow]];
     
     return [selected count] != 0;
-}
-
--(void) allSubitems:(NSString *)path :(NSMutableArray *)items {
-    // Отчистим входящий массив
-    [items removeAllObjects];
-    
-    // Получим источник данных
-    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
-    
-    [ds allSubitems :path :items];
 }
 
 -(void) determineDirectorySizeAsync  :(NSInteger)row {

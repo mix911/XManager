@@ -11,6 +11,8 @@
 #import "SidePanelProtocol.h"
 #import "WindowManagerProtocol.h"
 
+@class TableView;
+
 @interface SidePanel : NSView <SidePanelProtocol> {
     NSTabView*                  tabView;        // Вкладки
     int                         nextTabId;      // Следующая вкладка
@@ -43,11 +45,10 @@
 -(void) invertSelection             :(NSInteger)row;
 -(void) postKeyDown                 :(NSEvent*)event;
 -(void) setActive                   :(NSWindow*)window;
--(NSView*)   table;
+-(TableView*)   table;
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
 -(bool) selectedItems               :(NSMutableArray*)selected;
--(void) allSubitems                 :(NSString*)path :(NSMutableArray*)items;
 -(void) determineDirectorySizeAsync :(NSInteger)row;
 -(bool) canDetermineDirectorySize;
 -(void) updateTable;

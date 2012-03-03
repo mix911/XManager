@@ -30,7 +30,7 @@
 
     unsigned short key = [event keyCode];
     
-    switch ([event keyCode]) {
+    switch (key) {
             
         case 0x24:
         {

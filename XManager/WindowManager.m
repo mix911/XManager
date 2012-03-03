@@ -13,8 +13,9 @@
 
 @interface WindowManager(Private)
 
--(void) messageBox:(NSString*)message;
--(void) updateContent;
+-(void)         messageBox:(NSString*)message;
+-(void)         updateContent;
+-(id<Process>)  runCopyProcess:(NSArray*)selected :(NSUInteger)fullSize;
 
 @end
 
@@ -28,6 +29,20 @@
 -(void) updateContent {
     [leftPanel  updateContent];
     [rightPanel updateContent];
+}
+
+-(id<Process>) runCopyProcess :(NSArray*)selected :(NSUInteger)fullSize{
+    
+    if ([selected count] > 0) {
+        CopyProcess* copy_process = [[CopyProcess alloc] init];
+        [process release];
+        process = copy_process;
+        [copy_process runProcess:selected :fullSize];
+    }
+    
+    [selected release];
+    
+    return process;
 }
 
 @end
@@ -167,28 +182,6 @@
 -(IBAction) makeDirOk:(id)sender {
     // Закроем окно
     [self makeDirCancel:sender];
-    
-    // Получим имя создаваемого каталога
-    NSString* dir_name = [makeDirDialog dirName];
-    
-    // Если имя не было указано
-    if ([dir_name isEqualToString:@""]) {
-        return;
-    }
-    
-    // Получим активную панель
-    SidePanel* active = [self activePanel];
-    
-    // Попытаемся создать каталог
-    NSString* error = [active makeDir:dir_name];
-
-    // Если произошла ошибка
-    if (error) {
-        [self messageBox:error];
-    }
-    
-    // Обновим содержимое
-    [self updateContent];
 }
 
 -(void) setActiveSide :(id)panel {
@@ -221,17 +214,6 @@
 -(IBAction) deleteItemsYes:(id)sender {
     // Закроем диалог
     [self deleteItemsNo:sender];
-    
-    // Удалим все что выделено в активной панели
-    NSString* error = [activePanel deleteSelected];
-    
-    // Если не получилось
-    if (error) {
-        [self messageBox:error];
-    }
-
-    // Обновим содержимое
-    [self updateContent];
 }
 
 -(IBAction) renameNo:(id)sender {
@@ -260,67 +242,7 @@
 }
 
 -(IBAction) copyYes:(id)sender {
-    
-    // Посчитаем размер задачи
-    
-    // Закроем диалог
     [self copyNo:sender];
-    
-    // Получим активную панель
-    SidePanel* active = [self activePanel];
-    
-    // Получим выбранные объекты
-    NSMutableArray* selected= [[NSMutableArray alloc] init];
-    [active selectedItems:selected];
-    
-    if ([selected count] > 0) {
-        
-        [self determineDirectorySize];
-        
-        [progressDialog show:[self runCopyProcess :selected] :@"Do you really want to stop the copying process?"];
-    }
-    
-//    // Получим активную панель
-//    SidePanel* active = [self activePanel];
-//    
-//    // Получим вторую панель
-//    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
-//    
-//    // Выделенные объекты
-//    NSMutableArray* selected = [[NSMutableArray alloc] init];
-//    
-//    // Получим выделенные объекты
-//    if ([active selectedItems:selected]) {
-//        NSString* error = [active copySelected:selected:[second currentPath]];
-//        
-//        if (error) {
-//            [self messageBox:error];
-//        }
-//        
-//        [self updateContent];
-//    }
-}
-
--(id<Process>) runCopyProcess :(NSArray*)selected {
-    
-    if ([selected count] > 0) {
-        [process release];
-        process = [[CopyProcess alloc] init];
-        [process runProcess];
-    }
-    
-    [selected release];
-    
-    return process;
-}
-
--(id<Process>) runDetermineDirectorySizeProcess:(NSArray*)selected {
-    if ([selected count] > 0) {
-        DetermineDirectorySizeProcess* process = [[DetermineDirectorySizeProcess alloc] init];
-        [process runProcess];
-        return process;
-    }
-    return nil;
 }
 
 -(IBAction) moveNo:(id)sender {
@@ -331,23 +253,6 @@
     
     // Закроем диалог
     [self moveNo:sender];
-    
-    // Получим активную панель
-    SidePanel* active = [self activePanel];
-    
-    // Получим вторую панель
-    SidePanel* second = ((active == leftPanel) ? rightPanel : leftPanel);
-        
-    // Переместим выделенные объекты
-    NSString* error = [active moveSelected:[second currentPath]];
-    
-    // Если не получилось
-    if (error) {
-        [self messageBox:error];
-    }
-    
-    // Обновим содержимое
-    [self updateContent];
 }
 
 -(IBAction) messageBoxOk:(id)sender {
