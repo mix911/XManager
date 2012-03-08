@@ -8,14 +8,10 @@
 
 #import "WindowManager.h"
 
-#import "CopyProcess.h"
-#import "DetermineDirectorySizeProcess.h"
-
 @interface WindowManager(Private)
 
 -(void)         messageBox:(NSString*)message;
 -(void)         updateContent;
--(id<Process>)  runCopyProcess:(NSArray*)selected :(NSUInteger)fullSize;
 
 @end
 
@@ -29,20 +25,6 @@
 -(void) updateContent {
     [leftPanel  updateContent];
     [rightPanel updateContent];
-}
-
--(id<Process>) runCopyProcess :(NSArray*)selected :(NSUInteger)fullSize{
-    
-    if ([selected count] > 0) {
-        CopyProcess* copy_process = [[CopyProcess alloc] init];
-        [process release];
-        process = copy_process;
-        [copy_process runProcess:selected :fullSize];
-    }
-    
-    [selected release];
-    
-    return process;
 }
 
 @end

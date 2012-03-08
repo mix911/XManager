@@ -10,7 +10,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "WindowManagerProtocol.h"
-#import "Process.h"
 
 #import "SidePanel.h"
 #import "NetworkConnectionDialog.h"
@@ -20,7 +19,7 @@
 #import "DeleteDialog.h"
 #import "RenameDialog.h"
 #import "MessageBox.h"
-#import "ProgressDialog.h"
+
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
@@ -36,9 +35,6 @@
     IBOutlet    CopyDialog*                 copyDialog;             // Диалог копирования
     IBOutlet    MoveDialog*                 moveDialog;             // Диалог перемещения
     IBOutlet    NSWindow*                   mainWindow;             // Главное окно
-    IBOutlet    ProgressDialog*             progressDialog;         // Диалог прогресса
-    
-    id<Process> process;
 }
 
 -(void) awakeFromNib;
