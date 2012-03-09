@@ -13,6 +13,8 @@
 
 #import "FileSystemManager.h"
 
+#include "MacSys.h"
+
 @interface SidePanel(Private)
 
 -(TableView*)   table;
@@ -218,45 +220,45 @@
     
     switch ([event keyCode]) {
             
-        case 0xD:   // W
+        case VK_W:
             
             if ([event modifierFlags] & NSCommandKeyMask) {
                 [self closeCurrentTab];
             }
             break;
             
-        case 0x11:  // T
+        case VK_T:
             
             if ([event modifierFlags] & NSCommandKeyMask) {
                 [self addTabFromCurrent];
             }
             break;
             
-        case 120:   // F2
+        case VK_F2:
             [windowManager renameItems];
             break;
             
-        case 96:    // F5
+        case VK_F5:
             [windowManager copyItems];
             break;
             
-        case 97:    // F6
+        case VK_F6:
             [windowManager moveItems];
             break;
             
-        case 98:    // F7
+        case VK_F7:
             [windowManager makeDirItems];
             break;
             
-        case 100:   // F8
+        case VK_F8:
             [windowManager deleteItems];
             break;
             
-        case 48:    // Tab - мы сдесь только когда не зажат контрол TODO: добавить вывод в лог
+        case VK_TAB:
             [windowManager insertTab];
             break;
             
-        case 49:    // Space
+        case VK_SPACE:
             [windowManager determineDirectorySize:[[self table] selectedRow]];
             
         default:

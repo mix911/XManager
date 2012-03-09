@@ -8,6 +8,8 @@
 
 #import "TableView.h"
 
+#include "MacSys.h"
+
 @implementation TableView
 
 - (id)init {
@@ -32,7 +34,7 @@
     
     switch (key) {
             
-        case 0x24:
+        case VK_ENTER:
         {
             NSInteger row = [super selectedRow];
             if ([sidePanel enterToRow:row]) {
@@ -42,8 +44,7 @@
         }
             break;
             
-        // Up
-        case 0x7E:
+        case VK_ARROR_UP:
             if ([event modifierFlags] & NSCommandKeyMask) {
                 if ([sidePanel goUp]) {
                     [self reloadData];
@@ -56,8 +57,7 @@
             }
             break;
             
-        // Down
-        case 0x7D:
+        case VK_ARROR_DOWN:
             if ([event modifierFlags] & NSShiftKeyMask) {
                 
                 NSInteger row = [self selectedRow];
@@ -66,8 +66,7 @@
             }
             break;
             
-        // Tab
-        case 48:
+        case VK_TAB:
             // Если был зажат Control то все как обычно
             if ([event modifierFlags] & NSControlKeyMask) {
                 [super      keyDown     :event];
