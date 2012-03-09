@@ -21,7 +21,6 @@
 		B4074EBD13ECD0F000438E01 /* WindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* WindowManager.m */; };
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
 		B442B501142935D200CDBA86 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = B442B500142935D200CDBA86 /* Stack.m */; };
-		B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */; };
 		B47B332113F9A32800884E4E /* FtpParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B47B332013F9A32800884E4E /* FtpParams.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
@@ -31,15 +30,8 @@
 		B4C10EFF1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFA1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns */; };
 		B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */; };
 		B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */; };
-		B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C110CB13FEEB6600D84449 /* MessageBox.m */; };
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
-		B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C5490913FE6F7F0071825D /* MakeDirDialog.m */; };
-		B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */; };
-		B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */; };
-		B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */; };
-		B4C7E5A213FFAECA00E7C92E /* RenameDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4C7E5A113FFAECA00E7C92E /* RenameDialog.m */; };
 		B4CC4B3B143CF25200ED29C7 /* FileSystemOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CC4B3A143CF25200ED29C7 /* FileSystemOutputStream.m */; };
-		B4D4AD8014273D7D001DC74A /* MessageBoxYesNo.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D4AD7F14273D7D001DC74A /* MessageBoxYesNo.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
 		B4F127171429C21900C862D2 /* FileSystemInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F127161429C21900C862D2 /* FileSystemInputStream.m */; };
 		B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */; };
@@ -82,14 +74,10 @@
 		B4124C5E150915200026FABE /* MacSys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacSys.h; sourceTree = "<group>"; };
 		B442B4FF142935D200CDBA86 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		B442B500142935D200CDBA86 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
-		B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeleteDialog.h; path = ../DeleteDialog.h; sourceTree = "<group>"; };
-		B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteDialog.m; path = ../DeleteDialog.m; sourceTree = "<group>"; };
-		B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanelProtocol.h; path = ../SidePanelProtocol.h; sourceTree = "<group>"; };
 		B47B331F13F9A32800884E4E /* FtpParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FtpParams.h; sourceTree = "<group>"; };
 		B47B332013F9A32800884E4E /* FtpParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FtpParams.m; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		B4A45DBD13FE1E12002C082F /* WindowManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManagerProtocol.h; sourceTree = "<group>"; };
 		B4B3182414043A350004A407 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
@@ -99,23 +87,9 @@
 		B4C10EFA1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarDesktopFolderIcon.icns; path = Resources/Icons/ToolbarDesktopFolderIcon.icns; sourceTree = SOURCE_ROOT; };
 		B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarDocumentsFolderIcon.icns; path = Resources/Icons/ToolbarDocumentsFolderIcon.icns; sourceTree = SOURCE_ROOT; };
 		B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarUtilitiesFolderIcon.icns; path = Resources/Icons/ToolbarUtilitiesFolderIcon.icns; sourceTree = SOURCE_ROOT; };
-		B4C110CA13FEEB6600D84449 /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
-		B4C110CB13FEEB6600D84449 /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		B4C1581F140267B40052D988 /* HomeFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeFolderIcon.icns; sourceTree = "<group>"; };
-		B4C5490813FE6F7F0071825D /* MakeDirDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeDirDialog.h; sourceTree = "<group>"; };
-		B4C5490913FE6F7F0071825D /* MakeDirDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeDirDialog.m; sourceTree = "<group>"; };
-		B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnectionDialog.h; sourceTree = "<group>"; };
-		B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnectionDialog.m; sourceTree = "<group>"; };
-		B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyDialog.h; sourceTree = "<group>"; };
-		B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyDialog.m; sourceTree = "<group>"; };
-		B4C7E59D13FFAE2B00E7C92E /* MoveDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveDialog.h; sourceTree = "<group>"; };
-		B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveDialog.m; sourceTree = "<group>"; };
-		B4C7E5A013FFAECA00E7C92E /* RenameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenameDialog.h; sourceTree = "<group>"; };
-		B4C7E5A113FFAECA00E7C92E /* RenameDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenameDialog.m; sourceTree = "<group>"; };
 		B4CC4B39143CF25200ED29C7 /* FileSystemOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemOutputStream.h; sourceTree = "<group>"; };
 		B4CC4B3A143CF25200ED29C7 /* FileSystemOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemOutputStream.m; sourceTree = "<group>"; };
-		B4D4AD7E14273D7D001DC74A /* MessageBoxYesNo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageBoxYesNo.h; path = ../MessageBoxYesNo.h; sourceTree = "<group>"; };
-		B4D4AD7F14273D7D001DC74A /* MessageBoxYesNo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageBoxYesNo.m; path = ../MessageBoxYesNo.m; sourceTree = "<group>"; };
 		B4D5A228143B93E600EFA0B6 /* InputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStream.h; sourceTree = "<group>"; };
 		B4D5A22A143B940100EFA0B6 /* OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutputStream.h; path = ../OutputStream.h; sourceTree = "<group>"; };
 		B4DAF08B13FA92420000BA35 /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
@@ -197,7 +171,6 @@
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
 				B4074EBB13ECD0F000438E01 /* WindowManager.h */,
 				B4074EBC13ECD0F000438E01 /* WindowManager.m */,
-				B4A45DBD13FE1E12002C082F /* WindowManagerProtocol.h */,
 				B442B4FF142935D200CDBA86 /* Stack.h */,
 				B442B500142935D200CDBA86 /* Stack.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
@@ -246,22 +219,6 @@
 			children = (
 				B4B3182414043A350004A407 /* MainWindow.h */,
 				B4B3182514043A350004A407 /* MainWindow.m */,
-				B4C7E59A13FFAE0E00E7C92E /* CopyDialog.h */,
-				B4C7E59B13FFAE0E00E7C92E /* CopyDialog.m */,
-				B44D3CA513FEFBCB008EDE99 /* DeleteDialog.h */,
-				B44D3CA613FEFBCB008EDE99 /* DeleteDialog.m */,
-				B4C110CA13FEEB6600D84449 /* MessageBox.h */,
-				B4C110CB13FEEB6600D84449 /* MessageBox.m */,
-				B4C60FF513F851B500D490B8 /* NetworkConnectionDialog.h */,
-				B4C60FF613F851B500D490B8 /* NetworkConnectionDialog.m */,
-				B4C5490813FE6F7F0071825D /* MakeDirDialog.h */,
-				B4C5490913FE6F7F0071825D /* MakeDirDialog.m */,
-				B4D4AD7E14273D7D001DC74A /* MessageBoxYesNo.h */,
-				B4D4AD7F14273D7D001DC74A /* MessageBoxYesNo.m */,
-				B4C7E59D13FFAE2B00E7C92E /* MoveDialog.h */,
-				B4C7E59E13FFAE2B00E7C92E /* MoveDialog.m */,
-				B4C7E5A013FFAECA00E7C92E /* RenameDialog.h */,
-				B4C7E5A113FFAECA00E7C92E /* RenameDialog.m */,
 			);
 			name = Dialogs;
 			sourceTree = "<group>";
@@ -286,7 +243,6 @@
 			children = (
 				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
 				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
-				B477EFF513F582E9001F56F3 /* SidePanelProtocol.h */,
 				B480195C13F538FF00E33745 /* TableView.h */,
 				B480195D13F538FF00E33745 /* TableView.m */,
 			);
@@ -444,18 +400,10 @@
 				B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */,
 				B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */,
 				B480195E13F538FF00E33745 /* TableView.m in Sources */,
-				B4C60FF713F851B500D490B8 /* NetworkConnectionDialog.m in Sources */,
 				B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */,
 				B47B332113F9A32800884E4E /* FtpParams.m in Sources */,
 				B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */,
-				B4C5490A13FE6F7F0071825D /* MakeDirDialog.m in Sources */,
-				B4C110CC13FEEB6600D84449 /* MessageBox.m in Sources */,
-				B44D3CA713FEFBCB008EDE99 /* DeleteDialog.m in Sources */,
-				B4C7E59C13FFAE0E00E7C92E /* CopyDialog.m in Sources */,
-				B4C7E59F13FFAE2B00E7C92E /* MoveDialog.m in Sources */,
-				B4C7E5A213FFAECA00E7C92E /* RenameDialog.m in Sources */,
 				B4B3182614043A350004A407 /* MainWindow.m in Sources */,
-				B4D4AD8014273D7D001DC74A /* MessageBoxYesNo.m in Sources */,
 				B442B501142935D200CDBA86 /* Stack.m in Sources */,
 				B4F127171429C21900C862D2 /* FileSystemInputStream.m in Sources */,
 				B4CC4B3B143CF25200ED29C7 /* FileSystemOutputStream.m in Sources */,

@@ -8,15 +8,16 @@
 
 #import <AppKit/AppKit.h>
 
-#import "SidePanelProtocol.h"
+@class SidePanel;
 
-@interface TableView : NSTableView {
-    id<SidePanelProtocol>   sidePanel;
-    NSMutableIndexSet*      selectedRows;
+@interface TableView : NSTableView 
+{
+    SidePanel*          sidePanel;
+    NSMutableIndexSet*  selectedRows;
 }
 
 -(id)   init;
--(void) setSidePanel    :(id<SidePanelProtocol>)sidePanel;
+-(void) setSidePanel    :(SidePanel*)sidePanel;
 -(void) keyDown         :(NSEvent*)event;
 -(void) doubleClick     :(id)sender;
 -(BOOL) becomeFirstResponder;

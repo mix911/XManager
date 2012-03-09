@@ -8,15 +8,15 @@
 
 #import <AppKit/AppKit.h>
 
-#import "SidePanelProtocol.h"
-#import "WindowManagerProtocol.h"
 
 @class TableView;
+@class WindowManager;
 
-@interface SidePanel : NSView <SidePanelProtocol> {
-    NSTabView*                  tabView;        // Вкладки
-    int                         nextTabId;      // Следующая вкладка
-    id<WindowManagerProtocol>   windowManager;  // Менеджер окон
+@interface SidePanel : NSView 
+{
+    NSTabView*      tabView;        // Вкладки
+    int             nextTabId;      // Следующая вкладка
+    WindowManager*  windowManager;  // Менеджер окон
 }
 
 -(id)   init;
@@ -24,7 +24,7 @@
 -(void) addTab :(NSString*)path;
 -(void) addTabFromCurrent;
 -(int)  nextTabId;
--(void) setWindowManager:(id<WindowManagerProtocol>)manager;
+-(void) setWindowManager:(WindowManager*)manager;
 -(void) updateContent;
 -(NSString*)    currentPath;
 

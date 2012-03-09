@@ -8,6 +8,7 @@
 
 #import "DataSourceAndTableViewDelegate.h"
 
+#import "SidePanel.h"
 #import "FileSystemItem.h"
 
 @interface DataSourceObj : NSObject {
@@ -428,7 +429,7 @@
     [tableView reloadData];
 }
 
--(void) setSidePanelProtocol:(id<SidePanelProtocol>)sp {
+-(void) setSidePanelProtocol:(SidePanel*)sp {
     sidePanel = sp;
 }
 

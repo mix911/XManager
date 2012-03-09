@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SidePanelProtocol.h"
 #import "ItemManagerProtocol.h"
+
+@class SidePanel;
 
 //+-----------------------------------------------------------------+
 //| Источник данных и делегат таблицы                               |
@@ -19,7 +20,7 @@
     id<ItemManagerProtocol>     itemManager;    // Менеджер управления объектами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
-    id<SidePanelProtocol>       sidePanel;      // Панель содержащая таблицу
+    SidePanel*                  sidePanel;      // Панель содержащая таблицу
     NSLock*                     sync;           // Синхронизация данных
     NSMutableDictionary*        tasks;          // Задачи
 }
@@ -50,7 +51,7 @@
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 
 // FileSystemDataSource
--(void)     setSidePanelProtocol:(id<SidePanelProtocol>)sidePanel;
+-(void)     setSidePanelProtocol:(SidePanel*)sidePanel;
 -(NSString*)currentPath;
 -(bool)     changeFolder    :(NSString*)folder;
 -(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;

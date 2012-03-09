@@ -15,6 +15,8 @@
 
 #include "MacSys.h"
 
+#import "WindowManager.h"
+
 @interface SidePanel(Private)
 
 -(TableView*)   table;
@@ -235,23 +237,18 @@
             break;
             
         case VK_F2:
-            [windowManager renameItems];
             break;
             
         case VK_F5:
-            [windowManager copyItems];
             break;
             
         case VK_F6:
-            [windowManager moveItems];
             break;
             
         case VK_F7:
-            [windowManager makeDirItems];
             break;
             
         case VK_F8:
-            [windowManager deleteItems];
             break;
             
         case VK_TAB:
@@ -259,7 +256,7 @@
             break;
             
         case VK_SPACE:
-            [windowManager determineDirectorySize:[[self table] selectedRow]];
+            break;
             
         default:
             break;
@@ -273,7 +270,7 @@
     }
 }
 
--(void) setWindowManager:(id<WindowManagerProtocol>)manager {
+-(void) setWindowManager:(WindowManager*)manager {
     windowManager = manager;
 }
 

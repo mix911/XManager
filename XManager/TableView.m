@@ -7,6 +7,7 @@
 //
 
 #import "TableView.h"
+#import "SidePanel.h"
 
 #include "MacSys.h"
 
@@ -18,13 +19,12 @@
         [self setTarget:self];
         [self setDoubleAction:@selector(doubleClick:)];
         [self setAction:nil];
-        //[self setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     }
     
     return self;
 }
 
--(void) setSidePanel:(id<SidePanelProtocol>)sp {
+-(void) setSidePanel:(SidePanel*)sp {
     sidePanel = sp;
 }
 
