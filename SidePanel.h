@@ -28,13 +28,6 @@
 -(void) updateContent;
 -(NSString*)    currentPath;
 
-// Item operations
--(NSString*)    makeDir             :(NSString*)name;
--(NSString*)    deleteSelected;
--(NSString*)    renameCurrent       :(NSString*)name;
--(NSString*)    copySelected        :(NSArray*)selected :(NSString*)dest;
--(NSString*)    moveSelected        :(NSString*)dest;
-
 // SidePanelProtocol
 -(bool) changeFolder                :(NSString *)folder;
 -(void) setTabHeaderTitle           :(NSString*)folder;
@@ -49,8 +42,6 @@
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
 -(bool) selectedItems               :(NSMutableArray*)selected;
--(void) determineDirectorySizeAsync :(NSInteger)row;
--(bool) canDetermineDirectorySize;
 -(void) updateTable;
 
 @end

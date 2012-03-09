@@ -122,7 +122,6 @@
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
 -(void)                     stopAllTasks;
--(void)                     determineDirectorySizeWorker:(NSUInteger)row;
 -(void)                     onTaskTimer :(NSTimer*)timer;
 
 @end
@@ -156,40 +155,6 @@
     
     [tasks removeAllObjects];
     
-    [sync unlock];
-}
-
--(void) determineDirectorySizeWorker:(NSUInteger)row {
-    
-    FileSystemItem* item = nil;
-    NSString*       path = nil;
-
-    [sync lock];
-    
-    item = [data objectAtIndex:row];
-    
-    // Проверим ряд
-    if (row < [data count]) {
-        
-        // Получим текущий путь
-        path = [NSString stringWithFormat: @"%@/%@", [itemManager currentPath], item.name];
-    }
-    
-    [sync unlock];
-    
-    if (path == nil) {
-        return;
-    }
-    
-    NSUInteger size = [itemManager determineDirectorySize:path];
-    
-    [sync lock];
-    // Запросим размер директории
-    item.size = size;
-    Task* task = [tasks objectForKey:item.fullPath];
-    if (task) {
-        task.isReady = true;
-    }
     [sync unlock];
 }
 
@@ -456,65 +421,9 @@
     item.isSelected = !item.isSelected;
 }
 
--(NSString*) makeDir:(NSString *)name {
-    return [itemManager makeDir:name];
-}
-
--(NSString*) deleteSelected {
-    return [itemManager deleteSelected];
-}
-
--(NSString*) renameCurrent:(NSString *)name :(NSInteger)row{
-    return [itemManager renameCurrent:name :row];
-}
-
--(NSString*) copySelected:(NSString *)dest {
-    return [itemManager copySelected:dest];
-}
-
--(NSString*) moveSelected:(NSString *)dest {
-    return [itemManager moveSelected:dest];
-}
-
--(void) runDetermineDirectorySize:(NSUInteger)row {
-    
-    [sync lock];
-    
-    
-    if (row < [data count]) {
-        FileSystemItem* item = [data objectAtIndex:row];
-        
-        // Найдем такую задачу
-        Task* task = [tasks objectForKey:item.fullPath];
-        
-        // Если такая задача уже есть
-        if (task == nil) {
-            task = [[Task alloc] initWithDataSource:self];
-            
-            [tasks setObject:task forKey:item.fullPath];
-        }
-        else {
-            [task stopTask];
-        }
-        
-        DataSourceObj* obj = [[DataSourceObj alloc] initWithAttrs :self :row :item.fullPath];
-        
-        [task runTask:obj];
-        
-        [obj release];        
-    }
-    
-    [sync unlock];
-}
-
-+(void) determineDirectorySizeAsync:(DataSourceObj*)obj {
-    [[obj this] determineDirectorySizeWorker:[obj row]];
-}
-
 -(void) updateItemsList {
     data = nil;
     [itemManager updateItemsList];
-    data = [itemManager data];
 }
 
 -(bool) changeFolder:(NSString *)folder {
@@ -551,10 +460,6 @@
             }
         }
     }
-}
-
--(bool) canDetermineDirectorySize {
-    return [itemManager canDetermineDirectorySize];
 }
 
 @end

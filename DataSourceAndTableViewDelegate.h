@@ -34,18 +34,6 @@
 -(bool)         enterToRow:(NSUInteger)row;
 -(bool)         goUp;
 
-// Items operations
--(NSString*)    makeDir        :(NSString*)name;
--(NSString*)    deleteSelected;
--(NSString*)    renameCurrent  :(NSString*)name :(NSInteger)row;
--(NSString*)    copySelected   :(NSString*)dest;
--(NSString*)    moveSelected   :(NSString*)dest;
-
-
--(void)         runDetermineDirectorySize:(NSUInteger)row;
-+(void)         determineDirectorySizeAsync:(id)row;
--(bool)         canDetermineDirectorySize;
-
 // Delegate
 -(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;

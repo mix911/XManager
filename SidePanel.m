@@ -293,27 +293,6 @@
         [table reloadData];
     }
 }
-
--(NSString*) makeDir:(NSString *)name {
-    return [[self currentDataSource] makeDir:name];
-}
-
--(NSString*) deleteSelected {
-    return [[self currentDataSource] deleteSelected];
-}
-
--(NSString*) renameCurrent:(NSString*)name {
-    return [[self currentDataSource] renameCurrent:name :[[self table] selectedRow]];
-}
-
--(NSString*) copySelected:(NSArray*)selected :(NSString*)dest {
-    return [[self currentDataSource] copySelected:dest];
-}
-
--(NSString*) moveSelected:(NSString *)dest {
-    return [[self currentDataSource] moveSelected:dest];
-}
-
 -(NSString*) currentPath {
     return [[self currentDataSource] currentPath];
 }
@@ -362,29 +341,8 @@
     return [selected count] != 0;
 }
 
--(void) determineDirectorySizeAsync  :(NSInteger)row {
-    
-    // Получим источник данных
-    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
-    
-    // Запустим подсчет размера папки
-    [ds runDetermineDirectorySize:row];
-}
-
--(void) determineDirectorySize :(NSInteger)row {
-    // Получим источник данных
-    DataSourceAndTableViewDelegate* ds = [self currentDataSource];
-    
-    // Посчитаем размер папки
-    [ds runDetermineDirectorySize:row];
-}
-
 -(void) updateTable {
     [[self table] reloadData];
-}
-
--(bool) canDetermineDirectorySize {
-    return [[self currentDataSource] canDetermineDirectorySize];
 }
 
 @end
