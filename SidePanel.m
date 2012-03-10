@@ -32,7 +32,8 @@
 }
 
 -(TableView*)   table {
-    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+//    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+    NSTabViewItem* tab_item = [self selectedTabViewItem];
     NSScrollView*   scroll  = [tab_item view];
     return [scroll documentView];
 }
@@ -51,19 +52,19 @@
 }
 
 -(void) dealloc {
-    [tabView release];
+//    [tabView release];
 }
 
 -(void) addTab:(NSString *)path {
     
-    // Если tabView ещё не создан, создадим его
-    if (tabView==nil) {
-        tabView = [[NSTabView alloc] init];
-        [self addSubview:tabView];
-        [tabView setFrame:[self bounds]];
-        [self setAutoresizesSubviews:YES];
-        [tabView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-    }
+//    // Если tabView ещё не создан, создадим его
+//    if (tabView==nil) {
+//        tabView = [[NSTabView alloc] init];
+//        [self addSubview:tabView];
+//        [tabView setFrame:[self bounds]];
+//        [self setAutoresizesSubviews:YES];
+//        [tabView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+//    }
     
     // Создадим url
     NSURL* url = [[NSURL alloc] initWithString:path];
@@ -72,7 +73,8 @@
     NSString* dir = [url lastPathComponent];
     
     // Сгенерируем идентификатор для вкладки
-    NSString* tab_id =  [NSString stringWithFormat:@"%S%i", [[self identifier] cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
+    NSString* tab_id =  [NSString stringWithFormat:@"%S%i", 
+                         [[self identifier] cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
     
     // Создадим item вкладки
     NSTabViewItem* item = [[NSTabViewItem alloc] initWithIdentifier:tab_id];
@@ -80,7 +82,7 @@
     
     
     // Создадим и настроим scroll view
-    NSScrollView* scroll_view = [[NSScrollView alloc] initWithFrame:[tabView bounds]];
+    NSScrollView* scroll_view = [[NSScrollView alloc] initWithFrame:[self bounds]];
     [scroll_view setAutohidesScrollers:NO];
     [scroll_view setBorderType:NSBezelBorder];
     [scroll_view setHasVerticalScroller:YES];
@@ -138,11 +140,11 @@
     [table addTableColumn:dateColumn];
     [table addTableColumn:typeColumn];
     
-    [tabView setFocusRingType:NSFocusRingTypeNone];
+    [self setFocusRingType:NSFocusRingTypeNone];
     
     // Добавим вкладку
-    [tabView addTabViewItem:item];
-    [tabView selectTabViewItem:item];
+    [self addTabViewItem:item];
+    [self selectTabViewItem:item];
     
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
@@ -175,7 +177,7 @@
 }
 
 -(void) setTabHeaderTitle:(NSString *)title {
-    [[tabView selectedTabViewItem] setLabel:title];
+    [[self selectedTabViewItem] setLabel:title];
 }
 
 -(int) nextTabId {
@@ -193,12 +195,12 @@
 -(void) closeCurrentTab {
     
     // Если осталась только одна вкладка
-    if ([[tabView tabViewItems] count] == 1) {
+    if ([[self tabViewItems] count] == 1) {
         return;
     }
     
     // Закроем текущую вкладку
-    [tabView removeTabViewItem:[tabView selectedTabViewItem]];
+    [self removeTabViewItem:[self selectedTabViewItem]];
 }
 
 -(bool) enterToRow:(NSInteger)row {
@@ -275,7 +277,7 @@
 }
 
 -(void) updateContent {
-    for (NSTabViewItem* item in [tabView tabViewItems]) {
+    for (NSTabViewItem* item in [self tabViewItems]) {
 
         // Получим NSScrollView
         NSScrollView* scroll_view = [item view];
@@ -307,20 +309,20 @@
 }
 
 -(void) switchToNextTab {
-    if ([tabView indexOfTabViewItem:[tabView selectedTabViewItem]] == [tabView numberOfTabViewItems] - 1) {
-        [tabView selectFirstTabViewItem:self];
+    if ([self indexOfTabViewItem:[self selectedTabViewItem]] == [self numberOfTabViewItems] - 1) {
+        [self selectFirstTabViewItem:self];
     }
     else {
-        [tabView selectNextTabViewItem:self];
+        [self selectNextTabViewItem:self];
     }
 }
 
 -(void) switchToPrevTab {
-    if ([tabView indexOfTabViewItem:[tabView selectedTabViewItem]] == 0) {
-        [tabView selectLastTabViewItem:self];
+    if ([self indexOfTabViewItem:[self selectedTabViewItem]] == 0) {
+        [self selectLastTabViewItem:self];
     }
     else {
-        [tabView selectPreviousTabViewItem:self];
+        [self selectPreviousTabViewItem:self];
     }
 }
 
