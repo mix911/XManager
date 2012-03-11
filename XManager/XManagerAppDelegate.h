@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class WindowManager;
 
 //////////////////////////////////////////////////////////////////////////////////
 // Application delegate
@@ -16,7 +15,6 @@
 @interface XManagerAppDelegate : NSObject <NSApplicationDelegate> 
 {
     NSWindow *window;
-    IBOutlet WindowManager* fileManager;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -8,12 +8,29 @@
 
 #import <AppKit/AppKit.h>
 
-#import "WindowManager.h"
+@class SidePanel;
+@class TabsHeaders;
 
-@interface MainWindow : NSWindow {
-    IBOutlet    WindowManager*  windowManager;
+@interface MainWindow : NSWindow 
+{    
+    IBOutlet SidePanel*      leftPanel;              // Left panel
+    IBOutlet SidePanel*      rightPanel;             // Right panel
+    IBOutlet TabsHeaders*    leftTabs;               // Tabs headers of left panel
+    IBOutlet TabsHeaders*    rightTabs;              // Tabs headers of right panel
+    
+    SidePanel*      activePanel;            // Active panel
 }
 
--(void) sendEvent:(NSEvent *)theEvent;
+-(void) sendEvent:(NSEvent*)theEvent;
+
+-(SidePanel*) activePanel;
+
+-(void) insertTab;
+-(void) setActiveSide:(id)panel;
+-(void) switchToNextTab;
+-(void) switchToPrevTab;
+
+-(void) postKeyDown:(NSEvent *)event;
+
 
 @end

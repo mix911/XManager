@@ -18,7 +18,6 @@
 		B4074EAE13ECD09900438E01 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4074EAC13ECD09900438E01 /* InfoPlist.strings */; };
 		B4074EB013ECD09900438E01 /* XManagerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = B4074EAF13ECD09900438E01 /* XManagerTests.h */; };
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
-		B4074EBD13ECD0F000438E01 /* WindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* WindowManager.m */; };
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
 		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
@@ -65,8 +64,6 @@
 		B4074EAD13ECD09900438E01 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4074EAF13ECD09900438E01 /* XManagerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XManagerTests.h; sourceTree = "<group>"; };
 		B4074EB113ECD09900438E01 /* XManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XManagerTests.m; sourceTree = "<group>"; };
-		B4074EBB13ECD0F000438E01 /* WindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowManager.h; sourceTree = "<group>"; };
-		B4074EBC13ECD0F000438E01 /* WindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowManager.m; sourceTree = "<group>"; };
 		B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSourceAndTableViewDelegate.h; path = ../DataSourceAndTableViewDelegate.h; sourceTree = "<group>"; };
 		B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSourceAndTableViewDelegate.m; path = ../DataSourceAndTableViewDelegate.m; sourceTree = "<group>"; };
 		B410B335150BF14200076BC7 /* TabHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabHeader.h; sourceTree = "<group>"; };
@@ -161,8 +158,6 @@
 				B483E69013FBE9BC00295218 /* ItemManagers */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
-				B4074EBB13ECD0F000438E01 /* WindowManager.h */,
-				B4074EBC13ECD0F000438E01 /* WindowManager.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
 				B4074E9913ECD09900438E01 /* XManagerAppDelegate.m */,
 				B4074E9B13ECD09900438E01 /* MainMenu.xib */,
@@ -382,7 +377,6 @@
 			files = (
 				B4074E9313ECD09900438E01 /* main.m in Sources */,
 				B4074E9A13ECD09900438E01 /* XManagerAppDelegate.m in Sources */,
-				B4074EBD13ECD0F000438E01 /* WindowManager.m in Sources */,
 				B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */,
 				B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */,
 				B480195E13F538FF00E33745 /* TableView.m in Sources */,

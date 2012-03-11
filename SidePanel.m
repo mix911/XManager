@@ -15,7 +15,7 @@
 
 #include "MacSys.h"
 
-#import "WindowManager.h"
+#import "MainWindow.h"
 
 @interface SidePanel(Private)
 
@@ -224,20 +224,6 @@
     
     switch ([event keyCode]) {
             
-//        case VK_W:
-//            
-//            if ([event modifierFlags] & NSCommandKeyMask) {
-//                [self closeCurrentTab];
-//            }
-//            break;
-//            
-//        case VK_T:
-//            
-//            if ([event modifierFlags] & NSCommandKeyMask) {
-//                [self addTabFromCurrent];
-//            }
-//            break;
-            
         case VK_F2:
             break;
             
@@ -254,27 +240,29 @@
             break;
             
         case VK_TAB:
-            [windowManager insertTab];
+            [mainWindow insertTab];
             break;
             
         case VK_SPACE:
             break;
             
         default:
-            [windowManager postKeyDown:event];
+            [mainWindow postKeyDown:event];
             break;
     }
+    
+    [super keyDown:event];
 }
 
 -(void) setActive :(NSWindow*)window{
-    [windowManager setActiveSide:self];
+    [mainWindow setActiveSide:self];
     if (window) {
         [window makeFirstResponder:[self table]];
     }
 }
 
--(void) setWindowManager:(WindowManager*)manager {
-    windowManager = manager;
+-(void) setWindowManager:(MainWindow*)window {
+    mainWindow = window;
 }
 
 -(void) updateContent {

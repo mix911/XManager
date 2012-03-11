@@ -8,8 +8,6 @@
 
 #import "XManagerAppDelegate.h"
 
-#import "WindowManager.h"
-
 @implementation XManagerAppDelegate
 
 @synthesize window;

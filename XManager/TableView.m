@@ -42,7 +42,7 @@
                 [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
             }
         }
-            break;
+            return;
             
         case VK_ARROR_UP:
             if ([event modifierFlags] & NSCommandKeyMask) {
@@ -77,11 +77,11 @@
             return;
                                 
         default:
-            break;
+            [sidePanel postKeyDown:event];
+            return;
     }
     
-    [super      keyDown     :event];
-    [sidePanel  postKeyDown :event];
+    [super keyDown :event];
 }
 
 -(void) doubleClick:(id)sender {
