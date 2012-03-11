@@ -907,6 +907,7 @@
 							<string key="NSFrame">{{584, 3}, {100, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1534</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="218510196">
@@ -1182,19 +1183,35 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">leftTabs</string>
-						<reference key="source" ref="972006081"/>
-						<reference key="destination" ref="260694483"/>
-					</object>
-					<int key="connectionID">962</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">rightTabs</string>
 						<reference key="source" ref="972006081"/>
 						<reference key="destination" ref="260694483"/>
 					</object>
 					<int key="connectionID">963</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">leftTabs</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="909916507"/>
+					</object>
+					<int key="connectionID">964</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">mainWindow</string>
+						<reference key="source" ref="224370307"/>
+						<reference key="destination" ref="972006081"/>
+					</object>
+					<int key="connectionID">965</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">mainWindow</string>
+						<reference key="source" ref="662206538"/>
+						<reference key="destination" ref="972006081"/>
+					</object>
+					<int key="connectionID">966</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1899,7 +1916,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">963</int>
+			<int key="maxID">966</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1911,7 +1928,6 @@
 						<string key="leftTabs">TabsHeaders</string>
 						<string key="rightPanel">SidePanel</string>
 						<string key="rightTabs">TabsHeaders</string>
-						<string key="windowManager">WindowManager</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="leftPanel">
@@ -1930,10 +1946,6 @@
 							<string key="name">rightTabs</string>
 							<string key="candidateClassName">TabsHeaders</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="windowManager">
-							<string key="name">windowManager</string>
-							<string key="candidateClassName">WindowManager</string>
-						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -1943,6 +1955,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SidePanel</string>
 					<string key="superclassName">NSTabView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">mainWindow</string>
+						<string key="NS.object.0">MainWindow</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">mainWindow</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">mainWindow</string>
+							<string key="candidateClassName">MainWindow</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SidePanel.h</string>
@@ -1957,59 +1980,19 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">WindowManager</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="leftPanel">SidePanel</string>
-						<string key="leftTabs">TabsHeaders</string>
-						<string key="mainWindow">NSWindow</string>
-						<string key="rightPanel">SidePanel</string>
-						<string key="rightTabs">TabsHeaders</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="leftPanel">
-							<string key="name">leftPanel</string>
-							<string key="candidateClassName">SidePanel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="leftTabs">
-							<string key="name">leftTabs</string>
-							<string key="candidateClassName">TabsHeaders</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mainWindow">
-							<string key="name">mainWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightPanel">
-							<string key="name">rightPanel</string>
-							<string key="candidateClassName">SidePanel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightTabs">
-							<string key="name">rightTabs</string>
-							<string key="candidateClassName">TabsHeaders</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WindowManager.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">XManagerAppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="fileManager">WindowManager</string>
-						<string key="window">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="fileManager">
-							<string key="name">fileManager</string>
-							<string key="candidateClassName">WindowManager</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="window">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">window</string>
+						<string key="NS.object.0">NSWindow</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">window</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">window</string>
 							<string key="candidateClassName">NSWindow</string>
 						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/XManagerAppDelegate.h</string>

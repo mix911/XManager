@@ -23,8 +23,6 @@
 
 -(void) sendEvent:(NSEvent*)theEvent;
 
--(SidePanel*) activePanel;
-
 -(void) insertTab;
 -(void) setActiveSide:(id)panel;
 -(void) switchToNextTab;

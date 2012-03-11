@@ -31,11 +31,7 @@
     [super awakeFromNib];
         
     NSString* cur_dir = @"/Users/demo/QtSDK";
-    
-    // Установи менеджер окон
-    [leftPanel  setWindowManager:self];
-    [rightPanel setWindowManager:self];
-    
+        
     // Установим директории по умолчанию
     [leftPanel  addTab:cur_dir];
     [rightPanel addTab:cur_dir];
@@ -116,11 +112,6 @@
     }
 }
 
--(SidePanel*) activePanel 
-{
-    return activePanel;
-}
-
 -(void) setActiveSide :(id)panel 
 {
     activePanel = panel;
@@ -128,7 +119,7 @@
 
 -(void) insertTab 
 {
-    if ([self activePanel] == leftPanel) {
+    if (activePanel == leftPanel) {
         [self setActiveSide:rightPanel];
         [rightPanel setActive:self];
         
@@ -141,12 +132,12 @@
 
 -(void) switchToNextTab 
 {
-    [[self activePanel] switchToNextTab];
+    [activePanel switchToNextTab];
 }
 
 -(void) switchToPrevTab 
 {
-    [[self activePanel] switchToPrevTab];
+    [activePanel switchToPrevTab];
 }
 
 @end

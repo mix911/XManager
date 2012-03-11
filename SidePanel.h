@@ -10,14 +10,12 @@
 
 
 @class TableView;
-//@class WindowManager;
 @class MainWindow;
 
 @interface SidePanel : NSTabView
 {
-    int             nextTabId;      // Следующая вкладка
-//    WindowManager*  windowManager;  // Менеджер окон
-    MainWindow*     mainWindow;
+    int nextTabId;      // Следующая вкладка
+    IBOutlet MainWindow* mainWindow;
 }
 
 -(id)   init;
@@ -25,7 +23,6 @@
 -(void) addTab :(NSString*)path;
 -(void) addTabFromCurrent;
 -(int)  nextTabId;
--(void) setWindowManager:(MainWindow*)manager;
 -(void) updateContent;
 -(NSString*)    currentPath;
 

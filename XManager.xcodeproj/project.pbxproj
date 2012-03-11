@@ -154,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				B483E69113FBEA2700295218 /* Controls */,
-				B483E68F13FBE99300295218 /* Dialogs */,
 				B483E69013FBE9BC00295218 /* ItemManagers */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
@@ -199,15 +198,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B483E68F13FBE99300295218 /* Dialogs */ = {
-			isa = PBXGroup;
-			children = (
-				B4B3182414043A350004A407 /* MainWindow.h */,
-				B4B3182514043A350004A407 /* MainWindow.m */,
-			);
-			name = Dialogs;
-			sourceTree = "<group>";
-		};
 		B483E69013FBE9BC00295218 /* ItemManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +220,8 @@
 				B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */,
 				B410B335150BF14200076BC7 /* TabHeader.h */,
 				B410B336150BF14200076BC7 /* TabHeader.m */,
+				B4B3182414043A350004A407 /* MainWindow.h */,
+				B4B3182514043A350004A407 /* MainWindow.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";

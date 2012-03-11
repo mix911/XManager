@@ -241,7 +241,7 @@
             
         case VK_TAB:
             [mainWindow insertTab];
-            break;
+            return;
             
         case VK_SPACE:
             break;
@@ -259,10 +259,6 @@
     if (window) {
         [window makeFirstResponder:[self table]];
     }
-}
-
--(void) setWindowManager:(MainWindow*)window {
-    mainWindow = window;
 }
 
 -(void) updateContent {
