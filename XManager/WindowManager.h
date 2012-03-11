@@ -11,15 +11,19 @@
 
 #import "SidePanel.h"
 
+@class TabsHeaders;
+
 //+-----------------------------------------------------------------+
 //| Управление главным окном, окном настроек и прочих диалогов      |
 //+-----------------------------------------------------------------+
 @interface WindowManager : NSObject 
 {
-    IBOutlet    SidePanel*                  leftPanel;              // Левая панель
-    IBOutlet    SidePanel*                  rightPanel;             // Правая панель
-                SidePanel*                  activePanel;            // Активная панель
-    IBOutlet    NSWindow*                   mainWindow;             // Главное окно
+    IBOutlet    SidePanel*      leftPanel;              // Left panel
+    IBOutlet    SidePanel*      rightPanel;             // Right panel
+                SidePanel*      activePanel;            // Active panel
+    IBOutlet    NSWindow*       mainWindow;             // MainWindow
+    IBOutlet    TabsHeaders*    leftTabs;               // Tabs headers of left panel
+    IBOutlet    TabsHeaders*    rightTabs;              // Tabs headers of right panel
 }
 
 -(void) awakeFromNib;
@@ -32,5 +36,7 @@
 -(void) setActiveSide:(id)panel;
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
+
+-(void) postKeyDown:(NSEvent *)event;
 
 @end

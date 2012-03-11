@@ -9,5 +9,17 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TabsHeaders : NSView
+{
+    NSMutableArray* tabs;
+}
+
+-(void) addTab:(NSString*)title;
+-(void) deleteTab:(NSUInteger)index;
+
+-(void) selectTab:(NSUInteger)index;
+-(NSUInteger) currentTab;
+
+-(NSUInteger) countOfTabs;
+
 
 @end

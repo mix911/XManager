@@ -14,7 +14,6 @@
 
 @interface SidePanel : NSTabView
 {
-//    NSTabView*      tabView;        // Вкладки
     int             nextTabId;      // Следующая вкладка
     WindowManager*  windowManager;  // Менеджер окон
 }

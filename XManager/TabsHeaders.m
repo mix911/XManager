@@ -7,10 +7,11 @@
 //
 
 #import "TabsHeaders.h"
+#import "TabHeader.h"
 
 @implementation TabsHeaders
 
-- (id)initWithFrame:(NSRect)frame
+-(id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -20,9 +21,29 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
+-(void) addTab:(NSString*)title
 {
-    // Drawing code here.
+    static float last_header_pos = 0.0f;
+    
+    TabHeader* last_header = (TabHeader*)[[self subviews] lastObject];
+    if (last_header) {
+        last_header_pos = [last_header frame].origin.x + [last_header frame].size.width;
+    }
+    
+    // Create tab control
+    TabHeader* tab = [[TabHeader alloc] initWithTitle:title :NSMakeRect(last_header_pos, 0.0f, 100.0f, [self bounds].size.height)];
+    
+    [self addSubview:tab];
+}
+
+-(void) deleteTab:(NSUInteger)index
+{
+    
+}
+
+-(NSUInteger) currentTab
+{
+    return 0;
 }
 
 @end

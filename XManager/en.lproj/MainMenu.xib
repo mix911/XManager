@@ -927,71 +927,21 @@
 						</object>
 						<object class="NSCustomView" id="909916507">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">270</int>
-							<array class="NSMutableArray" key="NSSubviews">
-								<object class="NSButton" id="1070442505">
-									<reference key="NSNextResponder" ref="909916507"/>
-									<int key="NSvFlags">258</int>
-									<string key="NSFrame">{{0, -5}, {404, 32}}</string>
-									<reference key="NSSuperview" ref="909916507"/>
-									<reference key="NSWindow"/>
-									<string key="NSReuseIdentifierKey">_NS:161</string>
-									<bool key="NSEnabled">YES</bool>
-									<object class="NSButtonCell" key="NSCell" id="186294057">
-										<int key="NSCellFlags">67239424</int>
-										<int key="NSCellFlags2">134217728</int>
-										<string key="NSContents">Button</string>
-										<reference key="NSSupport" ref="33574254"/>
-										<string key="NSCellIdentifier">_NS:161</string>
-										<reference key="NSControlView" ref="1070442505"/>
-										<int key="NSButtonFlags">-2038284033</int>
-										<int key="NSButtonFlags2">129</int>
-										<string key="NSAlternateContents"/>
-										<string key="NSKeyEquivalent"/>
-										<int key="NSPeriodicDelay">200</int>
-										<int key="NSPeriodicInterval">25</int>
-									</object>
-								</object>
-							</array>
+							<int key="NSvFlags">258</int>
 							<string key="NSFrame">{{0, 552}, {404, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="768834622"/>
+							<reference key="NSNextKeyView" ref="260694483"/>
 							<string key="NSReuseIdentifierKey">_NS:499</string>
 							<string key="NSClassName">TabsHeaders</string>
 						</object>
 						<object class="NSCustomView" id="260694483">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">267</int>
-							<array class="NSMutableArray" key="NSSubviews">
-								<object class="NSButton" id="745760924">
-									<reference key="NSNextResponder" ref="260694483"/>
-									<int key="NSvFlags">258</int>
-									<string key="NSFrame">{{0, -5}, {405, 32}}</string>
-									<reference key="NSSuperview" ref="260694483"/>
-									<reference key="NSWindow"/>
-									<string key="NSReuseIdentifierKey">_NS:161</string>
-									<bool key="NSEnabled">YES</bool>
-									<object class="NSButtonCell" key="NSCell" id="422590375">
-										<int key="NSCellFlags">67239424</int>
-										<int key="NSCellFlags2">134217728</int>
-										<string key="NSContents">Button</string>
-										<reference key="NSSupport" ref="33574254"/>
-										<string key="NSCellIdentifier">_NS:161</string>
-										<reference key="NSControlView" ref="745760924"/>
-										<int key="NSButtonFlags">-2038284033</int>
-										<int key="NSButtonFlags2">129</int>
-										<string key="NSAlternateContents"/>
-										<string key="NSKeyEquivalent"/>
-										<int key="NSPeriodicDelay">200</int>
-										<int key="NSPeriodicInterval">25</int>
-									</object>
-								</object>
-							</array>
+							<int key="NSvFlags">258</int>
 							<string key="NSFrame">{{432, 552}, {405, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="160777553"/>
+							<reference key="NSNextKeyView" ref="768834622"/>
 							<string key="NSReuseIdentifierKey">_NS:499</string>
 							<string key="NSClassName">TabsHeaders</string>
 						</object>
@@ -1345,6 +1295,22 @@
 						<reference key="destination" ref="662206538"/>
 					</object>
 					<int key="connectionID">951</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">leftTabs</string>
+						<reference key="source" ref="233474058"/>
+						<reference key="destination" ref="909916507"/>
+					</object>
+					<int key="connectionID">958</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">rightTabs</string>
+						<reference key="source" ref="233474058"/>
+						<reference key="destination" ref="260694483"/>
+					</object>
+					<int key="connectionID">959</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1931,44 +1897,14 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">952</int>
 						<reference key="object" ref="909916507"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1070442505"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">953</int>
 						<reference key="object" ref="260694483"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="745760924"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="439893737"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">954</int>
-						<reference key="object" ref="1070442505"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="186294057"/>
-						</array>
-						<reference key="parent" ref="909916507"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">955</int>
-						<reference key="object" ref="186294057"/>
-						<reference key="parent" ref="1070442505"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">956</int>
-						<reference key="object" ref="745760924"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="422590375"/>
-						</array>
-						<reference key="parent" ref="260694483"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">957</int>
-						<reference key="object" ref="422590375"/>
-						<reference key="parent" ref="745760924"/>
 					</object>
 				</array>
 			</object>
@@ -2080,16 +2016,12 @@
 				<string key="946.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="952.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="953.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="954.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="955.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="956.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="957.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">957</int>
+			<int key="maxID">959</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2133,13 +2065,19 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="leftPanel">SidePanel</string>
+						<string key="leftTabs">TabsHeaders</string>
 						<string key="mainWindow">NSWindow</string>
 						<string key="rightPanel">SidePanel</string>
+						<string key="rightTabs">TabsHeaders</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="leftPanel">
 							<string key="name">leftPanel</string>
 							<string key="candidateClassName">SidePanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="leftTabs">
+							<string key="name">leftTabs</string>
+							<string key="candidateClassName">TabsHeaders</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="mainWindow">
 							<string key="name">mainWindow</string>
@@ -2148,6 +2086,10 @@
 						<object class="IBToOneOutletInfo" key="rightPanel">
 							<string key="name">rightPanel</string>
 							<string key="candidateClassName">SidePanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="rightTabs">
+							<string key="name">rightTabs</string>
+							<string key="candidateClassName">TabsHeaders</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

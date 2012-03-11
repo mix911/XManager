@@ -20,6 +20,7 @@
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
 		B4074EBD13ECD0F000438E01 /* WindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EBC13ECD0F000438E01 /* WindowManager.m */; };
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
+		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */; };
 		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
@@ -68,6 +69,8 @@
 		B4074EBC13ECD0F000438E01 /* WindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowManager.m; sourceTree = "<group>"; };
 		B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSourceAndTableViewDelegate.h; path = ../DataSourceAndTableViewDelegate.h; sourceTree = "<group>"; };
 		B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSourceAndTableViewDelegate.m; path = ../DataSourceAndTableViewDelegate.m; sourceTree = "<group>"; };
+		B410B335150BF14200076BC7 /* TabHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabHeader.h; sourceTree = "<group>"; };
+		B410B336150BF14200076BC7 /* TabHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabHeader.m; sourceTree = "<group>"; };
 		B4124C5E150915200026FABE /* MacSys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacSys.h; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				B480195D13F538FF00E33745 /* TableView.m */,
 				B4A18CE0150BE6FC00D9484D /* TabsHeaders.h */,
 				B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */,
+				B410B335150BF14200076BC7 /* TabHeader.h */,
+				B410B336150BF14200076BC7 /* TabHeader.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */,
 				B4B3182614043A350004A407 /* MainWindow.m in Sources */,
 				B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */,
+				B410B337150BF14200076BC7 /* TabHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

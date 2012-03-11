@@ -224,19 +224,19 @@
     
     switch ([event keyCode]) {
             
-        case VK_W:
-            
-            if ([event modifierFlags] & NSCommandKeyMask) {
-                [self closeCurrentTab];
-            }
-            break;
-            
-        case VK_T:
-            
-            if ([event modifierFlags] & NSCommandKeyMask) {
-                [self addTabFromCurrent];
-            }
-            break;
+//        case VK_W:
+//            
+//            if ([event modifierFlags] & NSCommandKeyMask) {
+//                [self closeCurrentTab];
+//            }
+//            break;
+//            
+//        case VK_T:
+//            
+//            if ([event modifierFlags] & NSCommandKeyMask) {
+//                [self addTabFromCurrent];
+//            }
+//            break;
             
         case VK_F2:
             break;
@@ -261,14 +261,15 @@
             break;
             
         default:
+            [windowManager postKeyDown:event];
             break;
     }
 }
 
 -(void) setActive :(NSWindow*)window{
-    [windowManager  setActiveSide       :self];
+    [windowManager setActiveSide:self];
     if (window) {
-        [window         makeFirstResponder  :[self table]];
+        [window makeFirstResponder:[self table]];
     }
 }
 

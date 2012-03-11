@@ -8,6 +8,10 @@
 
 #import "WindowManager.h"
 
+#import "TabsHeaders.h"
+
+#include "MacSys.h"
+
 @interface WindowManager(Private)
 
 -(void)         updateContent;
@@ -73,6 +77,7 @@
     if ([self activePanel] == leftPanel) {
         [self setActiveSide:rightPanel];
         [rightPanel setActive:mainWindow];
+        
     }
     else {
         [self setActiveSide:leftPanel];
@@ -88,6 +93,34 @@
 -(void) switchToPrevTab 
 {
     [[self activePanel] switchToPrevTab];
+}
+
+-(void) postKeyDown:(NSEvent *)event
+{
+    switch ([event keyCode]) {
+            
+        case VK_W:
+            if ([event modifierFlags] & NSCommandKeyMask) {
+        
+                TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
+                [activePanel    closeCurrentTab];
+                [tabs           deleteTab:[tabs currentTab]];
+                [activePanel setActive:mainWindow];
+            }
+        break;
+            
+        case VK_T:
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
+                [activePanel    addTabFromCurrent];
+                [tabs           addTab:@"Hello"];
+                [activePanel setActive:mainWindow];
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
