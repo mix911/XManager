@@ -96,20 +96,23 @@
                 [tabs           deleteTab:[tabs currentTab]];
                 [activePanel setActive:self];
             }
-            break;
+            return;
             
         case VK_T:
             if ([event modifierFlags] & NSCommandKeyMask) {
+                
                 TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
                 [activePanel    addTabFromCurrent];
                 [tabs           addTab:@"Hello"];
                 [activePanel setActive:self];
             }
-            break;
+            return;
             
         default:
             break;
     }
+    
+    [super keyDown:event];
 }
 
 -(void) setActiveSide :(id)panel 

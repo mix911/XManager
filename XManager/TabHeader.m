@@ -23,6 +23,9 @@
         
         [button setHidden:NO];
         [self setHidden:NO];
+        
+        [button setBezelStyle:NSRoundedBezelStyle];
+        [button setButtonType:NSOnOffButton];
     }
     
     return self;

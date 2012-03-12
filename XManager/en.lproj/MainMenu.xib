@@ -730,6 +730,7 @@
 					<array key="NSToolbarIBSelectableItems" id="0"/>
 				</object>
 				<nil key="NSUserInterfaceItemIdentifier"/>
+				<string key="NSWindowContentMinSize">{400, 578}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -914,11 +915,15 @@
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F8 - Delete</string>
-								<reference key="NSSupport" ref="83088561"/>
+								<object class="NSFont" key="NSSupport">
+									<string key="NSName">LucidaGrande</string>
+									<double key="NSSize">12</double>
+									<int key="NSfFlags">4883</int>
+								</object>
 								<string key="NSCellIdentifier">_NS:1534</string>
 								<reference key="NSControlView" ref="506524353"/>
-								<int key="NSButtonFlags">-2038152961</int>
-								<int key="NSButtonFlags2">164</int>
+								<int key="NSButtonFlags">-2035007233</int>
+								<int key="NSButtonFlags2">36</int>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
@@ -927,8 +932,8 @@
 						</object>
 						<object class="NSCustomView" id="909916507">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">258</int>
-							<string key="NSFrame">{{0, 552}, {404, 26}}</string>
+							<int key="NSvFlags">262</int>
+							<string key="NSFrame">{{0, 552}, {418, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="260694483"/>
@@ -937,8 +942,8 @@
 						</object>
 						<object class="NSCustomView" id="260694483">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">258</int>
-							<string key="NSFrame">{{432, 552}, {405, 26}}</string>
+							<int key="NSvFlags">259</int>
+							<string key="NSFrame">{{418, 552}, {419, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="768834622"/>
@@ -952,6 +957,7 @@
 					<reference key="NSNextKeyView" ref="909916507"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 800}}</string>
+				<string key="NSMinSize">{400, 655}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSAutorecalculatesContentBorderThicknessMinY">NO</bool>
 				<double key="NSContentBorderThicknessMinY">30</double>
@@ -1357,10 +1363,10 @@
 							<reference ref="995940918"/>
 							<reference ref="811431556"/>
 							<reference ref="981869702"/>
-							<reference ref="506524353"/>
 							<reference ref="160777553"/>
 							<reference ref="260694483"/>
 							<reference ref="909916507"/>
+							<reference ref="506524353"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -1916,7 +1922,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">966</int>
+			<int key="maxID">968</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

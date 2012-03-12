@@ -225,30 +225,30 @@
     switch ([event keyCode]) {
             
         case VK_F2:
-            break;
+            return;
             
         case VK_F5:
-            break;
+            return;
             
         case VK_F6:
-            break;
+            return;
             
         case VK_F7:
-            break;
+            return;
             
         case VK_F8:
-            break;
+            return;
             
         case VK_TAB:
             [mainWindow insertTab];
             return;
             
         case VK_SPACE:
-            break;
+            return;
             
         default:
             [mainWindow postKeyDown:event];
-            break;
+            return;
     }
     
     [super keyDown:event];

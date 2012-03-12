@@ -9,6 +9,8 @@
 #import "TabsHeaders.h"
 #import "TabHeader.h"
 
+const NSUInteger gMaximumCountOfTabs = 8;
+
 @implementation TabsHeaders
 
 -(id)initWithFrame:(NSRect)frame
@@ -23,7 +25,12 @@
 
 -(void) addTab:(NSString*)title
 {
-    static float last_header_pos = 0.0f;
+    if ([[self subviews] count] >= gMaximumCountOfTabs) {
+        return;
+    }
+    
+    float width = [self frame].size.width / gMaximumCountOfTabs;
+    float last_header_pos = 0.0f;
     
     TabHeader* last_header = (TabHeader*)[[self subviews] lastObject];
     if (last_header) {
@@ -31,7 +38,8 @@
     }
     
     // Create tab control
-    TabHeader* tab = [[TabHeader alloc] initWithTitle:title :NSMakeRect(last_header_pos, 0.0f, 100.0f, [self bounds].size.height)];
+    //TabHeader* tab = [[TabHeader alloc] initWithTitle:title :NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
+    NSButton* tab = [[NSButton alloc] initWithFrame:NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
     
     [self addSubview:tab];
 }
