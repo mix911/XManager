@@ -41,6 +41,7 @@ const NSUInteger gMaximumCountOfTabs = 8;
     //TabHeader* tab = [[TabHeader alloc] initWithTitle:title :NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
     NSButton* tab = [[NSButton alloc] initWithFrame:NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
     
+    [tab setAutoresizingMask:NSViewWidthSizable];
     [self addSubview:tab];
 }
 

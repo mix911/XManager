@@ -908,18 +908,13 @@
 							<string key="NSFrame">{{584, 3}, {100, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1534</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="218510196">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">167804928</int>
 								<string key="NSContents">F8 - Delete</string>
-								<object class="NSFont" key="NSSupport">
-									<string key="NSName">LucidaGrande</string>
-									<double key="NSSize">12</double>
-									<int key="NSfFlags">4883</int>
-								</object>
+								<reference key="NSSupport" ref="83088561"/>
 								<string key="NSCellIdentifier">_NS:1534</string>
 								<reference key="NSControlView" ref="506524353"/>
 								<int key="NSButtonFlags">-2035007233</int>
@@ -932,7 +927,7 @@
 						</object>
 						<object class="NSCustomView" id="909916507">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">262</int>
+							<int key="NSvFlags">270</int>
 							<string key="NSFrame">{{0, 552}, {418, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
@@ -942,7 +937,7 @@
 						</object>
 						<object class="NSCustomView" id="260694483">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">259</int>
+							<int key="NSvFlags">267</int>
 							<string key="NSFrame">{{418, 552}, {419, 26}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
@@ -1922,7 +1917,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">968</int>
+			<int key="maxID">972</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
