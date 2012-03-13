@@ -10,12 +10,12 @@
 
 #import "TableView.h"
 #import "DataSourceAndTableViewDelegate.h"
-
 #import "FileSystemManager.h"
+#import "MainWindow.h"
+#import "TabsHeaders.h"
 
 #include "MacSys.h"
 
-#import "MainWindow.h"
 
 @interface SidePanel(Private)
 
@@ -49,6 +49,14 @@
     }
     
     return self;
+}
+
+-(void) awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(windowResized:) 
+                                                 name:NSWindowDidResizeNotification 
+                                               object:[self window]];
 }
 
 -(void) dealloc {
@@ -330,6 +338,11 @@
 
 -(void) updateTable {
     [[self table] reloadData];
+}
+
+-(void) windowResized:(NSNotification *)notification
+{
+    [tabs setFrame:NSMakeRect(0.0f, [tabs frame].origin.y, [self frame].size.width, [tabs frame].size.height)];
 }
 
 @end

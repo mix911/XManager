@@ -743,10 +743,20 @@
 									<reference key="NSNextResponder" ref="768834622"/>
 									<int key="NSvFlags">256</int>
 									<array class="NSMutableArray" key="NSSubviews">
+										<object class="NSCustomView" id="909916507">
+											<reference key="NSNextResponder" ref="643600812"/>
+											<int key="NSvFlags">270</int>
+											<string key="NSFrame">{{0, 522}, {418, 26}}</string>
+											<reference key="NSSuperview" ref="643600812"/>
+											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="260694483"/>
+											<string key="NSReuseIdentifierKey">_NS:499</string>
+											<string key="NSClassName">TabsHeaders</string>
+										</object>
 										<object class="NSTabView" id="224370307">
 											<reference key="NSNextResponder" ref="643600812"/>
 											<int key="NSvFlags">18</int>
-											<string key="NSFrameSize">{416, 522}</string>
+											<string key="NSFrameSize">{416, 521}</string>
 											<reference key="NSSuperview" ref="643600812"/>
 											<reference key="NSWindow"/>
 											<string key="NSReuseIdentifierKey">_NS:461</string>
@@ -761,7 +771,7 @@
 											<bool key="NSDrawsBackground">YES</bool>
 										</object>
 									</array>
-									<string key="NSFrameSize">{416, 522}</string>
+									<string key="NSFrameSize">{416, 548}</string>
 									<reference key="NSSuperview" ref="768834622"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="224370307"/>
@@ -772,10 +782,20 @@
 									<reference key="NSNextResponder" ref="768834622"/>
 									<int key="NSvFlags">256</int>
 									<array class="NSMutableArray" key="NSSubviews">
+										<object class="NSCustomView" id="260694483">
+											<reference key="NSNextResponder" ref="797218077"/>
+											<int key="NSvFlags">267</int>
+											<string key="NSFrame">{{1, 522}, {419, 26}}</string>
+											<reference key="NSSuperview" ref="797218077"/>
+											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="768834622"/>
+											<string key="NSReuseIdentifierKey">_NS:499</string>
+											<string key="NSClassName">TabsHeaders</string>
+										</object>
 										<object class="NSTabView" id="662206538">
 											<reference key="NSNextResponder" ref="797218077"/>
 											<int key="NSvFlags">18</int>
-											<string key="NSFrameSize">{420, 522}</string>
+											<string key="NSFrameSize">{420, 520}</string>
 											<reference key="NSSuperview" ref="797218077"/>
 											<reference key="NSWindow"/>
 											<string key="NSReuseIdentifierKey">_NS:461</string>
@@ -786,7 +806,7 @@
 											<bool key="NSDrawsBackground">YES</bool>
 										</object>
 									</array>
-									<string key="NSFrame">{{417, 0}, {420, 522}}</string>
+									<string key="NSFrame">{{417, 0}, {420, 548}}</string>
 									<reference key="NSSuperview" ref="768834622"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="662206538"/>
@@ -794,7 +814,7 @@
 									<string key="NSClassName">NSView</string>
 								</object>
 							</array>
-							<string key="NSFrame">{{0, 30}, {837, 522}}</string>
+							<string key="NSFrame">{{0, 30}, {837, 548}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="643600812"/>
@@ -925,26 +945,6 @@
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
 							</object>
-						</object>
-						<object class="NSCustomView" id="909916507">
-							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">270</int>
-							<string key="NSFrame">{{0, 552}, {418, 26}}</string>
-							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="260694483"/>
-							<string key="NSReuseIdentifierKey">_NS:499</string>
-							<string key="NSClassName">TabsHeaders</string>
-						</object>
-						<object class="NSCustomView" id="260694483">
-							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">267</int>
-							<string key="NSFrame">{{418, 552}, {419, 26}}</string>
-							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="768834622"/>
-							<string key="NSReuseIdentifierKey">_NS:499</string>
-							<string key="NSClassName">TabsHeaders</string>
 						</object>
 					</array>
 					<string key="NSFrameSize">{837, 578}</string>
@@ -1376,8 +1376,6 @@
 							<reference ref="811431556"/>
 							<reference ref="981869702"/>
 							<reference ref="160777553"/>
-							<reference ref="260694483"/>
-							<reference ref="909916507"/>
 							<reference ref="506524353"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
@@ -1406,6 +1404,7 @@
 						<reference key="object" ref="643600812"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="224370307"/>
+							<reference ref="909916507"/>
 						</array>
 						<reference key="parent" ref="768834622"/>
 					</object>
@@ -1414,6 +1413,7 @@
 						<reference key="object" ref="797218077"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="662206538"/>
+							<reference ref="260694483"/>
 						</array>
 						<reference key="parent" ref="768834622"/>
 					</object>
@@ -1809,16 +1809,14 @@
 						<reference key="parent" ref="797218077"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">952</int>
-						<reference key="object" ref="909916507"/>
-						<array class="NSMutableArray" key="children"/>
-						<reference key="parent" ref="439893737"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">953</int>
 						<reference key="object" ref="260694483"/>
-						<array class="NSMutableArray" key="children"/>
-						<reference key="parent" ref="439893737"/>
+						<reference key="parent" ref="797218077"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">952</int>
+						<reference key="object" ref="909916507"/>
+						<reference key="parent" ref="643600812"/>
 					</object>
 				</array>
 			</object>

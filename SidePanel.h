@@ -44,6 +44,6 @@
 -(bool) selectedItems               :(NSMutableArray*)selected;
 -(void) updateTable;
 
--(void) resizeWithOldSuperviewSize:(NSSize)oldSize;
+- (void)windowResized:(NSNotification *)notification;
 
 @end
