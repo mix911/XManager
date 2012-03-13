@@ -11,11 +11,13 @@
 
 @class TableView;
 @class MainWindow;
+@class TabsHeaders;
 
 @interface SidePanel : NSTabView
 {
     int nextTabId;      // Следующая вкладка
-    IBOutlet MainWindow* mainWindow;
+    IBOutlet MainWindow*  mainWindow;
+    IBOutlet TabsHeaders* tabs;
 }
 
 -(id)   init;
@@ -41,5 +43,7 @@
 -(void) switchToPrevTab;
 -(bool) selectedItems               :(NSMutableArray*)selected;
 -(void) updateTable;
+
+-(void) resizeWithOldSuperviewSize:(NSSize)oldSize;
 
 @end
