@@ -9,7 +9,7 @@
 #import "TabsHeaders.h"
 #import "TabHeader.h"
 
-const NSUInteger gMaximumCountOfTabs = 8;
+const NSUInteger gMaximumCountOfTabs = 4;
 
 @implementation TabsHeaders
 
