@@ -208,6 +208,9 @@
     
     // Закроем текущую вкладку
     [self removeTabViewItem:[self selectedTabViewItem]];
+    [self setActive:mainWindow];
+    [tabs deleteCurrentTab];
+    [tabs selectTab:[self indexOfTabViewItem:[self selectedTabViewItem]]];
 }
 
 -(bool) enterToRow:(NSInteger)row 
@@ -257,6 +260,9 @@
             return;
             
         case VK_W:
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                [self closeCurrentTab];
+            }
             return;
             
         case VK_T:

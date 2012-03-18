@@ -71,13 +71,6 @@
     switch ([event keyCode]) {
             
         case VK_W:
-            if ([event modifierFlags] & NSCommandKeyMask) {
-                
-                TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
-                [activePanel    closeCurrentTab];
-                [tabs           deleteTab:[tabs currentTab]];
-                [activePanel setActive:self];
-            }
             return;
             
         default:

@@ -14,10 +14,11 @@
 @interface TabsHeaders : NSView
 {
     IBOutlet SidePanel* panel;
+    NSMutableArray* tabs;
 }
 
 -(void) addTab:(NSString*)title;
--(void) deleteTab:(NSUInteger)index;
+-(void) deleteCurrentTab;
 
 -(void) selectTab:(NSUInteger)index;
 -(NSUInteger) currentTab;

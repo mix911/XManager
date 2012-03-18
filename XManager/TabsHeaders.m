@@ -31,6 +31,10 @@ static const NSUInteger gMaximumCountOfTabs = 4;
 
 -(void) addTab:(NSString*)title
 {
+    if (tabs == nil) {
+        tabs = [[NSMutableArray alloc] init];
+    }
+    
     NSArray* subviews = [self subviews];
     
     if ([subviews count] >= gMaximumCountOfTabs) {
@@ -54,6 +58,9 @@ static const NSUInteger gMaximumCountOfTabs = 4;
     
     [self addSubview:tab];
     [self selectTab:[[self subviews] count] - 1];
+    [tab release];
+    
+    [tabs addObject:title];
 }
 
 -(void) selectTab:(NSUInteger)index
@@ -71,9 +78,24 @@ static const NSUInteger gMaximumCountOfTabs = 4;
     [(TabHeader*)[subviews objectAtIndex:index] setState:NSOffState];
 }
 
--(void) deleteTab:(NSUInteger)index
+-(void) deleteCurrentTab
 {
+    NSUInteger i = [self currentTab];
     
+    NSArray* subviews = [[self subviews] copy];
+    for (TabHeader* tab in subviews) {
+        [tab removeFromSuperview];
+    }
+    [subviews release];
+    
+    [tabs removeObjectAtIndex:i];
+    NSMutableArray* tabs_copy = [tabs copy];
+    [tabs removeAllObjects];
+    
+    for (NSString* title in tabs_copy) {
+        [self addTab:title];
+    }
+    [tabs_copy release];
 }
 
 -(NSUInteger) currentTab
@@ -102,6 +124,7 @@ static const NSUInteger gMaximumCountOfTabs = 4;
     }
     
     [(TabHeader*)[subview objectAtIndex:index] setTitle:title];
+    [tabs replaceObjectAtIndex:index withObject:title];
 }
 
 @end
