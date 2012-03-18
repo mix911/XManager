@@ -57,7 +57,6 @@ static const NSUInteger gMaximumCountOfTabs = 4;
     [tab setAutoresizingMask:NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
     
     [self addSubview:tab];
-    [self selectTab:[[self subviews] count] - 1];
     [tab release];
     
     [tabs addObject:title];

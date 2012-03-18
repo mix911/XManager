@@ -173,6 +173,7 @@
     [fileSystemManager  release];
     
     [tabs addTab:dir];
+    [tabs selectTab:[self indexOfTabViewItem:[self selectedTabViewItem]]];
     
     [self setActive:mainWindow];
 }
