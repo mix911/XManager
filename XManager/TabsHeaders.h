@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TabHeader;
+@class SidePanel;
+
 @interface TabsHeaders : NSView
 {
-    NSMutableArray* tabs;
+    IBOutlet SidePanel* panel;
 }
 
 -(void) addTab:(NSString*)title;
@@ -21,5 +24,9 @@
 
 -(NSUInteger) countOfTabs;
 
+-(void) setTitle:(NSUInteger)index :(NSString*)title;
+
+// TODO: must be more clear
+-(void) push:(TabHeader*)tab;
 
 @end

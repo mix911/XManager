@@ -13,14 +13,17 @@
 
 #include "MacSys.h"
 
-@interface MainWindow(Private)
+@implementation MainWindow
 
--(void) switchToNextTab;
--(void) switchToPrevTab;
-
-@end
-
-@implementation MainWindow(Private)
+- (id)init 
+{
+    self = [super init];
+    if (self) {
+        // Initialization code here.
+    }
+    
+    return self;
+}
 
 //+-----------------------------------------------------------------+
 //| Загрузка nib архива                                             |
@@ -30,9 +33,9 @@
     
     // Загрузим родителя
     [super awakeFromNib];
-        
+    
     NSString* cur_dir = @"/Users/demo/QtSDK";
-        
+    
     // Установим директории по умолчанию
     [leftPanel  addTab:cur_dir];
     [rightPanel addTab:cur_dir];
@@ -40,30 +43,8 @@
     [cur_dir release];
 }
 
--(void) switchToNextTab 
+-(void) sendEvent:(NSEvent*)theEvent 
 {
-    [activePanel switchToNextTab];
-}
-
--(void) switchToPrevTab 
-{
-    [activePanel switchToPrevTab];
-}
-
-@end
-
-@implementation MainWindow
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
-
--(void) sendEvent:(NSEvent*)theEvent {
     switch ([theEvent type]) {
             
         case NSKeyDown:
@@ -95,16 +76,6 @@
                 TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
                 [activePanel    closeCurrentTab];
                 [tabs           deleteTab:[tabs currentTab]];
-                [activePanel setActive:self];
-            }
-            return;
-            
-        case VK_T:
-            if ([event modifierFlags] & NSCommandKeyMask) {
-                
-                TabsHeaders* tabs = (activePanel == leftPanel ? leftTabs : rightTabs);
-                [activePanel    addTabFromCurrent];
-                [tabs           addTab:@"Hello"];
                 [activePanel setActive:self];
             }
             return;

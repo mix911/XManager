@@ -18,7 +18,6 @@
 
 -(id)   init;
 -(void) setSidePanel    :(SidePanel*)sidePanel;
--(void) keyDown         :(NSEvent*)event;
 -(void) doubleClick     :(id)sender;
 -(BOOL) becomeFirstResponder;
 

@@ -8,42 +8,67 @@
 
 #import "TabsHeaders.h"
 #import "TabHeader.h"
+#import "SidePanel.h"
 
-const NSUInteger gMaximumCountOfTabs = 4;
+static const NSUInteger gMaximumCountOfTabs = 4;
 
 @implementation TabsHeaders
 
--(id)initWithFrame:(NSRect)frame
+-(void) push:(TabHeader*)tab
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
+    NSArray* subviews = [self subviews];
     
-    return self;
+    for (NSUInteger i = 0; i < [subviews count]; ++i) {
+        if ((TabHeader*)[subviews objectAtIndex:i] != tab) {
+            [[subviews objectAtIndex:i] setState:NSOnState];
+        }
+        else {
+            [[subviews objectAtIndex:i] setState:NSOffState];
+            [panel selectTabViewItemAtIndex:i];
+        }
+    }
 }
 
 -(void) addTab:(NSString*)title
 {
-    if ([[self subviews] count] >= gMaximumCountOfTabs) {
+    NSArray* subviews = [self subviews];
+    
+    if ([subviews count] >= gMaximumCountOfTabs) {
         return;
     }
     
     float width = [self frame].size.width / gMaximumCountOfTabs;
     float last_header_pos = 0.0f;
     
-    TabHeader* last_header = (TabHeader*)[[self subviews] lastObject];
+    TabHeader* last_header = (TabHeader*)[subviews lastObject];
     if (last_header) {
         last_header_pos = [last_header frame].origin.x + [last_header frame].size.width;
     }
     
     // Create tab control
-    TabHeader* tab = [[TabHeader alloc] initWithTitle:title :NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
-    //NSButton* tab = [[NSButton alloc] initWithFrame:NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height)];
+    TabHeader* tab = [[TabHeader alloc] initWithTitle:title 
+                                                     :NSMakeRect(last_header_pos, 0.0f, width, [self bounds].size.height) 
+                                                     :self];
     
     [tab setAutoresizingMask:NSViewWidthSizable | NSViewMinXMargin | NSViewMaxXMargin];
     
     [self addSubview:tab];
+    [self selectTab:[[self subviews] count] - 1];
+}
+
+-(void) selectTab:(NSUInteger)index
+{
+    NSArray* subviews = [self subviews];
+    
+    if (index >= [subviews count]) {
+        return;
+    }
+    
+    for (TabHeader* tab in subviews) {
+        [tab setState:NSOnState];
+    }
+    
+    [(TabHeader*)[subviews objectAtIndex:index] setState:NSOffState];
 }
 
 -(void) deleteTab:(NSUInteger)index
@@ -53,7 +78,30 @@ const NSUInteger gMaximumCountOfTabs = 4;
 
 -(NSUInteger) currentTab
 {
+    NSArray* subviews = [self subviews];
+    
+    for (NSUInteger i = 0; i < [subviews count]; ++i) {
+        if ([(TabHeader*)[subviews objectAtIndex:i] state] == NSOffState) {
+            return i;
+        }
+    }
     return 0;
+}
+
+-(NSUInteger) countOfTabs
+{
+    return [[self subviews] count];
+}
+
+-(void) setTitle:(NSUInteger)index :(NSString *)title
+{
+    NSArray* subview = [self subviews];
+    
+    if (index >= [subview count]) {
+        return;
+    }
+    
+    [(TabHeader*)[subview objectAtIndex:index] setTitle:title];
 }
 
 @end

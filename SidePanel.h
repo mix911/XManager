@@ -23,17 +23,17 @@
 -(id)   init;
 -(void) dealloc;
 -(void) addTab :(NSString*)path;
--(void) addTabFromCurrent;
+-(void) addTab;
 -(int)  nextTabId;
 -(void) updateContent;
 -(NSString*)    currentPath;
+
 
 // SidePanelProtocol
 -(bool) changeFolder                :(NSString *)folder;
 -(void) setTabHeaderTitle           :(NSString*)folder;
 -(bool) enterToRow                  :(NSInteger)row;
 -(bool) goUp;
--(void) addTabFromCurrent;
 -(void) closeCurrentTab;
 -(void) invertSelection             :(NSInteger)row;
 -(void) postKeyDown                 :(NSEvent*)event;
@@ -44,6 +44,5 @@
 -(bool) selectedItems               :(NSMutableArray*)selected;
 -(void) updateTable;
 
-- (void)windowResized:(NSNotification *)notification;
 
 @end

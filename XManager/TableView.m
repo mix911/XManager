@@ -65,20 +65,6 @@
                 [sidePanel invertSelection:row];
             }
             break;
-            
-        case VK_TAB:
-            // Если был зажат Control то все как обычно
-            if ([event modifierFlags] & NSControlKeyMask) {
-                [super      keyDown     :event];
-                return;
-            }
-            // Обрабатываем сами
-            [sidePanel postKeyDown:event];
-            return;
-                                
-        default:
-            [sidePanel postKeyDown:event];
-            return;
     }
     
     [super keyDown :event];

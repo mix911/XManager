@@ -26,13 +26,14 @@
 
 @implementation SidePanel(Private)
 
--(DataSourceAndTableViewDelegate*) currentDataSource {
+-(DataSourceAndTableViewDelegate*) currentDataSource 
+{
     TableView* table = [self table];
     return (DataSourceAndTableViewDelegate*)[table dataSource];
 }
 
--(TableView*)   table {
-//    NSTabViewItem*  tab_item= [tabView selectedTabViewItem];
+-(TableView*)   table 
+{
     NSTabViewItem* tab_item = [self selectedTabViewItem];
     NSScrollView*   scroll  = [tab_item view];
     return [scroll documentView];
@@ -42,7 +43,8 @@
 
 @implementation SidePanel
 
-- (id)init {
+- (id)init 
+{
     self = [super init];
     if (self) {
         nextTabId = 0;
@@ -53,27 +55,14 @@
 
 -(void) awakeFromNib
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(windowResized:) 
-                                                 name:NSWindowDidResizeNotification 
-                                               object:[self window]];
 }
 
--(void) dealloc {
-//    [tabView release];
+-(void) dealloc 
+{
 }
 
--(void) addTab:(NSString *)path {
-    
-//    // Если tabView ещё не создан, создадим его
-//    if (tabView==nil) {
-//        tabView = [[NSTabView alloc] init];
-//        [self addSubview:tabView];
-//        [tabView setFrame:[self bounds]];
-//        [self setAutoresizesSubviews:YES];
-//        [tabView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-//    }
-    
+-(void) addTab:(NSString *)path 
+{        
     // Создадим url
     NSURL* url = [[NSURL alloc] initWithString:path];
     
@@ -182,17 +171,26 @@
     [scroll_view        release];
     [icell              release];
     [fileSystemManager  release];
+    
+    [tabs addTab:dir];
+    
+    [self setActive:mainWindow];
 }
 
--(void) setTabHeaderTitle:(NSString *)title {
+-(void) setTabHeaderTitle:(NSString *)title 
+{
     [[self selectedTabViewItem] setLabel:title];
+    
+    [tabs setTitle:[tabs currentTab] :title];
 }
 
--(int) nextTabId {
+-(int) nextTabId 
+{
     return ++nextTabId;
 }
 
--(void) addTabFromCurrent {
+-(void) addTab 
+{
     TableView* table = [self table];
     
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
@@ -200,7 +198,8 @@
     [self addTab:path];
 }
 
--(void) closeCurrentTab {
+-(void) closeCurrentTab 
+{
     
     // Если осталась только одна вкладка
     if ([[self tabViewItems] count] == 1) {
@@ -211,25 +210,28 @@
     [self removeTabViewItem:[self selectedTabViewItem]];
 }
 
--(bool) enterToRow:(NSInteger)row {
+-(bool) enterToRow:(NSInteger)row 
+{
     TableView* table = [self table];
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
     return [ds enterToRow:row];
 }
 
--(bool) goUp {
+-(bool) goUp 
+{
     TableView* table = [self table];
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
     return [ds goUp];
 }
 
--(void) invertSelection:(NSInteger)row {
+-(void) invertSelection:(NSInteger)row 
+{
     DataSourceAndTableViewDelegate* ds = [self currentDataSource];
     [ds invertSelection:row];
 }
 
--(void) postKeyDown:(NSEvent *)event {
-    
+-(void) keyDown:(NSEvent *)event
+{
     switch ([event keyCode]) {
             
         case VK_F2:
@@ -254,6 +256,17 @@
         case VK_SPACE:
             return;
             
+        case VK_W:
+            return;
+            
+        case VK_T:
+            if ([event modifierFlags] & NSCommandKeyMask) {
+                if ([tabs countOfTabs] < 4) {
+                    [self addTab];
+                }
+            }
+            return;
+            
         default:
             [mainWindow postKeyDown:event];
             return;
@@ -262,14 +275,16 @@
     [super keyDown:event];
 }
 
--(void) setActive :(NSWindow*)window{
+-(void) setActive :(NSWindow*)window
+{
     [mainWindow setActiveSide:self];
     if (window) {
         [window makeFirstResponder:[self table]];
     }
 }
 
--(void) updateContent {
+-(void) updateContent 
+{
     for (NSTabViewItem* item in [self tabViewItems]) {
 
         // Получим NSScrollView
@@ -301,25 +316,32 @@
     return [self table];
 }
 
--(void) switchToNextTab {
+-(void) switchToNextTab 
+{
     if ([self indexOfTabViewItem:[self selectedTabViewItem]] == [self numberOfTabViewItems] - 1) {
         [self selectFirstTabViewItem:self];
+        [tabs selectTab:0];
     }
     else {
         [self selectNextTabViewItem:self];
+        [tabs selectTab:[tabs currentTab] + 1];
     }
 }
 
--(void) switchToPrevTab {
+-(void) switchToPrevTab 
+{
     if ([self indexOfTabViewItem:[self selectedTabViewItem]] == 0) {
         [self selectLastTabViewItem:self];
+        [tabs selectTab:[tabs countOfTabs] - 1];
     }
     else {
         [self selectPreviousTabViewItem:self];
+        [tabs selectTab:[tabs currentTab] - 1];
     }
 }
 
--(bool) selectedItems:(NSMutableArray *)selected {
+-(bool) selectedItems:(NSMutableArray *)selected 
+{
 
     // Отчистим входящий массив
     [selected removeAllObjects];
@@ -336,13 +358,9 @@
     return [selected count] != 0;
 }
 
--(void) updateTable {
-    [[self table] reloadData];
-}
-
--(void) windowResized:(NSNotification *)notification
+-(void) updateTable 
 {
-    [tabs setFrame:NSMakeRect(0.0f, [tabs frame].origin.y, [self frame].size.width, [tabs frame].size.height)];
+    [[self table] reloadData];
 }
 
 @end

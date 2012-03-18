@@ -7,10 +7,16 @@
 //
 
 #import "TabHeader.h"
+#import "TabsHeaders.h"
 
 @implementation TabHeader
 
--(id) initWithTitle:(NSString *)title :(NSRect)frame
+-(void) push:(id)event
+{
+    [parent push:self];
+}
+
+-(id) initWithTitle:(NSString *)title :(NSRect)frame :(TabsHeaders*)par
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -26,9 +32,29 @@
         
         [button setBezelStyle:NSRoundedBezelStyle];
         [button setButtonType:NSOnOffButton];
+        
+        parent = par;
+        
+        [button setTarget:self];
+        [button setAction:@selector(push:)];
     }
     
     return self;
+}
+
+-(void) setState:(NSUInteger)state
+{
+    [button setState:state];
+}
+
+-(NSUInteger) state
+{
+    return [button state];
+}
+
+-(void) setTitle:(NSString *)title
+{
+    [button setTitle:title];
 }
 
 @end

@@ -8,11 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TabsHeaders;
+
 @interface TabHeader : NSView
 {
     NSButton* button;
+    TabsHeaders* parent;
 }
 
--(id) initWithTitle:(NSString*)title :(NSRect)rect;
+-(id) initWithTitle:(NSString*)title :(NSRect)rect :(TabsHeaders*)parent;
+-(void) setTitle:(NSString*)title;
+
+-(void) setState:(NSUInteger)state;
+-(NSUInteger) state;
 
 @end
