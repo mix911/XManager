@@ -13,6 +13,7 @@
 #import "FileSystemManager.h"
 #import "MainWindow.h"
 #import "TabsHeaders.h"
+#import "ConfigManager.h"
 
 #include "MacSys.h"
 
@@ -32,7 +33,13 @@
     return (DataSourceAndTableViewDelegate*)[table dataSource];
 }
 
--(TableView*)   table 
+-(TableView*) tableByIndex:(NSUInteger)index
+{
+    NSTabViewItem* tab_item = [self tabViewItemAtIndex:index];
+    return [[tab_item view] documentView];
+}
+
+-(TableView*) table 
 {
     NSTabViewItem* tab_item = [self selectedTabViewItem];
     NSScrollView*   scroll  = [tab_item view];
@@ -76,7 +83,6 @@
     // Создадим item вкладки
     NSTabViewItem* item = [[NSTabViewItem alloc] initWithIdentifier:tab_id];
     [item setLabel:dir];
-    
     
     // Создадим и настроим scroll view
     NSScrollView* scroll_view = [[NSScrollView alloc] initWithFrame:[self bounds]];
@@ -347,7 +353,7 @@
     }
 }
 
--(bool) selectedItems:(NSMutableArray *)selected 
+-(bool) selectedItems:(NSMutableArray*)selected 
 {
 
     // Отчистим входящий массив
@@ -368,6 +374,41 @@
 -(void) updateTable 
 {
     [[self table] reloadData];
+}
+
+-(id) saveSettings
+{
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    
+    NSMutableArray* tabs_arr = [[NSMutableArray alloc] init];
+    
+    for (NSUInteger i = 0; i < [self numberOfTabViewItems]; ++i) {
+        
+        TableView* table = [self tableByIndex:i];
+        DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
+        
+        NSMutableDictionary* tab_dict = [[NSMutableDictionary alloc] init];
+        
+        NSString* path = [ds currentPath];
+        NSString* title= [tabs title:i];
+        
+        [tab_dict setValue:path  forKey:@"Path"];
+        [tab_dict setValue:title forKey:@"Title"];
+        
+        [tabs_arr addObject:tab_dict];
+        [tab_dict release];
+    }
+    
+    [dict setValue:tabs_arr forKey:@"Tabs"];
+    
+    [tabs_arr release];
+    
+    return dict;
+}
+
+-(void) loadSettings:(NSDictionary*)settings
+{
+    if (settings == nil) return;
 }
 
 @end

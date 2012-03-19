@@ -7,6 +7,7 @@
 //
 
 #import "XManagerAppDelegate.h"
+#import "MainWindow.h"
 
 @implementation XManagerAppDelegate
 
@@ -14,7 +15,12 @@
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification 
 {    
-    // Insert code here to initialize your application
+}
+
+-(NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender
+{
+    [window saveWindowSettings];
+    return NSTerminateNow;
 }
 
 @end

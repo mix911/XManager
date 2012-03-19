@@ -749,7 +749,7 @@
 											<string key="NSFrame">{{0, 522}, {418, 26}}</string>
 											<reference key="NSSuperview" ref="643600812"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="260694483"/>
+											<reference key="NSNextKeyView" ref="224370307"/>
 											<string key="NSReuseIdentifierKey">_NS:499</string>
 											<string key="NSClassName">TabsHeaders</string>
 										</object>
@@ -774,7 +774,7 @@
 									<string key="NSFrameSize">{416, 548}</string>
 									<reference key="NSSuperview" ref="768834622"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="224370307"/>
+									<reference key="NSNextKeyView" ref="909916507"/>
 									<string key="NSReuseIdentifierKey">_NS:599</string>
 									<string key="NSClassName">NSView</string>
 								</object>
@@ -788,7 +788,7 @@
 											<string key="NSFrame">{{1, 522}, {419, 26}}</string>
 											<reference key="NSSuperview" ref="797218077"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="768834622"/>
+											<reference key="NSNextKeyView" ref="662206538"/>
 											<string key="NSReuseIdentifierKey">_NS:499</string>
 											<string key="NSClassName">TabsHeaders</string>
 										</object>
@@ -809,7 +809,7 @@
 									<string key="NSFrame">{{417, 0}, {420, 548}}</string>
 									<reference key="NSSuperview" ref="768834622"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="662206538"/>
+									<reference key="NSNextKeyView" ref="260694483"/>
 									<string key="NSReuseIdentifierKey">_NS:601</string>
 									<string key="NSClassName">NSView</string>
 								</object>
@@ -928,6 +928,7 @@
 							<string key="NSFrame">{{584, 3}, {100, 19}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1534</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="218510196">
@@ -949,7 +950,7 @@
 					<string key="NSFrameSize">{837, 578}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="909916507"/>
+					<reference key="NSNextKeyView" ref="768834622"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 800}}</string>
 				<string key="NSMinSize">{400, 655}</string>
@@ -1245,6 +1246,14 @@
 						<reference key="destination" ref="662206538"/>
 					</object>
 					<int key="connectionID">981</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">window</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="972006081"/>
+					</object>
+					<int key="connectionID">982</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1947,7 +1956,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">981</int>
+			<int key="maxID">982</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2029,13 +2038,13 @@
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">window</string>
-						<string key="NS.object.0">NSWindow</string>
+						<string key="NS.object.0">MainWindow</string>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<string key="NS.key.0">window</string>
 						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">window</string>
-							<string key="candidateClassName">NSWindow</string>
+							<string key="candidateClassName">MainWindow</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

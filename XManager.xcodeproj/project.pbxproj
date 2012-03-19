@@ -30,6 +30,7 @@
 		B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFB1402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns */; };
 		B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */; };
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
+		B4C616AB15165C91007CDE2E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C616AA15165C91007CDE2E /* config.plist */; };
 		B4CB721215165B9300C02C97 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB721115165B9300C02C97 /* ConfigManager.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
 		B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */; };
@@ -85,6 +86,7 @@
 		B4C10EFC1402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ToolbarUtilitiesFolderIcon.icns; path = Resources/Icons/ToolbarUtilitiesFolderIcon.icns; sourceTree = SOURCE_ROOT; };
 		B4C1581F140267B40052D988 /* HomeFolderIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = HomeFolderIcon.icns; sourceTree = "<group>"; };
 		B4C616A915165C2C007CDE2E /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = SOURCE_ROOT; };
+		B4C616AA15165C91007CDE2E /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = config.plist; path = ../config.plist; sourceTree = "<group>"; };
 		B4CB721115165B9300C02C97 /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigManager.m; path = ../ConfigManager.m; sourceTree = "<group>"; };
 		B4DAF08B13FA92420000BA35 /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
 		B4DAF08C13FA92420000BA35 /* FileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemManager.m; sourceTree = "<group>"; };
@@ -158,13 +160,14 @@
 			children = (
 				B483E69113FBEA2700295218 /* Controls */,
 				B483E69013FBE9BC00295218 /* ItemManagers */,
-				B4CB721115165B9300C02C97 /* ConfigManager.m */,
 				B4C616A915165C2C007CDE2E /* ConfigManager.h */,
+				B4CB721115165B9300C02C97 /* ConfigManager.m */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
 				B4074E9913ECD09900438E01 /* XManagerAppDelegate.m */,
 				B4074E9B13ECD09900438E01 /* MainMenu.xib */,
+				B4C616AA15165C91007CDE2E /* config.plist */,
 				B4C1581D140267B40052D988 /* Resources */,
 				B4074E8D13ECD09900438E01 /* Supporting Files */,
 				B4124C5E150915200026FABE /* MacSys.h */,
@@ -337,6 +340,7 @@
 				B4C10EFF1402B63000AC0416 /* ToolbarDesktopFolderIcon.icns in Resources */,
 				B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */,
 				B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */,
+				B4C616AB15165C91007CDE2E /* config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

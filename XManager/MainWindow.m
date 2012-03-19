@@ -10,6 +10,7 @@
 
 #import "SidePanel.h"
 #import "TabsHeaders.h"
+#import "ConfigManager.h"
 
 #include "MacSys.h"
 
@@ -25,20 +26,57 @@
     return self;
 }
 
+-(void) loadSettings:(NSDictionary*)settings
+{    
+    if (settings == nil) return;
+
+    NSString* active_tab = [settings objectForKey:@"ActivePanel"];
+    
+    if (active_tab && [active_tab isEqualToString:@"Right"]) {
+        [self setActiveSide:rightPanel];
+        [rightPanel setActive:self];
+    }
+    else {
+        [self setActiveSide:leftPanel];
+        [leftPanel setActive:self];
+    }
+    
+    [leftPanel  loadSettings:[settings objectForKey:@"LeftPanel"]];
+    [rightPanel loadSettings:[settings objectForKey:@"RightPanel"]];
+}
+
+-(id) saveSettings
+{
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    
+    // Сохраним выбранную панель
+    NSString* panel_side = (activePanel == leftPanel ? @"Left" : @"Right");
+    [dict setValue:panel_side forKey:@"ActivePanel"];
+    
+    [dict setValue:[leftPanel  saveSettings] forKey:@"LeftPanel"];
+    [dict setValue:[rightPanel saveSettings] forKey:@"RightPanel"];
+    
+    return dict;
+}
+
 //+-----------------------------------------------------------------+
 //| Загрузка nib архива                                             |
 //+-----------------------------------------------------------------+
 -(void) awakeFromNib 
 {
-    
     // Загрузим родителя
     [super awakeFromNib];
+    
+    [ConfigManager load];
     
     NSString* cur_dir = @"/Users/demo/QtSDK";
     
     // Установим директории по умолчанию
     [leftPanel  addTab:cur_dir];
     [rightPanel addTab:cur_dir];
+    
+    [ConfigManager load];
+    [self loadSettings:[ConfigManager getValue:@"MainWindow"]];
     
     [cur_dir release];
 }
@@ -68,15 +106,6 @@
 
 -(void) postKeyDown:(NSEvent *)event
 {
-    switch ([event keyCode]) {
-            
-        case VK_W:
-            return;
-            
-        default:
-            break;
-    }
-    
     [super keyDown:event];
 }
 
@@ -106,6 +135,12 @@
 -(void) switchToPrevTab 
 {
     [activePanel switchToPrevTab];
+}
+
+-(void) saveWindowSettings
+{
+    [ConfigManager setValue:@"MainWindow" :[self saveSettings]];
+    [ConfigManager save];
 }
 
 @end

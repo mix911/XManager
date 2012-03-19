@@ -10,4 +10,10 @@
 
 @interface ConfigManager : NSObject
 
++(void) load;
++(void) save;
++(void) clear;
++(id)   getValue:(NSString*)name;
++(void) setValue:(NSString*)name:(id)value;
+
 @end

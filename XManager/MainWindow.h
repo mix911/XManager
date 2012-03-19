@@ -30,4 +30,6 @@
 
 -(void) postKeyDown:(NSEvent *)event;
 
+-(void) saveWindowSettings;
+
 @end

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ActiveTab</key>
+	<string>Right</string>
+	<key>MainWindow</key>
+	<dict>
+		<key>ActivePanel</key>
+		<string>Left</string>
+		<key>LeftPanel</key>
+		<dict>
+			<key>Tabs</key>
+			<array>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK/Assistant.app</string>
+					<key>Title</key>
+					<string>Assistant.app</string>
+				</dict>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK/Symbian</string>
+					<key>Title</key>
+					<string>Symbian</string>
+				</dict>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK/Symbian/sis/Symbian^1/Qt/4.7.3</string>
+					<key>Title</key>
+					<string>4.7.3</string>
+				</dict>
+			</array>
+		</dict>
+		<key>RightPanel</key>
+		<dict>
+			<key>Tabs</key>
+			<array>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK</string>
+					<key>Title</key>
+					<string>QtSDK</string>
+				</dict>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK/2</string>
+					<key>Title</key>
+					<string>2</string>
+				</dict>
+				<dict>
+					<key>Path</key>
+					<string>/Users/demo/QtSDK/Demos</string>
+					<key>Title</key>
+					<string>Demos</string>
+				</dict>
+				<dict>
+					<key>Path</key>
+					<string>/</string>
+					<key>Title</key>
+					<string>/</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

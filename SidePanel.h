@@ -28,6 +28,9 @@
 -(void) updateContent;
 -(NSString*)    currentPath;
 
+-(id) saveSettings;
+-(void) loadSettings:(NSDictionary*)settings;
+
 
 // SidePanelProtocol
 -(bool) changeFolder                :(NSString *)folder;

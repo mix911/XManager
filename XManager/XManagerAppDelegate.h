@@ -8,15 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindow;
 
 //////////////////////////////////////////////////////////////////////////////////
 // Application delegate
 //////////////////////////////////////////////////////////////////////////////////
 @interface XManagerAppDelegate : NSObject <NSApplicationDelegate> 
 {
-    NSWindow *window;
+    IBOutlet MainWindow* window;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet MainWindow *window;
 
 @end

@@ -126,4 +126,9 @@ static const NSUInteger gMaximumCountOfTabs = 4;
     [tabs replaceObjectAtIndex:index withObject:title];
 }
 
+-(NSString*) title:(NSUInteger)index
+{
+    return [tabs objectAtIndex:index];
+}
+
 @end

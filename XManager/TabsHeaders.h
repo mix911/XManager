@@ -26,6 +26,7 @@
 -(NSUInteger) countOfTabs;
 
 -(void) setTitle:(NSUInteger)index :(NSString*)title;
+-(NSString*) title:(NSUInteger)index;
 
 // TODO: must be more clear
 -(void) push:(TabHeader*)tab;
