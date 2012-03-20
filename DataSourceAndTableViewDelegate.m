@@ -376,7 +376,12 @@
     }
     else {
         if ([cell isHighlighted]) {
-            [cell setTextColor:[NSColor blackColor]];
+            if (item.isSelected) {
+                [cell setTextColor:[NSColor redColor]];
+            }
+            else {
+                [cell setTextColor:[NSColor blackColor]];
+            }
         }
         else {
             if (item.isSelected) {
