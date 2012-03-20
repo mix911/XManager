@@ -13,7 +13,8 @@
 
 @implementation TableView
 
-- (id)init {
+- (id)init 
+{
     self = [super init];
     if (self) {
         [self setTarget:self];
@@ -24,26 +25,17 @@
     return self;
 }
 
--(void) setSidePanel:(SidePanel*)sp {
+-(void) setSidePanel:(SidePanel*)sp 
+{
     sidePanel = sp;
 }
 
--(void) keyDown:(NSEvent*)event {
-
+-(void) keyDown:(NSEvent*)event 
+{
     unsigned short key = [event keyCode];
     
     switch (key) {
-            
-        case VK_ENTER:
-        {
-            NSInteger row = [super selectedRow];
-            if ([sidePanel enterToRow:row]) {
-                [self reloadData];
-                [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-            }
-        }
-            return;
-            
+                        
         case VK_ARROR_UP:
             if ([event modifierFlags] & NSCommandKeyMask) {
                 if ([sidePanel goUp]) {
@@ -70,7 +62,8 @@
     [super keyDown :event];
 }
 
--(void) doubleClick:(id)sender {
+-(void) doubleClick:(id)sender 
+{
     NSInteger row = [self selectedRow];
     if ([sidePanel enterToRow:row]) {
         [self reloadData];
@@ -78,7 +71,8 @@
     }
 }
 
--(BOOL) becomeFirstResponder {
+-(BOOL) becomeFirstResponder 
+{
     [self selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     [sidePanel setActive:nil];
     return [super becomeFirstResponder];

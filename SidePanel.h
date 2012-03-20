@@ -34,12 +34,10 @@
 
 // SidePanelProtocol
 -(bool) changeFolder                :(NSString *)folder;
--(void) setTabHeaderTitle           :(NSString*)folder;
 -(bool) enterToRow                  :(NSInteger)row;
 -(bool) goUp;
 -(void) closeCurrentTab;
 -(void) invertSelection             :(NSInteger)row;
--(void) postKeyDown                 :(NSEvent*)event;
 -(void) setActive                   :(NSWindow*)window;
 -(TableView*)   table;
 -(void) switchToNextTab;

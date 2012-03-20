@@ -7,8 +7,6 @@
 //
 
 #import "DataSourceAndTableViewDelegate.h"
-
-#import "SidePanel.h"
 #import "FileSystemItem.h"
 
 //+-----------------------------------------------------------------+
@@ -22,8 +20,8 @@
 
 @implementation DataSourceAndTableViewDelegate(Private)
 
--(enum EFileSystemColumnId) whatColumn:(NSTableColumn*)column {
-    
+-(enum EFileSystemColumnId) whatColumn:(NSTableColumn*)column 
+{    
     // Получим идентификатор колонки TODO: переделать на идентификатор колонки
     NSString* col_id = [column identifier];
     
@@ -44,7 +42,8 @@
 
 @implementation DataSourceAndTableViewDelegate
 
--(id) initWithPath:(NSString *)path {
+-(id) initWithPath:(NSString *)path 
+{
     self = [super init];
     if (self) {
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -53,14 +52,13 @@
     return self;
 }
 
--(void) dealloc {
+-(void) dealloc 
+{
     [itemManager release];
 }
 
-// TODO: поискать способ read/write lock
-
--(bool) enterToRow:(NSUInteger)row {
-        
+-(bool) enterToRow:(NSUInteger)row 
+{        
     // Поумолчанию установим неуспешное выполнение
     bool res = false;
     
@@ -122,10 +120,7 @@
             
                 // Обновим данные
                 data = tmp_data;
-            
-                // Обновим заголовок
-                [sidePanel setTabHeaderTitle:[[itemManager currentPath] lastPathComponent]];
-            
+                        
                 // Установим успешное выполнение
                 res = true;
             }
@@ -138,7 +133,8 @@
     return res;
 }
 
--(bool) goUp {
+-(bool) goUp 
+{
     FileSystemItem* item = [data objectAtIndex:0];
     if ([item.name isEqualToString:@".."]) {
         return [self enterToRow:0];
@@ -146,12 +142,13 @@
     return false;
 }
 
--(NSInteger) numberOfRowsInTableView:(NSTableView *)tableView {
+-(NSInteger) numberOfRowsInTableView:(NSTableView *)tableView 
+{
     return [data count];
 }
 
--(id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-
+-(id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row 
+{
     // Проверки
     if ([data count] <= row) {
         return nil;
@@ -197,8 +194,8 @@
     return @"error";
 }
 
--(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)column row:(NSInteger)row {
-    
+-(void) tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)column row:(NSInteger)row 
+{    
     // Проверки
     if (row >= [data count]) {
         return;
@@ -237,27 +234,26 @@
     }
 }
 
--(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn {
+-(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn 
+{
     [itemManager setOrder:[self whatColumn:tableColumn]];
     [tableView reloadData];
 }
 
--(void) setSidePanelProtocol:(SidePanel*)sp {
-    sidePanel = sp;
-}
-
--(NSString*) currentPath {
+-(NSString*) currentPath 
+{
     return [itemManager currentPath];
 }
 
--(void) setItemManager:(id<ItemManagerProtocol>)im {
+-(void) setItemManager:(id<ItemManagerProtocol>)im 
+{
     [itemManager release];
     itemManager = [im retain];
     data = [itemManager changeFolder:[itemManager currentPath]];
 }
 
--(void) invertSelection:(NSInteger)row {
-    
+-(void) invertSelection:(NSInteger)row 
+{    
     // Проверки
     if (row >= [data count]) {
         return;
@@ -269,17 +265,19 @@
     item.isSelected = !item.isSelected;
 }
 
--(void) updateItemsList {
+-(void) updateItemsList 
+{
     data = nil;
     [itemManager updateItemsList];
 }
 
--(bool) changeFolder:(NSString *)folder {
+-(bool) changeFolder:(NSString *)folder 
+{
     return [itemManager changeFolder:folder];
 }
 
--(void) selectedItems:(NSMutableArray *)selected :(NSInteger)current {
-
+-(void) selectedItems:(NSMutableArray *)selected :(NSInteger)current 
+{
     // Отчистим входящий массив
     [selected removeAllObjects];
     

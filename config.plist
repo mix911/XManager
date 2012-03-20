@@ -31,7 +31,7 @@
 		<key>RightPanel</key>
 		<dict>
 			<key>SelectedTab</key>
-			<integer>2</integer>
+			<integer>3</integer>
 			<key>Tabs</key>
 			<array>
 				<dict>
@@ -44,7 +44,7 @@
 				</dict>
 				<dict>
 					<key>Path</key>
-					<string>/Users/demo/QtSDK</string>
+					<string>/Users/demo/QtSDK/Desktop</string>
 				</dict>
 				<dict>
 					<key>Path</key>

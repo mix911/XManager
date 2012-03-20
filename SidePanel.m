@@ -163,9 +163,6 @@
     // Зададим делегат
     [table setDelegate:[ds_delegate retain]];
 
-    // Установим SidePanelProtocol
-    [ds_delegate setSidePanelProtocol:self];
-
     [item               release];
     [ds_delegate        release];
     [table              release];
@@ -224,7 +221,13 @@
 {
     TableView* table = [self table];
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
-    return [ds enterToRow:row];
+    
+    if ([ds enterToRow:row]) {
+        [self setTabHeaderTitle:[[ds currentPath] lastPathComponent]];
+        return true;
+    }
+    
+    return false;
 }
 
 -(bool) goUp 
@@ -242,6 +245,7 @@
 
 -(void) keyDown:(NSEvent *)event
 {
+    TableView* table = nil;
     switch ([event keyCode]) {
             
         case VK_F2:
@@ -264,6 +268,14 @@
             return;
             
         case VK_SPACE:
+            return;
+            
+        case VK_ENTER:
+            table = [self table];
+            if ([self enterToRow:[table selectedRow]]) {
+                [table reloadData];
+                [table selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+            }
             return;
             
         case VK_W:
