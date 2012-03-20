@@ -69,16 +69,13 @@
     
     [ConfigManager load];
     
-    NSString* cur_dir = @"/Users/demo/QtSDK";
+//    NSString* cur_dir = @"/Users/demo/QtSDK";
     
-    // Установим директории по умолчанию
-    [leftPanel  addTab:cur_dir];
-    [rightPanel addTab:cur_dir];
+//    // Установим директории по умолчанию
+//    [leftPanel  addTab:cur_dir];
+//    [rightPanel addTab:cur_dir];
     
-    [ConfigManager load];
     [self loadSettings:[ConfigManager getValue:@"MainWindow"]];
-    
-    [cur_dir release];
 }
 
 -(void) sendEvent:(NSEvent*)theEvent 

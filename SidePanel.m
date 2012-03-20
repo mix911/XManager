@@ -70,11 +70,12 @@
 
 -(void) addTab:(NSString *)path 
 {        
-    // Создадим url
-    NSURL* url = [[NSURL alloc] initWithString:path];
+    if (path == nil) {
+        return;
+    }
     
-    // Используя объект url получим текущий для вкладки каталог
-    NSString* dir = [url lastPathComponent];
+    // Получим текущий для вкладки каталог
+    NSString* dir = [path lastPathComponent];
     
     // Сгенерируем идентификатор для вкладки
     NSString* tab_id =  [NSString stringWithFormat:@"%S%i", 
@@ -165,7 +166,6 @@
     // Установим SidePanelProtocol
     [ds_delegate setSidePanelProtocol:self];
 
-    [url                release];
     [item               release];
     [ds_delegate        release];
     [table              release];
@@ -390,10 +390,8 @@
         NSMutableDictionary* tab_dict = [[NSMutableDictionary alloc] init];
         
         NSString* path = [ds currentPath];
-        NSString* title= [tabs title:i];
         
         [tab_dict setValue:path  forKey:@"Path"];
-        [tab_dict setValue:title forKey:@"Title"];
         
         [tabs_arr addObject:tab_dict];
         [tab_dict release];
@@ -403,12 +401,33 @@
     
     [tabs_arr release];
     
+    [dict setValue:[NSNumber numberWithUnsignedInteger:[tabs currentTab]] forKey:@"SelectedTab"];
+    
     return dict;
 }
 
 -(void) loadSettings:(NSDictionary*)settings
 {
     if (settings == nil) return;
+    
+    NSArray* all_tabs = [settings objectForKey:@"Tabs"];
+    
+    if (all_tabs && [all_tabs count] != 0) {
+        
+        for (NSDictionary* dict in all_tabs) {
+            [self addTab:[dict objectForKey:@"Path"]];
+        }
+        
+        NSNumber* selected_tab = [settings objectForKey:@"SelectedTab"];
+        if (selected_tab) {
+            [self selectTabViewItemAtIndex:[selected_tab unsignedIntegerValue]];
+            [tabs selectTab:[selected_tab unsignedIntegerValue]];
+        }
+    }
+    else {        
+        // Установим директории по умолчанию
+        [self  addTab:@"/Users/demo/QtSDK"];
+    }
 }
 
 @end
