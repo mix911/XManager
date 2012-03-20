@@ -11,124 +11,18 @@
 #import "SidePanel.h"
 #import "FileSystemItem.h"
 
-@interface DataSourceObj : NSObject {
-@public
-    DataSourceAndTableViewDelegate* this;
-    NSUInteger                      row;
-    NSString*                       key;
-}
-
--(id)                               initWithAttrs :(DataSourceAndTableViewDelegate*)this :(NSUInteger)row :(NSString*)key;
--(DataSourceAndTableViewDelegate*)  this;
--(NSUInteger)                       row;
--(NSString*)                        key;
-
-@end
-
-@interface Task : NSObject {
-    NSTimer*                        timer;
-    NSThread*                       thread;
-    DataSourceAndTableViewDelegate* dataSource;
-    bool                            isReady;
-}
-
--(id)   initWithDataSource :(DataSourceAndTableViewDelegate*)ds;
-
--(void) runTask :(DataSourceObj*)obj;
--(void) runTimer:(NSString*)key;
--(void) stopTimer;
--(void) stopTask;
-
-@property   bool    isReady;
-
-@end
-
-@implementation Task
-
--(id) initWithDataSource :(DataSourceAndTableViewDelegate*)ds {
-    if (self = [super init]) {
-        
-        dataSource  = ds;
-        timer       = nil;
-        isReady     = false;
-        
-    }
-    return self;
-}
-
--(void) runTask:(DataSourceObj *)obj {
-    self.isReady = false;
-    [self runTimer :[obj key]];
-    
-    thread = [[NSThread alloc] initWithTarget:[DataSourceAndTableViewDelegate class]
-                                     selector:@selector(determineDirectorySizeAsync:) 
-                                       object:obj];
-    [thread start];
-}
-
--(void) runTimer :(NSString*)key {
-    [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                             target:dataSource
-                                           selector:@selector(onTaskTimer:)
-                                           userInfo:key
-                                            repeats:YES];
-}
-
--(void) stopTimer {
-    [timer invalidate];
-    timer = nil;
-}
-
--(void) stopTask {
-    [thread cancel];
-}
-
-@synthesize isReady;
-
-@end
-
-@implementation DataSourceObj
-
--(id) initWithAttrs :(DataSourceAndTableViewDelegate*)t :(NSUInteger)r :(NSString*)k {
-    if (self = [super init]) {
-        this        = t;
-        row         = r;
-        key         = k;
-        
-        [key retain];
-    }
-    return self;
-}
-
--(DataSourceAndTableViewDelegate*) this {
-    return this;
-}
-
--(NSUInteger) row {
-    return row;
-}
-
--(NSString*) key {
-    return key;
-}
-
-@end
-
 //+-----------------------------------------------------------------+
 //| Идентификатор колонок                                           |
 //+-----------------------------------------------------------------+
 @interface DataSourceAndTableViewDelegate(Private) 
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
--(void)                     stopAllTasks;
--(void)                     onTaskTimer :(NSTimer*)timer;
 
 @end
 
 @implementation DataSourceAndTableViewDelegate(Private)
 
--(enum EFileSystemColumnId) whatColumn:(NSTableColumn *)column {
+-(enum EFileSystemColumnId) whatColumn:(NSTableColumn*)column {
     
     // Получим идентификатор колонки TODO: переделать на идентификатор колонки
     NSString* col_id = [column identifier];
@@ -146,48 +40,6 @@
     return FS_UNDEFINED;
 }
 
--(void) stopAllTasks {
-    [sync lock];
-    
-    for (Task* task in [tasks objectEnumerator]) {
-        [task stopTimer];
-    }
-    
-    [tasks removeAllObjects];
-    
-    [sync unlock];
-}
-
--(void) onTaskTimer:(NSTimer*)timer {
-    
-    NSString* task_key = [timer userInfo];
-    
-    bool is_ready = false;
-    
-    [sync lock];
-    
-    Task* task = [tasks objectForKey:task_key];
-    
-    if (task) {
-        if (task.isReady) {
-            is_ready = true;
-            
-            [task stopTimer];
-            
-            [tasks removeObjectForKey:task_key];
-        }
-    }
-    else {
-        is_ready = true;
-    }
-    
-    [sync unlock];
-    
-    if (is_ready) {
-        [sidePanel updateTable];
-    }
-}
-
 @end
 
 @implementation DataSourceAndTableViewDelegate
@@ -197,8 +49,6 @@
     if (self) {
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        
-        tasks = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -210,14 +60,9 @@
 // TODO: поискать способ read/write lock
 
 -(bool) enterToRow:(NSUInteger)row {
-    
-    // Остановим все потоки
-    [self stopAllTasks];
-    
+        
     // Поумолчанию установим неуспешное выполнение
     bool res = false;
-    
-    [sync lock];
     
     // Если ряд валидный
     if (row < [data count]) {
@@ -235,7 +80,6 @@
         if ([item.name isEqualToString:@".."]) {
             // Если текущий путь это корневой каталог
             if ([current_path isEqualToString:@"/"]) {
-                [sync unlock];
                 return false;
             }
             
@@ -290,7 +134,6 @@
             [[NSWorkspace sharedWorkspace] openFile:new_path];
         }
     }
-    [sync unlock];
     
     return res;
 }

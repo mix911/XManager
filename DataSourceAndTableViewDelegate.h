@@ -21,22 +21,15 @@
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
     SidePanel*                  sidePanel;      // Панель содержащая таблицу
-    NSLock*                     sync;           // Синхронизация данных
-    NSMutableDictionary*        tasks;          // Задачи
 }
 
 -(id)           initWithPath:(NSString*)path;
--(void)         dealloc;
 
 // Data source
 -(NSInteger)    numberOfRowsInTableView:(NSTableView *)tableView;
 -(id)           tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 -(bool)         enterToRow:(NSUInteger)row;
 -(bool)         goUp;
-
-// Delegate
--(void) tableView:(NSTableView*)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
--(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn;
 
 // FileSystemDataSource
 -(void)     setSidePanelProtocol:(SidePanel*)sidePanel;
