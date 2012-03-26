@@ -13,7 +13,6 @@
 @protocol ItemManagerProtocol <NSObject>
 
 @required
--(void)             setOrder        :(enum EFileSystemColumnId)order;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
 -(void)             updateItemsList;
 -(NSString*)        currentPath;

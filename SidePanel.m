@@ -20,7 +20,6 @@
 
 @interface SidePanel(Private)
 
--(TableView*)   table;
 -(DataSourceAndTableViewDelegate*) currentDataSource;
 
 @end
@@ -39,13 +38,6 @@
     return [[tab_item view] documentView];
 }
 
--(TableView*) table 
-{
-    NSTabViewItem* tab_item = [self selectedTabViewItem];
-    NSScrollView*   scroll  = [tab_item view];
-    return [scroll documentView];
-}
-
 @end
 
 @implementation SidePanel
@@ -60,11 +52,14 @@
     return self;
 }
 
--(void) awakeFromNib
+-(TableView*) table 
 {
+    NSTabViewItem* tab_item = [self selectedTabViewItem];
+    NSScrollView*   scroll  = [tab_item view];
+    return [scroll documentView];
 }
 
--(void) dealloc 
+-(void) awakeFromNib
 {
 }
 
@@ -152,6 +147,7 @@
     
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
+    [ds_delegate sortData:FS_TYPE];
     
     // Менеджер файловой системы
     FileSystemManager* fileSystemManager = [[FileSystemManager alloc] initWithPath:path];
@@ -337,10 +333,6 @@
     return [[self currentDataSource] changeFolder:folder];
 }
 
--(NSView*)  table {
-    return [self table];
-}
-
 -(void) switchToNextTab 
 {
     if ([self indexOfTabViewItem:[self selectedTabViewItem]] == [self numberOfTabViewItems] - 1) {
@@ -415,7 +407,7 @@
     
     [dict setValue:[NSNumber numberWithUnsignedInteger:[tabs currentTab]] forKey:@"SelectedTab"];
     
-    return dict;
+    return [dict autorelease];
 }
 
 -(void) loadSettings:(NSDictionary*)settings

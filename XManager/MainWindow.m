@@ -47,7 +47,7 @@
 
 -(id) saveSettings
 {
-    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* dict = [[[NSMutableDictionary alloc] init] autorelease];
     
     // Сохраним выбранную панель
     NSString* panel_side = (activePanel == leftPanel ? @"Left" : @"Right");

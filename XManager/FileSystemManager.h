@@ -21,7 +21,6 @@
 -(id)   initWithPath : (NSString*)path;
 
 // ItemManagerProtocol
--(void)             setOrder    :(enum EFileSystemColumnId)order;
 -(NSImage*)         iconForItem :(FileSystemItem*)item;
 -(void)             updateItemsList;
 -(NSString*)        currentPath;

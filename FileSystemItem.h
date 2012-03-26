@@ -11,7 +11,8 @@
 //+-----------------------------------------------------------------+
 //| Идентификатор колонок                                           |
 //+-----------------------------------------------------------------+
-enum EFileSystemColumnId {
+enum EFileSystemColumnId 
+{
     FS_ICON = 0,
     FS_NAME,
     FS_SIZE,
@@ -20,7 +21,8 @@ enum EFileSystemColumnId {
     FS_UNDEFINED,
 };
 
-@interface FileSystemItem : NSObject {
+@interface FileSystemItem : NSObject 
+{
     NSString*   fullPath;   // Полный путь - используется FileSystemManager для генерации иконок
     NSString*   name;       // Наименование объекта файловой системы
     NSInteger   size;       // Размер, TODO: нужно переделать в байты

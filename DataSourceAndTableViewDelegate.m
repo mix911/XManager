@@ -9,16 +9,27 @@
 #import "DataSourceAndTableViewDelegate.h"
 #import "FileSystemItem.h"
 
-//+-----------------------------------------------------------------+
-//| Идентификатор колонок                                           |
-//+-----------------------------------------------------------------+
-@interface DataSourceAndTableViewDelegate(Private) 
+@implementation DataSourceAndTableViewDelegate
 
--(enum EFileSystemColumnId) whatColumn:(NSTableColumn*) column;
+@synthesize order;
 
-@end
+-(id) initWithPath:(NSString *)path 
+{
+    self = [super init];
+    if (self) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        order = FS_NAME;
+    }
+    return self;
+}
 
-@implementation DataSourceAndTableViewDelegate(Private)
+-(void) dealloc 
+{
+    [itemManager release];
+    
+    [super dealloc];
+}
 
 -(enum EFileSystemColumnId) whatColumn:(NSTableColumn*)column 
 {    
@@ -38,23 +49,127 @@
     return FS_UNDEFINED;
 }
 
-@end
-
-@implementation DataSourceAndTableViewDelegate
-
--(id) initWithPath:(NSString *)path 
+-(void) sortData:(enum EFileSystemColumnId) column
 {
-    self = [super init];
-    if (self) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    switch (column) {
+        case FS_NAME:
+            [data sortUsingComparator:^(FileSystemItem* lft, FileSystemItem* rgh)
+            {
+                if ([lft.name isEqualToString:@".."]) {
+                    return (NSComparisonResult)NSOrderedAscending;
+                }
+                
+                if ([rgh.name isEqualToString:@".."]) {
+                    return (NSComparisonResult)NSOrderedDescending;
+                }
+                
+                if ((lft.isDir && rgh.isDir) || (lft.isDir == false && rgh.isDir == false))
+                    return [lft.name compare:rgh.name];
+                
+                if (lft.isDir)
+                    return (NSComparisonResult)NSOrderedAscending;
+                
+                return (NSComparisonResult)NSOrderedDescending;
+            }];
+            break;
+            
+        case FS_SIZE:
+            [data sortUsingComparator:^(FileSystemItem* lft, FileSystemItem* rgh)
+             {
+                 if ([lft.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if ([rgh.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 if (lft.isDir && rgh.isDir) {
+                     return [lft.name compare:rgh.name];
+                 }
+                 
+                 if (lft.isDir) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if (rgh.isDir) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 NSInteger l = lft.size;
+                 NSInteger r = rgh.size;
+                 
+                 if (l < r) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if (l > r) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 return (NSComparisonResult)NSOrderedSame;
+             }];
+            break;
+            
+        case FS_DATE:
+            [data sortUsingComparator:^(FileSystemItem* lft, FileSystemItem* rgh)
+             {
+                 if ([lft.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if ([rgh.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 if (lft.isDir && rgh.isDir) {
+                     return [lft.name compare:rgh.name];
+                 }
+                 
+                 if (lft.isDir) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if (rgh.isDir) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 return [lft.date compare:rgh.date];
+             }];
+            break;
+            
+        case FS_TYPE:
+            [data sortUsingComparator:^(FileSystemItem* lft, FileSystemItem* rgh)
+             {
+                 if ([lft.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if ([rgh.name isEqualToString:@".."]) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 if (lft.isDir && rgh.isDir) {
+                     return [lft.name compare:rgh.name];
+                 }
+                 
+                 if (lft.isDir) {
+                     return (NSComparisonResult)NSOrderedAscending;
+                 }
+                 
+                 if (rgh.isDir) {
+                     return (NSComparisonResult)NSOrderedDescending;
+                 }
+                 
+                 return [lft.type compare:rgh.type];
+             }];
+            break;
+            
+        default:
+            break;
     }
-    return self;
-}
-
--(void) dealloc 
-{
-    [itemManager release];
+    
+    order = column;
 }
 
 -(bool) enterToRow:(NSUInteger)row 
@@ -129,6 +244,8 @@
             [[NSWorkspace sharedWorkspace] openFile:new_path];
         }
     }
+    
+    [self sortData:order];
     
     return res;
 }
@@ -234,9 +351,9 @@
     }
 }
 
--(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn *)tableColumn 
+-(void) tableView:(NSTableView*)tableView didClickTableColumn:(NSTableColumn*)tableColumn 
 {
-    [itemManager setOrder:[self whatColumn:tableColumn]];
+    [self sortData:[self whatColumn:tableColumn]];
     [tableView reloadData];
 }
 
@@ -250,6 +367,7 @@
     [itemManager release];
     itemManager = [im retain];
     data = [itemManager changeFolder:[itemManager currentPath]];
+    [self sortData:order];
 }
 
 -(void) invertSelection:(NSInteger)row 
@@ -273,7 +391,9 @@
 
 -(bool) changeFolder:(NSString *)folder 
 {
-    return [itemManager changeFolder:folder];
+    bool res = [itemManager changeFolder:folder];
+    [self sortData:order];
+    return res;
 }
 
 -(void) selectedItems:(NSMutableArray *)selected :(NSInteger)current 

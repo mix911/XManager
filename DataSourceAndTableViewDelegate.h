@@ -18,6 +18,7 @@
     id<ItemManagerProtocol>     itemManager;    // Менеджер управления объектами
     NSDateFormatter*            dateFormatter;  // Форматирование даты
     NSMutableArray*             data;           // Данные
+    enum EFileSystemColumnId    order;
 }
 
 -(id)           initWithPath:(NSString*)path;
@@ -27,10 +28,13 @@
 
 // FileSystemDataSource
 -(NSString*)currentPath;
--(bool)     changeFolder    :(NSString*)folder;
--(void)     setItemManager  :(id<ItemManagerProtocol>)itemManager;
--(void)     invertSelection :(NSInteger)row;
--(void)     updateItemsList;
--(void)     selectedItems   :(NSMutableArray*)selected :(NSInteger)current;
+-(bool)changeFolder:(NSString*)folder;
+-(void)setItemManager:(id<ItemManagerProtocol>)itemManager;
+-(void)invertSelection:(NSInteger)row;
+-(void)updateItemsList;
+-(void)selectedItems:(NSMutableArray*)selected :(NSInteger)current;
+-(void)sortData:(enum EFileSystemColumnId)column;
+
+@property (readonly) enum EFileSystemColumnId order;
 
 @end

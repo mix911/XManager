@@ -8,6 +8,8 @@
 
 #import <AppKit/AppKit.h>
 
+#import "FileSystemItem.h"
+
 
 @class TableView;
 @class MainWindow;
@@ -18,10 +20,10 @@
     int nextTabId;      // Следующая вкладка
     IBOutlet MainWindow*  mainWindow;
     IBOutlet TabsHeaders* tabs;
+    enum EFileSystemColumnId order;
 }
 
 -(id)   init;
--(void) dealloc;
 -(void) addTab :(NSString*)path;
 -(void) addTab;
 -(int)  nextTabId;

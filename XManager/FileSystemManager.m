@@ -41,7 +41,8 @@
     return false;
 }
 
--(NSMutableArray*) openFolder:(NSString *)new_path {
+-(NSMutableArray*) openFolder:(NSString *)new_path 
+{
     
     // Сохраним старый путь
     NSString* old_path = [self currentPath];
@@ -69,6 +70,8 @@
     
     // Пустой item
     FileSystemItem* item = nil;
+    
+//    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     
     // Если новая папка не является корневой
     if ([new_path isEqualToString:@"/"]==NO) {
@@ -129,6 +132,8 @@
         
         [data addObject:item];
     }
+    
+    //[pool release];
     
     return data;
 }
@@ -210,18 +215,11 @@
         
         // Откроем каталог
         [self openFolder:path];
-        
-        // Установим порядок по умолчанию
-//        [self setOrder:FS_NAME];
     }
     return self;
 }
 -(NSMutableArray*) changeFolder:(NSString*)folder {
     return [self openFolder:folder];
-}
-
--(void) setOrder:(enum EFileSystemColumnId)o {
-    order = o;
 }
 
 -(NSString*) currentPath {
