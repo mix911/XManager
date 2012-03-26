@@ -122,19 +122,15 @@
                      return (NSComparisonResult)NSOrderedDescending;
                  }
                  
-                 if (lft.isDir && rgh.isDir) {
-                     return [lft.name compare:rgh.name];
+                 if ((lft.isDir && rgh.isDir) || (lft.isDir == false && rgh.isDir == false)) {
+                     return [lft.date compare:rgh.date];
                  }
                  
                  if (lft.isDir) {
                      return (NSComparisonResult)NSOrderedAscending;
                  }
                  
-                 if (rgh.isDir) {
-                     return (NSComparisonResult)NSOrderedDescending;
-                 }
-                 
-                 return [lft.date compare:rgh.date];
+                 return (NSComparisonResult)NSOrderedDescending;
              }];
             break;
             

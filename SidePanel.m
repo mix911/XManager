@@ -14,6 +14,7 @@
 #import "MainWindow.h"
 #import "TabsHeaders.h"
 #import "ConfigManager.h"
+#import "FileSystemItem.h"
 
 #include "MacSys.h"
 
@@ -63,7 +64,7 @@
 {
 }
 
--(void) addTab:(NSString *)path 
+-(void) addTab:(NSString *)path :(enum EFileSystemColumnId)order
 {        
     if (path == nil) {
         return;
@@ -147,7 +148,7 @@
     
     // Зададим источник данных
     DataSourceAndTableViewDelegate* ds_delegate = [[DataSourceAndTableViewDelegate alloc] initWithPath:path];
-    [ds_delegate sortData:FS_TYPE];
+    [ds_delegate sortData:order];
     
     // Менеджер файловой системы
     FileSystemManager* fileSystemManager = [[FileSystemManager alloc] initWithPath:path];
@@ -189,13 +190,13 @@
     return ++nextTabId;
 }
 
--(void) addTab 
+-(void) addTab:(enum EFileSystemColumnId)order
 {
     TableView* table = [self table];
     
     DataSourceAndTableViewDelegate* ds = (DataSourceAndTableViewDelegate*)[table dataSource];
     NSString* path = [ds currentPath];
-    [self addTab:path];
+    [self addTab:path:order];
 }
 
 -(void) closeCurrentTab 
@@ -283,7 +284,7 @@
         case VK_T:
             if ([event modifierFlags] & NSCommandKeyMask) {
                 if ([tabs countOfTabs] < 4) {
-                    [self addTab];
+                    [self addTab:((DataSourceAndTableViewDelegate*)[[self table] dataSource]).order];
                 }
             }
             return;
@@ -396,6 +397,7 @@
         NSString* path = [ds currentPath];
         
         [tab_dict setValue:path  forKey:@"Path"];
+        [tab_dict setValue:[NSNumber numberWithInt:[ds order]] forKey:@"Order"];
         
         [tabs_arr addObject:tab_dict];
         [tab_dict release];
@@ -419,7 +421,15 @@
     if (all_tabs && [all_tabs count] != 0) {
         
         for (NSDictionary* dict in all_tabs) {
-            [self addTab:[dict objectForKey:@"Path"]];
+            
+            enum EFileSystemColumnId order = FS_NAME;
+            NSNumber* number = [dict objectForKey:@"Order"];
+            
+            if (number) {
+                order = (enum EFileSystemColumnId)[number intValue];
+            }
+            
+            [self addTab:[dict objectForKey:@"Path"]:order];
         }
         
         NSNumber* selected_tab = [settings objectForKey:@"SelectedTab"];
@@ -430,7 +440,7 @@
     }
     else {        
         // Установим директории по умолчанию
-        [self  addTab:@"/Users/demo/QtSDK"];
+        [self  addTab:@"/Users/demo/QtSDK":FS_NAME];
     }
 }
 
