@@ -10,13 +10,15 @@
 
 @class SidePanel;
 @class TabsHeaders;
+@class CopyMoveDialog;
 
 @interface MainWindow : NSWindow 
 {    
-    IBOutlet SidePanel*      leftPanel;              // Left panel
-    IBOutlet SidePanel*      rightPanel;             // Right panel
-    IBOutlet TabsHeaders*    leftTabs;               // Tabs headers of left panel
-    IBOutlet TabsHeaders*    rightTabs;              // Tabs headers of right panel
+    IBOutlet SidePanel*      leftPanel;     // Left panel
+    IBOutlet SidePanel*      rightPanel;    // Right panel
+    IBOutlet TabsHeaders*    leftTabs;      // Tabs headers of left panel
+    IBOutlet TabsHeaders*    rightTabs;     // Tabs headers of right panel
+    IBOutlet CopyMoveDialog* copyMoveDialog;
     
     SidePanel*      activePanel;            // Active panel
 }
@@ -31,5 +33,7 @@
 -(void) postKeyDown:(NSEvent *)event;
 
 -(void) saveWindowSettings;
+
+-(IBAction) pressCommandButton:(id)sender;
 
 @end

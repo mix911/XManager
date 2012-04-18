@@ -11,6 +11,7 @@
 #import "SidePanel.h"
 #import "TabsHeaders.h"
 #import "ConfigManager.h"
+#import "CopyMoveDialog.h"
 
 #include "MacSys.h"
 
@@ -24,6 +25,20 @@
     }
     
     return self;
+}
+
+-(void) pressCopyYes
+{
+    NSAlert* alert = [[[NSAlert alloc] init] autorelease];
+    [alert setMessageText:@"Copy"];
+    [alert runModal];
+}
+
+-(void) pressMoveYes
+{
+    NSAlert* alert = [[[NSAlert alloc] init] autorelease];
+    [alert setMessageText:@"Move"];
+    [alert runModal];
 }
 
 -(void) loadSettings:(NSDictionary*)settings
@@ -76,6 +91,9 @@
 //    [rightPanel addTab:cur_dir];
     
     [self loadSettings:[ConfigManager getValue:@"MainWindow"]];
+    
+    copyMoveDialog.pressMoveYes = @selector(pressMoveYes:);
+    copyMoveDialog.pressCopyYes = @selector(pressCopyYes:);
 }
 
 -(void) sendEvent:(NSEvent*)theEvent 
@@ -138,6 +156,40 @@
 {
     [ConfigManager setValue:@"MainWindow" :[self saveSettings]];
     [ConfigManager save];
+}
+
+-(void) suggestCopy
+{
+    [copyMoveDialog suggestCopy];
+}
+
+-(void) suggestMove
+{
+    [copyMoveDialog suggestMove];
+}
+
+-(IBAction) pressCommandButton:(id)sender
+{
+    NSButton* btn = (NSButton*)sender;
+    
+    if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F2"]) {
+
+    }
+    else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F5"]) {
+        [self suggestCopy];
+    }
+    else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F6"]) {
+        [self suggestMove];
+    }
+    else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F7"]) {
+        
+    }
+    else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F8"]) {
+        
+    }
+    else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F9"]) {
+        
+    }
 }
 
 @end

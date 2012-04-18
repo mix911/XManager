@@ -33,6 +33,7 @@
 		B4C616AB15165C91007CDE2E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C616AA15165C91007CDE2E /* config.plist */; };
 		B4CB721215165B9300C02C97 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB721115165B9300C02C97 /* ConfigManager.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
+		B4FD86FF152BA209009E5680 /* CopyMoveDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */; };
 		B4FE0F8C13F8EE84003B45E3 /* FileSystemItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		B4DAF08B13FA92420000BA35 /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
 		B4DAF08C13FA92420000BA35 /* FileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemManager.m; sourceTree = "<group>"; };
 		B4DAF09113FA951E0000BA35 /* ItemManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagerProtocol.h; sourceTree = "<group>"; };
+		B4FD86FD152BA209009E5680 /* CopyMoveDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyMoveDialog.h; sourceTree = "<group>"; };
+		B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyMoveDialog.m; sourceTree = "<group>"; };
 		B4FE0F8A13F8EE84003B45E3 /* FileSystemItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemItem.h; sourceTree = SOURCE_ROOT; };
 		B4FE0F8B13F8EE84003B45E3 /* FileSystemItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemItem.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -220,6 +223,8 @@
 		B483E69113FBEA2700295218 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B4FD86FD152BA209009E5680 /* CopyMoveDialog.h */,
+				B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */,
 				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
 				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
 				B480195C13F538FF00E33745 /* TableView.h */,
@@ -390,6 +395,7 @@
 				B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */,
 				B410B337150BF14200076BC7 /* TabHeader.m in Sources */,
 				B4CB721215165B9300C02C97 /* ConfigManager.m in Sources */,
+				B4FD86FF152BA209009E5680 /* CopyMoveDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

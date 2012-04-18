@@ -18,7 +18,7 @@
 					<key>Order</key>
 					<integer>1</integer>
 					<key>Path</key>
-					<string>/Users/Shared</string>
+					<string>/</string>
 				</dict>
 			</array>
 		</dict>
@@ -30,21 +30,9 @@
 			<array>
 				<dict>
 					<key>Order</key>
-					<integer>3</integer>
-					<key>Path</key>
-					<string>/Users/demo</string>
-				</dict>
-				<dict>
-					<key>Order</key>
 					<integer>2</integer>
 					<key>Path</key>
-					<string>/Users/demo/QtSDK/Desktop/Qt/473/gcc/include/QtDesigner</string>
-				</dict>
-				<dict>
-					<key>Order</key>
-					<integer>3</integer>
-					<key>Path</key>
-					<string>/Users/demo/QtSDK</string>
+					<string>/Users</string>
 				</dict>
 			</array>
 		</dict>
