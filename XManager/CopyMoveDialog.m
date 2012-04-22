@@ -10,9 +10,6 @@
 
 @implementation CopyMoveDialog
 
-@synthesize pressCopyYes;
-@synthesize pressMoveYes;
-
 -(void) suggestCopy
 {
     state = COPY_TYPE;
@@ -37,25 +34,32 @@
 
 -(IBAction) pressYes:(id)sender
 {
-    [self pressNo:sender];
-    
     switch (state) {
         case COPY_TYPE:
-            [self pressCopyYes];
+            [callBackOwner performSelector:pressCopyYesCallback];
             break;
             
         case MOVE_TYPE:
-            [self pressMoveYes];
+            [callBackOwner performSelector:pressMoveYesCallback];
             break;
             
         default:
             break;
     }
+    
+    [self pressNo:sender];
 }
 
 -(IBAction) pressNo:(id)sender
 {
     [self close];
+}
+
+-(void) setObj:(id)obj copyCallbackSelector:(SEL)copySel moveCallbackSelector:(SEL)moveSel
+{
+    pressCopyYesCallback = copySel;
+    pressMoveYesCallback = moveSel;
+    callBackOwner = obj;
 }
 
 @end

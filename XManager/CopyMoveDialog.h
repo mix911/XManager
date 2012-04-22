@@ -18,14 +18,14 @@ enum ECopyMoveDialogType
 {
     IBOutlet NSTextField* label;
     
-    SEL pressCopyYes;
-    SEL pressMoveYes;
+    SEL pressCopyYesCallback;
+    SEL pressMoveYesCallback;
+    id  callBackOwner;
     
     enum ECopyMoveDialogType state;
 }
 
-@property (readwrite) SEL pressCopyYes;
-@property (readwrite) SEL pressMoveYes;
+-(void) setObj:(id)obj copyCallbackSelector:(SEL)copySel moveCallbackSelector:(SEL)moveSel;
 
 -(void) suggestCopy;
 -(void) suggestMove;

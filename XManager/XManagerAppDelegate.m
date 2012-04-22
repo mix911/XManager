@@ -14,7 +14,7 @@
 @synthesize window;
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification 
-{    
+{
 }
 
 -(NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender

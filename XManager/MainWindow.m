@@ -83,17 +83,12 @@
     [super awakeFromNib];
     
     [ConfigManager load];
-    
-//    NSString* cur_dir = @"/Users/demo/QtSDK";
-    
-//    // Установим директории по умолчанию
-//    [leftPanel  addTab:cur_dir];
-//    [rightPanel addTab:cur_dir];
-    
+        
     [self loadSettings:[ConfigManager getValue:@"MainWindow"]];
     
-    copyMoveDialog.pressMoveYes = @selector(pressMoveYes:);
-    copyMoveDialog.pressCopyYes = @selector(pressCopyYes:);
+    [copyMoveDialog setObj:self
+      copyCallbackSelector:@selector(pressCopyYes) 
+      moveCallbackSelector:@selector(pressMoveYes)];
 }
 
 -(void) sendEvent:(NSEvent*)theEvent 
