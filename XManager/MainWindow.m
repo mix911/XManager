@@ -114,9 +114,34 @@
     }
 }
 
--(void) postKeyDown:(NSEvent *)event
+-(void) postKeyDown:(NSEvent*)event
 {
-    [super keyDown:event];
+    unsigned int key = [event keyCode];
+    switch (key) {
+        case VK_F2:
+            [self doRename];
+            break;
+            
+        case VK_F5:
+            [self suggestCopy];
+            break;
+            
+        case VK_F6:
+            [self suggestMove];
+            break;
+            
+        case VK_F7:
+            [self suggestMkDir];
+            break;
+            
+        case VK_F8:
+            [self suggestDelete];
+            break;
+            
+        default:
+            [super keyDown:event];
+            break;
+    }
 }
 
 -(void) setActiveSide :(id)panel 
@@ -163,6 +188,14 @@
     [copyMoveDialog suggestMove];
 }
 
+-(void) suggestMkDir
+{
+}
+
+-(void) suggestDelete
+{
+}
+
 -(IBAction) pressCommandButton:(id)sender
 {
     NSButton* btn = (NSButton*)sender;
@@ -185,6 +218,10 @@
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F9"]) {
         
     }
+}
+
+-(void) doRename
+{
 }
 
 @end

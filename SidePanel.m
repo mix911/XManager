@@ -245,21 +245,6 @@
     TableView* table = nil;
     switch ([event keyCode]) {
             
-        case VK_F2:
-            return;
-            
-        case VK_F5:
-            return;
-            
-        case VK_F6:
-            return;
-            
-        case VK_F7:
-            return;
-            
-        case VK_F8:
-            return;
-            
         case VK_TAB:
             [mainWindow insertTab];
             return;
