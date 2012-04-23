@@ -17,6 +17,8 @@ enum ECopyMoveDialogType
 @interface CopyMoveDialog : NSWindow
 {
     IBOutlet NSTextField* label;
+    IBOutlet NSButton*    yesButton;
+    IBOutlet NSButton*    noButton;
     
     SEL pressCopyYesCallback;
     SEL pressMoveYesCallback;

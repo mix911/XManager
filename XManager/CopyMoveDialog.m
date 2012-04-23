@@ -8,6 +8,8 @@
 
 #import "CopyMoveDialog.h"
 
+#include "MacSys.h"
+
 @implementation CopyMoveDialog
 
 -(void) suggestCopy
@@ -60,6 +62,28 @@
     pressCopyYesCallback = copySel;
     pressMoveYesCallback = moveSel;
     callBackOwner = obj;
+}
+
+-(void) keyDown:(NSEvent*)theEvent
+{
+    unsigned int key = [theEvent keyCode];
+    switch (key) {
+        case VK_ESC:
+            [self pressNo:nil];
+            break;
+            
+        case VK_ENTER:
+            if ([self firstResponder] == yesButton)
+                [self pressYes:nil];
+            else {
+                [self pressNo:nil];
+            }
+            break;
+            
+        default:
+            [super keyDown:theEvent]; 
+            break;
+    }
 }
 
 @end

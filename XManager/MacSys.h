@@ -15,6 +15,7 @@
 #define VK_TAB              0x30
 #define VK_SPACE            0x31
 #define VK_ENTER            0x24
+#define VK_ESC              0x35
 
 #define VK_T                0x11
 #define VK_W                0xD
