@@ -11,7 +11,9 @@
 #import "SidePanel.h"
 #import "TabsHeaders.h"
 #import "ConfigManager.h"
+
 #import "CopyMoveDialog.h"
+#import "MakeDirDialog.h"
 
 #include "MacSys.h"
 
@@ -190,6 +192,7 @@
 
 -(void) suggestMkDir
 {
+    [makeDirDialog makeKeyAndOrderFront:self];
 }
 
 -(void) suggestDelete
