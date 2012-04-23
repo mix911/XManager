@@ -73,10 +73,13 @@
             break;
             
         case VK_ENTER:
-            if ([self firstResponder] == yesButton)
+            if ([self firstResponder] == yesButton) {
                 [self pressYes:nil];
+                [self makeFirstResponder:yesButton];
+            }
             else {
                 [self pressNo:nil];
+                [self makeFirstResponder:yesButton];
             }
             break;
             
