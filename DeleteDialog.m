@@ -9,6 +9,7 @@
 #import "DeleteDialog.h"
 
 #import "MessageBox.h"
+#import "MainWindow.h"
 
 #include "MacSys.h"
 
@@ -16,14 +17,13 @@
 
 -(IBAction) pressCancel:(id)sender
 {
-    [MessageBox show:@"Cancel"];
     [self close];
 }
 
 -(IBAction) pressOk:(id)sender
 {
-    [MessageBox show:@"Ok"];
-    [self close];
+    [self pressCancel:sender];
+    [mainWindow doDelete];
 }
 
 -(void) keyDown:(NSEvent *)theEvent

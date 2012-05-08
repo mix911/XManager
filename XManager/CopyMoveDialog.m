@@ -8,6 +8,8 @@
 
 #import "CopyMoveDialog.h"
 
+#import "MainWindow.h"
+
 #include "MacSys.h"
 
 @implementation CopyMoveDialog
@@ -40,11 +42,11 @@
 {
     switch (state) {
         case COPY_TYPE:
-            [callBackOwner performSelector:pressCopyYesCallback];
+            [mainWindow doCopy];
             break;
             
         case MOVE_TYPE:
-            [callBackOwner performSelector:pressMoveYesCallback];
+            [mainWindow doMove];
             break;
             
         default:
@@ -57,13 +59,6 @@
 -(IBAction) pressNo:(id)sender
 {
     [self close];
-}
-
--(void) setObj:(id)obj copyCallbackSelector:(SEL)copySel moveCallbackSelector:(SEL)moveSel
-{
-    pressCopyYesCallback = copySel;
-    pressMoveYesCallback = moveSel;
-    callBackOwner = obj;
 }
 
 -(void) keyDown:(NSEvent*)theEvent

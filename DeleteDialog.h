@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindow;
+
 @interface DeleteDialog : NSWindow
 {
-    IBOutlet NSButton* cancelButton;
+    IBOutlet NSButton*   cancelButton;
+    IBOutlet MainWindow* mainWindow;
 }
 
 @end

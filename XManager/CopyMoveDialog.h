@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindow;
+
 enum ECopyMoveDialogType
 {
     COPY_TYPE,
@@ -21,20 +23,12 @@ enum ECopyMoveDialogType
     IBOutlet NSTextField* label;
     IBOutlet NSButton*    yesButton;
     IBOutlet NSButton*    noButton;
-    
-    SEL pressCopyYesCallback;
-    SEL pressMoveYesCallback;
-    id  callBackOwner;
-    
+    IBOutlet MainWindow*  mainWindow;
+        
     enum ECopyMoveDialogType state;
 }
 
--(void) setObj:(id)obj copyCallbackSelector:(SEL)copySel moveCallbackSelector:(SEL)moveSel;
-
 -(void) suggestCopy;
 -(void) suggestMove;
-
--(IBAction) pressYes:(id)sender;
--(IBAction) pressNo:(id)sender;
 
 @end

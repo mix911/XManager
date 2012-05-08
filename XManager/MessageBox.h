@@ -10,6 +10,6 @@
 
 @interface MessageBox : NSObject
 
-+(void) show:(NSString*)message;
++(void) message:(NSString*)message;
 
 @end

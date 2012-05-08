@@ -10,7 +10,6 @@
 #import "MainWindow.h"
 
 #include "MacSys.h"
-#include "Switch.h"
 
 #import "MessageBox.h"
 
@@ -18,13 +17,11 @@
 
 -(IBAction) pressCancel:(id)sender
 {
-    [MessageBox show:@"Cancel"];
     [self close];
 }
 
 -(IBAction) pressOk:(id)sender
 {
-    [MessageBox show:@"Ok"];
     [self pressCancel:sender];
     [mainWindow doMakeDir];
 }

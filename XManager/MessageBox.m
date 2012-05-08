@@ -10,7 +10,7 @@
 
 @implementation MessageBox
 
-+(void) show:(NSString *)message
++(void) message:(NSString *)message
 {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     [alert setMessageText:message];

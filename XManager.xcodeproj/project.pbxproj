@@ -83,7 +83,6 @@
 		B4A5F4AF155915B900A7973E /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		B4B3182414043A350004A407 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
-		B4BC915B1559206B0061B3BF /* Switch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Switch.h; sourceTree = "<group>"; };
 		B4BC915C155931200061B3BF /* DeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeleteDialog.h; path = ../DeleteDialog.h; sourceTree = "<group>"; };
 		B4BC915D155931200061B3BF /* DeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteDialog.m; path = ../DeleteDialog.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
@@ -171,7 +170,6 @@
 		B4074E8C13ECD09900438E01 /* XManager */ = {
 			isa = PBXGroup;
 			children = (
-				B4BC91591559204A0061B3BF /* Utility */,
 				B4A5F4AC1559154800A7973E /* Debuging */,
 				B483E69113FBEA2700295218 /* Controls */,
 				B483E69013FBE9BC00295218 /* ItemManagers */,
@@ -262,14 +260,6 @@
 				B4A5F4AF155915B900A7973E /* MessageBox.m */,
 			);
 			name = Debuging;
-			sourceTree = "<group>";
-		};
-		B4BC91591559204A0061B3BF /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				B4BC915B1559206B0061B3BF /* Switch.h */,
-			);
-			name = Utility;
 			sourceTree = "<group>";
 		};
 		B4C1581D140267B40052D988 /* Resources */ = {

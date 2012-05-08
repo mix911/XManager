@@ -15,6 +15,7 @@
 #import "CopyMoveDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
+#import "MessageBox.h"
 
 #include "MacSys.h"
 
@@ -88,10 +89,6 @@
     [ConfigManager load];
         
     [self loadSettings:[ConfigManager getValue:@"MainWindow"]];
-    
-    [copyMoveDialog setObj:self
-      copyCallbackSelector:@selector(pressCopyYes) 
-      moveCallbackSelector:@selector(pressMoveYes)];
 }
 
 -(void) sendEvent:(NSEvent*)theEvent 
@@ -227,6 +224,26 @@
 
 -(void) doRename
 {
+}
+
+-(void) doCopy
+{
+    [MessageBox message:@"Copy"];
+}
+
+-(void) doMove
+{
+    [MessageBox message:@"Move"];
+}
+
+-(void) doMakeDir
+{
+    [MessageBox message:@"Make directory"];
+}
+
+-(void) doDelete
+{
+    [MessageBox message:@"Delete"];
 }
 
 @end
