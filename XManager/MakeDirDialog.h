@@ -19,6 +19,4 @@
 
 -(NSString*) directory;
 
--(BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector;
-
 @end

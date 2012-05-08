@@ -14,6 +14,7 @@
 
 #import "CopyMoveDialog.h"
 #import "MakeDirDialog.h"
+#import "DeleteDialog.h"
 
 #include "MacSys.h"
 
@@ -197,6 +198,7 @@
 
 -(void) suggestDelete
 {
+    [deleteDialog makeKeyAndOrderFront:self];
 }
 
 -(IBAction) pressCommandButton:(id)sender
@@ -216,7 +218,7 @@
         [self suggestMkDir];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F8"]) {
-        
+        [self suggestDelete];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F9"]) {
         

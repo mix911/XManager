@@ -24,6 +24,7 @@
 		B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */; };
 		B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F4AF155915B900A7973E /* MessageBox.m */; };
 		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
+		B4BC915E155931200061B3BF /* DeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BC915D155931200061B3BF /* DeleteDialog.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */; };
 		B4C10EFE1402B63000AC0416 /* ToolbarAppsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */; };
@@ -83,6 +84,8 @@
 		B4B3182414043A350004A407 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		B4BC915B1559206B0061B3BF /* Switch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Switch.h; sourceTree = "<group>"; };
+		B4BC915C155931200061B3BF /* DeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeleteDialog.h; path = ../DeleteDialog.h; sourceTree = "<group>"; };
+		B4BC915D155931200061B3BF /* DeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteDialog.m; path = ../DeleteDialog.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
 		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
 		B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GenericNetworkIcon.icns; path = Resources/Icons/GenericNetworkIcon.icns; sourceTree = SOURCE_ROOT; };
@@ -234,6 +237,8 @@
 			children = (
 				B4FD86FD152BA209009E5680 /* CopyMoveDialog.h */,
 				B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */,
+				B4BC915C155931200061B3BF /* DeleteDialog.h */,
+				B4BC915D155931200061B3BF /* DeleteDialog.m */,
 				B4FDBF3415451177005CF88A /* MakeDirDialog.h */,
 				B4FDBF3515451177005CF88A /* MakeDirDialog.m */,
 				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
@@ -426,6 +431,7 @@
 				B4FD86FF152BA209009E5680 /* CopyMoveDialog.m in Sources */,
 				B4FDBF3615451177005CF88A /* MakeDirDialog.m in Sources */,
 				B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */,
+				B4BC915E155931200061B3BF /* DeleteDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

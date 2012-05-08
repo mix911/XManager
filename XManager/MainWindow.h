@@ -12,6 +12,7 @@
 @class TabsHeaders;
 @class CopyMoveDialog;
 @class MakeDirDialog;
+@class DeleteDialog;
 
 @interface MainWindow : NSWindow 
 {    
@@ -21,6 +22,7 @@
     IBOutlet TabsHeaders*    rightTabs;     // Tabs headers of right panel
     IBOutlet CopyMoveDialog* copyMoveDialog;// Copy or move suggestion dialog
     IBOutlet MakeDirDialog*  makeDirDialog; // Make director suggestion dialog
+    IBOutlet DeleteDialog*   deleteDialog;  // Delete suggestion dialog
     
     SidePanel*      activePanel;            // Active panel
 }
