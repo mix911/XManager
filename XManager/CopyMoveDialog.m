@@ -19,7 +19,8 @@
     [label setStringValue:@"Copy selected files"];
     
     [self setTitle:@"Copy"];
-    
+        
+    [self makeFirstResponder:yesButton];
     [self makeKeyAndOrderFront:nil];
 }
 
@@ -31,6 +32,7 @@
     
     [self setTitle:@"Move"];
     
+    [self makeFirstResponder:yesButton];
     [self makeKeyAndOrderFront:nil];
 }
 

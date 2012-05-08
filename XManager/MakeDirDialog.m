@@ -10,6 +10,7 @@
 #import "MainWindow.h"
 
 #include "MacSys.h"
+#include "Switch.h"
 
 #import "MessageBox.h"
 
@@ -60,6 +61,7 @@
 -(void) makeKeyAndOrderFront:(id)sender
 {
     [directoryField setStringValue:@""];
+    [self makeFirstResponder:directoryField];
     [super makeKeyAndOrderFront:sender];
 }
 
