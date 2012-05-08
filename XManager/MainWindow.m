@@ -213,7 +213,7 @@
         [self suggestMove];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F7"]) {
-        
+        [self suggestMkDir];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F8"]) {
         

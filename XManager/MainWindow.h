@@ -38,4 +38,10 @@
 
 -(IBAction) pressCommandButton:(id)sender;
 
+-(void) doRename;
+-(void) doCopy;
+-(void) doMove;
+-(void) doMakeDir;
+-(void) doDelete;
+
 @end

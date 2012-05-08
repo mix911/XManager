@@ -8,6 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MakeDirDialog : NSWindow
+@class MainWindow;
+
+@interface MakeDirDialog : NSWindow <NSTextFieldDelegate>
+{
+    IBOutlet NSTextField* directoryField;
+    IBOutlet MainWindow*  mainWindow;
+    IBOutlet NSButton*    cancelButton;
+}
+
+-(NSString*) directory;
+
+-(BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector;
 
 @end

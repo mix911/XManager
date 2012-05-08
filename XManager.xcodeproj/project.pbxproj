@@ -22,6 +22,7 @@
 		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */; };
+		B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F4AF155915B900A7973E /* MessageBox.m */; };
 		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */; };
@@ -77,6 +78,8 @@
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4A18CE0150BE6FC00D9484D /* TabsHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsHeaders.h; sourceTree = "<group>"; };
 		B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsHeaders.m; sourceTree = "<group>"; };
+		B4A5F4AE155915B900A7973E /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
+		B4A5F4AF155915B900A7973E /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
 		B4B3182414043A350004A407 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		B4074E8C13ECD09900438E01 /* XManager */ = {
 			isa = PBXGroup;
 			children = (
+				B4A5F4AC1559154800A7973E /* Debuging */,
 				B483E69113FBEA2700295218 /* Controls */,
 				B483E69013FBE9BC00295218 /* ItemManagers */,
 				B4C616A915165C2C007CDE2E /* ConfigManager.h */,
@@ -242,6 +246,15 @@
 				B4B3182514043A350004A407 /* MainWindow.m */,
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		B4A5F4AC1559154800A7973E /* Debuging */ = {
+			isa = PBXGroup;
+			children = (
+				B4A5F4AE155915B900A7973E /* MessageBox.h */,
+				B4A5F4AF155915B900A7973E /* MessageBox.m */,
+			);
+			name = Debuging;
 			sourceTree = "<group>";
 		};
 		B4C1581D140267B40052D988 /* Resources */ = {
@@ -402,6 +415,7 @@
 				B4CB721215165B9300C02C97 /* ConfigManager.m in Sources */,
 				B4FD86FF152BA209009E5680 /* CopyMoveDialog.m in Sources */,
 				B4FDBF3615451177005CF88A /* MakeDirDialog.m in Sources */,
+				B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
