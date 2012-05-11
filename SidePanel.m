@@ -15,6 +15,7 @@
 #import "TabsHeaders.h"
 #import "ConfigManager.h"
 #import "FileSystemItem.h"
+#import "MessageBox.h"
 
 #include "MacSys.h"
 
@@ -284,10 +285,7 @@
 
 -(void) setActive :(NSWindow*)window
 {
-    [mainWindow setActiveSide:self];
-    if (window) {
-        [window makeFirstResponder:[self table]];
-    }
+    [window makeFirstResponder:[self table]];
 }
 
 -(void) updateContent 
@@ -345,7 +343,10 @@
 
 -(bool) selectedItems:(NSMutableArray*)selected 
 {
-
+    if (selected == nil) {
+        return false;
+    }
+    
     // Отчистим входящий массив
     [selected removeAllObjects];
     
@@ -427,6 +428,11 @@
         // Установим директории по умолчанию
         [self  addTab:@"/Users/demo/QtSDK":FS_NAME];
     }
+}
+
+-(DataSourceAndTableViewDelegate*) dataSource
+{
+    return [self currentDataSource];
 }
 
 @end

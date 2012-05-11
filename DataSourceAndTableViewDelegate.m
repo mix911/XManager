@@ -8,6 +8,7 @@
 
 #import "DataSourceAndTableViewDelegate.h"
 #import "FileSystemItem.h"
+#import "MessageBox.h"
 
 @implementation DataSourceAndTableViewDelegate
 
@@ -397,8 +398,17 @@
     // Отчистим входящий массив
     [selected removeAllObjects];
     
+//    for (FileSystemItem* item in data) {
+//        
+//        
+//        
+//        if (item.isSelected) {
+//            [selected addObject:[NSNumber numberWithLong:i]];
+//        }
+//    }
+    
     // Пройдемся по всем объектам файловой системы (кроме '..')
-    for (NSInteger i = 1; i < [data count]; ++i) {
+    for (NSInteger i = 0; i < [data count]; ++i) {
         
         // Получим очередной объект
         FileSystemItem* item = [data objectAtIndex:i];
@@ -408,7 +418,7 @@
         }
     }
     
-    // Если не выделен не один объект
+    // Если не выделен ни один объект
     if ([selected count] == 0) {
         
         // Если текущий объект находится в диапазоне данных
@@ -423,5 +433,31 @@
         }
     }
 }
+
+-(void) doRename
+{
+    [MessageBox message:@"Rename"];
+}
+
+-(void) doCopy:(DataSourceAndTableViewDelegate*)dstManager
+{
+    [MessageBox message:@"Copy"];
+}
+
+-(void) doMove:(DataSourceAndTableViewDelegate*)dstManager
+{
+    [MessageBox message:@"Move"];
+}
+
+-(void) doMakeDir
+{
+    [MessageBox message:@"Make directory"];
+}
+
+-(void) doDelete
+{
+    [MessageBox message:@"Delete"];
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "TableView.h"
 #import "SidePanel.h"
+#import "MessageBox.h"
 
 #include "MacSys.h"
 

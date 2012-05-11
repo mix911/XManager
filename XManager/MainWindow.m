@@ -11,11 +11,14 @@
 #import "SidePanel.h"
 #import "TabsHeaders.h"
 #import "ConfigManager.h"
-
+#import "FileSystemItem.h"
 #import "CopyMoveDialog.h"
 #import "MakeDirDialog.h"
 #import "DeleteDialog.h"
+#import "ProgressDialog.h"
 #import "MessageBox.h"
+#import "DataSourceAndTableViewDelegate.h"
+#import "Task.h"
 
 #include "MacSys.h"
 
@@ -52,11 +55,13 @@
     NSString* active_tab = [settings objectForKey:@"ActivePanel"];
     
     if (active_tab && [active_tab isEqualToString:@"Right"]) {
-        [self setActiveSide:rightPanel];
+        activePanel  = rightPanel;
+        deactivePanel= leftPanel;
         [rightPanel setActive:self];
     }
     else {
-        [self setActiveSide:leftPanel];
+        activePanel  = leftPanel;
+        deactivePanel= rightPanel;
         [leftPanel setActive:self];
     }
     
@@ -144,20 +149,17 @@
     }
 }
 
--(void) setActiveSide :(id)panel 
-{
-    activePanel = panel;
-}
-
 -(void) insertTab 
 {
     if (activePanel == leftPanel) {
-        [self setActiveSide:rightPanel];
+        activePanel   = rightPanel;
+        deactivePanel = leftPanel;
         [rightPanel setActive:self];
         
     }
     else {
-        [self setActiveSide:leftPanel];
+        activePanel   = leftPanel;
+        deactivePanel = rightPanel;
         [leftPanel setActive:self];
     }
 }
@@ -224,26 +226,53 @@
 
 -(void) doRename
 {
+    DataSourceAndTableViewDelegate* src = [activePanel dataSource];
+    [src doRename];
 }
 
 -(void) doCopy
 {
-    [MessageBox message:@"Copy"];
+    DataSourceAndTableViewDelegate* src = [activePanel dataSource];
+    DataSourceAndTableViewDelegate* dst = [deactivePanel dataSource];
+
+    Task* task = [[Task alloc] initWithSrc:src dst:dst];
+    
+    if ([task isCreated]) {
+        [progressDialog setTitle:@"Copying files"];
+        [progressDialog setTask:task];
+        [progressDialog makeKeyAndOrderFront:self];
+    }
+    else {
+        [MessageBox message:[task errorMessage]];
+    }
+    
+    [task release];
 }
 
 -(void) doMove
 {
-    [MessageBox message:@"Move"];
+    [progressDialog setTitle:@"Moving files"];
+    [progressDialog makeKeyAndOrderFront:self];
+    
+    DataSourceAndTableViewDelegate* src = [activePanel dataSource];
+    DataSourceAndTableViewDelegate* dst = [deactivePanel dataSource];
+    
+    [src doMove:dst];
 }
 
 -(void) doMakeDir
 {
-    [MessageBox message:@"Make directory"];
+    DataSourceAndTableViewDelegate* src = [activePanel dataSource];
+    [src doMakeDir];
 }
 
 -(void) doDelete
 {
-    [MessageBox message:@"Delete"];
+    [progressDialog setTitle:@"Deleting files"];
+    [progressDialog makeKeyAndOrderFront:self];
+    
+    DataSourceAndTableViewDelegate* src = [activePanel dataSource];
+    [src doDelete];
 }
 
 @end

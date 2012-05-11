@@ -25,9 +25,27 @@
 		<key>RightPanel</key>
 		<dict>
 			<key>SelectedTab</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Tabs</key>
 			<array>
+				<dict>
+					<key>Order</key>
+					<integer>2</integer>
+					<key>Path</key>
+					<string>/</string>
+				</dict>
+				<dict>
+					<key>Order</key>
+					<integer>2</integer>
+					<key>Path</key>
+					<string>/</string>
+				</dict>
+				<dict>
+					<key>Order</key>
+					<integer>2</integer>
+					<key>Path</key>
+					<string>/</string>
+				</dict>
 				<dict>
 					<key>Order</key>
 					<integer>2</integer>

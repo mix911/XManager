@@ -12,6 +12,7 @@
 @class TableView;
 @class MainWindow;
 @class TabsHeaders;
+@class DataSourceAndTableViewDelegate;
 
 @interface SidePanel : NSTabView
 {
@@ -33,5 +34,9 @@
 -(TableView*)   table;
 -(void) switchToNextTab;
 -(void) switchToPrevTab;
+
+-(bool) selectedItems:(NSMutableArray*)items;
+
+-(DataSourceAndTableViewDelegate*) dataSource;
 
 @end

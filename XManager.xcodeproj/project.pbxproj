@@ -25,6 +25,7 @@
 		B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F4AF155915B900A7973E /* MessageBox.m */; };
 		B4B3182614043A350004A407 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3182514043A350004A407 /* MainWindow.m */; };
 		B4BC915E155931200061B3BF /* DeleteDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BC915D155931200061B3BF /* DeleteDialog.m */; };
+		B4BC916415596C240061B3BF /* ProgressDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BC916315596C240061B3BF /* ProgressDialog.m */; };
 		B4BF189C13ED5C6C005EC652 /* SidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BF189B13ED5C6C005EC652 /* SidePanel.m */; };
 		B4C10EFD1402B63000AC0416 /* GenericNetworkIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */; };
 		B4C10EFE1402B63000AC0416 /* ToolbarAppsFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C10EF91402B63000AC0416 /* ToolbarAppsFolderIcon.icns */; };
@@ -34,6 +35,7 @@
 		B4C15820140267B40052D988 /* HomeFolderIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B4C1581F140267B40052D988 /* HomeFolderIcon.icns */; };
 		B4C616AB15165C91007CDE2E /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4C616AA15165C91007CDE2E /* config.plist */; };
 		B4CB721215165B9300C02C97 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CB721115165B9300C02C97 /* ConfigManager.m */; };
+		B4CD0105155C6C9300FED46A /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CD0104155C6C9300FED46A /* Task.m */; };
 		B4DAF08D13FA92420000BA35 /* FileSystemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DAF08C13FA92420000BA35 /* FileSystemManager.m */; };
 		B4FD86FF152BA209009E5680 /* CopyMoveDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */; };
 		B4FDBF3615451177005CF88A /* MakeDirDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FDBF3515451177005CF88A /* MakeDirDialog.m */; };
@@ -85,6 +87,8 @@
 		B4B3182514043A350004A407 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		B4BC915C155931200061B3BF /* DeleteDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeleteDialog.h; path = ../DeleteDialog.h; sourceTree = "<group>"; };
 		B4BC915D155931200061B3BF /* DeleteDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeleteDialog.m; path = ../DeleteDialog.m; sourceTree = "<group>"; };
+		B4BC916215596C240061B3BF /* ProgressDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressDialog.h; path = ../ProgressDialog.h; sourceTree = "<group>"; };
+		B4BC916315596C240061B3BF /* ProgressDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressDialog.m; path = ../ProgressDialog.m; sourceTree = "<group>"; };
 		B4BF189A13ED5C6C005EC652 /* SidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidePanel.h; path = ../SidePanel.h; sourceTree = "<group>"; };
 		B4BF189B13ED5C6C005EC652 /* SidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidePanel.m; path = ../SidePanel.m; sourceTree = "<group>"; };
 		B4C10EF81402B63000AC0416 /* GenericNetworkIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GenericNetworkIcon.icns; path = Resources/Icons/GenericNetworkIcon.icns; sourceTree = SOURCE_ROOT; };
@@ -96,6 +100,8 @@
 		B4C616A915165C2C007CDE2E /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = SOURCE_ROOT; };
 		B4C616AA15165C91007CDE2E /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = config.plist; path = ../config.plist; sourceTree = "<group>"; };
 		B4CB721115165B9300C02C97 /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigManager.m; path = ../ConfigManager.m; sourceTree = "<group>"; };
+		B4CD0103155C6C9300FED46A /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../Task.h; sourceTree = "<group>"; };
+		B4CD0104155C6C9300FED46A /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = ../Task.m; sourceTree = "<group>"; };
 		B4DAF08B13FA92420000BA35 /* FileSystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemManager.h; sourceTree = "<group>"; };
 		B4DAF08C13FA92420000BA35 /* FileSystemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemManager.m; sourceTree = "<group>"; };
 		B4DAF09113FA951E0000BA35 /* ItemManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagerProtocol.h; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				B4CB721115165B9300C02C97 /* ConfigManager.m */,
 				B40F8A7B13F1176A003D14C0 /* DataSourceAndTableViewDelegate.h */,
 				B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */,
+				B4CD0103155C6C9300FED46A /* Task.h */,
+				B4CD0104155C6C9300FED46A /* Task.m */,
 				B4074E9813ECD09900438E01 /* XManagerAppDelegate.h */,
 				B4074E9913ECD09900438E01 /* XManagerAppDelegate.m */,
 				B4074E9B13ECD09900438E01 /* MainMenu.xib */,
@@ -239,6 +247,8 @@
 				B4BC915D155931200061B3BF /* DeleteDialog.m */,
 				B4FDBF3415451177005CF88A /* MakeDirDialog.h */,
 				B4FDBF3515451177005CF88A /* MakeDirDialog.m */,
+				B4BC916215596C240061B3BF /* ProgressDialog.h */,
+				B4BC916315596C240061B3BF /* ProgressDialog.m */,
 				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
 				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
 				B480195C13F538FF00E33745 /* TableView.h */,
@@ -422,6 +432,8 @@
 				B4FDBF3615451177005CF88A /* MakeDirDialog.m in Sources */,
 				B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */,
 				B4BC915E155931200061B3BF /* DeleteDialog.m in Sources */,
+				B4BC916415596C240061B3BF /* ProgressDialog.m in Sources */,
+				B4CD0105155C6C9300FED46A /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

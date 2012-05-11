@@ -37,4 +37,10 @@
 
 @property (readonly) enum EFileSystemColumnId order;
 
+-(void) doRename;
+-(void) doCopy:(DataSourceAndTableViewDelegate*)dstManager;
+-(void) doMove:(DataSourceAndTableViewDelegate*)dstManager;
+-(void) doMakeDir;
+-(void) doDelete;
+
 @end

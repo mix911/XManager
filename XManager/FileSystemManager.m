@@ -9,6 +9,8 @@
 #import "FileSystemManager.h"
 #import "FileSystemItem.h"
 
+#import "MessageBox.h"
+
 @interface FileSystemManager(Private)
 
 -(NSMutableArray*)  openFolder      :(NSString*)folder;
