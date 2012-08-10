@@ -11,23 +11,35 @@
 @protocol ItemManagerProtocol;
 @class DataSourceAndTableViewDelegate;
 
+typedef enum _ETaskState {
+    ETaskStateStop,
+    ETaskStatePlay,
+    ETaskStatePause
+} ETaskState;
+
 @interface Task : NSObject
 {
     DataSourceAndTableViewDelegate* src;
     DataSourceAndTableViewDelegate* dst;
     
-    NSLock* sync;
-    double progress;
-    NSThread* thread;
+    NSLock*         sync;
+    double          progress;
+    NSThread*       thread;
+    NSCondition*    condition;
+    ETaskState      state;
 }
 
 -(id) initWithSrc:(DataSourceAndTableViewDelegate*)s dst:(DataSourceAndTableViewDelegate*)d;
 
 -(void) run;
 -(double) progress;
+-(void) pause;
+-(void) start;
 
 -(bool) isCreated;
 -(bool) isComplete;
 -(NSString*) errorMessage;
+
+-(ETaskState) state;
 
 @end

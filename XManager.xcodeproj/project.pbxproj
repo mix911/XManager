@@ -20,6 +20,8 @@
 		B4074EB213ECD09900438E01 /* XManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4074EB113ECD09900438E01 /* XManagerTests.m */; };
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
 		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
+		B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE3155F0F0A005FD255 /* BasicDialog.m */; };
+		B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog.m */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */; };
 		B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F4AF155915B900A7973E /* MessageBox.m */; };
@@ -77,6 +79,10 @@
 		B410B335150BF14200076BC7 /* TabHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabHeader.h; sourceTree = "<group>"; };
 		B410B336150BF14200076BC7 /* TabHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabHeader.m; sourceTree = "<group>"; };
 		B4124C5E150915200026FABE /* MacSys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacSys.h; sourceTree = "<group>"; };
+		B4182EE2155F0F0A005FD255 /* BasicDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDialog.h; sourceTree = "<group>"; };
+		B4182EE3155F0F0A005FD255 /* BasicDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicDialog.m; sourceTree = "<group>"; };
+		B4182EE6155F0FC3005FD255 /* QuestionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialog.h; sourceTree = "<group>"; };
+		B4182EE7155F0FC3005FD255 /* QuestionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog.m; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4A18CE0150BE6FC00D9484D /* TabsHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsHeaders.h; sourceTree = "<group>"; };
@@ -241,6 +247,8 @@
 		B483E69113FBEA2700295218 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				B4182EE2155F0F0A005FD255 /* BasicDialog.h */,
+				B4182EE3155F0F0A005FD255 /* BasicDialog.m */,
 				B4FD86FD152BA209009E5680 /* CopyMoveDialog.h */,
 				B4FD86FE152BA209009E5680 /* CopyMoveDialog.m */,
 				B4BC915C155931200061B3BF /* DeleteDialog.h */,
@@ -249,6 +257,8 @@
 				B4FDBF3515451177005CF88A /* MakeDirDialog.m */,
 				B4BC916215596C240061B3BF /* ProgressDialog.h */,
 				B4BC916315596C240061B3BF /* ProgressDialog.m */,
+				B4182EE6155F0FC3005FD255 /* QuestionDialog.h */,
+				B4182EE7155F0FC3005FD255 /* QuestionDialog.m */,
 				B4BF189A13ED5C6C005EC652 /* SidePanel.h */,
 				B4BF189B13ED5C6C005EC652 /* SidePanel.m */,
 				B480195C13F538FF00E33745 /* TableView.h */,
@@ -347,7 +357,7 @@
 		B4074E7913ECD09800438E01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = B4074E7C13ECD09800438E01 /* Build configuration list for PBXProject "XManager" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -434,6 +444,8 @@
 				B4BC915E155931200061B3BF /* DeleteDialog.m in Sources */,
 				B4BC916415596C240061B3BF /* ProgressDialog.m in Sources */,
 				B4CD0105155C6C9300FED46A /* Task.m in Sources */,
+				B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */,
+				B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +551,7 @@
 		B4074EB613ECD09900438E01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XManager/XManager-Prefix.pch";
 				INFOPLIST_FILE = "XManager/XManager-Info.plist";
@@ -550,6 +563,7 @@
 		B4074EB713ECD09900438E01 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XManager/XManager-Prefix.pch";
 				INFOPLIST_FILE = "XManager/XManager-Info.plist";
@@ -562,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XManager.app/Contents/MacOS/XManager";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XManager/XManager-Prefix.pch";
@@ -576,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XManager.app/Contents/MacOS/XManager";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XManager/XManager-Prefix.pch";

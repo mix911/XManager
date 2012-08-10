@@ -20,9 +20,23 @@
         sync     = [[NSLock alloc] init];
         progress = 0.0;
         thread   = nil;
+        condition= [[NSCondition alloc] init];
+        state    = ETaskStateStop;
     }
     
     return self;
+}
+
+-(void) dealloc
+{
+    [sync release];
+    [condition release];
+    
+    if (thread) {
+        [thread release];
+    }
+    
+    [super dealloc];
 }
 
 +(Task*) taskCopyWithSrc:(DataSourceAndTableViewDelegate*)src dst:(DataSourceAndTableViewDelegate*)dst
@@ -37,10 +51,18 @@
     progress = p;
 }
 
--(void) worker:(id)this
+-(void) worker:(id)obj
 {
     for (int i = 0; i < 100; ++i) {
-
+        
+        
+        [condition lock];
+        while (state == ETaskStatePause) {
+            [condition wait];
+        }
+        
+        [condition unlock];
+        
         [NSThread sleepForTimeInterval:0.03];
         
         [sync lock];
@@ -51,6 +73,8 @@
 
 -(void) run
 {
+    state = ETaskStatePlay;
+    
     thread = [[NSThread alloc] initWithTarget:self
                                      selector:@selector(worker:) 
                                        object:self];
@@ -68,6 +92,13 @@
     return res;
 }
 
+-(void) pause
+{
+    [condition lock];
+    state = ETaskStatePause;
+    [condition unlock];
+}
+
 -(bool) isCreated
 {
     return true;
@@ -81,6 +112,24 @@
 -(NSString*) errorMessage
 {
     return @"Not implemented";
+}
+
+-(void) start
+{
+    [condition lock];
+    state = ETaskStatePlay;
+    [condition unlock];
+    
+    [condition signal];
+}
+
+-(ETaskState) state
+{
+    ETaskState res;
+    [condition lock];
+    res = state;
+    [condition unlock];
+    return res;
 }
 
 @end

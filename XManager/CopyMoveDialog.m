@@ -23,7 +23,7 @@
     [self setTitle:@"Copy"];
         
     [self makeFirstResponder:yesButton];
-    [self makeKeyAndOrderFront:nil];
+    [[NSApplication sharedApplication] runModalForWindow:self];
 }
 
 -(void) suggestMove
@@ -35,7 +35,7 @@
     [self setTitle:@"Move"];
     
     [self makeFirstResponder:yesButton];
-    [self makeKeyAndOrderFront:nil];
+    [[NSApplication sharedApplication] runModalForWindow:self];
 }
 
 -(IBAction) pressYes:(id)sender
@@ -58,16 +58,15 @@
 
 -(IBAction) pressNo:(id)sender
 {
+    [[NSApplication sharedApplication] stopModal];
     [self close];
 }
 
 -(void) keyDown:(NSEvent*)theEvent
 {
     unsigned int key = [theEvent keyCode];
+    
     switch (key) {
-        case VK_ESC:
-            [self pressNo:nil];
-            break;
             
         case VK_ENTER:
             if ([self firstResponder] == yesButton) {

@@ -284,15 +284,15 @@
                 return @"--";
             }
             else if (item.size < 1000) {
-                return [NSString stringWithFormat:@"%i B", item.size];
+                return [NSString stringWithFormat:@"%i B", (int)item.size];
             }
             else if (item.size < 1000000) {
-                return [NSString stringWithFormat:@"%i KB", item.size / 1000];
+                return [NSString stringWithFormat:@"%i KB", (int)item.size / 1000];
             }
             else if (item.size < 1000000000) {
-                return [NSString stringWithFormat:@"%i MB", item.size / 1000000];
+                return [NSString stringWithFormat:@"%i MB", (int)item.size / 1000000];
             } else {
-                return [NSString stringWithFormat:@"%i GB", item.size / 1000000000];
+                return [NSString stringWithFormat:@"%i GB", (int)item.size / 1000000000];
             }
             
         case FS_DATE:

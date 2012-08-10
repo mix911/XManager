@@ -75,7 +75,7 @@
     NSString* dir = [path lastPathComponent];
     
     // Сгенерируем идентификатор для вкладки
-    NSString* tab_id =  [NSString stringWithFormat:@"%S%i", 
+    NSString* tab_id =  [NSString stringWithFormat:@"%s%i",
                          [[self identifier] cStringUsingEncoding:NSUnicodeStringEncoding], [self nextTabId]];
     
     // Создадим item вкладки
