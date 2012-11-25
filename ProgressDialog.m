@@ -10,6 +10,7 @@
 #import "Task.h"
 #import "MessageBox.h"
 #import "QuestionDialog.h"
+#import "ProgressDialogWindowController.h"
 
 @interface ProgressDialogDelegate : NSObject<NSWindowDelegate>
 {
@@ -88,6 +89,13 @@
 -(void) awakeFromNib
 {
     [self setDelegate:[[ProgressDialogDelegate alloc] initWithQuestionDialog:questionDialog:self]];
+}
+
++(ProgressDialog*) createProgressDialog
+{
+    ProgressDialogWindowController* controller = [[ProgressDialogWindowController alloc] initWithWindowNibName:@"ProgressDialogWindowController"];
+    
+    return (ProgressDialog*)[controller window];
 }
 
 -(void) onTimer:(id)obj

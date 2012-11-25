@@ -38,8 +38,7 @@
 
 -(ProgressDialog*) addProgressDialog
 {
-    ProgressDialogWindowController* controller = [[ProgressDialogWindowController alloc] initWithWindowNibName:@"ProgressDialogWindowController"];
-    return (ProgressDialog*)[controller window];
+    return [ProgressDialog createProgressDialog];
 }
 
 -(void) pressCopyYes

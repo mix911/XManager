@@ -25,4 +25,6 @@
 -(void) setTask:(Task*)task;
 -(IBAction) onStop:(id)sender;
 
++(ProgressDialog*) createProgressDialog;
+
 @end
