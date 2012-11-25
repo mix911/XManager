@@ -20,7 +20,6 @@
 #import "DataSourceAndTableViewDelegate.h"
 #import "Task.h"
 
-#import "MyControllerWindow.h"
 #import "ProgressDialogWindowController.h"
 
 #include "MacSys.h"

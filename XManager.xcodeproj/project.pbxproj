@@ -23,8 +23,6 @@
 		B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE3155F0F0A005FD255 /* BasicDialog.m */; };
 		B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog.m */; };
 		B43867651662419C00CAE45A /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43867641662419C00CAE45A /* WindowController.m */; };
-		B438676F166263E600CAE45A /* MyControllerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B438676D166263E600CAE45A /* MyControllerWindow.m */; };
-		B4386770166263E600CAE45A /* MyControllerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B438676E166263E600CAE45A /* MyControllerWindow.xib */; };
 		B43867741662720300CAE45A /* ProgressDialogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43867721662720300CAE45A /* ProgressDialogWindowController.m */; };
 		B43867751662720300CAE45A /* ProgressDialogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43867731662720300CAE45A /* ProgressDialogWindowController.xib */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
@@ -90,9 +88,6 @@
 		B4182EE7155F0FC3005FD255 /* QuestionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog.m; sourceTree = "<group>"; };
 		B43867631662419C00CAE45A /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		B43867641662419C00CAE45A /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
-		B438676C166263E600CAE45A /* MyControllerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyControllerWindow.h; sourceTree = "<group>"; };
-		B438676D166263E600CAE45A /* MyControllerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyControllerWindow.m; sourceTree = "<group>"; };
-		B438676E166263E600CAE45A /* MyControllerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyControllerWindow.xib; sourceTree = "<group>"; };
 		B43867711662720300CAE45A /* ProgressDialogWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDialogWindowController.h; sourceTree = "<group>"; };
 		B43867721662720300CAE45A /* ProgressDialogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDialogWindowController.m; sourceTree = "<group>"; };
 		B43867731662720300CAE45A /* ProgressDialogWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressDialogWindowController.xib; sourceTree = "<group>"; };
@@ -156,9 +151,6 @@
 		B4074E7713ECD09800438E01 = {
 			isa = PBXGroup;
 			children = (
-				B438676C166263E600CAE45A /* MyControllerWindow.h */,
-				B438676D166263E600CAE45A /* MyControllerWindow.m */,
-				B438676E166263E600CAE45A /* MyControllerWindow.xib */,
 				B4074E8C13ECD09900438E01 /* XManager */,
 				B4074EA913ECD09900438E01 /* XManagerTests */,
 				B4074E8513ECD09900438E01 /* Frameworks */,
@@ -421,7 +413,6 @@
 				B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */,
 				B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */,
 				B4C616AB15165C91007CDE2E /* config.plist in Resources */,
-				B4386770166263E600CAE45A /* MyControllerWindow.xib in Resources */,
 				B43867751662720300CAE45A /* ProgressDialogWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +469,6 @@
 				B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */,
 				B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */,
 				B43867651662419C00CAE45A /* WindowController.m in Sources */,
-				B438676F166263E600CAE45A /* MyControllerWindow.m in Sources */,
 				B43867741662720300CAE45A /* ProgressDialogWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
