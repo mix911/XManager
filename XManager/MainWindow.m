@@ -21,6 +21,7 @@
 #import "Task.h"
 
 #import "MyControllerWindow.h"
+#import "ProgressDialogWindowController.h"
 
 #include "MacSys.h"
 
@@ -38,17 +39,8 @@
 
 -(ProgressDialog*) addProgressDialog
 {
-    MyControllerWindow* mycontroller = [[MyControllerWindow alloc] initWithWindowNibName:@"MyControllerWindow"];
-    NSWindow* wnd = [mycontroller window];
-    
-    
-    return nil;
-//    
-//    NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:@"MySupperWindow.xlib"];
-//    NSWindow* wnd = [controller window];
-//    ProgressDialog* dlg = (ProgressDialog*)wnd;
-//    
-//    return dlg;
+    ProgressDialogWindowController* controller = [[ProgressDialogWindowController alloc] initWithWindowNibName:@"ProgressDialogWindowController"];
+    return (ProgressDialog*)[controller window];
 }
 
 -(void) pressCopyYes
