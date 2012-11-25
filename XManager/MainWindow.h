@@ -13,7 +13,6 @@
 @class CopyMoveDialog;
 @class MakeDirDialog;
 @class DeleteDialog;
-@class ProgressDialog;
 
 @interface MainWindow : NSWindow 
 {    

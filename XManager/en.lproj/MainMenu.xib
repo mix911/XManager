@@ -1965,30 +1965,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">label</string>
-						<reference key="source" ref="1046272179"/>
-						<reference key="destination" ref="167066508"/>
-					</object>
-					<int key="connectionID">1066</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">onStop:</string>
-						<reference key="source" ref="1046272179"/>
-						<reference key="destination" ref="666683046"/>
-					</object>
-					<int key="connectionID">1090</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">stopButton</string>
-						<reference key="source" ref="1046272179"/>
-						<reference key="destination" ref="666683046"/>
-					</object>
-					<int key="connectionID">1092</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">questionDialog</string>
 						<reference key="source" ref="1046272179"/>
 						<reference key="destination" ref="469515589"/>
@@ -3100,6 +3076,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CopyMoveDialog</string>
 					<string key="superclassName">NSPanel</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="pressNo:">id</string>
+						<string key="pressYes:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="pressNo:">
+							<string key="name">pressNo:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pressYes:">
+							<string key="name">pressYes:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="label">NSTextField</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3132,6 +3122,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DeleteDialog</string>
 					<string key="superclassName">NSWindow</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="pressCancel:">id</string>
+						<string key="pressOk:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="pressCancel:">
+							<string key="name">pressCancel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pressOk:">
+							<string key="name">pressOk:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3212,6 +3216,25 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MakeDirDialog</string>
 					<string key="superclassName">NSWindow</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="enterKeyDown:">id</string>
+						<string key="pressCancel:">id</string>
+						<string key="pressOk:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="enterKeyDown:">
+							<string key="name">enterKeyDown:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pressCancel:">
+							<string key="name">pressCancel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pressOk:">
+							<string key="name">pressOk:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="directoryField">NSTextField</string>
