@@ -23,6 +23,8 @@
 }
 
 -(void) setTask:(Task*)task;
+-(void) runProgress:(Task*)task title:(NSString*)title;
+
 -(IBAction) onStop:(id)sender;
 
 +(ProgressDialog*) createProgressDialog;

@@ -95,7 +95,46 @@
 {
     ProgressDialogWindowController* controller = [[ProgressDialogWindowController alloc] initWithWindowNibName:@"ProgressDialogWindowController"];
     
-    return (ProgressDialog*)[controller window];
+    return (ProgressDialog*)[controller window];;
+}
+
+//-(void) makeKeyAndOrderFront:(id)sender
+//{
+//    [progress setDoubleValue:0.0];
+//    
+//    [task run];
+//    
+//    [super makeKeyAndOrderFront:sender];
+//    
+//    [progress startAnimation:self];
+//    timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+//                                             target:self
+//                                           selector:@selector(onTimer:)
+//                                           userInfo:nil
+//                                            repeats:YES];
+//    
+//    [stopButton setTitle:@"Stop"];
+//}
+
+-(void) runProgress:(Task *)t title:(NSString *)title
+{
+    [self setTitle:title];
+    [self setTask:t];
+
+    [progress setDoubleValue:0.0];
+    [progress startAnimation:self];
+    
+    [task run];
+
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.2
+                                             target:self
+                                           selector:@selector(onTimer:)
+                                           userInfo:nil
+                                            repeats:YES];
+    
+    [stopButton setTitle:@"Stop"];
+    
+    [super makeKeyAndOrderFront:self];
 }
 
 -(void) onTimer:(id)obj
@@ -114,24 +153,6 @@
 {
     task = [t retain];
     [(ProgressDialogDelegate*)[self delegate] setTask:task];
-}
-
--(void) makeKeyAndOrderFront:(id)sender
-{
-    [progress setDoubleValue:0.0];
-    
-    [task run];
-    
-    [super makeKeyAndOrderFront:sender];
-    
-    [progress startAnimation:self];
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.2
-                                             target:self
-                                           selector:@selector(onTimer:)
-                                           userInfo:nil
-                                            repeats:YES];
-    
-    [stopButton setTitle:@"Stop"];
 }
 
 -(IBAction) onStop:(id)sender

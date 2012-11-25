@@ -38,7 +38,7 @@
 					<key>Order</key>
 					<integer>2</integer>
 					<key>Path</key>
-					<string>/</string>
+					<string>/System/Library/Security</string>
 				</dict>
 			</array>
 		</dict>

@@ -247,9 +247,7 @@
     ProgressDialog* progressDialog = [self addProgressDialog];
     
     if ([task isCreated]) {
-        [progressDialog setTitle:@"Copying files"];
-        [progressDialog setTask:task];
-        [progressDialog makeKeyAndOrderFront:self];
+        [progressDialog runProgress:task title:@"Copying files"];
     }
     else {
         [MessageBox message:[task errorMessage]];
