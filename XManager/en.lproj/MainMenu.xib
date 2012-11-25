@@ -1469,7 +1469,6 @@
 							<string key="NSFrame">{{410, 5}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="388582053"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="269094936">
@@ -1971,14 +1970,6 @@
 						<reference key="destination" ref="167066508"/>
 					</object>
 					<int key="connectionID">1066</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">progress</string>
-						<reference key="source" ref="1046272179"/>
-						<reference key="destination" ref="612101416"/>
-					</object>
-					<int key="connectionID">1068</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -3291,6 +3282,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">QuestionDialog</string>
 					<string key="superclassName">BasicDialog</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="pressNo:">id</string>
+						<string key="pressYes:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="pressNo:">
+							<string key="name">pressNo:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pressYes:">
+							<string key="name">pressYes:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnNo">NSButton</string>
 						<string key="btnYes">NSButton</string>
