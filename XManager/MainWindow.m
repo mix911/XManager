@@ -20,6 +20,8 @@
 #import "DataSourceAndTableViewDelegate.h"
 #import "Task.h"
 
+#import "MyControllerWindow.h"
+
 #include "MacSys.h"
 
 @implementation MainWindow
@@ -28,10 +30,25 @@
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
+
     }
     
     return self;
+}
+
+-(ProgressDialog*) addProgressDialog
+{
+    MyControllerWindow* mycontroller = [[MyControllerWindow alloc] initWithWindowNibName:@"MyControllerWindow"];
+    NSWindow* wnd = [mycontroller window];
+    
+    
+    return nil;
+//    
+//    NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:@"MySupperWindow.xlib"];
+//    NSWindow* wnd = [controller window];
+//    ProgressDialog* dlg = (ProgressDialog*)wnd;
+//    
+//    return dlg;
 }
 
 -(void) pressCopyYes
@@ -237,6 +254,8 @@
 
     Task* task = [[Task alloc] initWithSrc:src dst:dst];
     
+    ProgressDialog* progressDialog = [self addProgressDialog];
+    
     if ([task isCreated]) {
         [progressDialog setTitle:@"Copying files"];
         [progressDialog setTask:task];
@@ -246,11 +265,14 @@
         [MessageBox message:[task errorMessage]];
     }
     
+    [progressDialog release];
     [task release];
 }
 
 -(void) doMove
 {
+    ProgressDialog* progressDialog = [self addProgressDialog];
+    
     [progressDialog setTitle:@"Moving files"];
     [progressDialog makeKeyAndOrderFront:self];
     
@@ -258,6 +280,8 @@
     DataSourceAndTableViewDelegate* dst = [deactivePanel dataSource];
     
     [src doMove:dst];
+    
+    [progressDialog release];
 }
 
 -(void) doMakeDir
@@ -268,11 +292,15 @@
 
 -(void) doDelete
 {
+    ProgressDialog* progressDialog = [self addProgressDialog];
+    
     [progressDialog setTitle:@"Deleting files"];
     [progressDialog makeKeyAndOrderFront:self];
     
     DataSourceAndTableViewDelegate* src = [activePanel dataSource];
     [src doDelete];
+
+    [progressDialog release];
 }
 
 @end

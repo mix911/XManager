@@ -44,12 +44,6 @@
 					<key>Order</key>
 					<integer>2</integer>
 					<key>Path</key>
-					<string>/Users/demo/Downloads/level2/01_tanks_phase1/site/data/scripts</string>
-				</dict>
-				<dict>
-					<key>Order</key>
-					<integer>2</integer>
-					<key>Path</key>
 					<string>/</string>
 				</dict>
 			</array>

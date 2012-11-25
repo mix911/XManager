@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.SystemVersion">11G63b</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">2844</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSButton</string>
@@ -1516,7 +1516,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{120, 12}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1052924461"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1540,8 +1539,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{218, 12}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="185923805">
@@ -1564,7 +1561,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{98, 58}, {224, 17}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="623851929"/>
 							<string key="NSReuseIdentifierKey">_NS:1505</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1582,7 +1578,6 @@
 					</array>
 					<string key="NSFrameSize">{420, 95}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="114905969"/>
 					<string key="NSReuseIdentifierKey">_NS:21</string>
 				</object>
@@ -2958,6 +2953,7 @@
 				<boolean value="YES" key="1060.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="1060.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="1060.NSWindowTemplate.visibleAtLaunch"/>
+				<string key="1060.userInterfaceItemIdentifier">ProgressDialog</string>
 				<string key="1061.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1063.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1064.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3113,20 +3109,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CopyMoveDialog</string>
 					<string key="superclassName">NSPanel</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressNo:">id</string>
-						<string key="pressYes:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressNo:">
-							<string key="name">pressNo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressYes:">
-							<string key="name">pressYes:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="label">NSTextField</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3159,20 +3141,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DeleteDialog</string>
 					<string key="superclassName">NSWindow</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressCancel:">id</string>
-						<string key="pressOk:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressCancel:">
-							<string key="name">pressCancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressOk:">
-							<string key="name">pressOk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3212,7 +3180,6 @@
 						<string key="leftPanel">SidePanel</string>
 						<string key="leftTabs">TabsHeaders</string>
 						<string key="makeDirDialog">MakeDirDialog</string>
-						<string key="progressDialog">ProgressDialog</string>
 						<string key="rightPanel">SidePanel</string>
 						<string key="rightTabs">TabsHeaders</string>
 					</dictionary>
@@ -3237,10 +3204,6 @@
 							<string key="name">makeDirDialog</string>
 							<string key="candidateClassName">MakeDirDialog</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="progressDialog">
-							<string key="name">progressDialog</string>
-							<string key="candidateClassName">ProgressDialog</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="rightPanel">
 							<string key="name">rightPanel</string>
 							<string key="candidateClassName">SidePanel</string>
@@ -3258,25 +3221,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MakeDirDialog</string>
 					<string key="superclassName">NSWindow</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="enterKeyDown:">id</string>
-						<string key="pressCancel:">id</string>
-						<string key="pressOk:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="enterKeyDown:">
-							<string key="name">enterKeyDown:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressCancel:">
-							<string key="name">pressCancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressOk:">
-							<string key="name">pressOk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="directoryField">NSTextField</string>
@@ -3347,20 +3291,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">QuestionDialog</string>
 					<string key="superclassName">BasicDialog</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressNo:">id</string>
-						<string key="pressYes:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressNo:">
-							<string key="name">pressNo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressYes:">
-							<string key="name">pressYes:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnNo">NSButton</string>
 						<string key="btnYes">NSButton</string>

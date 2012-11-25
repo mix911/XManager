@@ -24,7 +24,6 @@
     IBOutlet CopyMoveDialog* copyMoveDialog;// Copy or move suggestion dialog
     IBOutlet MakeDirDialog*  makeDirDialog; // Make director suggestion dialog
     IBOutlet DeleteDialog*   deleteDialog;  // Delete suggestion dialog
-    IBOutlet ProgressDialog* progressDialog;// Progress dialog
     
     SidePanel*  activePanel;                // Active panel
     SidePanel*  deactivePanel;              // Deactive panel

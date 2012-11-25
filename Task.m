@@ -63,7 +63,7 @@
         
         [condition unlock];
         
-        [NSThread sleepForTimeInterval:0.03];
+        [NSThread sleepForTimeInterval:0.09];
         
         [sync lock];
         progress = (double)(i + 1);
