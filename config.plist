@@ -7,7 +7,7 @@
 	<key>MainWindow</key>
 	<dict>
 		<key>ActivePanel</key>
-		<string>Right</string>
+		<string>Left</string>
 		<key>LeftPanel</key>
 		<dict>
 			<key>SelectedTab</key>

@@ -10,7 +10,6 @@
 #import "Task.h"
 #import "MessageBox.h"
 #import "QuestionDialog.h"
-#import "ProgressDialogWindowController.h"
 
 @interface ProgressDialogDelegate : NSObject<NSWindowDelegate>
 {
@@ -88,35 +87,25 @@
 
 -(void) awakeFromNib
 {
-    [self setDelegate:[[ProgressDialogDelegate alloc] initWithQuestionDialog:questionDialog:self]];
+    delegate =[[ProgressDialogDelegate alloc] initWithQuestionDialog:questionDialog:self];
+    [self setDelegate:[delegate retain]];
 }
 
 +(ProgressDialog*) createProgressDialog
 {
-    ProgressDialogWindowController* controller = [[ProgressDialogWindowController alloc] initWithWindowNibName:@"ProgressDialogWindowController"];
-    
-    return (ProgressDialog*)[controller window];;
+    NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:@"ProgressDialog"];
+    ProgressDialog* progress = (ProgressDialog*)[controller window];
+    [controller release];
+    return progress;
 }
 
-//-(void) makeKeyAndOrderFront:(id)sender
-//{
-//    [progress setDoubleValue:0.0];
-//    
-//    [task run];
-//    
-//    [super makeKeyAndOrderFront:sender];
-//    
-//    [progress startAnimation:self];
-//    timer = [NSTimer scheduledTimerWithTimeInterval:0.2
-//                                             target:self
-//                                           selector:@selector(onTimer:)
-//                                           userInfo:nil
-//                                            repeats:YES];
-//    
-//    [stopButton setTitle:@"Stop"];
-//}
+-(void) dealloc
+{
+    [delegate release];
+    [super dealloc];
+}
 
--(void) runProgress:(Task *)t title:(NSString *)title
+-(void) runProgressWithTask:(Task *)t title:(NSString *)title
 {
     [self setTitle:title];
     [self setTask:t];

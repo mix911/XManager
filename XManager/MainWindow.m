@@ -20,8 +20,6 @@
 #import "DataSourceAndTableViewDelegate.h"
 #import "Task.h"
 
-#import "ProgressDialogWindowController.h"
-
 #include "MacSys.h"
 
 @implementation MainWindow
@@ -247,7 +245,7 @@
     ProgressDialog* progressDialog = [self addProgressDialog];
     
     if ([task isCreated]) {
-        [progressDialog runProgress:task title:@"Copying files"];
+        [progressDialog runProgressWithTask:task title:@"Copying files"];
     }
     else {
         [MessageBox message:[task errorMessage]];

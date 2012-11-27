@@ -22,8 +22,7 @@
 		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
 		B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE3155F0F0A005FD255 /* BasicDialog.m */; };
 		B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog.m */; };
-		B43867741662720300CAE45A /* ProgressDialogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43867721662720300CAE45A /* ProgressDialogWindowController.m */; };
-		B43867751662720300CAE45A /* ProgressDialogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43867731662720300CAE45A /* ProgressDialogWindowController.xib */; };
+		B43867751662720300CAE45A /* ProgressDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43867731662720300CAE45A /* ProgressDialog.xib */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A18CE2150BE6FC00D9484D /* TabsHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A18CE1150BE6FC00D9484D /* TabsHeaders.m */; };
 		B4A5F4B0155915B900A7973E /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A5F4AF155915B900A7973E /* MessageBox.m */; };
@@ -85,9 +84,7 @@
 		B4182EE3155F0F0A005FD255 /* BasicDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicDialog.m; sourceTree = "<group>"; };
 		B4182EE6155F0FC3005FD255 /* QuestionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialog.h; sourceTree = "<group>"; };
 		B4182EE7155F0FC3005FD255 /* QuestionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog.m; sourceTree = "<group>"; };
-		B43867711662720300CAE45A /* ProgressDialogWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressDialogWindowController.h; sourceTree = "<group>"; };
-		B43867721662720300CAE45A /* ProgressDialogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressDialogWindowController.m; sourceTree = "<group>"; };
-		B43867731662720300CAE45A /* ProgressDialogWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressDialogWindowController.xib; sourceTree = "<group>"; };
+		B43867731662720300CAE45A /* ProgressDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressDialog.xib; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4A18CE0150BE6FC00D9484D /* TabsHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsHeaders.h; sourceTree = "<group>"; };
@@ -241,9 +238,7 @@
 		B43867761662722300CAE45A /* ProgressDialog */ = {
 			isa = PBXGroup;
 			children = (
-				B43867711662720300CAE45A /* ProgressDialogWindowController.h */,
-				B43867721662720300CAE45A /* ProgressDialogWindowController.m */,
-				B43867731662720300CAE45A /* ProgressDialogWindowController.xib */,
+				B43867731662720300CAE45A /* ProgressDialog.xib */,
 				B4BC916215596C240061B3BF /* ProgressDialog.h */,
 				B4BC916315596C240061B3BF /* ProgressDialog.m */,
 			);
@@ -408,7 +403,7 @@
 				B4C10F001402B63000AC0416 /* ToolbarDocumentsFolderIcon.icns in Resources */,
 				B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */,
 				B4C616AB15165C91007CDE2E /* config.plist in Resources */,
-				B43867751662720300CAE45A /* ProgressDialogWindowController.xib in Resources */,
+				B43867751662720300CAE45A /* ProgressDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +458,6 @@
 				B4CD0105155C6C9300FED46A /* Task.m in Sources */,
 				B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */,
 				B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */,
-				B43867741662720300CAE45A /* ProgressDialogWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 
 @class Task;
 @class QuestionDialog;
+@class ProgressDialogDelegate;
 
 @interface ProgressDialog : NSWindow
 {
@@ -20,10 +21,11 @@
     
     Task* task;
     NSTimer* timer;
+    ProgressDialogDelegate* delegate;
 }
 
 -(void) setTask:(Task*)task;
--(void) runProgress:(Task*)task title:(NSString*)title;
+-(void) runProgressWithTask:(Task*)task title:(NSString*)title;
 
 -(IBAction) onStop:(id)sender;
 
