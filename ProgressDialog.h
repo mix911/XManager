@@ -12,7 +12,7 @@
 @class QuestionDialog;
 @class ProgressDialogDelegate;
 
-@interface ProgressDialog : NSWindow
+@interface ProgressDialog : NSWindow<NSWindowDelegate>
 {
     IBOutlet NSTextField*           label;
     IBOutlet NSProgressIndicator*   progress;
@@ -24,7 +24,6 @@
     ProgressDialogDelegate* delegate;
 }
 
--(void) setTask:(Task*)task;
 -(void) runProgressWithTask:(Task*)task title:(NSString*)title;
 
 -(IBAction) onStop:(id)sender;

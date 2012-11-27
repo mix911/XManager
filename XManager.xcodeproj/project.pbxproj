@@ -368,7 +368,7 @@
 		B4074E7913ECD09800438E01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = B4074E7C13ECD09800438E01 /* Build configuration list for PBXProject "XManager" */;
 			compatibilityVersion = "Xcode 3.2";

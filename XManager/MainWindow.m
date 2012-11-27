@@ -251,6 +251,7 @@
         [MessageBox message:[task errorMessage]];
     }
     
+    // TODO: если это убрать то падения не будет, но как быть с утечкой памяти
     [progressDialog release];
     [task release];
 }

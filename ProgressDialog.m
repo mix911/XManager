@@ -11,29 +11,11 @@
 #import "MessageBox.h"
 #import "QuestionDialog.h"
 
-@interface ProgressDialogDelegate : NSObject<NSWindowDelegate>
+@implementation ProgressDialog
+
+-(void) awakeFromNib
 {
-    Task* task;
-    QuestionDialog* questionDialog;
-    ProgressDialog* progressDialog;
-}
-
--(id) initWithQuestionDialog:(QuestionDialog*)qdlg :(ProgressDialog*)pdlg;
--(BOOL) windowShouldClose:(id)sender;
--(void) setTask:(Task*)task;
-
-@end
-
-@implementation ProgressDialogDelegate
-
--(id) initWithQuestionDialog:(QuestionDialog*)qdlg :(ProgressDialog*)pdlg;
-{
-    if (self = [super init]) {
-        questionDialog = [qdlg retain];
-        progressDialog = [pdlg retain];
-    }
-    
-    return self;
+    self.delegate = self;
 }
 
 -(BOOL) windowShouldClose:(id)sender
@@ -45,7 +27,7 @@
     [questionDialog setMessage:@"Stop copy?"];
     
     [[NSApplication sharedApplication] beginSheet:questionDialog
-                                   modalForWindow:progressDialog
+                                   modalForWindow:self
                                     modalDelegate:nil
                                    didEndSelector:nil
                                       contextInfo:nil];
@@ -56,7 +38,7 @@
     [questionDialog orderOut:nil];
     
     if (res == YES) {
-        [progressDialog close];
+        [self close];
         return YES;
     }
     
@@ -66,29 +48,6 @@
     }
     
     return NO;
-}
-
--(void) setTask:(Task *)t
-{
-    task = t;
-}
-
--(void) dealloc
-{
-    [questionDialog release];
-    [progressDialog release];
-    [task release];
-    [super dealloc];
-}
-
-@end
-
-@implementation ProgressDialog
-
--(void) awakeFromNib
-{
-    delegate =[[ProgressDialogDelegate alloc] initWithQuestionDialog:questionDialog:self];
-    [self setDelegate:[delegate retain]];
 }
 
 +(ProgressDialog*) createProgressDialog
@@ -108,12 +67,12 @@
 -(void) runProgressWithTask:(Task *)t title:(NSString *)title
 {
     [self setTitle:title];
-    [self setTask:t];
+    task = [t retain];
 
     [progress setDoubleValue:0.0];
     [progress startAnimation:self];
     
-    [task run];
+//    [task run];
 
     timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                              target:self
@@ -136,12 +95,6 @@
     if ([task isComplete]) {
         [self close];
     }
-}
-
--(void) setTask:(Task*)t
-{
-    task = [t retain];
-    [(ProgressDialogDelegate*)[self delegate] setTask:task];
 }
 
 -(IBAction) onStop:(id)sender
