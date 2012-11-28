@@ -58,12 +58,6 @@
     return progress;
 }
 
--(void) dealloc
-{
-    [delegate release];
-    [super dealloc];
-}
-
 -(void) runProgressWithTask:(Task *)t title:(NSString *)title
 {
     [self setTitle:title];

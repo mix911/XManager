@@ -739,7 +739,7 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{400, 578}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSSplitView" id="768834622">
@@ -942,6 +942,7 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{837, 578}</string>
+					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="768834622"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 800}}</string>
@@ -1469,6 +1470,7 @@
 							<string key="NSFrame">{{410, 5}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="388582053"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="269094936">
@@ -1515,6 +1517,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{120, 12}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1052924461"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1538,6 +1541,8 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{218, 12}, {82, 32}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="185923805">
@@ -1560,6 +1565,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{98, 58}, {224, 17}}</string>
 							<reference key="NSSuperview" ref="141322701"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="623851929"/>
 							<string key="NSReuseIdentifierKey">_NS:1505</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1577,6 +1583,7 @@
 					</array>
 					<string key="NSFrameSize">{420, 95}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="114905969"/>
 					<string key="NSReuseIdentifierKey">_NS:21</string>
 				</object>
@@ -1962,54 +1969,6 @@
 						<reference key="destination" ref="972006081"/>
 					</object>
 					<int key="connectionID">1059</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">questionDialog</string>
-						<reference key="source" ref="1046272179"/>
-						<reference key="destination" ref="469515589"/>
-					</object>
-					<int key="connectionID">1093</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">label</string>
-						<reference key="source" ref="469515589"/>
-						<reference key="destination" ref="114905969"/>
-					</object>
-					<int key="connectionID">1083</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">btnYes</string>
-						<reference key="source" ref="469515589"/>
-						<reference key="destination" ref="623851929"/>
-					</object>
-					<int key="connectionID">1084</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">btnNo</string>
-						<reference key="source" ref="469515589"/>
-						<reference key="destination" ref="1052924461"/>
-					</object>
-					<int key="connectionID">1085</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">pressYes:</string>
-						<reference key="source" ref="469515589"/>
-						<reference key="destination" ref="623851929"/>
-					</object>
-					<int key="connectionID">1086</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">pressNo:</string>
-						<reference key="source" ref="469515589"/>
-						<reference key="destination" ref="1052924461"/>
-					</object>
-					<int key="connectionID">1087</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3076,20 +3035,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CopyMoveDialog</string>
 					<string key="superclassName">NSPanel</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressNo:">id</string>
-						<string key="pressYes:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressNo:">
-							<string key="name">pressNo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressYes:">
-							<string key="name">pressYes:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="label">NSTextField</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3122,20 +3067,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">DeleteDialog</string>
 					<string key="superclassName">NSWindow</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressCancel:">id</string>
-						<string key="pressOk:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressCancel:">
-							<string key="name">pressCancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressOk:">
-							<string key="name">pressOk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="mainWindow">MainWindow</string>
@@ -3216,25 +3147,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MakeDirDialog</string>
 					<string key="superclassName">NSWindow</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="enterKeyDown:">id</string>
-						<string key="pressCancel:">id</string>
-						<string key="pressOk:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="enterKeyDown:">
-							<string key="name">enterKeyDown:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressCancel:">
-							<string key="name">pressCancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressOk:">
-							<string key="name">pressOk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cancelButton">NSButton</string>
 						<string key="directoryField">NSTextField</string>
