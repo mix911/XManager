@@ -72,7 +72,7 @@
     [progress setDoubleValue:0.0];
     [progress startAnimation:self];
     
-//    [task run];
+    [task run];
 
     timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                              target:self

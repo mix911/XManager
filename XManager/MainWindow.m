@@ -242,7 +242,7 @@
 
     Task* task = [[Task alloc] initWithSrc:src dst:dst];
     
-    ProgressDialog* progressDialog = [self addProgressDialog];
+    ProgressDialog* progressDialog = [ProgressDialog createProgressDialog];
     
     if ([task isCreated]) {
         [progressDialog runProgressWithTask:task title:@"Copying files"];
@@ -251,8 +251,6 @@
         [MessageBox message:[task errorMessage]];
     }
     
-    // TODO: если это убрать то падения не будет, но как быть с утечкой памяти
-    [progressDialog release];
     [task release];
 }
 
