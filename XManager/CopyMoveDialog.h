@@ -10,20 +10,12 @@
 
 @class MainWindow;
 
-enum ECopyMoveDialogType
-{
-    COPY_TYPE,
-    MOVE_TYPE,
-};
-
 @interface CopyMoveDialog : NSPanel
 {
     IBOutlet NSTextField* label;
     IBOutlet NSButton*    yesButton;
     IBOutlet NSButton*    noButton;
     IBOutlet MainWindow*  mainWindow;
-        
-    enum ECopyMoveDialogType state;
 }
 
 -(NSUInteger) suggestCopy;

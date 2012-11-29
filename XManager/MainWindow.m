@@ -78,7 +78,7 @@
     switch ([theEvent type]) {
             
         case NSKeyDown:
-            if ([theEvent keyCode] == 48 && ([theEvent modifierFlags] & NSControlKeyMask)) {
+            if ([theEvent keyCode] == VK_TAB && ([theEvent modifierFlags] & NSControlKeyMask)) {
                 if ([theEvent modifierFlags] & NSShiftKeyMask) {
                     [self switchToPrevTab];
                 }
@@ -105,7 +105,8 @@
             break;
             
         case VK_F5:
-            [self suggestCopy];
+            //[self suggestCopy];
+            [self pressCopy];
             break;
             
         case VK_F6:
@@ -157,9 +158,9 @@
     [ConfigManager save];
 }
 
--(void) suggestCopy
+-(NSUInteger) suggestCopy
 {
-    [copyMoveDialog suggestCopy];
+    return [copyMoveDialog suggestCopy];
 }
 
 -(void) suggestMove
@@ -185,7 +186,8 @@
 
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F5"]) {
-        [self suggestCopy];
+        //[self suggestCopy];
+        [self pressCopy];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F6"]) {
         [self suggestMove];
@@ -254,6 +256,13 @@
     
     DataSourceAndTableViewDelegate* src = [activePanel dataSource];
     [src doDelete];
+}
+
+-(void) pressCopy
+{
+    if ([self suggestCopy] == YES) {
+        [self doCopy];
+    }
 }
 
 @end

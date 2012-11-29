@@ -14,9 +14,8 @@
 
 @implementation CopyMoveDialog
 
--(NSUInteger) suggestWithState:(enum ECopyMoveDialogType)s label:(NSString*)l title:(NSString*)t
+-(NSUInteger) suggestWithLabel:(NSString*)l title:(NSString*)t
 {
-    state = s;
     [label setStringValue:l];
     [self setTitle:t];
     
@@ -38,36 +37,22 @@
 
 -(NSUInteger) suggestCopy
 {
-    return [self suggestWithState:COPY_TYPE label:@"Copy selected files?" title:@"Copy"];
+    return [self suggestWithLabel:@"Copy selected files?" title:@"Copy"];
 }
 
 -(NSUInteger) suggestMove
 {
-    return [self suggestWithState:MOVE_TYPE label:@"Move selected files?" title:@"Move"];
+    return [self suggestWithLabel:@"Move selected files?" title:@"Move"];
 }
 
 -(IBAction) pressYes:(id)sender
 {
-    switch (state) {
-        case COPY_TYPE:
-            [mainWindow doCopy];
-            break;
-            
-        case MOVE_TYPE:
-            [mainWindow doMove];
-            break;
-            
-        default:
-            break;
-    }
-    
-    [self pressNo:sender];
+    [[NSApplication sharedApplication] stopModalWithCode:YES];
 }
 
 -(IBAction) pressNo:(id)sender
 {
-    [[NSApplication sharedApplication] stopModal];
-    [self close];
+    [[NSApplication sharedApplication] stopModalWithCode:YES];
 }
 
 -(void) keyDown:(NSEvent*)theEvent
