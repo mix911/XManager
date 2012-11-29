@@ -16,6 +16,7 @@
 -(void) awakeFromNib
 {
     self.delegate = self;
+    [questionDialog retain];
 }
 
 -(BOOL) windowShouldClose:(id)sender
@@ -73,7 +74,7 @@
                                            selector:@selector(onTimer:)
                                            userInfo:nil
                                             repeats:YES];
-    
+
     [stopButton setTitle:@"Stop"];
     
     [super makeKeyAndOrderFront:self];

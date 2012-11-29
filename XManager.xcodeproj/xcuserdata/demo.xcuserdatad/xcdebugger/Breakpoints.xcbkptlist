@@ -20,13 +20,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ProgressDialog.m"
-         timestampString = "375823362.510057"
+         filePath = "XManager/QuestionDialog.m"
+         timestampString = "375901110.009295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
-         landmarkName = "-windowShouldClose:"
+         startingLineNumber = "17"
+         endingLineNumber = "17"
+         landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

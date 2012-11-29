@@ -6,9 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BasicDialog.h"
-
-@interface QuestionDialog : BasicDialog
+@interface QuestionDialog : NSPanel
 {
     IBOutlet NSTextField*   label;
     IBOutlet NSButton*      btnYes;

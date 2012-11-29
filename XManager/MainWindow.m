@@ -265,8 +265,6 @@
     DataSourceAndTableViewDelegate* dst = [deactivePanel dataSource];
     
     [src doMove:dst];
-    
-    [progressDialog release];
 }
 
 -(void) doMakeDir
@@ -284,8 +282,6 @@
     
     DataSourceAndTableViewDelegate* src = [activePanel dataSource];
     [src doDelete];
-
-    [progressDialog release];
 }
 
 @end

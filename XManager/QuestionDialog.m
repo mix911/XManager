@@ -12,6 +12,11 @@
 
 @implementation QuestionDialog
 
+-(void) dealloc
+{
+    [super dealloc];
+}
+
 -(void) keyDown:(NSEvent *)theEvent
 {
     unsigned int key = [theEvent keyCode];
@@ -28,15 +33,13 @@
             }
             break;
             
+        case VK_ESC:
+            [self close];
+            break;
+            
         default:
             [super keyDown:theEvent];
     }
-}
-
--(void) makeKeyAndOrderFront:(id)sender
-{
-    [super makeKeyAndOrderFront:sender];
-    
 }
 
 -(void) setMessage:(NSString *)message
