@@ -24,34 +24,6 @@
 
 @implementation MainWindow
 
-- (id)init 
-{
-    self = [super init];
-    if (self) {
-
-    }
-    
-    return self;
-}
-
--(ProgressDialog*) addProgressDialog
-{
-    return [ProgressDialog createProgressDialog];
-}
-
--(void) pressCopyYes
-{
-    NSAlert* alert = [[[NSAlert alloc] init] autorelease];
-    [alert setMessageText:@"Copy"];
-    [alert runModal];
-}
-
--(void) pressMoveYes
-{
-    NSAlert* alert = [[[NSAlert alloc] init] autorelease];
-    [alert setMessageText:@"Move"];
-    [alert runModal];
-}
 
 -(void) loadSettings:(NSDictionary*)settings
 {    
@@ -256,7 +228,7 @@
 
 -(void) doMove
 {
-    ProgressDialog* progressDialog = [self addProgressDialog];
+    ProgressDialog* progressDialog = [ProgressDialog createProgressDialog];
     
     [progressDialog setTitle:@"Moving files"];
     [progressDialog makeKeyAndOrderFront:self];
@@ -275,7 +247,7 @@
 
 -(void) doDelete
 {
-    ProgressDialog* progressDialog = [self addProgressDialog];
+    ProgressDialog* progressDialog = [ProgressDialog createProgressDialog];
     
     [progressDialog setTitle:@"Deleting files"];
     [progressDialog makeKeyAndOrderFront:self];

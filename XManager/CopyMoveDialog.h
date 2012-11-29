@@ -16,8 +16,6 @@ enum ECopyMoveDialogType
     MOVE_TYPE,
 };
 
-//TODO: Нужно взаимодействие между этим диалогом и mainwindow сделать как в MakeDirDialog
-
 @interface CopyMoveDialog : NSPanel
 {
     IBOutlet NSTextField* label;
@@ -28,7 +26,7 @@ enum ECopyMoveDialogType
     enum ECopyMoveDialogType state;
 }
 
--(void) suggestCopy;
--(void) suggestMove;
+-(NSUInteger) suggestCopy;
+-(NSUInteger) suggestMove;
 
 @end

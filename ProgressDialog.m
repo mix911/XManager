@@ -16,7 +16,7 @@
 -(void) awakeFromNib
 {
     self.delegate = self;
-    [questionDialog retain];
+//    [questionDialog retain];
 }
 
 -(BOOL) windowShouldClose:(id)sender

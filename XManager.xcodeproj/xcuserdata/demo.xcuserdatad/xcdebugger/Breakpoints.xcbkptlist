@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MySuperWindow.m"
-         timestampString = "375546450.561497"
+         filePath = "XManager/CopyMoveDialog.m"
+         timestampString = "375909389.96532"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "16"
-         endingLineNumber = "16"
-         landmarkName = "-init"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "-keyDown:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,7 +21,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "XManager/QuestionDialog.m"
-         timestampString = "375901110.009295"
+         timestampString = "375909037.984247"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "17"

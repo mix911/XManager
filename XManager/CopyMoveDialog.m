@@ -14,28 +14,36 @@
 
 @implementation CopyMoveDialog
 
--(void) suggestCopy
+-(NSUInteger) suggestWithState:(enum ECopyMoveDialogType)s label:(NSString*)l title:(NSString*)t
 {
-    state = COPY_TYPE;
+    state = s;
+    [label setStringValue:l];
+    [self setTitle:t];
     
-    [label setStringValue:@"Copy selected files"];
-    
-    [self setTitle:@"Copy"];
-        
     [self makeFirstResponder:yesButton];
-    [[NSApplication sharedApplication] runModalForWindow:self];
+    
+    [[NSApplication sharedApplication] beginSheet:self
+                                   modalForWindow:mainWindow
+                                    modalDelegate:nil
+                                   didEndSelector:nil
+                                      contextInfo:nil];
+    
+    NSUInteger res = [[NSApplication sharedApplication] runModalForWindow:self];
+    
+    [[NSApplication sharedApplication] endSheet:self];
+    [self orderOut:nil];
+    
+    return res;
 }
 
--(void) suggestMove
+-(NSUInteger) suggestCopy
 {
-    state = MOVE_TYPE;
-    
-    [label setStringValue:@"Move selected files?"];
-    
-    [self setTitle:@"Move"];
-    
-    [self makeFirstResponder:yesButton];
-    [[NSApplication sharedApplication] runModalForWindow:self];
+    return [self suggestWithState:COPY_TYPE label:@"Copy selected files?" title:@"Copy"];
+}
+
+-(NSUInteger) suggestMove
+{
+    return [self suggestWithState:MOVE_TYPE label:@"Move selected files?" title:@"Move"];
 }
 
 -(IBAction) pressYes:(id)sender
@@ -71,12 +79,11 @@
         case VK_ENTER:
             if ([self firstResponder] == yesButton) {
                 [self pressYes:nil];
-                [self makeFirstResponder:yesButton];
             }
             else {
                 [self pressNo:nil];
-                [self makeFirstResponder:yesButton];
             }
+            [self makeFirstResponder:yesButton];
             break;
             
         default:
