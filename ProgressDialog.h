@@ -9,14 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @class Task;
-@class QuestionDialog;
+//@class QuestionDialog;
 
 @interface ProgressDialog : NSWindow<NSWindowDelegate>
 {
     IBOutlet NSTextField*           label;
     IBOutlet NSProgressIndicator*   progress;
     IBOutlet NSButton*              stopButton;
-    IBOutlet QuestionDialog*        questionDialog;
+//    IBOutlet QuestionDialog*        questionDialog;
     
     Task* task;
     NSTimer* timer;

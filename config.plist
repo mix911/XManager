@@ -7,7 +7,7 @@
 	<key>MainWindow</key>
 	<dict>
 		<key>ActivePanel</key>
-		<string>Left</string>
+		<string>Right</string>
 		<key>LeftPanel</key>
 		<dict>
 			<key>SelectedTab</key>
@@ -38,7 +38,7 @@
 					<key>Order</key>
 					<integer>2</integer>
 					<key>Path</key>
-					<string>/System/Library/Security</string>
+					<string>/Users/demo/Documents/XManager/XManager</string>
 				</dict>
 			</array>
 		</dict>

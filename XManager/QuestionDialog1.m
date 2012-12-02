@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuestionDialog.h"
+#import "QuestionDialog1.h"
 
 #include "MacSys.h"
 
-@implementation QuestionDialog
+@implementation QuestionDialog1
 
 -(void) dealloc
 {
@@ -55,6 +55,14 @@
 -(IBAction) pressNo:(id)sender
 {
     [[NSApplication sharedApplication] stopModalWithCode:NO];
+}
+
++(QuestionDialog1*) createQuestionDialog
+{
+    NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:@"QuestionDialog"];
+    QuestionDialog1* dlg = (QuestionDialog1*)[controller window];
+    [controller release];
+    return dlg;
 }
 
 @end

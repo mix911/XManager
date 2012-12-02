@@ -9,14 +9,14 @@
 #import "ProgressDialog.h"
 #import "Task.h"
 #import "MessageBox.h"
-#import "QuestionDialog.h"
+#import "QuestionDialog1.h"
 
 @implementation ProgressDialog
 
 -(void) awakeFromNib
 {
     self.delegate = self;
-    [questionDialog retain];
+//    [questionDialog retain];
 }
 
 -(BOOL) windowShouldClose:(id)sender
@@ -25,18 +25,20 @@
     
     [task pause];
     
-    [questionDialog setMessage:@"Stop copy?"];
+    QuestionDialog1* dlg = [QuestionDialog1 createQuestionDialog];
     
-    [[NSApplication sharedApplication] beginSheet:questionDialog
+    [dlg setMessage:@"Stop copy?"];
+    
+    [[NSApplication sharedApplication] beginSheet:dlg
                                    modalForWindow:self
                                     modalDelegate:nil
                                    didEndSelector:nil
                                       contextInfo:nil];
     
-    NSUInteger res = [[NSApplication sharedApplication] runModalForWindow:questionDialog];
+    NSUInteger res = [[NSApplication sharedApplication] runModalForWindow:dlg];
     
-    [[NSApplication sharedApplication] endSheet:questionDialog];
-    [questionDialog orderOut:nil];
+    [[NSApplication sharedApplication] endSheet:dlg];
+    [dlg orderOut:nil];
     
     if (res == YES) {
         [self close];

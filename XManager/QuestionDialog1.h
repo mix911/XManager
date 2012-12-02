@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-@interface QuestionDialog : NSPanel
+@interface QuestionDialog1 : NSWindow
 {
     IBOutlet NSTextField*   label;
     IBOutlet NSButton*      btnYes;
@@ -14,5 +14,7 @@
 }
 
 -(void) setMessage:(NSString*)message;
+
++(QuestionDialog1*) createQuestionDialog;
 
 @end
