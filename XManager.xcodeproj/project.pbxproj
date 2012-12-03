@@ -23,7 +23,6 @@
 		B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE3155F0F0A005FD255 /* BasicDialog.m */; };
 		B4182EE8155F0FC3005FD255 /* QuestionDialog1.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */; };
 		B43867751662720300CAE45A /* ProgressDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43867731662720300CAE45A /* ProgressDialog.xib */; };
-		B4435FC016680A290027CDA2 /* QuestionDialog1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4435FBF16680A290027CDA2 /* QuestionDialog1.xib */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A0538A166BF7420010E91F /* QuestionDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A05388166BF7420010E91F /* QuestionDialogController.m */; };
 		B4A0538B166BF7420010E91F /* QuestionDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4A05389166BF7420010E91F /* QuestionDialog.xib */; };
@@ -88,7 +87,6 @@
 		B4182EE6155F0FC3005FD255 /* QuestionDialog1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialog1.h; sourceTree = "<group>"; };
 		B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog1.m; sourceTree = "<group>"; };
 		B43867731662720300CAE45A /* ProgressDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressDialog.xib; sourceTree = "<group>"; };
-		B4435FBF16680A290027CDA2 /* QuestionDialog1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionDialog1.xib; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		B4A05387166BF7420010E91F /* QuestionDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialogController.h; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			children = (
 				B4182EE6155F0FC3005FD255 /* QuestionDialog1.h */,
 				B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */,
-				B4435FBF16680A290027CDA2 /* QuestionDialog1.xib */,
 				B4A05387166BF7420010E91F /* QuestionDialogController.h */,
 				B4A05388166BF7420010E91F /* QuestionDialogController.m */,
 				B4A05389166BF7420010E91F /* QuestionDialog.xib */,
@@ -423,7 +420,6 @@
 				B4C10F011402B63000AC0416 /* ToolbarUtilitiesFolderIcon.icns in Resources */,
 				B4C616AB15165C91007CDE2E /* config.plist in Resources */,
 				B43867751662720300CAE45A /* ProgressDialog.xib in Resources */,
-				B4435FC016680A290027CDA2 /* QuestionDialog1.xib in Resources */,
 				B4A0538B166BF7420010E91F /* QuestionDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
