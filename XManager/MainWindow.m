@@ -19,6 +19,7 @@
 #import "MessageBox.h"
 #import "DataSourceAndTableViewDelegate.h"
 #import "Task.h"
+#import "QuestionDialog.h"
 
 #include "MacSys.h"
 
@@ -160,7 +161,7 @@
 
 -(NSUInteger) suggestCopy
 {
-    return [copyMoveDialog suggestCopy];
+    return [QuestionDialog doModalWithMessage:@"Copy selected files?" parent:self selectedButton:YES];
 }
 
 -(void) suggestMove

@@ -9,14 +9,13 @@
 #import "ProgressDialog.h"
 #import "Task.h"
 #import "MessageBox.h"
-#import "QuestionDialog1.h"
+#import "QuestionDialog.h"
 
 @implementation ProgressDialog
 
 -(void) awakeFromNib
 {
     self.delegate = self;
-//    [questionDialog retain];
 }
 
 -(BOOL) windowShouldClose:(id)sender
@@ -25,7 +24,7 @@
     
     [task pause];
     
-    QuestionDialog1* dlg = [QuestionDialog1 createQuestionDialog];
+    QuestionDialog* dlg = [QuestionDialog createQuestionDialog];
     
     [dlg setMessage:@"Stop copy?"];
     

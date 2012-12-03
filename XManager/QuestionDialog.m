@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuestionDialog1.h"
+#import "QuestionDialog.h"
 
 #include "MacSys.h"
 
-@implementation QuestionDialog1
+@implementation QuestionDialog
 
 -(void) dealloc
 {
@@ -57,12 +57,38 @@
     [[NSApplication sharedApplication] stopModalWithCode:NO];
 }
 
-+(QuestionDialog1*) createQuestionDialog
+-(void) selectButton:(BOOL)selectedButton
+{
+    [self makeFirstResponder:selectedButton ? btnYes : btnNo];
+}
+
++(QuestionDialog*) createQuestionDialog
 {
     NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:@"QuestionDialog"];
-    QuestionDialog1* dlg = (QuestionDialog1*)[controller window];
+    QuestionDialog* dlg = (QuestionDialog*)[controller window];
     [controller release];
     return dlg;
+}
+
++(BOOL) doModalWithMessage:(NSString *)message parent:(NSWindow *)parent selectedButton:(BOOL)selectedButton
+{
+    QuestionDialog* dlg = [QuestionDialog createQuestionDialog];
+    [dlg setMessage:message];
+    [dlg selectButton:selectedButton];
+    
+    [[NSApplication sharedApplication] beginSheet:dlg
+                                   modalForWindow:parent
+                                    modalDelegate:nil
+                                   didEndSelector:nil
+                                      contextInfo:nil];
+    
+    NSUInteger res = [[NSApplication sharedApplication] runModalForWindow:dlg];
+    
+    [[NSApplication sharedApplication] endSheet:dlg];
+    [dlg orderOut:nil];
+    
+    return res;
+
 }
 
 @end

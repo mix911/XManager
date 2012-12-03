@@ -21,7 +21,7 @@
 		B40F8A7D13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F8A7C13F1176A003D14C0 /* DataSourceAndTableViewDelegate.m */; };
 		B410B337150BF14200076BC7 /* TabHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B410B336150BF14200076BC7 /* TabHeader.m */; };
 		B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE3155F0F0A005FD255 /* BasicDialog.m */; };
-		B4182EE8155F0FC3005FD255 /* QuestionDialog1.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */; };
+		B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B4182EE7155F0FC3005FD255 /* QuestionDialog.m */; };
 		B43867751662720300CAE45A /* ProgressDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43867731662720300CAE45A /* ProgressDialog.xib */; };
 		B480195E13F538FF00E33745 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B480195D13F538FF00E33745 /* TableView.m */; };
 		B4A0538A166BF7420010E91F /* QuestionDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A05388166BF7420010E91F /* QuestionDialogController.m */; };
@@ -84,8 +84,8 @@
 		B4124C5E150915200026FABE /* MacSys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacSys.h; sourceTree = "<group>"; };
 		B4182EE2155F0F0A005FD255 /* BasicDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDialog.h; sourceTree = "<group>"; };
 		B4182EE3155F0F0A005FD255 /* BasicDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicDialog.m; sourceTree = "<group>"; };
-		B4182EE6155F0FC3005FD255 /* QuestionDialog1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialog1.h; sourceTree = "<group>"; };
-		B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog1.m; sourceTree = "<group>"; };
+		B4182EE6155F0FC3005FD255 /* QuestionDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDialog.h; sourceTree = "<group>"; };
+		B4182EE7155F0FC3005FD255 /* QuestionDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDialog.m; sourceTree = "<group>"; };
 		B43867731662720300CAE45A /* ProgressDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressDialog.xib; sourceTree = "<group>"; };
 		B480195C13F538FF00E33745 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		B480195D13F538FF00E33745 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 		B4435FBD16680A040027CDA2 /* QuestionDialog */ = {
 			isa = PBXGroup;
 			children = (
-				B4182EE6155F0FC3005FD255 /* QuestionDialog1.h */,
-				B4182EE7155F0FC3005FD255 /* QuestionDialog1.m */,
+				B4182EE6155F0FC3005FD255 /* QuestionDialog.h */,
+				B4182EE7155F0FC3005FD255 /* QuestionDialog.m */,
 				B4A05387166BF7420010E91F /* QuestionDialogController.h */,
 				B4A05388166BF7420010E91F /* QuestionDialogController.m */,
 				B4A05389166BF7420010E91F /* QuestionDialog.xib */,
@@ -474,7 +474,7 @@
 				B4BC916415596C240061B3BF /* ProgressDialog.m in Sources */,
 				B4CD0105155C6C9300FED46A /* Task.m in Sources */,
 				B4182EE4155F0F0A005FD255 /* BasicDialog.m in Sources */,
-				B4182EE8155F0FC3005FD255 /* QuestionDialog1.m in Sources */,
+				B4182EE8155F0FC3005FD255 /* QuestionDialog.m in Sources */,
 				B4A0538A166BF7420010E91F /* QuestionDialogController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
