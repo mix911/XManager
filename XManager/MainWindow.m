@@ -106,7 +106,6 @@
             break;
             
         case VK_F5:
-            //[self suggestCopy];
             [self pressCopy];
             break;
             
@@ -187,7 +186,6 @@
 
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F5"]) {
-        //[self suggestCopy];
         [self pressCopy];
     }
     else if ([[btn identifier] isEqualToString:@"IDB_COMMAND_F6"]) {
@@ -218,6 +216,7 @@
     Task* task = [[Task alloc] initWithSrc:src dst:dst];
     
     ProgressDialog* progressDialog = [ProgressDialog createProgressDialog];
+    [progressDialog setLevel:NSFloatingWindowLevel];
     
     if ([task isCreated]) {
         [progressDialog runProgressWithTask:task title:@"Copying files"];
@@ -254,6 +253,7 @@
     
     [progressDialog setTitle:@"Deleting files"];
     [progressDialog makeKeyAndOrderFront:self];
+
     
     DataSourceAndTableViewDelegate* src = [activePanel dataSource];
     [src doDelete];

@@ -18,22 +18,16 @@
 					<key>Order</key>
 					<integer>1</integer>
 					<key>Path</key>
-					<string>/</string>
+					<string>/System</string>
 				</dict>
 			</array>
 		</dict>
 		<key>RightPanel</key>
 		<dict>
 			<key>SelectedTab</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>Tabs</key>
 			<array>
-				<dict>
-					<key>Order</key>
-					<integer>2</integer>
-					<key>Path</key>
-					<string>/</string>
-				</dict>
 				<dict>
 					<key>Order</key>
 					<integer>2</integer>
